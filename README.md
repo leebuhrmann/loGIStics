@@ -7,7 +7,7 @@ This repository hosts the development for S.N.O.W. (Strategic Notification & Ope
 ### Built With
 
 - **Frontend**: React.js
-- **GIS Microservice**: Java Backend with SpringBoot that is getting managed by Gradle
+- **GIS Microservice**: Java Backend with SpringBoot, managed with Gradle
 - **Database**: PostGIS
 
 ## Getting Started
