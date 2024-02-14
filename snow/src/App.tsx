@@ -1,6 +1,6 @@
-import React from 'react';
-import MapComponent from './components/MapComponent';
-import Hello from './components/fetchData';
+import React from "react";
+import MapComponent from "./components/MapComponent";
+import Hello from "./components/fetchData";
 
 function App() {
   return (
