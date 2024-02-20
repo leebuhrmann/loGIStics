@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import "ol/ol.css";
 import Map from "ol/Map";
 import View from "ol/View";
@@ -7,6 +7,7 @@ import OSM from "ol/source/OSM";
 
 const MapComponent = () => {
   const mapRef = useRef(null);
+  const [map, setMap] = useState<Map>()
 
   useEffect(() => {
     if (mapRef.current) {
@@ -22,6 +23,11 @@ const MapComponent = () => {
           zoom: 2,
         }),
       });
+      // Set map to the map reference
+      map.setTarget(mapRef.current || "")
+      // Set current map
+      setMap(map)
+      return () => map.setTarget("")
     }
   }, []);
 

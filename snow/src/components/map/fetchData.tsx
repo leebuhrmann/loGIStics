@@ -1,5 +1,5 @@
+import { fetchData } from "@/services/ApiServices";
 import React, { useState, useEffect } from "react";
-import { fetchData } from "../services/ApiServices";
 
 function MyComponent() {
   const [data, setData] = useState<string | null>(null);
