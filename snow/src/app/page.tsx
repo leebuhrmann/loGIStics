@@ -9,19 +9,14 @@ import {
 } from "@/components/ui/resizable";
 import {
     NavigationMenu,
-    NavigationMenuContent,
-    NavigationMenuIndicator,
     NavigationMenuItem,
-    NavigationMenuLink,
     NavigationMenuList,
-    NavigationMenuTrigger,
-    NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 
 
 export default function Home() {
   return (
-    <main>
+    <main className={"w-screen h-screen overflow-hidden"}>
         <NavigationMenu>
             <NavigationMenuList>
                 <NavigationMenuItem>
@@ -41,8 +36,8 @@ export default function Home() {
             <ResizableHandle />
             <ResizablePanel defaultSize={75}>
                 <div className="flex h-full items-center justify-center p-6">
-                    <MapComponent/>
                     <Hello/>
+                    <MapComponent/>
                 </div>
             </ResizablePanel>
             <ResizableHandle />
