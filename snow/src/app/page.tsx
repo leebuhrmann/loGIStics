@@ -15,7 +15,7 @@ import {
 
 export default function Home() {
   return (
-    <main className="w-screen h-screen overflow-hidden">
+    <main className="w-screen h-screen overflow-hidden flex flex-col">
       <div className="h-5/100">
         <NavigationMenu>
           <NavigationMenuList>
