@@ -12,7 +12,7 @@ function MyComponent() {
       .catch(console.error);
   }, []);
 
-  return <div>{data ? <p>{data}</p> : <p></p>}</div>;
+  return <div>{data ? <p>{data}</p> : <p>Loading...</p>}</div>;
 }
 
 export default MyComponent;
