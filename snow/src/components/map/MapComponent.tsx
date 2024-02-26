@@ -5,6 +5,8 @@ import View from "ol/View";
 import TileLayer from "ol/layer/Tile";
 import OSM from "ol/source/OSM";
 
+import {ImageWMS} from "ol/source";
+
 const MapComponent = () => {
   const mapRef = useRef(null);
   const [map, setMap] = useState<Map>()
@@ -12,7 +14,7 @@ const MapComponent = () => {
   useEffect(() => {
     if (mapRef.current) {
       const map = new Map({
-        target: mapRef.current,
+        target: mapRef.current as HTMLElement,
         layers: [
           new TileLayer({
             source: new OSM(),
