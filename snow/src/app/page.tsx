@@ -72,7 +72,7 @@ export default function Home() {
         </ResizablePanel>
         <ResizableHandle />
         <ResizablePanel defaultSize={80}>
-          <div className="flex h-full items-center justify-center">
+          <div className="flex flex-col h-full items-center justify-center">
             <Hello />
             <MapComponent />
           </div>
