@@ -1,5 +1,4 @@
 "use client";
-import { Button } from "@/components/ui/button";
 import MapComponent from "../components/map/MapComponent";
 import Hello from "../components/map/fetchData";
 import {
@@ -13,6 +12,7 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 
+
 export default function Home() {
   return (
     <main className="w-screen h-screen overflow-hidden flex flex-col">
@@ -25,7 +25,7 @@ export default function Home() {
       </div>
       <ResizablePanelGroup
         direction="horizontal"
-        className="w-screen min-h-screen rounded-lg border"
+        className="w-screen rounded-lg border"
       >
         <ResizablePanel defaultSize={20}>
           <div className="flex h-full p-6 overflow-hidden">
@@ -72,7 +72,7 @@ export default function Home() {
         </ResizablePanel>
         <ResizableHandle />
         <ResizablePanel defaultSize={80}>
-          <div className="flex flex-col h-full items-center justify-center">
+          <div className="flex flex-col h-full items-center justify-center relative">
             <Hello />
             <MapComponent />
           </div>
