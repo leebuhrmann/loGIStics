@@ -7,13 +7,12 @@ import OSM from "ol/source/OSM";
 import Draw from "ol/interaction/Draw";
 import VectorSource from "ol/source/Vector";
 import VectorLayer from "ol/layer/Vector";
-import {PlusIcon} from "@radix-ui/react-icons";
+import { PlusIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
-
 
 const MapComponent = () => {
   const mapRef = useRef(null);
-  const [map, setMap] = useState<Map>()
+  const [map, setMap] = useState<Map>();
   const [source] = useState(new VectorSource());
 
   useEffect(() => {
@@ -26,7 +25,7 @@ const MapComponent = () => {
           }),
           new VectorLayer({
             source: source,
-          })
+          }),
         ],
         view: new View({
           center: [0, 0],
@@ -34,10 +33,10 @@ const MapComponent = () => {
         }),
       });
       // Set map to the map reference
-      map.setTarget(mapRef.current || "")
+      map.setTarget(mapRef.current || "");
       // Set current map
-      setMap(map)
-      return () => map.setTarget("")
+      setMap(map);
+      return () => map.setTarget("");
     }
   }, []);
 
@@ -45,7 +44,10 @@ const MapComponent = () => {
     if (!map) return;
 
     // Clean up if in the middle of polygon drawing
-    const existingInteraction = map.getInteractions().getArray().find(interaction => interaction instanceof Draw);
+    const existingInteraction = map
+      .getInteractions()
+      .getArray()
+      .find((interaction) => interaction instanceof Draw);
     if (existingInteraction) {
       map.removeInteraction(existingInteraction);
     }
@@ -58,23 +60,23 @@ const MapComponent = () => {
     map.addInteraction(draw);
 
     // Remove the draw interaction once polygon has been created
-    draw.on('drawend', () => {
-
+    draw.on("drawend", () => {
       map.removeInteraction(draw);
     });
   };
 
-
   return (
-      <>
+    <>
       <div ref={mapRef} style={{ width: "100%", height: "100%" }} />
-        <Button onClick={startPolygonDrawing}
-          variant="outline"
-          size="icon"
-          className="absolute top-0 right-0 m-4 rounded-full">
-          <PlusIcon className="h-4 w-4" />
-        </Button>
-      </>
+      <Button
+        onClick={startPolygonDrawing}
+        variant="outline"
+        size="icon"
+        className="absolute top-0 right-0 m-4 rounded-full"
+      >
+        <PlusIcon className="h-4 w-4" />
+      </Button>
+    </>
   );
 };
 export default MapComponent;
