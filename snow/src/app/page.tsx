@@ -1,7 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import MapComponent from "../components/map/MapComponent";
-import MapComponent2 from "../components/map/MapComponent2";
 import Hello from "../components/map/fetchData";
 import {
   ResizableHandle,
@@ -75,7 +74,7 @@ export default function Home() {
         <ResizablePanel defaultSize={80}>
           <div className="flex h-full items-center justify-center">
             <Hello />
-            <MapComponent2 />
+            <MapComponent />
           </div>
         </ResizablePanel>
         <ResizableHandle />
