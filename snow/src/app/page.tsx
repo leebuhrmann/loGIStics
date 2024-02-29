@@ -28,15 +28,14 @@ export default function Home() {
         direction="horizontal"
         className="w-screen rounded-lg border"
       >
-        <ResizablePanel defaultSize={20}>
+        <ResizablePanel defaultSize={20} minSize={15}>
           <div className="flex h-full p-2 overflow-hidden">
-            <SideMenu></SideMenu>
+            <SideMenu />
           </div>
         </ResizablePanel>
         <ResizableHandle />
         <ResizablePanel defaultSize={80}>
           <div className="flex flex-col h-full items-center justify-center relative">
-            <Hello />
             <MapComponent />
           </div>
         </ResizablePanel>
