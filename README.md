@@ -13,10 +13,25 @@ This repository hosts the development for S.N.O.W. (Strategic Notification & Ope
 ## Getting Started
 
 To get a local copy up and running follow these simple steps.
-//Need to edit this once we have the full code ready 
+- As of right now, you must have access to the Virtual Machine hosting the Geoserver service.
+- In the VM, start up the Geoserver using the `./startup.sh` configuration file.
+- Launch the `snow` application using `npm run dev`
+- Nagivate to localhost:3000 in a modern web browser
 
 ### Prerequisites
 
 List all the prerequisites and how to install them.
-//Need to edit this once everything is done
+- Access to the Virtual Machine hosting the Geoserver service.
+- Install the latest npm inside your local repository of the `snow` application
 
+## Release Notes
+
+### Milestone #1
+
+- Plus icon allows the user to draw a polygon, visual only, does not send data anywhere
+- Side panel (currently all components are nonfunctional)
+  - Placeholder data to demonstrate what the user might see, not live data from the server
+  - Tab that allows the user to view boundaries or alerts, this is scrollable
+  - Search bar
+  - Subscriptions check box
+- Makes a WMS API call to the Geoserver and recieves a rendered map layer
