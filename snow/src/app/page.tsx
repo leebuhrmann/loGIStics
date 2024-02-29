@@ -26,7 +26,7 @@ export default function Home() {
       <ResizablePanelGroup
         id="resizablePanelGroup"
         direction="horizontal"
-        className="w-screen h-95/100 rounded-lg border"
+        className="w-screen rounded-lg border"
       >
         <ResizablePanel defaultSize={20}>
           <div className="flex h-full p-2 overflow-hidden">
@@ -35,7 +35,7 @@ export default function Home() {
         </ResizablePanel>
         <ResizableHandle />
         <ResizablePanel defaultSize={80}>
-          <div className="flex h-full items-center justify-center">
+          <div className="flex flex-col h-full items-center justify-center relative">
             <Hello />
             <MapComponent />
           </div>
