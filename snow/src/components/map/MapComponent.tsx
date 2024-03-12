@@ -11,10 +11,14 @@ import VectorLayer from "ol/layer/Vector";
 import { PlusIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 
-const MapComponent = () => {
+
+
+
+const MapComponent = ({ onPolygonComplete }) => {
   const mapRef = useRef<HTMLDivElement | null>(null);
   const [map, setMap] = useState<Map>();
   const [source] = useState(new VectorSource());
+
 
   useEffect(() => {
     // Ensure the mapRef.current is not null when initializing the map
@@ -73,6 +77,7 @@ const MapComponent = () => {
     // Remove the draw interaction once polygon has been created
     draw.on("drawend", () => {
       map.removeInteraction(draw);
+      onPolygonComplete();
     });
   };
 
