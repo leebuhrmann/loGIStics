@@ -1,7 +1,6 @@
 "use client";
 import MapComponent from "../components/map/MapComponent";
 import { useState } from "react";
-//import Hello from "../components/map/fetchData";
 import {
   ResizableHandle,
   ResizablePanel,
@@ -18,6 +17,7 @@ import SideCreationView from "@/components/side-menu/side-form-view/side-creatio
 
 export default function Home() {
   const [viewState, setViewState] = useState("info");
+  const [clearPolygon, setClearPolygon] = useState(false);
 
   const toggleViewToInfo = () => {
     setViewState("info");
@@ -25,6 +25,15 @@ export default function Home() {
 
   const handlePolygonComplete = () => {
     setViewState("create");
+  };
+
+  const handleClearPolygon = () => {
+    console.log("Clear polygon function called");
+    setClearPolygon(true);
+  };
+
+  const handleClearComplete = () => {
+    setClearPolygon(false);
   };
 
   return (
@@ -45,7 +54,10 @@ export default function Home() {
           <div className="flex h-full p-2 overflow-hidden">
             <SideMenu>
               {viewState === "create" ? (
-                <SideCreationView onClose={toggleViewToInfo} />
+                <SideCreationView
+                  onClose={toggleViewToInfo}
+                  onClearPolygon={handleClearPolygon}
+                />
               ) : (
                 <SideInfoView />
               )}
@@ -55,7 +67,11 @@ export default function Home() {
         <ResizableHandle />
         <ResizablePanel defaultSize={80}>
           <div className="flex flex-col h-full items-center justify-center relative">
-            <MapComponent onPolygonComplete={handlePolygonComplete} />
+            <MapComponent
+              onPolygonComplete={handlePolygonComplete}
+              clearPolygon={clearPolygon}
+              onClearComplete={handleClearComplete}
+            />
           </div>
         </ResizablePanel>
         <ResizableHandle />
