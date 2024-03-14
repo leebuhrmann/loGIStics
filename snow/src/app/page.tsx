@@ -1,6 +1,5 @@
 "use client";
 import MapComponent from "../components/map/MapComponent";
-import Hello from "../components/map/fetchData";
 import {
   ResizableHandle,
   ResizablePanel,
@@ -12,8 +11,12 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import SideMenu from "@/components/side-menu/side-menu";
+import { useState } from "react";
 
 export default function Home() {
+  // State for global subscription filter
+  const [subCheckValue, setSubCheckValue] = useState(true);
+
   return (
     <main className="w-screen h-screen overflow-hidden flex flex-col">
       <div className="h-5/100">
@@ -30,7 +33,10 @@ export default function Home() {
       >
         <ResizablePanel defaultSize={20} minSize={15}>
           <div className="flex h-full p-2 overflow-hidden">
-            <SideMenu />
+            <SideMenu
+              subCheckValue={subCheckValue}
+              setSubCheckValue={setSubCheckValue}
+            />
           </div>
         </ResizablePanel>
         <ResizableHandle />
