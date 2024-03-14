@@ -11,10 +11,11 @@ import VectorLayer from "ol/layer/Vector";
 import { PlusIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 
-const MapComponent = () => {
+const MapComponent = ({ onPolygonComplete, clearPolygon, onClearComplete }) => {
   const mapRef = useRef<HTMLDivElement | null>(null);
   const [map, setMap] = useState<Map>();
   const [source] = useState(new VectorSource());
+  const [shouldClearPolygon, setShouldClearPolygon] = useState<boolean>(false);
 
   useEffect(() => {
     // Ensure the mapRef.current is not null when initializing the map
@@ -25,19 +26,22 @@ const MapComponent = () => {
 
       const wmsLayer = new TileLayer({
         source: new TileWMS({
-          url: 'http://0.0.0.0:8080/geoserver/wms?',
-          params: { 'LAYERS': 'topp:states', 'TILED': true },
-          serverType: 'geoserver',
-        })
-      })
+          url: "http://0.0.0.0:8080/geoserver/wms?",
+          params: { LAYERS: "topp:states", TILED: true },
+          serverType: "geoserver",
+        }),
+      });
 
       // Initialize the map with a non-null assertion for mapRef.current
       const map = new Map({
         target: mapRef.current!,
-        layers: [baseLayer, wmsLayer,
+        layers: [
+          baseLayer,
+          wmsLayer,
           new VectorLayer({
             source: source,
-          })],
+          }),
+        ],
         view: new View({
           center: [0, 0],
           zoom: 2,
@@ -50,6 +54,22 @@ const MapComponent = () => {
       return () => map.setTarget("");
     }
   }, []);
+
+  useEffect(() => {
+    if (clearPolygon && map) {
+      setShouldClearPolygon(true);
+    }
+  }, [clearPolygon, map]);
+
+  useEffect(() => {
+    if (shouldClearPolygon && source) {
+      source.clear();
+      setShouldClearPolygon(false);
+      if (onClearComplete) {
+        onClearComplete();
+      }
+    }
+  }, [shouldClearPolygon, source, onClearComplete]);
 
   const startPolygonDrawing = () => {
     if (!map) return;
@@ -73,6 +93,7 @@ const MapComponent = () => {
     // Remove the draw interaction once polygon has been created
     draw.on("drawend", () => {
       map.removeInteraction(draw);
+      onPolygonComplete();
     });
   };
 
