@@ -10,12 +10,16 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.io.IOException;
 import java.util.List;
 
 @Service
 public class NWSDataService {
+
+    @Value("${nwsalert.api.url}")
+    private String url;
 
     private final RestTemplate restTemplate;
     private final ObjectMapper objectMapper;
@@ -29,7 +33,6 @@ public class NWSDataService {
     @PostConstruct // ensures run on service initialization
     @Scheduled(fixedRate = 60000)
     public void fetchWeatherData() {
-        String url = "https://api.weather.gov/alerts/active?area=TX";
         try {
             ResponseEntity<String> response = restTemplate.getForEntity(url, String.class); // GET request from NWS api
 
