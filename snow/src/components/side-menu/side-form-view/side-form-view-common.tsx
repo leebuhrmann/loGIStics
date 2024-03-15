@@ -40,7 +40,7 @@ const SideFormViewCommon: React.FC<SideFormViewCommonProps> = ({
   };
 
   return (
-    <div id="side-info-common" className="h-full">
+    <div id="side-info-common">
       <div className="flex w-full items-center space-x-2">
         <h2 className="text-lg font-medium leading-none w-full">{title}</h2>
         <Button onClick={handleClose} variant="default_light">
