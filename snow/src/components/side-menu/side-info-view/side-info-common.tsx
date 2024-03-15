@@ -69,21 +69,19 @@ function DataSelect({ data, index }: DataSelectProps) {
     // Alert Data
     return (
       <>
-        <h4 className="text-base">{data.title}</h4>
+        <h4>{data.title}</h4>
         {/* Loop through the header list */}
         {data.header.map((headerItem: string, headerIndex: number) => (
-          <h3 key={`Alert-${data.header}-${headerIndex}`} className="text-sm">
+          <p
+            key={`Alert-${data.header}-${headerIndex}`}
+            className="font-semibold"
+          >
             {headerItem}
-          </h3>
+          </p>
         ))}
         {/* Loop through the body list */}
         {data.body.map((bodyItem: string, bodyIndex: number) => (
-          <h4
-            key={`Alert-${data.body}-${bodyIndex}`}
-            className="text-sm text-muted-foreground pb-2"
-          >
-            {bodyItem}
-          </h4>
+          <p key={`Alert-${data.body}-${bodyIndex}`}>{bodyItem}</p>
         ))}
         <Separator />
       </>
@@ -92,7 +90,7 @@ function DataSelect({ data, index }: DataSelectProps) {
     // Boundary Data
     return (
       <>
-        <h4 className="text-base">{data.title}</h4>
+        <h4>{data.title}</h4>
         <div id="sub_checkbox" className="flex items-center space-x-2 py-1">
           <Checkbox id="boundarySubs" defaultChecked={data.sub} />
           <label
@@ -104,21 +102,16 @@ function DataSelect({ data, index }: DataSelectProps) {
         </div>
         {/* Loop through the header list */}
         {data.header.map((headerItem: string, headerIndex: number) => (
-          <h3
+          <p
             key={`Boundary-${data.header}-${headerIndex}`}
-            className="text-sm"
+            className="font-semibold"
           >
             {headerItem}
-          </h3>
+          </p>
         ))}
         {/* Loop through the body list */}
         {data.body.map((bodyItem: string, bodyIndex: number) => (
-          <h4
-            key={`Boundary-${data.body}-${bodyIndex}`}
-            className="text-sm text-muted-foreground pb-2"
-          >
-            {bodyItem}
-          </h4>
+          <p key={`Boundary-${data.body}-${bodyIndex}`}>{bodyItem}</p>
         ))}
         <Separator />
       </>
