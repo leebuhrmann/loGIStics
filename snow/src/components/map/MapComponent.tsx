@@ -12,13 +12,33 @@ import { Pencil1Icon, PlusIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import Collection from "ol/Collection";
 
-let isDrawing = false;
-let isModifying = false;
+// let isDrawing = false;
+// let isModifying = false;
 
 const MapComponent = () => {
   const mapRef = useRef<HTMLDivElement | null>(null);
   const [map, setMap] = useState<Map>();
   const [source] = useState(new VectorSource());
+  const modify = useRef<Modify>();
+
+  const [isDrawing, setIsDrawing] = useState(false);
+  const [isModifying, setIsModifying] = useState(false);
+
+  const startDrawing = () => {
+    setIsDrawing(true);
+  };
+
+  const stopDrawing = () => {
+    setIsDrawing(false);
+  };
+
+  const startModifying = () => {
+    setIsModifying(true);
+  };
+
+  const stopModifying = () => {
+    setIsModifying(false);
+  };
 
   useEffect(() => {
     // Ensure the mapRef.current is not null when initializing the map
@@ -61,13 +81,11 @@ const MapComponent = () => {
   const startPolygonDrawing = () => {
     if (!map) return;
 
-    // Clean up if in the middle of polygon drawing and exit drawing mode
-    const existingInteraction = map
-      .getInteractions()
-      .getArray()
-      .find((interaction: Interaction) => interaction instanceof Draw);
-    if (existingInteraction) {
-      map.removeInteraction(existingInteraction);
+    modify.current?.setActive(false);
+
+    if (isDrawing) {
+      resetInteractions(map);
+      stopDrawing();
       return;
     }
 
@@ -79,12 +97,12 @@ const MapComponent = () => {
       type: "Polygon",
     });
     map.addInteraction(draw);
-    isDrawing = true;
+    startDrawing();
 
     // Remove the draw interaction once polygon has been created
     draw.on("drawend", () => {
       map.removeInteraction(draw);
-      isDrawing = false;
+      stopDrawing();
     });
   };
 
@@ -94,19 +112,10 @@ const MapComponent = () => {
    */
   function modifyPolygon(): void {
     if (!map) return;
-    const existingInteractions = map.getInteractions().getArray();
 
     if (isModifying) {
-      existingInteractions.forEach((interaction: Interaction) => {
-        if (
-          interaction instanceof Modify ||
-          interaction instanceof Select ||
-          interaction instanceof Snap
-        ) {
-          map.removeInteraction(interaction);
-        }
-      });
-      isModifying = false;
+      resetInteractions(map);
+      stopModifying();
       return;
     }
 
@@ -115,15 +124,16 @@ const MapComponent = () => {
     const select = new Select({});
     map.addInteraction(select);
 
-    const modify = new Modify({
+    modify.current = new Modify({
       features: select.getFeatures(),
     });
-    map.addInteraction(modify);
+    map.addInteraction(modify.current);
+    modify.current.setActive(true);
 
     const snap = new Snap({ source: source });
     map.addInteraction(snap);
 
-    isModifying = true;
+    startModifying();
   }
 
   /**
@@ -133,7 +143,6 @@ const MapComponent = () => {
    */
   function resetInteractions(map: Map) {
     let interactions: Collection<Interaction> = map.getInteractions();
-
     interactions.forEach(function (interaction: Interaction) {
       if (
         interaction instanceof Draw ||
@@ -144,8 +153,8 @@ const MapComponent = () => {
         map.removeInteraction(interaction);
       }
     });
-    isDrawing = false;
-    isModifying = false;
+    stopDrawing();
+    stopModifying();
   }
 
   return (

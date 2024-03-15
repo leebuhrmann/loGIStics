@@ -1,6 +1,5 @@
 "use client";
 import MapComponent from "../components/map/MapComponent";
-import Hello from "../components/map/fetchData";
 import {
   ResizableHandle,
   ResizablePanel,

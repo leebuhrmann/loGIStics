@@ -6,7 +6,7 @@ import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { Separator } from "@/components/ui/separator";
 import { MockData } from "@/mock-data/mock-data";
 
-export default function SideInfoCommon({ data }) {
+export default function SideInfoCommon({ data }: { data: MockData[] }) {
   return (
     <div id="side-info-common" className="h-full">
       <div className="flex flex-col max-width-full gap-3 h-full">
