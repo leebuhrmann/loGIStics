@@ -2,14 +2,28 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { Separator } from "@/components/ui/separator";
-import { MockData } from "@/mock-data/mock-data";
+import { MockAlertData, MockBoundaryData } from "@/mock-data/mock-data";
+import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 
-export default function SideInfoCommon({ data }: { data: MockData[] }) {
+interface SideInfoCommonProps {
+  data: any;
+  subCheckValue: boolean;
+  setSubCheckValue: any;
+}
+
+export default function SideInfoCommon({
+  data,
+  subCheckValue,
+  setSubCheckValue,
+}: SideInfoCommonProps) {
+  // Function to handle checkbox changes
+  const handleCheckboxChange = () => {
+    setSubCheckValue((prevValue: boolean) => !prevValue);
+  };
   return (
     <div id="side-info-common" className="h-full">
-      <div className="flex flex-col max-width-full gap-3 h-full">
+      <div className="flex flex-col max-w-full gap-3 h-full">
         <div className="flex w-full items-center space-x-2">
           <Input type="search" placeholder="Search" />
           <Button type="submit">
@@ -17,38 +31,90 @@ export default function SideInfoCommon({ data }: { data: MockData[] }) {
           </Button>
         </div>
         <div id="sub_checkbox" className="flex items-center space-x-2">
-          <Checkbox id="subs" />
+          <Checkbox
+            id="filterSubs"
+            checked={!subCheckValue}
+            onCheckedChange={handleCheckboxChange}
+          />
           <label
-            htmlFor="subs"
+            htmlFor="filterSubs"
             className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
           >
             Subscriptions
           </label>
         </div>
         <ScrollArea className="h-5/6 w-full rounded-md border">
-          {data.map((item: MockData, index: number) => (
-            <div key={index} className="p-2">
-              <h2 className="text-base font-medium">{item.title}</h2>
-              {/* Loop through the header list */}
-              {item.header.map((headerItem: string, headerIndex: number) => (
-                <h3 key={headerIndex} className="text-sm">
-                  {headerItem}
-                </h3>
-              ))}
-              {/* Loop through the body list */}
-              {item.body.map((bodyItem: string, bodyIndex: number) => (
-                <h4
-                  key={bodyIndex}
-                  className="text-sm text-muted-foreground pb-2"
-                >
-                  {bodyItem}
-                </h4>
-              ))}
-              <Separator />
+          {/* Loop through each item in data, output DataSelect */}
+          {data.map((item: MockAlertData | MockBoundaryData, index: number) => (
+            <div key={`Alert-${data.title}-${index}`} className="p-2">
+              <DataSelect data={item} index={index}></DataSelect>
             </div>
           ))}
         </ScrollArea>
       </div>
     </div>
   );
+}
+
+interface DataSelectProps {
+  data: MockAlertData | MockBoundaryData;
+  index: number;
+}
+/**
+ * Specifies the styling for the data view of the Alert and Boundary info views
+ * @returns html elements for either alert or boundary info view
+ */
+function DataSelect({ data, index }: DataSelectProps) {
+  if (!("sub" in data)) {
+    // Alert Data
+    return (
+      <>
+        <h4>{data.title}</h4>
+        {/* Loop through the header list */}
+        {data.header.map((headerItem: string, headerIndex: number) => (
+          <p
+            key={`Alert-${data.header}-${headerIndex}`}
+            className="font-semibold"
+          >
+            {headerItem}
+          </p>
+        ))}
+        {/* Loop through the body list */}
+        {data.body.map((bodyItem: string, bodyIndex: number) => (
+          <p key={`Alert-${data.body}-${bodyIndex}`}>{bodyItem}</p>
+        ))}
+        <Separator />
+      </>
+    );
+  } else {
+    // Boundary Data
+    return (
+      <>
+        <h4>{data.title}</h4>
+        <div id="sub_checkbox" className="flex items-center space-x-2 py-1">
+          <Checkbox id="boundarySubs" defaultChecked={data.sub} />
+          <label
+            htmlFor="boundarySubs"
+            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          >
+            Subscribe
+          </label>
+        </div>
+        {/* Loop through the header list */}
+        {data.header.map((headerItem: string, headerIndex: number) => (
+          <p
+            key={`Boundary-${data.header}-${headerIndex}`}
+            className="font-semibold"
+          >
+            {headerItem}
+          </p>
+        ))}
+        {/* Loop through the body list */}
+        {data.body.map((bodyItem: string, bodyIndex: number) => (
+          <p key={`Boundary-${data.body}-${bodyIndex}`}>{bodyItem}</p>
+        ))}
+        <Separator />
+      </>
+    );
+  }
 }

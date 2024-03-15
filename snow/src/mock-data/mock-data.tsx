@@ -1,10 +1,17 @@
-export interface MockData {
+export interface MockAlertData {
   title: string;
   header: string[];
   body: string[];
 }
 
-export const mockAlerts: MockData[] = [
+export interface MockBoundaryData {
+  title: string;
+  sub: boolean;
+  header: string[];
+  body: string[];
+}
+
+export const mockAlerts: MockAlertData[] = [
   {
     title: "Event: Winter Weather Advisory",
     header: [
@@ -41,17 +48,19 @@ export const mockAlerts: MockData[] = [
   },
 ];
 
-export const mockBoundaries: MockData[] = [
+export const mockBoundaries: MockBoundaryData[] = [
   {
     title: "Boundary: Boundary 1",
-    header: ["Description"],
+    sub: false,
+    header: ["Description:"],
     body: [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Adipiscing elit ut aliquam purus sit amet.",
     ],
   },
   {
     title: "Boundary: Boundary 2",
-    header: ["Description"],
+    sub: true,
+    header: ["Description:"],
     body: [
       "Tellus cras adipiscing enim eu turpis egestas pretium. Vitae et leo duis ut diam quam nulla porttitor. Tortor vitae purus faucibus ornare suspendisse sed. Vitae sapien pellentesque habitant morbi tristique.",
     ],

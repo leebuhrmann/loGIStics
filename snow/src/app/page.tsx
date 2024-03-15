@@ -1,6 +1,5 @@
 "use client";
 import MapComponent from "../components/map/MapComponent";
-import { useState } from "react";
 import {
   ResizableHandle,
   ResizablePanel,
@@ -12,12 +11,15 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import SideMenu from "@/components/side-menu/side-menu";
-import SideInfoView from "@/components/side-menu/side-info-view/side-info-view";
+import { useState } from "react";
 import SideCreationView from "@/components/side-menu/side-form-view/side-creation-view";
+import SideInfoView from "@/components/side-menu/side-info-view/side-info-view";
 
 export default function Home() {
   const [viewState, setViewState] = useState("info");
   const [clearPolygon, setClearPolygon] = useState(false);
+  // State for global subscription filter
+  const [subCheckValue, setSubCheckValue] = useState(true);
 
   const toggleViewToInfo = () => {
     setViewState("info");
@@ -59,7 +61,10 @@ export default function Home() {
                   onClearPolygon={handleClearPolygon}
                 />
               ) : (
-                <SideInfoView />
+                <SideInfoView
+                  subCheckValue={subCheckValue}
+                  setSubCheckValue={setSubCheckValue}
+                />
               )}
             </SideMenu>
           </div>
