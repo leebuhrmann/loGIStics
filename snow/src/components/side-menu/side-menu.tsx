@@ -1,9 +1,4 @@
-import SideInfoView from "./side-info-view/side-info-view";
-import SideFormView from "@/components/side-menu/side-form-view/side-form-view-common";
-
-import React from "react";
-
-const SideMenu = ({ children }) => {
+const SideMenu = ({ children }: any) => {
   return <div className="side-menu w-full">{children}</div>;
 };
 

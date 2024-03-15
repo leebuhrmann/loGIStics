@@ -8,7 +8,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 
 interface SideCreationViewProps {
   onClose: () => void;
-  oonClearPolygon?: () => void;
+  onClearPolygon?: () => void;
 }
 
 const SideCreationView: React.FC<SideCreationViewProps> = ({
