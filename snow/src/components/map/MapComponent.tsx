@@ -12,13 +12,21 @@ import { Pencil1Icon, PlusIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import Collection from "ol/Collection";
 
-// let isDrawing = false;
-// let isModifying = false;
+interface MapComponentProps {
+  onPolygonComplete: () => void;
+  clearPolygon: boolean;
+  onClearComplete: () => void;
+}
 
-const MapComponent = () => {
+const MapComponent: React.FC<MapComponentProps> = ({
+  onPolygonComplete,
+  clearPolygon,
+  onClearComplete,
+}) => {
   const mapRef = useRef<HTMLDivElement | null>(null);
   const [map, setMap] = useState<Map>();
   const [source] = useState(new VectorSource());
+  const [shouldClearPolygon, setShouldClearPolygon] = useState<boolean>(false);
   const modify = useRef<Modify>();
 
   const [isDrawing, setIsDrawing] = useState(false);
@@ -78,6 +86,22 @@ const MapComponent = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if (clearPolygon && map) {
+      setShouldClearPolygon(true);
+    }
+  }, [clearPolygon, map]);
+
+  useEffect(() => {
+    if (shouldClearPolygon && source) {
+      source.clear();
+      setShouldClearPolygon(false);
+      if (onClearComplete) {
+        onClearComplete();
+      }
+    }
+  }, [shouldClearPolygon, source, onClearComplete]);
+
   const startPolygonDrawing = () => {
     if (!map) return;
 
@@ -103,6 +127,7 @@ const MapComponent = () => {
     draw.on("drawend", () => {
       map.removeInteraction(draw);
       stopDrawing();
+      onPolygonComplete();
     });
   };
 

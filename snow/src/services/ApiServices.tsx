@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8081";
+const BASE_URL = "0.0.0.0:8080";
 export const fetchData = async () => {
   try {
     const response = await fetch(`${BASE_URL}/hello`);

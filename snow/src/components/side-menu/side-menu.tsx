@@ -1,5 +1,5 @@
-import SideInfoView from "./side-info-view/side-info-view";
+const SideMenu = ({ children }: any) => {
+  return <div className="side-menu w-full">{children}</div>;
+};
 
-export default function SideMenu() {
-  return <SideInfoView></SideInfoView>;
-}
+export default SideMenu;
