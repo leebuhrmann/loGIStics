@@ -1,10 +1,3 @@
-import SideInfoView from "./side-info-view/side-info-view";
-
-export default function SideMenu({ subCheckValue, setSubCheckValue }) {
-  return (
-    <SideInfoView
-      subCheckValue={subCheckValue}
-      setSubCheckValue={setSubCheckValue}
-    ></SideInfoView>
-  );
+export default function SideMenu({ children }: any) {
+  return <div className="side-menu w-full">{children}</div>;
 }

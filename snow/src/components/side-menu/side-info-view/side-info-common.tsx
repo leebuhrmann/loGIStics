@@ -3,15 +3,24 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
+import { MockAlertData, MockBoundaryData } from "@/mock-data/mock-data";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 
-export function SideInfoCommon({ data, subCheckValue, setSubCheckValue }) {
+interface SideInfoCommonProps {
+  data: any;
+  subCheckValue: boolean;
+  setSubCheckValue: any;
+}
+
+export default function SideInfoCommon({
+  data,
+  subCheckValue,
+  setSubCheckValue,
+}: SideInfoCommonProps) {
   // Function to handle checkbox changes
   const handleCheckboxChange = () => {
-    console.log("value", subCheckValue);
-    setSubCheckValue((prevValue) => !prevValue);
+    setSubCheckValue((prevValue: boolean) => !prevValue);
   };
-
   return (
     <div id="side-info-common" className="h-full">
       <div className="flex flex-col max-w-full gap-3 h-full">
@@ -35,8 +44,11 @@ export function SideInfoCommon({ data, subCheckValue, setSubCheckValue }) {
           </label>
         </div>
         <ScrollArea className="h-5/6 w-full rounded-md border">
-          {data.map((item, index: number) => (
-            <DataSelect MockData={item} TitleIndex={index}></DataSelect>
+          {/* Loop through each item in data, output DataSelect */}
+          {data.map((item: MockAlertData | MockBoundaryData, index: number) => (
+            <div key={`Alert-${data.title}-${index}`} className="p-2">
+              <DataSelect data={item} index={index}></DataSelect>
+            </div>
           ))}
         </ScrollArea>
       </div>
@@ -44,36 +56,45 @@ export function SideInfoCommon({ data, subCheckValue, setSubCheckValue }) {
   );
 }
 
+interface DataSelectProps {
+  data: MockAlertData | MockBoundaryData;
+  index: number;
+}
 /**
- *
+ * Specifies the styling for the data view of the Alert and Boundary info views
  * @returns html elements for either alert or boundary info view
  */
-function DataSelect({ MockData: item, TitleIndex: index }) {
-  if (item.sub === undefined) {
+function DataSelect({ data, index }: DataSelectProps) {
+  if (!("sub" in data)) {
+    // Alert Data
     return (
-      <div key={index} className="p-2">
-        <h4 className="text-base">{item.title}</h4>
+      <>
+        <h4 className="text-base">{data.title}</h4>
         {/* Loop through the header list */}
-        {item.header.map((headerItem: string, headerIndex: number) => (
-          <h3 key={headerIndex} className="text-sm">
+        {data.header.map((headerItem: string, headerIndex: number) => (
+          <h3 key={`Alert-${data.header}-${headerIndex}`} className="text-sm">
             {headerItem}
           </h3>
         ))}
         {/* Loop through the body list */}
-        {item.body.map((bodyItem: string, bodyIndex: number) => (
-          <h4 key={bodyIndex} className="text-sm text-muted-foreground pb-2">
+        {data.body.map((bodyItem: string, bodyIndex: number) => (
+          <h4
+            key={`Alert-${data.body}-${bodyIndex}`}
+            className="text-sm text-muted-foreground pb-2"
+          >
             {bodyItem}
           </h4>
         ))}
         <Separator />
-      </div>
+      </>
     );
   } else {
+    // Boundary Data
     return (
-      <div key={index} className="p-2">
-        <h4 className="text-base">{item.title}</h4>
+      <>
+        <h4 className="text-base">{data.title}</h4>
         <div id="sub_checkbox" className="flex items-center space-x-2 py-1">
-          <Checkbox id="boundarySubs" defaultChecked={item.sub} />
+          <Checkbox id="boundarySubs" defaultChecked={data.sub} />
           <label
             htmlFor="boundarySubs"
             className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -82,19 +103,25 @@ function DataSelect({ MockData: item, TitleIndex: index }) {
           </label>
         </div>
         {/* Loop through the header list */}
-        {item.header.map((headerItem: string, headerIndex: number) => (
-          <h3 key={headerIndex} className="text-sm">
+        {data.header.map((headerItem: string, headerIndex: number) => (
+          <h3
+            key={`Boundary-${data.header}-${headerIndex}`}
+            className="text-sm"
+          >
             {headerItem}
           </h3>
         ))}
         {/* Loop through the body list */}
-        {item.body.map((bodyItem: string, bodyIndex: number) => (
-          <h4 key={bodyIndex} className="text-sm text-muted-foreground pb-2">
+        {data.body.map((bodyItem: string, bodyIndex: number) => (
+          <h4
+            key={`Boundary-${data.body}-${bodyIndex}`}
+            className="text-sm text-muted-foreground pb-2"
+          >
             {bodyItem}
           </h4>
         ))}
         <Separator />
-      </div>
+      </>
     );
   }
 }
