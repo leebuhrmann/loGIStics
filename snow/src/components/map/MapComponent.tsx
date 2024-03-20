@@ -8,9 +8,9 @@ import OSM from "ol/source/OSM";
 import { Modify, Select, Snap, Draw, Interaction } from "ol/interaction.js";
 import VectorSource from "ol/source/Vector";
 import VectorLayer from "ol/layer/Vector";
+import Collection from "ol/Collection";
 import { Pencil1Icon, PlusIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
-import Collection from "ol/Collection";
 
 interface MapComponentProps {
   onPolygonComplete: () => void;
