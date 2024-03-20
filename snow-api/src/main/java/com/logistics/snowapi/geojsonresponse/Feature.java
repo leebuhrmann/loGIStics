@@ -15,4 +15,14 @@ public class Feature {
     public void setProperties(FeatureProperties properties) {
         this.properties = properties;
     }
+
+    public String toString() {
+        return String.format("event: %s" +
+                            "\nheadline: %s" +
+                            "\nonset: %s" +
+                            "\nexpires: %s" +
+                            "\nUGC: %s" +
+                            "\ndescription: %s",
+                properties.getEvent(), properties.getHeadline(), properties.getOnset(), properties.getExpires(), properties.getUGC(), properties.getDescription());
+    }
 }

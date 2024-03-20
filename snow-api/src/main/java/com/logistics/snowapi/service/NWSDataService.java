@@ -51,7 +51,7 @@ public class NWSDataService {
         List<Feature> allFeatures = geoJsonResponse.getFeatures();
         if (!allFeatures.isEmpty()) {
             allFeatures.forEach(feature -> {
-                System.out.println(feature.getProperties().getHeadline());
+                System.out.println(feature.toString());
                 // Add more processing logic as needed
             });
         }

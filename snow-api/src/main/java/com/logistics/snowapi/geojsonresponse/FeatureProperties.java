@@ -3,6 +3,9 @@ package com.logistics.snowapi.geojsonresponse;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class FeatureProperties {
 
@@ -20,6 +23,14 @@ public class FeatureProperties {
 
     @JsonProperty("description")
     private String description;
+
+    private ArrayList<String> UGC;
+
+    @SuppressWarnings("unchecked")
+    @JsonProperty("geocode")
+    private void unpackUGC(Map<String,Object> geocode) {
+        this.UGC = (ArrayList<String>) geocode.get("UGC");
+    }
 
     public String getEvent() {
         return event;
@@ -59,5 +70,13 @@ public class FeatureProperties {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public ArrayList<String> getUGC() {
+        return UGC;
+    }
+
+    public void setUGC(ArrayList<String> UGC) {
+        this.UGC = UGC;
     }
 }
