@@ -33,7 +33,7 @@ const SideCreationView: React.FC<SideCreationViewProps> = ({
   };
 
   return (
-    <div id="side-creation-view" className="w-full">
+    <div id="side-creation-view" className="w-full flex flex-col gap-2">
       <SideFormViewCommon
         onClose={onClose}
         isCreationView={true}
@@ -47,18 +47,16 @@ const SideCreationView: React.FC<SideCreationViewProps> = ({
         descriptionPlaceholder="Enter Description"
       />
 
-      <div className="mt-4 flex justify-start items-center space-x-2">
-        <Button onClick={handleSave}>Save</Button>
-        <div id="sub_checkbox" className="flex items-center space-x-2">
-          <Checkbox id="subs" />
-          <label
-            htmlFor="subs"
-            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-          >
-            Subscribe
-          </label>
-        </div>
+      <div id="sub_checkbox" className="flex items-center space-x-2">
+        <Checkbox id="subs" />
+        <label
+          htmlFor="subs"
+          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        >
+          Subscribe
+        </label>
       </div>
+      <Button onClick={handleSave}>Save</Button>
     </div>
   );
 };
