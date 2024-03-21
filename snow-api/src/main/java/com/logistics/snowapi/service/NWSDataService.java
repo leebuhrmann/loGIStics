@@ -33,14 +33,18 @@ public class NWSDataService {
         this.alertService = alertService;
     }
 
+    /**
+     * Performs a GET call on the NWS service and maps the response
+     * to a POJO.
+     */
     @PostConstruct // ensures run on service initialization
-    @Scheduled(fixedRate = 60000)
+    @Scheduled(fixedRate = 60000) // runs every 60 seconds
     public void fetchWeatherData() {
         try {
-            ResponseEntity<String> response = restTemplate.getForEntity(url, String.class); // GET request from NWS api
-
+            // GET request from NWS api
+            ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
+            // Maps the response into a POJO containing all the alert data.
             GeoJsonResponse geoJsonResponse = objectMapper.readValue(response.getBody(), GeoJsonResponse.class);
-
             processGeoJsonResponse(geoJsonResponse);
         } catch (RestClientException | IOException e) {
             // Handle the error scenario
@@ -48,9 +52,12 @@ public class NWSDataService {
         }
     }
 
+    /**
+     * Processes the alerts(features) from GeoJasonReponse and PUTs the
+     * alerts into the Database using the AlertService class.
+     * @param geoJsonResponse
+     */
     private void processGeoJsonResponse(GeoJsonResponse geoJsonResponse) {
-        // Implement your logic to work with the GeoJsonResponse object
-        // For example, iterating over the features and printing some properties
         List<Feature> allFeatures = geoJsonResponse.getFeatures();
         if (!allFeatures.isEmpty()) {
             allFeatures.forEach(feature -> {
@@ -64,6 +71,11 @@ public class NWSDataService {
         }
     }
 
+    /**
+     * Converts a Feature object into an Alert object
+     * @param feature
+     * @return
+     */
     private Alert createAlertFromFeature(Feature feature) {
         Alert alert = new Alert();
         FeatureProperties properties = feature.getProperties();

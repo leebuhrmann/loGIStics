@@ -35,7 +35,7 @@ public class Alert {
     @Column(name = "description", length = 1000)
     private String description;
 
-    @Column(name = "dnws_id", length = 255)
+    @Column(name = "nws_id", length = 255)
     private String nwsID;
 
     @ManyToMany
