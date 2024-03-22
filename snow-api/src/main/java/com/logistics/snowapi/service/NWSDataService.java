@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 
 import java.io.IOException;
 import java.util.List;
@@ -21,13 +22,17 @@ public class NWSDataService {
     @Value("${nwsalert.api.url}")
     private String url;
 
+    private final SimpMessagingTemplate messagingTemplate;
+
     private final RestTemplate restTemplate;
     private final ObjectMapper objectMapper;
 
     // Constructor for RestTemplate injection
-    public NWSDataService(RestTemplateBuilder restTemplateBuilder, ObjectMapper objectMapper) {
+    public NWSDataService(RestTemplateBuilder restTemplateBuilder, ObjectMapper objectMapper,
+            SimpMessagingTemplate messagingTemplate) {
         this.restTemplate = restTemplateBuilder.build();
         this.objectMapper = objectMapper;
+        this.messagingTemplate = messagingTemplate;
     }
 
     @PostConstruct // ensures run on service initialization
@@ -53,9 +58,9 @@ public class NWSDataService {
             allFeatures.forEach(feature -> {
                 System.out.println(feature.getProperties().getHeadline());
                 // Add more processing logic as needed
+                messagingTemplate.convertAndSend("/topic/toFE", feature);
             });
-        }
-        else {
+        } else {
             System.out.println("No current weather alerts.");
         }
     }
