@@ -12,14 +12,14 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 @EnableWebSocketMessageBroker
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
-    @Autowired
-    private NWSDataService nwsAlertService;
-
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         // register endpoint at '/ws', allowing client to establish connection with
         // websocket
-        registry.addEndpoint("/wsAlerts/alertToFE").withSockJS();
+
+        // registry.addEndpoint("/wsAlerts/alertToFE").withSockJS();
+        // registry.addEndpoint("/ws").withSockJS();
+        registry.addEndpoint("/ws").setAllowedOrigins("*").withSockJS();
     }
 
     @Override

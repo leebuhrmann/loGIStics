@@ -10,6 +10,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 
@@ -23,11 +24,11 @@ public class NWSDataService {
     private String url;
 
     private final SimpMessagingTemplate messagingTemplate;
-
     private final RestTemplate restTemplate;
     private final ObjectMapper objectMapper;
 
     // Constructor for RestTemplate injection
+    @Autowired
     public NWSDataService(RestTemplateBuilder restTemplateBuilder, ObjectMapper objectMapper,
             SimpMessagingTemplate messagingTemplate) {
         this.restTemplate = restTemplateBuilder.build();
@@ -58,7 +59,7 @@ public class NWSDataService {
             allFeatures.forEach(feature -> {
                 System.out.println(feature.getProperties().getHeadline());
                 // Add more processing logic as needed
-                messagingTemplate.convertAndSend("/topic/toFE", feature);
+                messagingTemplate.convertAndSend("/topic", feature);
             });
         } else {
             System.out.println("No current weather alerts.");

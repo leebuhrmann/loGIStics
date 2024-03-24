@@ -11,9 +11,11 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import SideMenu from "@/components/side-menu/side-menu";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SideCreationView from "@/components/side-menu/side-form-view/side-creation-view";
 import SideInfoView from "@/components/side-menu/side-info-view/side-info-view";
+import connectWebSocket from "@/services/AlertService";
+import { CompatClient } from "@stomp/stompjs";
 
 export default function Home() {
   const [viewState, setViewState] = useState("info");
@@ -38,12 +40,31 @@ export default function Home() {
     setClearPolygon(false);
   };
 
+  const stompClientRef = useRef<CompatClient | null>(null);
+
+  useEffect(() => {
+    stompClientRef.current = connectWebSocket();
+
+    return () => {
+      console.log('disconnect?', stompClientRef.current);
+      if (stompClientRef.current && stompClientRef.current.connected) {
+        console.log('unsubscribe')
+        stompClientRef.current.unsubscribe("/topic");  // Unsubscribe from the topic
+        
+        stompClientRef.current.disconnect(() => {
+          console.log("Disconnected");
+        });
+      }
+    };
+  }, []);
+  
   return (
     <main className="w-screen h-screen overflow-hidden flex flex-col">
       <div className="h-5/100">
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>User Account</NavigationMenuItem>
+            <p></p>
           </NavigationMenuList>
         </NavigationMenu>
       </div>
