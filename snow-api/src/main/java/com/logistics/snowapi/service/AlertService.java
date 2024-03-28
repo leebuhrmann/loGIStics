@@ -27,7 +27,11 @@ public class AlertService {
     }
 
     public Alert createAlert(Alert alert) {
-        return alertRepository.save(alert);
+        // Make sure the alert doesn't exist before creating
+        if (alert.getNwsID() != null && !alertRepository.existsByNwsID(alert.getNwsID())) {
+            return alertRepository.save(alert);
+        }
+        return null;
     }
 
     public Alert updateAlert(Alert alert) {
