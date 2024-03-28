@@ -5,7 +5,6 @@ jest.mock("../components/map/MapComponent");
 import user from "@testing-library/user-event";
 import userEvent from "@testing-library/user-event";
 import SideCreationView from "@/components/side-menu/side-form-view/side-creation-view";
-import SideInfoCommon from "@/components/side-menu/side-info-view/side-info-common";
 import SideFormViewCommon from "@/components/side-menu/side-form-view/side-form-view-common";
 
 
