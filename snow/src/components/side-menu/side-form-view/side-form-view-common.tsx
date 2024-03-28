@@ -30,7 +30,6 @@ const SideFormViewCommon: React.FC<SideFormViewCommonProps> = ({
   onClearPolygon,
 }) => {
   const handleClose = () => {
-    onClose();
     if (isCreationView && onClearPolygon) {
       onClearPolygon();
       onClose();
@@ -43,7 +42,7 @@ const SideFormViewCommon: React.FC<SideFormViewCommonProps> = ({
     <div id="side-info-common">
       <div className="flex w-full items-center space-x-2">
         <h2 className="text-lg font-medium leading-none w-full">{title}</h2>
-        <Button onClick={handleClose} variant="default_light">
+        <Button onClick={handleClose} variant="default_light" data-testid="closeButton" >
           <Cross1Icon />
         </Button>
       </div>
