@@ -16,6 +16,9 @@ public class UgcZone {
     @Column(name = "ugc_code", nullable = false, length = 6)
     private String ugcCode;
 
+    @Column(name = "ugc_code_address", length = 200)
+    private String ugcCodeAddress;
+
     @Column(name = "visibility")
     private Integer visibility;
 

@@ -12,5 +12,4 @@ import java.util.List;
 public class GeoJsonResponse {
     @JsonProperty("features")
     private List<Feature> features;
-
 }

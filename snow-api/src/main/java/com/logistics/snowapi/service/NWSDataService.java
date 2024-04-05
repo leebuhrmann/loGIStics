@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.logistics.snowapi.geojsonresponse.FeatureProperties;
 import com.logistics.snowapi.geojsonresponse.GeoJsonResponse;
 import com.logistics.snowapi.geojsonresponse.Feature;
-import jakarta.annotation.PostConstruct;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -25,19 +24,21 @@ public class NWSDataService {
     private final RestTemplate restTemplate;
     private final ObjectMapper objectMapper;
     private final AlertService alertService;
+    private final UgcZoneScraper ugcZoneScraper;
 
     // Constructor for RestTemplate injection
-    public NWSDataService(RestTemplateBuilder restTemplateBuilder, ObjectMapper objectMapper, AlertService alertService) {
+    public NWSDataService(RestTemplateBuilder restTemplateBuilder, ObjectMapper objectMapper, AlertService alertService, UgcZoneScraper ugcZoneScraper) {
         this.restTemplate = restTemplateBuilder.build();
         this.objectMapper = objectMapper;
         this.alertService = alertService;
+        this.ugcZoneScraper = ugcZoneScraper;
     }
 
     /**
      * Performs a GET call on the NWS service and maps the response
      * to a POJO.
      */
-    @PostConstruct // ensures run on service initialization
+//    @PostConstruct // ensures run on service initialization
     @Scheduled(fixedRate = 60000) // runs every 60 seconds
     public void fetchWeatherData() {
         try {
@@ -63,7 +64,12 @@ public class NWSDataService {
             allFeatures.forEach(feature -> {
 //                System.out.println(feature.toString());
                 System.out.println("processing alert event: " + feature.getProperties().getEvent());
+
+                // call zone scraper, which checks and adds ugc zones entries
+                ugcZoneScraper.scrape(feature.getProperties().getUGC());
+                // add alert entries
                 alertService.createAlert(createAlertFromFeature(feature));
+                // add many-to-many entries (ugc-alert)
             });
         }
         else {
