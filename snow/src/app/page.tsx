@@ -14,6 +14,7 @@ import SideMenu from "@/components/side-menu/side-menu";
 import { useState } from "react";
 import SideCreationView from "@/components/side-menu/side-form-view/side-creation-view";
 import SideInfoView from "@/components/side-menu/side-info-view/side-info-view";
+import SideEditView from "@/components/side-menu/side-form-view/side-edit-view";
 
 export default function Home() {
   const [viewState, setViewState] = useState("info");
@@ -25,6 +26,9 @@ export default function Home() {
     setViewState("info");
   };
 
+  const toggleViewToEdit = () => {
+    setViewState("edit");
+  };
   const handlePolygonComplete = () => {
     setViewState("create");
   };
@@ -60,6 +64,8 @@ export default function Home() {
                   onClose={toggleViewToInfo}
                   onClearPolygon={handleClearPolygon}
                 />
+              ) : viewState === "edit" ? (
+                <SideEditView onClose={toggleViewToInfo} />
               ) : (
                 <SideInfoView
                   subCheckValue={subCheckValue}
@@ -76,6 +82,7 @@ export default function Home() {
               onPolygonComplete={handlePolygonComplete}
               clearPolygon={clearPolygon}
               onClearComplete={handleClearComplete}
+              onPolygonSelect={toggleViewToEdit}
             />
           </div>
         </ResizablePanel>
