@@ -48,7 +48,7 @@ public class NWSDataService {
             GeoJsonResponse geoJsonResponse = objectMapper.readValue(response.getBody(), GeoJsonResponse.class);
             processGeoJsonResponse(geoJsonResponse);
         } catch (RestClientException | IOException e) {
-            // Handle the error scenario
+            // TODO
             e.printStackTrace();
         }
     }
@@ -62,36 +62,17 @@ public class NWSDataService {
         List<Feature> allFeatures = geoJsonResponse.getFeatures();
         if (!allFeatures.isEmpty()) {
             allFeatures.forEach(feature -> {
-//                System.out.println(feature.toString());
                 System.out.println("processing alert event: " + feature.getProperties().getEvent());
-
+//                System.out.println(feature.toString());
                 // call zone scraper, which checks and adds ugc zones entries
-                ugcZoneScraper.scrape(feature.getProperties().getUGC());
+                ugcZoneScraper.scrape(feature.getProperties().getUgcCodeAddress());
                 // add alert entries
-                alertService.createAlert(createAlertFromFeature(feature));
+                alertService.createAlert(feature.getFeatureAsAlert());
                 // add many-to-many entries (ugc-alert)
             });
         }
         else {
             System.out.println("No current weather alerts.");
         }
-    }
-
-    /**
-     * Converts a Feature object into an Alert object
-     * @param feature
-     * @return
-     */
-    private Alert createAlertFromFeature(Feature feature) {
-        Alert alert = new Alert();
-        FeatureProperties properties = feature.getProperties();
-        alert.setEvent(properties.getEvent());
-        alert.setOnset(properties.getOnset());
-        alert.setExpires(properties.getExpires());
-        alert.setHeadline(properties.getHeadline());
-        alert.setDescription(properties.getDescription());
-        alert.setNwsID(feature.getId());
-
-        return alert;
     }
 }
