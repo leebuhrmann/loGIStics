@@ -35,10 +35,14 @@ public class NWSDataService {
     }
 
     /**
-     * Performs a GET call on the NWS service and maps the response
-     * to a POJO.
+     * Scheduled task that periodically fetches weather data from the National Weather Service (NWS) API every 60 seconds.
+     * This method performs an HTTP GET request to the specified NWS API endpoint, retrieves weather alert data in GeoJSON format,
+     * and then maps this data to a {@link GeoJsonResponse} object. The mapped data is subsequently processed to extract
+     * individual alerts and their related information, which are then persisted in the database.
+     * <p>
+     * This method is annotated with {@code @Scheduled}, indicating that it is automatically run by the Spring framework at
+     * fixed intervals (every 60 seconds in this case), making it a self-contained scheduled task for weather data retrieval.
      */
-//    @PostConstruct // ensures run on service initialization
     @Scheduled(fixedRate = 60000) // runs every 60 seconds
     public void fetchWeatherData() {
         try {
@@ -47,28 +51,40 @@ public class NWSDataService {
             // Maps the response into a POJO containing all the alert data.
             GeoJsonResponse geoJsonResponse = objectMapper.readValue(response.getBody(), GeoJsonResponse.class);
             processGeoJsonResponse(geoJsonResponse);
-        } catch (RestClientException | IOException e) {
-            // TODO
+        }
+        catch (RestClientException e) {
+            System.out.printf("Failed to reach address: %s, Error: %s", url, e.getMessage());
+            e.printStackTrace();
+        }
+        catch (IOException e) {
+            System.out.printf("Failed to parse response for address: %s", url);
             e.printStackTrace();
         }
     }
 
     /**
-     * Processes the alerts(features) from GeoJasonReponse and PUTs the
-     * alerts into the Database using the AlertService class.
-     * @param geoJsonResponse
+     * Processes a given {@link GeoJsonResponse} object, which contains weather alert information in GeoJSON format,
+     * and updates the database accordingly. This method iterates over each feature (alert) in the GeoJSON response,
+     * performs necessary pre-processing, and then uses application services to persist the alerts and their related
+     * geographic zone information to the database.
+     * <p>
+     * If the GeoJSON response does not contain any features (alerts), it logs a message indicating that there are no current
+     * weather alerts.
+     *
+     * @param geoJsonResponse The {@link GeoJsonResponse} object containing weather alert data in GeoJSON format to be
+     *                        processed. This object includes a list of features, where each feature represents a specific
+     *                        weather alert with its associated data.
      */
     private void processGeoJsonResponse(GeoJsonResponse geoJsonResponse) {
         List<Feature> allFeatures = geoJsonResponse.getFeatures();
         if (!allFeatures.isEmpty()) {
             allFeatures.forEach(feature -> {
                 System.out.println("processing alert event: " + feature.getProperties().getEvent());
-//                System.out.println(feature.toString());
                 // call zone scraper, which checks and adds ugc zones entries
                 ugcZoneScraper.scrape(feature.getProperties().getUgcCodeAddress());
                 // add alert entries
                 alertService.createAlert(feature.getFeatureAsAlert());
-                // add many-to-many entries (ugc-alert)
+                // TODO add many-to-many entries (ugc-alert)
             });
         }
         else {

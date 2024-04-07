@@ -36,7 +36,7 @@ public class UgcZoneResponse {
             }
         } catch (IllegalArgumentException e) {
             System.out.println("Error casting coordinates: " + e.getMessage());
-            // Handle the error appropriately
+            e.printStackTrace();
         }
     }
 }
