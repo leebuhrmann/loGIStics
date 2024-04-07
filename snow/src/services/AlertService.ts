@@ -43,8 +43,6 @@ class WebSocketService {
    * @param frame The frame object representing the connection details.
    */
   onConnect = (frame: any) => {
-    console.log('Connected: ' + frame);
-
     this.client.subscribe('/topic', this.onAlertRecieved);
   };
 
