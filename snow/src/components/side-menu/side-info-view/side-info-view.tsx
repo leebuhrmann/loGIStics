@@ -1,15 +1,18 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { mockAlerts, mockBoundaries } from "@/mock-data/mock-data";
 import SideInfoCommon from "./side-info-common";
+import { AlertMessage } from "@/services/AlertService";
 
 interface SideInfoViewProps {
   subCheckValue: boolean;
   setSubCheckValue: any;
+  alerts: AlertMessage[];
 }
 
 export default function SideInfoView({
   subCheckValue,
   setSubCheckValue,
+  alerts,
 }: SideInfoViewProps) {
   return (
     <div id="side-info-view" className="w-full">
@@ -20,7 +23,7 @@ export default function SideInfoView({
         </TabsList>
         <TabsContent id="tabsAlertContent" value="alerts" className="h-full">
           <SideInfoCommon
-            data={mockAlerts}
+            data={alerts}
             subCheckValue={subCheckValue}
             setSubCheckValue={setSubCheckValue}
           ></SideInfoCommon>

@@ -28,6 +28,7 @@
     "react-dom": "^18",
     "react-resizable-panels": "^2.0.9",
     "sockjs-client": "^1.6.1",
+    "stompjs": "^2.3.3",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7"
   },

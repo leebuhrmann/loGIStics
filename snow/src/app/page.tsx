@@ -14,12 +14,12 @@ import SideMenu from "@/components/side-menu/side-menu";
 import { useEffect, useRef, useState } from "react";
 import SideCreationView from "@/components/side-menu/side-form-view/side-creation-view";
 import SideInfoView from "@/components/side-menu/side-info-view/side-info-view";
-import connectWebSocket from "@/services/AlertService";
-import { CompatClient } from "@stomp/stompjs";
+import WebSocketService, { AlertMessage } from "@/services/AlertService";
 
 export default function Home() {
   const [viewState, setViewState] = useState("info");
   const [clearPolygon, setClearPolygon] = useState(false);
+
   // State for global subscription filter
   const [subCheckValue, setSubCheckValue] = useState(true);
 
@@ -40,31 +40,24 @@ export default function Home() {
     setClearPolygon(false);
   };
 
-  const stompClientRef = useRef<CompatClient | null>(null);
+  const [alerts, setAlerts] = useState<AlertMessage[]>([]);
 
   useEffect(() => {
-    stompClientRef.current = connectWebSocket();
+    const webSocketService = new WebSocketService((newAlert) => {
+      setAlerts((prevAlerts) => [...prevAlerts, newAlert]);
+    });
 
     return () => {
-      console.log('disconnect?', stompClientRef.current);
-      if (stompClientRef.current && stompClientRef.current.connected) {
-        console.log('unsubscribe')
-        stompClientRef.current.unsubscribe("/topic");  // Unsubscribe from the topic
-        
-        stompClientRef.current.disconnect(() => {
-          console.log("Disconnected");
-        });
-      }
+      webSocketService.client.deactivate();
     };
   }, []);
-  
+
   return (
     <main className="w-screen h-screen overflow-hidden flex flex-col">
       <div className="h-5/100">
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>User Account</NavigationMenuItem>
-            <p></p>
           </NavigationMenuList>
         </NavigationMenu>
       </div>
@@ -85,6 +78,7 @@ export default function Home() {
                 <SideInfoView
                   subCheckValue={subCheckValue}
                   setSubCheckValue={setSubCheckValue}
+                  alerts={alerts}
                 />
               )}
             </SideMenu>
