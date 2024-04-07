@@ -44,7 +44,7 @@ export default function Home() {
 
   useEffect(() => {
     const webSocketService = new WebSocketService((newAlert) => {
-      setAlerts((prevAlerts) => [...prevAlerts, newAlert]);
+      setAlerts((prevAlerts) => [newAlert, ...prevAlerts]);
     });
 
     return () => {

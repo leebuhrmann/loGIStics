@@ -1,3 +1,9 @@
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -91,11 +97,17 @@ function DataSelect({ data, index }: DataSelectProps) {
     return (
       <>
         <h4>{data.event}</h4>
-        <p className="font-semibold">Issued: {issuedFormatted}</p>
+        <p className="font-semibold">Onset: {issuedFormatted}</p>
         <p className="font-semibold">Expiring: {expiresFormatted}</p>
-        <p>{data.headline}</p>
-        <p>{data.description}</p>
-        <Separator />
+
+        <Accordion type="single" collapsible className="w-full">
+          <AccordionItem value="item-1">
+            <AccordionTrigger className="text-sm text-left font-normal">
+              {data.headline}
+            </AccordionTrigger>
+            <AccordionContent>{data.description}</AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </>
     );
   } else {
