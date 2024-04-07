@@ -38,7 +38,7 @@ export default function SideInfoCommon({
       <div className="flex flex-col max-w-full gap-3 h-full">
         <div className="flex w-full items-center space-x-2">
           <Input type="search" placeholder="Search" />
-          <Button type="submit">
+          <Button type="submit" data-testid="search-button">
             <MagnifyingGlassIcon />
           </Button>
         </div>

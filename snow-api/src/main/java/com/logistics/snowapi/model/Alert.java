@@ -35,6 +35,9 @@ public class Alert {
     @Column(name = "description", length = 1000)
     private String description;
 
+    @Column(name = "nws_id", length = 255)
+    private String nwsID;
+
     @ManyToMany
     @JoinTable(name = "ugc_alert",
             joinColumns = @JoinColumn(name = "alert_id"),
