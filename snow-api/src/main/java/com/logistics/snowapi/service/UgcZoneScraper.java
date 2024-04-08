@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.logistics.snowapi.model.UgcZone;
 import com.logistics.snowapi.ugczoneresponse.UgcZoneResponse;
 import com.logistics.snowapi.repository.UgcZoneRepository;
+import org.locationtech.jts.geom.MultiPolygon;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -69,6 +70,28 @@ public class UgcZoneScraper {
         }
     }
 
+//    public void scrapeTest(String address) {
+//        String ugcCode = address.substring(address.length() - 6);
+//        // Performs a GET call on the UGCZone address.
+//        // Maps response to POJO
+//        // Creates UGCZone from POJO and stores in database
+//        try {
+//            ResponseEntity<String> response = restTemplate.getForEntity(address, String.class);
+//            UgcZoneResponse ugcZoneResponse = objectMapper.readValue(response.getBody(), UgcZoneResponse.class);
+//            UgcZone ugcZone = createUgcZoneFromUgcZoneResponse(ugcCode, address, ugcZoneResponse);
+//            System.out.printf("UGC Zone: %s\n%s\n", address, ugcZone.getTheGeom().toString());
+//            ugcZoneService.createUgcZone(ugcZone);
+//        }
+//        catch (RestClientException e) {
+//            System.out.printf("Failed to reach address: %s, UGC: %s, Error: %s\n", address, ugcCode, e.getMessage());
+//            e.printStackTrace();
+//        }
+//        catch (IOException e) {
+//            System.out.printf("Failed to parse response for address: %s, UGC Code: %s\n", address, ugcCode);
+//            e.printStackTrace();
+//        }
+//    }
+
     /**
      * Constructs a {@link UgcZone} entity from the provided UGC code, UGC code address, and a {@link UgcZoneResponse} object.
      * This method initializes a new {@code UgcZone} instance, setting its UGC code and address from the provided parameters.
@@ -97,10 +120,10 @@ public class UgcZoneScraper {
         ugcZone.setUgcCodeAddress(ugcCodeAddress);
         // TODO: set the ugcZone geometry before being persisted in db
         if ("Polygon".equals(ugcZoneResponse.getType())) {
-//            ugcZone.setGeometry(ugcZoneResponse.getGeometry().getCoordinates());
+            ugcZone.setTheGeom(ugcZoneResponse.getGeometry());
         }
         else if ("MultiPolygon".equals(ugcZoneResponse.getType())) {
-//            ugcZone.setGeometry(ugcZoneResponse.getGeometry().getCoordinates());
+            ugcZone.setTheGeom(ugcZoneResponse.getGeometry());
         }
         else {
             System.out.println("Geometry type mismatch. Terminating process.");

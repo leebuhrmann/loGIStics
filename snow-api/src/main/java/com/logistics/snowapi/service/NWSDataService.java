@@ -53,11 +53,11 @@ public class NWSDataService {
             processGeoJsonResponse(geoJsonResponse);
         }
         catch (RestClientException e) {
-            System.out.printf("Failed to reach address: %s, Error: %s", url, e.getMessage());
+            System.out.printf("Failed to reach address: %s, Error: %s\n", url, e.getMessage());
             e.printStackTrace();
         }
         catch (IOException e) {
-            System.out.printf("Failed to parse response for address: %s", url);
+            System.out.printf("Failed to parse response for address: %s\n", url);
             e.printStackTrace();
         }
     }
@@ -82,6 +82,7 @@ public class NWSDataService {
                 System.out.println("processing alert event: " + feature.getProperties().getEvent());
                 // call zone scraper, which checks and adds ugc zones entries
                 ugcZoneScraper.scrape(feature.getProperties().getUgcCodeAddress());
+//                ugcZoneScraper.scrapeTest(feature.getProperties().getUgcCodeAddress().getFirst());
                 // add alert entries
                 alertService.createAlert(feature.getFeatureAsAlert());
                 // TODO add many-to-many entries (ugc-alert)

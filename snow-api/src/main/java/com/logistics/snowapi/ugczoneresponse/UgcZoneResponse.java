@@ -7,16 +7,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.awt.*;
+//import java.awt.*;
 import java.util.Map;
 import java.util.List;
+
+import org.locationtech.jts.geom.*;
 
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UgcZoneResponse {
     private String type;
-    private Geometry geometry;
+    private MultiPolygon geometry;
+    private GeometryFactory geometryFactory = new GeometryFactory();
 
     @JsonProperty("geometry")
     private void geoMapper(Map<String,Object> geometryMap) {
@@ -27,10 +30,11 @@ public class UgcZoneResponse {
         try {
             if ("Polygon".equals(type)) {
                 List<List<List<Double>>> coords = mapper.convertValue(coordinates, new TypeReference<List<List<List<Double>>>>() {});
-                this.geometry = new Polygon(coords);
+                Polygon singlePolygon = convertToPolygon(coords, geometryFactory);
+                this.geometry = geometryFactory.createMultiPolygon(new Polygon[]{singlePolygon});
             } else if ("MultiPolygon".equals(type)) {
                 List<List<List<List<Double>>>> coords = mapper.convertValue(coordinates, new TypeReference<List<List<List<List<Double>>>>>() {});
-                this.geometry = new MultiPolygon(coords);
+                this.geometry = convertToMultiPolygon(coords, geometryFactory);
             } else {
                 System.out.println("Unsupported geometry type: " + type);
             }
@@ -39,4 +43,33 @@ public class UgcZoneResponse {
             e.printStackTrace();
         }
     }
+
+    private Coordinate[] toCoordinateArray(List<List<Double>> coordinates) {
+        return coordinates.stream()
+                .map(coord -> new Coordinate(coord.get(0), coord.get(1)))
+                .toArray(Coordinate[]::new);
+    }
+
+    private Polygon convertToPolygon(List<List<List<Double>>> polygonCoords, GeometryFactory geometryFactory) {
+        // The first list of coordinates represents the exterior boundary of the polygon
+        Coordinate[] exteriorCoordinates = toCoordinateArray(polygonCoords.get(0));
+        LinearRing exteriorRing = geometryFactory.createLinearRing(exteriorCoordinates);
+
+        // Subsequent lists of coordinates represent interior boundaries (holes)
+        LinearRing[] holes = polygonCoords.stream()
+                .skip(1) // Skip the exterior ring
+                .map(coords -> geometryFactory.createLinearRing(toCoordinateArray(coords)))
+                .toArray(LinearRing[]::new);
+
+        return geometryFactory.createPolygon(exteriorRing, holes);
+    }
+
+    private MultiPolygon convertToMultiPolygon(List<List<List<List<Double>>>> multiPolygonCoords, GeometryFactory geometryFactory) {
+        Polygon[] polygons = multiPolygonCoords.stream()
+                .map(polygonCoords -> convertToPolygon(polygonCoords, geometryFactory))
+                .toArray(Polygon[]::new);
+
+        return geometryFactory.createMultiPolygon(polygons);
+    }
+
 }

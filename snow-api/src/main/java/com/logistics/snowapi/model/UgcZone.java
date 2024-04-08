@@ -7,6 +7,8 @@ import lombok.Setter;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import org.locationtech.jts.geom.MultiPolygon;
+
 @Getter
 @Setter
 @Entity
@@ -21,6 +23,9 @@ public class UgcZone {
 
     @Column(name = "visibility")
     private Integer visibility;
+
+    @Column(columnDefinition = "geometry(MultiPolygon,2908)")
+    private MultiPolygon theGeom;
 
     @ManyToMany(mappedBy = "ugcZones")
     private Set<Alert> alerts = new LinkedHashSet<>();
