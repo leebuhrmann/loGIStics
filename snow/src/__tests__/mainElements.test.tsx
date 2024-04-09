@@ -3,6 +3,9 @@ import Home from "../app/page";
 import "@testing-library/jest-dom";
 jest.mock("../components/map/MapComponent");
 import user from "@testing-library/user-event";
+import { TextEncoder, TextDecoder } from "util";
+
+Object.assign(global, { TextDecoder, TextEncoder });
 
 describe("Main elements are rendered", () => {
   beforeEach(() => {

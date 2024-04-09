@@ -23,6 +23,8 @@ export default function Home() {
   // State for global subscription filter
   const [subCheckValue, setSubCheckValue] = useState(true);
 
+  const [alerts, setAlerts] = useState<AlertMessage[]>([]);
+
   const toggleViewToInfo = () => {
     setViewState("info");
   };
@@ -39,8 +41,6 @@ export default function Home() {
   const handleClearComplete = () => {
     setClearPolygon(false);
   };
-
-  const [alerts, setAlerts] = useState<AlertMessage[]>([]);
 
   useEffect(() => {
     const webSocketService = new WebSocketService((newAlert) => {
