@@ -1,0 +1,148 @@
+\hypertarget{classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController}{}\doxysection{com.\+logistics.\+snowapi.\+controller.\+Alert\+Controller Class Reference}
+\label{classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController}\index{com.logistics.snowapi.controller.AlertController@{com.logistics.snowapi.controller.AlertController}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_a0c3158584b467ff0e9cf13f43e2f9243}{Alert\+Controller}} (\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService}{Alert\+Service}} alert\+Service)
+\item 
+List$<$ \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert}{Alert}} $>$ \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_add9eb5459ca5b6a03827f3fbd1bd8387}{get\+All\+Alerts}} ()
+\item 
+Response\+Entity$<$ \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert}{Alert}} $>$ \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_aa847f13b0796375616f24370c6d8ec57}{get\+Alert\+By\+Id}} (@Path\+Variable Integer id)
+\item 
+\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert}{Alert}} \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_a7aed2a5cdf9920154f5b266296c93593}{create\+Alert}} (@Request\+Body \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert}{Alert}} alert)
+\item 
+Response\+Entity$<$ \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert}{Alert}} $>$ \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_a136affb60eade2208733699d19b58280}{update\+Alert}} (@Path\+Variable Integer id, @Request\+Body \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert}{Alert}} alert)
+\item 
+Response\+Entity$<$ Void $>$ \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_ae857bb9877ef4747e5189cb33038c5d5}{delete\+Alert}} (@Path\+Variable Integer id)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 13 of file Alert\+Controller.\+java.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_a0c3158584b467ff0e9cf13f43e2f9243}\label{classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_a0c3158584b467ff0e9cf13f43e2f9243}} 
+\index{com.logistics.snowapi.controller.AlertController@{com.logistics.snowapi.controller.AlertController}!AlertController@{AlertController}}
+\index{AlertController@{AlertController}!com.logistics.snowapi.controller.AlertController@{com.logistics.snowapi.controller.AlertController}}
+\doxysubsubsection{\texorpdfstring{AlertController()}{AlertController()}}
+{\footnotesize\ttfamily com.\+logistics.\+snowapi.\+controller.\+Alert\+Controller.\+Alert\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService}{Alert\+Service}}}]{alert\+Service }\end{DoxyParamCaption})}
+
+
+
+Definition at line 18 of file Alert\+Controller.\+java.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{18                                                       \{}
+\DoxyCodeLine{19         this.alertService = alertService;}
+\DoxyCodeLine{20     \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_a7aed2a5cdf9920154f5b266296c93593}\label{classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_a7aed2a5cdf9920154f5b266296c93593}} 
+\index{com.logistics.snowapi.controller.AlertController@{com.logistics.snowapi.controller.AlertController}!createAlert@{createAlert}}
+\index{createAlert@{createAlert}!com.logistics.snowapi.controller.AlertController@{com.logistics.snowapi.controller.AlertController}}
+\doxysubsubsection{\texorpdfstring{createAlert()}{createAlert()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert}{Alert}} com.\+logistics.\+snowapi.\+controller.\+Alert\+Controller.\+create\+Alert (\begin{DoxyParamCaption}\item[{@Request\+Body \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert}{Alert}}}]{alert }\end{DoxyParamCaption})}
+
+
+
+Definition at line 35 of file Alert\+Controller.\+java.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{35                                                        \{}
+\DoxyCodeLine{36         \textcolor{keywordflow}{return} alertService.\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService_a87fb0db71ea0cc9d970d02553d181e97}{createAlert}}(alert);}
+\DoxyCodeLine{37     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_ae857bb9877ef4747e5189cb33038c5d5}\label{classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_ae857bb9877ef4747e5189cb33038c5d5}} 
+\index{com.logistics.snowapi.controller.AlertController@{com.logistics.snowapi.controller.AlertController}!deleteAlert@{deleteAlert}}
+\index{deleteAlert@{deleteAlert}!com.logistics.snowapi.controller.AlertController@{com.logistics.snowapi.controller.AlertController}}
+\doxysubsubsection{\texorpdfstring{deleteAlert()}{deleteAlert()}}
+{\footnotesize\ttfamily Response\+Entity$<$Void$>$ com.\+logistics.\+snowapi.\+controller.\+Alert\+Controller.\+delete\+Alert (\begin{DoxyParamCaption}\item[{@Path\+Variable Integer}]{id }\end{DoxyParamCaption})}
+
+
+
+Definition at line 50 of file Alert\+Controller.\+java.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{50                                                                       \{}
+\DoxyCodeLine{51         \textcolor{keywordflow}{if} (alertService.\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService_af61a1a56023de986b5d9504f2e39bfa7}{findAlertById}}(\textcolor{keywordtype}{id}).isPresent()) \{}
+\DoxyCodeLine{52             alertService.\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService_af81072f39ad2a22d7ac9d9020d9688d6}{deleteAlert}}(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{53             \textcolor{keywordflow}{return} ResponseEntity.ok().build();}
+\DoxyCodeLine{54         \}}
+\DoxyCodeLine{55         \textcolor{keywordflow}{return} ResponseEntity.notFound().build();}
+\DoxyCodeLine{56     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_aa847f13b0796375616f24370c6d8ec57}\label{classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_aa847f13b0796375616f24370c6d8ec57}} 
+\index{com.logistics.snowapi.controller.AlertController@{com.logistics.snowapi.controller.AlertController}!getAlertById@{getAlertById}}
+\index{getAlertById@{getAlertById}!com.logistics.snowapi.controller.AlertController@{com.logistics.snowapi.controller.AlertController}}
+\doxysubsubsection{\texorpdfstring{getAlertById()}{getAlertById()}}
+{\footnotesize\ttfamily Response\+Entity$<$\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert}{Alert}}$>$ com.\+logistics.\+snowapi.\+controller.\+Alert\+Controller.\+get\+Alert\+By\+Id (\begin{DoxyParamCaption}\item[{@Path\+Variable Integer}]{id }\end{DoxyParamCaption})}
+
+
+
+Definition at line 28 of file Alert\+Controller.\+java.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{28                                                                         \{}
+\DoxyCodeLine{29         \textcolor{keywordflow}{return} alertService.\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService_af61a1a56023de986b5d9504f2e39bfa7}{findAlertById}}(\textcolor{keywordtype}{id})}
+\DoxyCodeLine{30                 .map(ResponseEntity::ok)}
+\DoxyCodeLine{31                 .orElseGet(() -\/> ResponseEntity.notFound().build());}
+\DoxyCodeLine{32     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_add9eb5459ca5b6a03827f3fbd1bd8387}\label{classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_add9eb5459ca5b6a03827f3fbd1bd8387}} 
+\index{com.logistics.snowapi.controller.AlertController@{com.logistics.snowapi.controller.AlertController}!getAllAlerts@{getAllAlerts}}
+\index{getAllAlerts@{getAllAlerts}!com.logistics.snowapi.controller.AlertController@{com.logistics.snowapi.controller.AlertController}}
+\doxysubsubsection{\texorpdfstring{getAllAlerts()}{getAllAlerts()}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert}{Alert}}$>$ com.\+logistics.\+snowapi.\+controller.\+Alert\+Controller.\+get\+All\+Alerts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 23 of file Alert\+Controller.\+java.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{23                                       \{}
+\DoxyCodeLine{24         \textcolor{keywordflow}{return} alertService.\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService_a5b372f8b5b4b1e0babdafa6954d8f0fd}{findAllAlerts}}();}
+\DoxyCodeLine{25     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_a136affb60eade2208733699d19b58280}\label{classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_a136affb60eade2208733699d19b58280}} 
+\index{com.logistics.snowapi.controller.AlertController@{com.logistics.snowapi.controller.AlertController}!updateAlert@{updateAlert}}
+\index{updateAlert@{updateAlert}!com.logistics.snowapi.controller.AlertController@{com.logistics.snowapi.controller.AlertController}}
+\doxysubsubsection{\texorpdfstring{updateAlert()}{updateAlert()}}
+{\footnotesize\ttfamily Response\+Entity$<$\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert}{Alert}}$>$ com.\+logistics.\+snowapi.\+controller.\+Alert\+Controller.\+update\+Alert (\begin{DoxyParamCaption}\item[{@Path\+Variable Integer}]{id,  }\item[{@Request\+Body \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert}{Alert}}}]{alert }\end{DoxyParamCaption})}
+
+
+
+Definition at line 40 of file Alert\+Controller.\+java.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{40                                                                                                  \{}
+\DoxyCodeLine{41         alert.setId(\textcolor{keywordtype}{id}); \textcolor{comment}{// Ensure the ID is set to the one provided in the path}}
+\DoxyCodeLine{42         Alert updatedAlert = alertService.\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService_abda27fb0f53ab71d61909ff4e37c45e4}{updateAlert}}(alert);}
+\DoxyCodeLine{43         \textcolor{keywordflow}{if} (updatedAlert != \textcolor{keyword}{null}) \{}
+\DoxyCodeLine{44             \textcolor{keywordflow}{return} ResponseEntity.ok(updatedAlert);}
+\DoxyCodeLine{45         \}}
+\DoxyCodeLine{46         \textcolor{keywordflow}{return} ResponseEntity.notFound().build();}
+\DoxyCodeLine{47     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/logistics/snowapi/controller/\mbox{\hyperlink{AlertController_8java}{Alert\+Controller.\+java}}\end{DoxyCompactItemize}

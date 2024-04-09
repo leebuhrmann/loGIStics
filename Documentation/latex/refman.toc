@@ -1,0 +1,244 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}Namespace Index}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Packages}{1}{section.1.1}%
+\contentsline {chapter}{\numberline {2}Hierarchical Index}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Class Hierarchy}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}Class Index}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Class List}{5}{section.3.1}%
+\contentsline {chapter}{\numberline {4}File Index}{7}{chapter.4}%
+\contentsline {section}{\numberline {4.1}File List}{7}{section.4.1}%
+\contentsline {chapter}{\numberline {5}Namespace Documentation}{9}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Package com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}config}{9}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Package com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}controller}{9}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Package com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}geojsonresponse}{9}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Package com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}model}{10}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Package com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}repository}{10}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Package com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}service}{10}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Package com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}ugczoneresponse}{10}{section.5.7}%
+\contentsline {chapter}{\numberline {6}Class Documentation}{11}{chapter.6}%
+\contentsline {section}{\numberline {6.1}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}model.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Alert Class Reference}{11}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Detailed Description}{11}{subsection.6.1.1}%
+\contentsline {section}{\numberline {6.2}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}controller.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Alert\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller Class Reference}{11}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Detailed Description}{11}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Constructor \& Destructor Documentation}{11}{subsection.6.2.2}%
+\contentsline {subsubsection}{\numberline {6.2.2.1}AlertController()}{12}{subsubsection.6.2.2.1}%
+\contentsline {subsection}{\numberline {6.2.3}Member Function Documentation}{12}{subsection.6.2.3}%
+\contentsline {subsubsection}{\numberline {6.2.3.1}createAlert()}{12}{subsubsection.6.2.3.1}%
+\contentsline {subsubsection}{\numberline {6.2.3.2}deleteAlert()}{12}{subsubsection.6.2.3.2}%
+\contentsline {subsubsection}{\numberline {6.2.3.3}getAlertById()}{12}{subsubsection.6.2.3.3}%
+\contentsline {subsubsection}{\numberline {6.2.3.4}getAllAlerts()}{13}{subsubsection.6.2.3.4}%
+\contentsline {subsubsection}{\numberline {6.2.3.5}updateAlert()}{13}{subsubsection.6.2.3.5}%
+\contentsline {section}{\numberline {6.3}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}repository.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Alert\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repository Interface Reference}{13}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Detailed Description}{13}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Member Function Documentation}{13}{subsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.2.1}existsByNwsID()}{14}{subsubsection.6.3.2.1}%
+\contentsline {section}{\numberline {6.4}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}service.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Alert\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service Class Reference}{14}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Detailed Description}{14}{subsection.6.4.1}%
+\contentsline {subsection}{\numberline {6.4.2}Constructor \& Destructor Documentation}{14}{subsection.6.4.2}%
+\contentsline {subsubsection}{\numberline {6.4.2.1}AlertService()}{14}{subsubsection.6.4.2.1}%
+\contentsline {subsection}{\numberline {6.4.3}Member Function Documentation}{14}{subsection.6.4.3}%
+\contentsline {subsubsection}{\numberline {6.4.3.1}createAlert()}{15}{subsubsection.6.4.3.1}%
+\contentsline {subsubsection}{\numberline {6.4.3.2}deleteAlert()}{15}{subsubsection.6.4.3.2}%
+\contentsline {subsubsection}{\numberline {6.4.3.3}findAlertById()}{15}{subsubsection.6.4.3.3}%
+\contentsline {subsubsection}{\numberline {6.4.3.4}findAllAlerts()}{15}{subsubsection.6.4.3.4}%
+\contentsline {subsubsection}{\numberline {6.4.3.5}updateAlert()}{16}{subsubsection.6.4.3.5}%
+\contentsline {section}{\numberline {6.5}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}model.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Boundary Class Reference}{16}{section.6.5}%
+\contentsline {subsection}{\numberline {6.5.1}Detailed Description}{16}{subsection.6.5.1}%
+\contentsline {section}{\numberline {6.6}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}controller.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Boundary\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller Class Reference}{16}{section.6.6}%
+\contentsline {subsection}{\numberline {6.6.1}Detailed Description}{16}{subsection.6.6.1}%
+\contentsline {subsection}{\numberline {6.6.2}Constructor \& Destructor Documentation}{16}{subsection.6.6.2}%
+\contentsline {subsubsection}{\numberline {6.6.2.1}BoundaryController()}{17}{subsubsection.6.6.2.1}%
+\contentsline {subsection}{\numberline {6.6.3}Member Function Documentation}{17}{subsection.6.6.3}%
+\contentsline {subsubsection}{\numberline {6.6.3.1}createBoundary()}{17}{subsubsection.6.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.6.3.2}deleteBoundary()}{17}{subsubsection.6.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.6.3.3}getAllBoundaries()}{17}{subsubsection.6.6.3.3}%
+\contentsline {subsubsection}{\numberline {6.6.3.4}getBoundaryById()}{18}{subsubsection.6.6.3.4}%
+\contentsline {subsubsection}{\numberline {6.6.3.5}updateBoundary()}{18}{subsubsection.6.6.3.5}%
+\contentsline {section}{\numberline {6.7}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}repository.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Boundary\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repository Interface Reference}{18}{section.6.7}%
+\contentsline {subsection}{\numberline {6.7.1}Detailed Description}{18}{subsection.6.7.1}%
+\contentsline {section}{\numberline {6.8}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}service.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Boundary\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service Class Reference}{19}{section.6.8}%
+\contentsline {subsection}{\numberline {6.8.1}Detailed Description}{19}{subsection.6.8.1}%
+\contentsline {subsection}{\numberline {6.8.2}Constructor \& Destructor Documentation}{19}{subsection.6.8.2}%
+\contentsline {subsubsection}{\numberline {6.8.2.1}BoundaryService()}{19}{subsubsection.6.8.2.1}%
+\contentsline {subsection}{\numberline {6.8.3}Member Function Documentation}{19}{subsection.6.8.3}%
+\contentsline {subsubsection}{\numberline {6.8.3.1}createBoundary()}{19}{subsubsection.6.8.3.1}%
+\contentsline {subsubsection}{\numberline {6.8.3.2}deleteBoundary()}{20}{subsubsection.6.8.3.2}%
+\contentsline {subsubsection}{\numberline {6.8.3.3}findAllBoundaries()}{20}{subsubsection.6.8.3.3}%
+\contentsline {subsubsection}{\numberline {6.8.3.4}findBoundaryById()}{20}{subsubsection.6.8.3.4}%
+\contentsline {subsubsection}{\numberline {6.8.3.5}updateBoundary()}{20}{subsubsection.6.8.3.5}%
+\contentsline {section}{\numberline {6.9}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}geojsonresponse.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Feature Class Reference}{21}{section.6.9}%
+\contentsline {subsection}{\numberline {6.9.1}Detailed Description}{21}{subsection.6.9.1}%
+\contentsline {subsection}{\numberline {6.9.2}Member Function Documentation}{21}{subsection.6.9.2}%
+\contentsline {subsubsection}{\numberline {6.9.2.1}getFeatureAsAlert()}{21}{subsubsection.6.9.2.1}%
+\contentsline {subsubsection}{\numberline {6.9.2.2}toString()}{21}{subsubsection.6.9.2.2}%
+\contentsline {section}{\numberline {6.10}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}geojsonresponse.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Feature\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Properties Class Reference}{22}{section.6.10}%
+\contentsline {subsection}{\numberline {6.10.1}Detailed Description}{22}{subsection.6.10.1}%
+\contentsline {section}{\numberline {6.11}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}geojsonresponse.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Geo\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Json\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Response Class Reference}{22}{section.6.11}%
+\contentsline {subsection}{\numberline {6.11.1}Detailed Description}{22}{subsection.6.11.1}%
+\contentsline {section}{\numberline {6.12}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}controller.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hello\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}World Class Reference}{22}{section.6.12}%
+\contentsline {subsection}{\numberline {6.12.1}Detailed Description}{22}{subsection.6.12.1}%
+\contentsline {subsection}{\numberline {6.12.2}Member Function Documentation}{22}{subsection.6.12.2}%
+\contentsline {subsubsection}{\numberline {6.12.2.1}sayHello()}{22}{subsubsection.6.12.2.1}%
+\contentsline {section}{\numberline {6.13}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}service.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}NWSData\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service Class Reference}{23}{section.6.13}%
+\contentsline {subsection}{\numberline {6.13.1}Detailed Description}{23}{subsection.6.13.1}%
+\contentsline {subsection}{\numberline {6.13.2}Constructor \& Destructor Documentation}{23}{subsection.6.13.2}%
+\contentsline {subsubsection}{\numberline {6.13.2.1}NWSDataService()}{23}{subsubsection.6.13.2.1}%
+\contentsline {subsection}{\numberline {6.13.3}Member Function Documentation}{23}{subsection.6.13.3}%
+\contentsline {subsubsection}{\numberline {6.13.3.1}fetchWeatherData()}{24}{subsubsection.6.13.3.1}%
+\contentsline {section}{\numberline {6.14}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Servlet\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Initializer Class Reference}{24}{section.6.14}%
+\contentsline {section}{\numberline {6.15}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Snow\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Api\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Application Class Reference}{24}{section.6.15}%
+\contentsline {subsection}{\numberline {6.15.1}Detailed Description}{24}{subsection.6.15.1}%
+\contentsline {subsection}{\numberline {6.15.2}Member Function Documentation}{25}{subsection.6.15.2}%
+\contentsline {subsubsection}{\numberline {6.15.2.1}main()}{25}{subsubsection.6.15.2.1}%
+\contentsline {section}{\numberline {6.16}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}model.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Snow\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}User Class Reference}{25}{section.6.16}%
+\contentsline {subsection}{\numberline {6.16.1}Detailed Description}{25}{subsection.6.16.1}%
+\contentsline {section}{\numberline {6.17}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}controller.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Snow\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}User\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller Class Reference}{25}{section.6.17}%
+\contentsline {subsection}{\numberline {6.17.1}Detailed Description}{25}{subsection.6.17.1}%
+\contentsline {subsection}{\numberline {6.17.2}Constructor \& Destructor Documentation}{26}{subsection.6.17.2}%
+\contentsline {subsubsection}{\numberline {6.17.2.1}SnowUserController()}{26}{subsubsection.6.17.2.1}%
+\contentsline {subsection}{\numberline {6.17.3}Member Function Documentation}{26}{subsection.6.17.3}%
+\contentsline {subsubsection}{\numberline {6.17.3.1}createUser()}{26}{subsubsection.6.17.3.1}%
+\contentsline {subsubsection}{\numberline {6.17.3.2}deleteUser()}{26}{subsubsection.6.17.3.2}%
+\contentsline {subsubsection}{\numberline {6.17.3.3}getAllUsers()}{26}{subsubsection.6.17.3.3}%
+\contentsline {subsubsection}{\numberline {6.17.3.4}getUserById()}{27}{subsubsection.6.17.3.4}%
+\contentsline {subsubsection}{\numberline {6.17.3.5}updateUser()}{27}{subsubsection.6.17.3.5}%
+\contentsline {section}{\numberline {6.18}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}repository.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Snow\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}User\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repository Interface Reference}{27}{section.6.18}%
+\contentsline {subsection}{\numberline {6.18.1}Detailed Description}{27}{subsection.6.18.1}%
+\contentsline {section}{\numberline {6.19}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}service.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Snow\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}User\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service Class Reference}{28}{section.6.19}%
+\contentsline {subsection}{\numberline {6.19.1}Detailed Description}{28}{subsection.6.19.1}%
+\contentsline {subsection}{\numberline {6.19.2}Constructor \& Destructor Documentation}{28}{subsection.6.19.2}%
+\contentsline {subsubsection}{\numberline {6.19.2.1}SnowUserService()}{28}{subsubsection.6.19.2.1}%
+\contentsline {subsection}{\numberline {6.19.3}Member Function Documentation}{28}{subsection.6.19.3}%
+\contentsline {subsubsection}{\numberline {6.19.3.1}createUser()}{28}{subsubsection.6.19.3.1}%
+\contentsline {subsubsection}{\numberline {6.19.3.2}deleteUser()}{29}{subsubsection.6.19.3.2}%
+\contentsline {subsubsection}{\numberline {6.19.3.3}findAllUsers()}{29}{subsubsection.6.19.3.3}%
+\contentsline {subsubsection}{\numberline {6.19.3.4}findUserById()}{29}{subsubsection.6.19.3.4}%
+\contentsline {subsubsection}{\numberline {6.19.3.5}updateUser()}{29}{subsubsection.6.19.3.5}%
+\contentsline {section}{\numberline {6.20}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}service.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Snow\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}User\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Test Class Reference}{29}{section.6.20}%
+\contentsline {subsection}{\numberline {6.20.1}Detailed Description}{30}{subsection.6.20.1}%
+\contentsline {subsection}{\numberline {6.20.2}Member Function Documentation}{30}{subsection.6.20.2}%
+\contentsline {subsubsection}{\numberline {6.20.2.1}testCreateUser()}{30}{subsubsection.6.20.2.1}%
+\contentsline {subsubsection}{\numberline {6.20.2.2}testDeleteUser()}{30}{subsubsection.6.20.2.2}%
+\contentsline {section}{\numberline {6.21}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}model.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Spatial\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ref\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Sy Class Reference}{30}{section.6.21}%
+\contentsline {subsection}{\numberline {6.21.1}Detailed Description}{30}{subsection.6.21.1}%
+\contentsline {section}{\numberline {6.22}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}model.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ugc\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Alert Class Reference}{31}{section.6.22}%
+\contentsline {subsection}{\numberline {6.22.1}Detailed Description}{31}{subsection.6.22.1}%
+\contentsline {section}{\numberline {6.23}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}model.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ugc\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Alert\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Id Class Reference}{31}{section.6.23}%
+\contentsline {subsection}{\numberline {6.23.1}Detailed Description}{31}{subsection.6.23.1}%
+\contentsline {subsection}{\numberline {6.23.2}Member Function Documentation}{31}{subsection.6.23.2}%
+\contentsline {subsubsection}{\numberline {6.23.2.1}equals()}{31}{subsubsection.6.23.2.1}%
+\contentsline {subsubsection}{\numberline {6.23.2.2}hashCode()}{32}{subsubsection.6.23.2.2}%
+\contentsline {section}{\numberline {6.24}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}model.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ugc\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Boundary Class Reference}{32}{section.6.24}%
+\contentsline {subsection}{\numberline {6.24.1}Detailed Description}{32}{subsection.6.24.1}%
+\contentsline {section}{\numberline {6.25}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}model.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ugc\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Boundary\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Id Class Reference}{32}{section.6.25}%
+\contentsline {subsection}{\numberline {6.25.1}Detailed Description}{32}{subsection.6.25.1}%
+\contentsline {subsection}{\numberline {6.25.2}Member Function Documentation}{32}{subsection.6.25.2}%
+\contentsline {subsubsection}{\numberline {6.25.2.1}equals()}{33}{subsubsection.6.25.2.1}%
+\contentsline {subsubsection}{\numberline {6.25.2.2}hashCode()}{33}{subsubsection.6.25.2.2}%
+\contentsline {section}{\numberline {6.26}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}model.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ugc\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Zone Class Reference}{33}{section.6.26}%
+\contentsline {subsection}{\numberline {6.26.1}Detailed Description}{33}{subsection.6.26.1}%
+\contentsline {section}{\numberline {6.27}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}repository.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ugc\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Zone\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repository Interface Reference}{33}{section.6.27}%
+\contentsline {subsection}{\numberline {6.27.1}Detailed Description}{34}{subsection.6.27.1}%
+\contentsline {subsection}{\numberline {6.27.2}Member Function Documentation}{34}{subsection.6.27.2}%
+\contentsline {subsubsection}{\numberline {6.27.2.1}deleteByUgcCode()}{34}{subsubsection.6.27.2.1}%
+\contentsline {subsubsection}{\numberline {6.27.2.2}existsByUgcCode()}{34}{subsubsection.6.27.2.2}%
+\contentsline {subsubsection}{\numberline {6.27.2.3}findByUgcCode()}{34}{subsubsection.6.27.2.3}%
+\contentsline {section}{\numberline {6.28}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}ugczoneresponse.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ugc\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Zone\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Response Class Reference}{34}{section.6.28}%
+\contentsline {subsection}{\numberline {6.28.1}Detailed Description}{34}{subsection.6.28.1}%
+\contentsline {section}{\numberline {6.29}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}service.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ugc\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Zone\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Scraper Class Reference}{35}{section.6.29}%
+\contentsline {subsection}{\numberline {6.29.1}Detailed Description}{35}{subsection.6.29.1}%
+\contentsline {subsection}{\numberline {6.29.2}Constructor \& Destructor Documentation}{35}{subsection.6.29.2}%
+\contentsline {subsubsection}{\numberline {6.29.2.1}UgcZoneScraper()}{35}{subsubsection.6.29.2.1}%
+\contentsline {subsection}{\numberline {6.29.3}Member Function Documentation}{35}{subsection.6.29.3}%
+\contentsline {subsubsection}{\numberline {6.29.3.1}scrape()}{35}{subsubsection.6.29.3.1}%
+\contentsline {section}{\numberline {6.30}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}service.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ugc\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Zone\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service Class Reference}{36}{section.6.30}%
+\contentsline {subsection}{\numberline {6.30.1}Detailed Description}{37}{subsection.6.30.1}%
+\contentsline {subsection}{\numberline {6.30.2}Constructor \& Destructor Documentation}{37}{subsection.6.30.2}%
+\contentsline {subsubsection}{\numberline {6.30.2.1}UgcZoneService()}{37}{subsubsection.6.30.2.1}%
+\contentsline {subsection}{\numberline {6.30.3}Member Function Documentation}{37}{subsection.6.30.3}%
+\contentsline {subsubsection}{\numberline {6.30.3.1}createUgcZone()}{37}{subsubsection.6.30.3.1}%
+\contentsline {subsubsection}{\numberline {6.30.3.2}deleteUgcZoneByUgcCode()}{37}{subsubsection.6.30.3.2}%
+\contentsline {subsubsection}{\numberline {6.30.3.3}findAllUgcZones()}{38}{subsubsection.6.30.3.3}%
+\contentsline {subsubsection}{\numberline {6.30.3.4}findUgcZoneByUgcCode()}{38}{subsubsection.6.30.3.4}%
+\contentsline {subsubsection}{\numberline {6.30.3.5}updateUgcZone()}{38}{subsubsection.6.30.3.5}%
+\contentsline {section}{\numberline {6.31}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}model.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}User\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Boundary Class Reference}{38}{section.6.31}%
+\contentsline {subsection}{\numberline {6.31.1}Detailed Description}{38}{subsection.6.31.1}%
+\contentsline {section}{\numberline {6.32}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}controller.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}User\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Boundary\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller Class Reference}{39}{section.6.32}%
+\contentsline {subsection}{\numberline {6.32.1}Detailed Description}{39}{subsection.6.32.1}%
+\contentsline {subsection}{\numberline {6.32.2}Constructor \& Destructor Documentation}{39}{subsection.6.32.2}%
+\contentsline {subsubsection}{\numberline {6.32.2.1}UserBoundaryController()}{39}{subsubsection.6.32.2.1}%
+\contentsline {subsection}{\numberline {6.32.3}Member Function Documentation}{39}{subsection.6.32.3}%
+\contentsline {subsubsection}{\numberline {6.32.3.1}create()}{39}{subsubsection.6.32.3.1}%
+\contentsline {subsubsection}{\numberline {6.32.3.2}delete()}{40}{subsubsection.6.32.3.2}%
+\contentsline {subsubsection}{\numberline {6.32.3.3}getAll()}{40}{subsubsection.6.32.3.3}%
+\contentsline {subsubsection}{\numberline {6.32.3.4}getById()}{40}{subsubsection.6.32.3.4}%
+\contentsline {section}{\numberline {6.33}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}model.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}User\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Boundary\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Id Class Reference}{40}{section.6.33}%
+\contentsline {subsection}{\numberline {6.33.1}Detailed Description}{41}{subsection.6.33.1}%
+\contentsline {subsection}{\numberline {6.33.2}Constructor \& Destructor Documentation}{41}{subsection.6.33.2}%
+\contentsline {subsubsection}{\numberline {6.33.2.1}UserBoundaryId()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{41}{subsubsection.6.33.2.1}%
+\contentsline {subsubsection}{\numberline {6.33.2.2}UserBoundaryId()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{41}{subsubsection.6.33.2.2}%
+\contentsline {subsection}{\numberline {6.33.3}Member Function Documentation}{41}{subsection.6.33.3}%
+\contentsline {subsubsection}{\numberline {6.33.3.1}equals()}{41}{subsubsection.6.33.3.1}%
+\contentsline {subsubsection}{\numberline {6.33.3.2}hashCode()}{42}{subsubsection.6.33.3.2}%
+\contentsline {section}{\numberline {6.34}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}repository.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}User\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Boundary\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repository Interface Reference}{42}{section.6.34}%
+\contentsline {subsection}{\numberline {6.34.1}Detailed Description}{42}{subsection.6.34.1}%
+\contentsline {section}{\numberline {6.35}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}service.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}User\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Boundary\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service Class Reference}{42}{section.6.35}%
+\contentsline {subsection}{\numberline {6.35.1}Detailed Description}{42}{subsection.6.35.1}%
+\contentsline {subsection}{\numberline {6.35.2}Constructor \& Destructor Documentation}{43}{subsection.6.35.2}%
+\contentsline {subsubsection}{\numberline {6.35.2.1}UserBoundaryService()}{43}{subsubsection.6.35.2.1}%
+\contentsline {subsection}{\numberline {6.35.3}Member Function Documentation}{43}{subsection.6.35.3}%
+\contentsline {subsubsection}{\numberline {6.35.3.1}createUserBoundary()}{43}{subsubsection.6.35.3.1}%
+\contentsline {subsubsection}{\numberline {6.35.3.2}delete()}{43}{subsubsection.6.35.3.2}%
+\contentsline {subsubsection}{\numberline {6.35.3.3}findAll()}{43}{subsubsection.6.35.3.3}%
+\contentsline {subsubsection}{\numberline {6.35.3.4}findById()}{44}{subsubsection.6.35.3.4}%
+\contentsline {subsubsection}{\numberline {6.35.3.5}save()}{44}{subsubsection.6.35.3.5}%
+\contentsline {section}{\numberline {6.36}com.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}logistics.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}snowapi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}config.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Web\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Config Class Reference}{44}{section.6.36}%
+\contentsline {subsection}{\numberline {6.36.1}Detailed Description}{44}{subsection.6.36.1}%
+\contentsline {subsection}{\numberline {6.36.2}Member Function Documentation}{44}{subsection.6.36.2}%
+\contentsline {subsubsection}{\numberline {6.36.2.1}addCorsMappings()}{44}{subsubsection.6.36.2.1}%
+\contentsline {chapter}{\numberline {7}File Documentation}{45}{chapter.7}%
+\contentsline {section}{\numberline {7.1}src/main/java/com/logistics/snowapi/config/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Web\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Config.java File Reference}{45}{section.7.1}%
+\contentsline {section}{\numberline {7.2}src/main/java/com/logistics/snowapi/controller/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Alert\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller.java File Reference}{45}{section.7.2}%
+\contentsline {section}{\numberline {7.3}src/main/java/com/logistics/snowapi/controller/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Boundary\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller.java File Reference}{45}{section.7.3}%
+\contentsline {section}{\numberline {7.4}src/main/java/com/logistics/snowapi/controller/hello\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}World.java File Reference}{46}{section.7.4}%
+\contentsline {section}{\numberline {7.5}src/main/java/com/logistics/snowapi/controller/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Snow\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}User\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller.java File Reference}{46}{section.7.5}%
+\contentsline {section}{\numberline {7.6}src/main/java/com/logistics/snowapi/controller/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}User\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Boundary\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Controller.java File Reference}{46}{section.7.6}%
+\contentsline {section}{\numberline {7.7}src/main/java/com/logistics/snowapi/geojsonresponse/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Feature.java File Reference}{46}{section.7.7}%
+\contentsline {section}{\numberline {7.8}src/main/java/com/logistics/snowapi/geojsonresponse/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Feature\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Properties.java File Reference}{47}{section.7.8}%
+\contentsline {section}{\numberline {7.9}src/main/java/com/logistics/snowapi/geojsonresponse/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Geo\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Json\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Response.java File Reference}{47}{section.7.9}%
+\contentsline {section}{\numberline {7.10}src/main/java/com/logistics/snowapi/model/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Alert.java File Reference}{47}{section.7.10}%
+\contentsline {section}{\numberline {7.11}src/main/java/com/logistics/snowapi/model/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Boundary.java File Reference}{47}{section.7.11}%
+\contentsline {section}{\numberline {7.12}src/main/java/com/logistics/snowapi/model/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Snow\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}User.java File Reference}{48}{section.7.12}%
+\contentsline {section}{\numberline {7.13}src/main/java/com/logistics/snowapi/model/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Spatial\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ref\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Sy.java File Reference}{48}{section.7.13}%
+\contentsline {section}{\numberline {7.14}src/main/java/com/logistics/snowapi/model/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ugc\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Alert.java File Reference}{48}{section.7.14}%
+\contentsline {section}{\numberline {7.15}src/main/java/com/logistics/snowapi/model/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ugc\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Alert\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Id.java File Reference}{48}{section.7.15}%
+\contentsline {section}{\numberline {7.16}src/main/java/com/logistics/snowapi/model/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ugc\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Boundary.java File Reference}{49}{section.7.16}%
+\contentsline {section}{\numberline {7.17}src/main/java/com/logistics/snowapi/model/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ugc\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Boundary\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Id.java File Reference}{49}{section.7.17}%
+\contentsline {section}{\numberline {7.18}src/main/java/com/logistics/snowapi/model/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ugc\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Zone.java File Reference}{49}{section.7.18}%
+\contentsline {section}{\numberline {7.19}src/main/java/com/logistics/snowapi/model/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}User\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Boundary.java File Reference}{49}{section.7.19}%
+\contentsline {section}{\numberline {7.20}src/main/java/com/logistics/snowapi/model/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}User\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Boundary\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Id.java File Reference}{50}{section.7.20}%
+\contentsline {section}{\numberline {7.21}src/main/java/com/logistics/snowapi/repository/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Alert\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repository.java File Reference}{50}{section.7.21}%
+\contentsline {section}{\numberline {7.22}src/main/java/com/logistics/snowapi/repository/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Boundary\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repository.java File Reference}{50}{section.7.22}%
+\contentsline {section}{\numberline {7.23}src/main/java/com/logistics/snowapi/repository/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Snow\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}User\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repository.java File Reference}{50}{section.7.23}%
+\contentsline {section}{\numberline {7.24}src/main/java/com/logistics/snowapi/repository/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ugc\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Zone\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repository.java File Reference}{51}{section.7.24}%
+\contentsline {section}{\numberline {7.25}src/main/java/com/logistics/snowapi/repository/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}User\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Boundary\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repository.java File Reference}{51}{section.7.25}%
+\contentsline {section}{\numberline {7.26}src/main/java/com/logistics/snowapi/service/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Alert\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service.java File Reference}{51}{section.7.26}%
+\contentsline {section}{\numberline {7.27}src/main/java/com/logistics/snowapi/service/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Boundary\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service.java File Reference}{51}{section.7.27}%
+\contentsline {section}{\numberline {7.28}src/main/java/com/logistics/snowapi/service/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}NWSData\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service.java File Reference}{52}{section.7.28}%
+\contentsline {section}{\numberline {7.29}src/main/java/com/logistics/snowapi/service/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Snow\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}User\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service.java File Reference}{52}{section.7.29}%
+\contentsline {section}{\numberline {7.30}src/main/java/com/logistics/snowapi/service/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ugc\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Zone\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Scraper.java File Reference}{52}{section.7.30}%
+\contentsline {section}{\numberline {7.31}src/main/java/com/logistics/snowapi/service/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ugc\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Zone\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service.java File Reference}{52}{section.7.31}%
+\contentsline {section}{\numberline {7.32}src/main/java/com/logistics/snowapi/service/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}User\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Boundary\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service.java File Reference}{53}{section.7.32}%
+\contentsline {section}{\numberline {7.33}src/main/java/com/logistics/snowapi/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Servlet\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Initializer.java File Reference}{53}{section.7.33}%
+\contentsline {section}{\numberline {7.34}src/main/java/com/logistics/snowapi/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Snow\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Api\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Application.java File Reference}{53}{section.7.34}%
+\contentsline {section}{\numberline {7.35}src/main/java/com/logistics/snowapi/ugczoneresponse/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Geometry.java File Reference}{53}{section.7.35}%
+\contentsline {section}{\numberline {7.36}src/main/java/com/logistics/snowapi/ugczoneresponse/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Multi\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Polygon.java File Reference}{53}{section.7.36}%
+\contentsline {section}{\numberline {7.37}src/main/java/com/logistics/snowapi/ugczoneresponse/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Polygon.java File Reference}{53}{section.7.37}%
+\contentsline {section}{\numberline {7.38}src/main/java/com/logistics/snowapi/ugczoneresponse/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ugc\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Zone\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Response.java File Reference}{53}{section.7.38}%
+\contentsline {section}{\numberline {7.39}src/test/java/com/logistics/snowapi/service/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Alert\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Test.java File Reference}{54}{section.7.39}%
+\contentsline {section}{\numberline {7.40}src/test/java/com/logistics/snowapi/service/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Boundary\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Test.java File Reference}{54}{section.7.40}%
+\contentsline {section}{\numberline {7.41}src/test/java/com/logistics/snowapi/service/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Snow\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}User\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Test.java File Reference}{54}{section.7.41}%
+\contentsline {section}{\numberline {7.42}src/test/java/com/logistics/snowapi/service/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ugc\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Zone\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Test.java File Reference}{54}{section.7.42}%
+\contentsline {section}{\numberline {7.43}src/test/java/com/logistics/snowapi/service/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}User\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Boundary\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Test.java File Reference}{55}{section.7.43}%
+\contentsline {section}{\numberline {7.44}src/test/java/com/logistics/snowapi/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Snow\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Api\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Application\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tests.java File Reference}{55}{section.7.44}%
+\contentsline {chapter}{Index}{57}{section*.108}%

@@ -1,0 +1,141 @@
+\hypertarget{classcom_1_1logistics_1_1snowapi_1_1service_1_1BoundaryService}{}\doxysection{com.\+logistics.\+snowapi.\+service.\+Boundary\+Service Class Reference}
+\label{classcom_1_1logistics_1_1snowapi_1_1service_1_1BoundaryService}\index{com.logistics.snowapi.service.BoundaryService@{com.logistics.snowapi.service.BoundaryService}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1service_1_1BoundaryService_ad79f37ad42d87ec6cef1574097e2311d}{Boundary\+Service}} (\mbox{\hyperlink{interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1BoundaryRepository}{Boundary\+Repository}} boundary\+Repository)
+\item 
+List$<$ \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1Boundary}{Boundary}} $>$ \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1service_1_1BoundaryService_a0c0ff026fdab24ea21410cc982561712}{find\+All\+Boundaries}} ()
+\item 
+Optional$<$ \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1Boundary}{Boundary}} $>$ \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1service_1_1BoundaryService_aec407ea44b51fad6c3fa40a52f4aaeec}{find\+Boundary\+By\+Id}} (Integer id)
+\item 
+\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1Boundary}{Boundary}} \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1service_1_1BoundaryService_aa58dc82d5f765819144300bb1f12e60b}{create\+Boundary}} (\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1Boundary}{Boundary}} boundary)
+\item 
+\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1Boundary}{Boundary}} \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1service_1_1BoundaryService_afdc51e00c294bdb1b399ce82231b0aa5}{update\+Boundary}} (\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1Boundary}{Boundary}} boundary)
+\item 
+void \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1service_1_1BoundaryService_a2b368a4daf2f3c05a7b3e2ec1cfd9d5c}{delete\+Boundary}} (Integer id)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 12 of file Boundary\+Service.\+java.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcom_1_1logistics_1_1snowapi_1_1service_1_1BoundaryService_ad79f37ad42d87ec6cef1574097e2311d}\label{classcom_1_1logistics_1_1snowapi_1_1service_1_1BoundaryService_ad79f37ad42d87ec6cef1574097e2311d}} 
+\index{com.logistics.snowapi.service.BoundaryService@{com.logistics.snowapi.service.BoundaryService}!BoundaryService@{BoundaryService}}
+\index{BoundaryService@{BoundaryService}!com.logistics.snowapi.service.BoundaryService@{com.logistics.snowapi.service.BoundaryService}}
+\doxysubsubsection{\texorpdfstring{BoundaryService()}{BoundaryService()}}
+{\footnotesize\ttfamily com.\+logistics.\+snowapi.\+service.\+Boundary\+Service.\+Boundary\+Service (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1BoundaryRepository}{Boundary\+Repository}}}]{boundary\+Repository }\end{DoxyParamCaption})}
+
+
+
+Definition at line 17 of file Boundary\+Service.\+java.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{17                                                                   \{}
+\DoxyCodeLine{18         this.boundaryRepository = boundaryRepository;}
+\DoxyCodeLine{19     \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1logistics_1_1snowapi_1_1service_1_1BoundaryService_aa58dc82d5f765819144300bb1f12e60b}\label{classcom_1_1logistics_1_1snowapi_1_1service_1_1BoundaryService_aa58dc82d5f765819144300bb1f12e60b}} 
+\index{com.logistics.snowapi.service.BoundaryService@{com.logistics.snowapi.service.BoundaryService}!createBoundary@{createBoundary}}
+\index{createBoundary@{createBoundary}!com.logistics.snowapi.service.BoundaryService@{com.logistics.snowapi.service.BoundaryService}}
+\doxysubsubsection{\texorpdfstring{createBoundary()}{createBoundary()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1Boundary}{Boundary}} com.\+logistics.\+snowapi.\+service.\+Boundary\+Service.\+create\+Boundary (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1Boundary}{Boundary}}}]{boundary }\end{DoxyParamCaption})}
+
+
+
+Definition at line 29 of file Boundary\+Service.\+java.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{29                                                       \{}
+\DoxyCodeLine{30         \textcolor{keywordflow}{return} boundaryRepository.save(boundary);}
+\DoxyCodeLine{31     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1logistics_1_1snowapi_1_1service_1_1BoundaryService_a2b368a4daf2f3c05a7b3e2ec1cfd9d5c}\label{classcom_1_1logistics_1_1snowapi_1_1service_1_1BoundaryService_a2b368a4daf2f3c05a7b3e2ec1cfd9d5c}} 
+\index{com.logistics.snowapi.service.BoundaryService@{com.logistics.snowapi.service.BoundaryService}!deleteBoundary@{deleteBoundary}}
+\index{deleteBoundary@{deleteBoundary}!com.logistics.snowapi.service.BoundaryService@{com.logistics.snowapi.service.BoundaryService}}
+\doxysubsubsection{\texorpdfstring{deleteBoundary()}{deleteBoundary()}}
+{\footnotesize\ttfamily void com.\+logistics.\+snowapi.\+service.\+Boundary\+Service.\+delete\+Boundary (\begin{DoxyParamCaption}\item[{Integer}]{id }\end{DoxyParamCaption})}
+
+
+
+Definition at line 41 of file Boundary\+Service.\+java.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{41                                            \{}
+\DoxyCodeLine{42         boundaryRepository.deleteById(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{43     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1logistics_1_1snowapi_1_1service_1_1BoundaryService_a0c0ff026fdab24ea21410cc982561712}\label{classcom_1_1logistics_1_1snowapi_1_1service_1_1BoundaryService_a0c0ff026fdab24ea21410cc982561712}} 
+\index{com.logistics.snowapi.service.BoundaryService@{com.logistics.snowapi.service.BoundaryService}!findAllBoundaries@{findAllBoundaries}}
+\index{findAllBoundaries@{findAllBoundaries}!com.logistics.snowapi.service.BoundaryService@{com.logistics.snowapi.service.BoundaryService}}
+\doxysubsubsection{\texorpdfstring{findAllBoundaries()}{findAllBoundaries()}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1Boundary}{Boundary}}$>$ com.\+logistics.\+snowapi.\+service.\+Boundary\+Service.\+find\+All\+Boundaries (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 21 of file Boundary\+Service.\+java.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{21                                               \{}
+\DoxyCodeLine{22         \textcolor{keywordflow}{return} boundaryRepository.findAll();}
+\DoxyCodeLine{23     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1logistics_1_1snowapi_1_1service_1_1BoundaryService_aec407ea44b51fad6c3fa40a52f4aaeec}\label{classcom_1_1logistics_1_1snowapi_1_1service_1_1BoundaryService_aec407ea44b51fad6c3fa40a52f4aaeec}} 
+\index{com.logistics.snowapi.service.BoundaryService@{com.logistics.snowapi.service.BoundaryService}!findBoundaryById@{findBoundaryById}}
+\index{findBoundaryById@{findBoundaryById}!com.logistics.snowapi.service.BoundaryService@{com.logistics.snowapi.service.BoundaryService}}
+\doxysubsubsection{\texorpdfstring{findBoundaryById()}{findBoundaryById()}}
+{\footnotesize\ttfamily Optional$<$\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1Boundary}{Boundary}}$>$ com.\+logistics.\+snowapi.\+service.\+Boundary\+Service.\+find\+Boundary\+By\+Id (\begin{DoxyParamCaption}\item[{Integer}]{id }\end{DoxyParamCaption})}
+
+
+
+Definition at line 25 of file Boundary\+Service.\+java.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{25                                                            \{}
+\DoxyCodeLine{26         \textcolor{keywordflow}{return} boundaryRepository.findById(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{27     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1logistics_1_1snowapi_1_1service_1_1BoundaryService_afdc51e00c294bdb1b399ce82231b0aa5}\label{classcom_1_1logistics_1_1snowapi_1_1service_1_1BoundaryService_afdc51e00c294bdb1b399ce82231b0aa5}} 
+\index{com.logistics.snowapi.service.BoundaryService@{com.logistics.snowapi.service.BoundaryService}!updateBoundary@{updateBoundary}}
+\index{updateBoundary@{updateBoundary}!com.logistics.snowapi.service.BoundaryService@{com.logistics.snowapi.service.BoundaryService}}
+\doxysubsubsection{\texorpdfstring{updateBoundary()}{updateBoundary()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1Boundary}{Boundary}} com.\+logistics.\+snowapi.\+service.\+Boundary\+Service.\+update\+Boundary (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1Boundary}{Boundary}}}]{boundary }\end{DoxyParamCaption})}
+
+
+
+Definition at line 33 of file Boundary\+Service.\+java.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{33                                                       \{}
+\DoxyCodeLine{34         \textcolor{keywordflow}{if} (boundary.getId() != \textcolor{keyword}{null} \&\& boundaryRepository.existsById(boundary.getId())) \{}
+\DoxyCodeLine{35             \textcolor{keywordflow}{return} boundaryRepository.save(boundary);}
+\DoxyCodeLine{36         \}}
+\DoxyCodeLine{37         \textcolor{comment}{// Handle the case where the boundary does not exist}}
+\DoxyCodeLine{38         \textcolor{keywordflow}{return} \textcolor{keyword}{null};}
+\DoxyCodeLine{39     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/logistics/snowapi/service/\mbox{\hyperlink{BoundaryService_8java}{Boundary\+Service.\+java}}\end{DoxyCompactItemize}

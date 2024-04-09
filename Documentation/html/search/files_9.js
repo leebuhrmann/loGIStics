@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['ugcalert_2ejava_207',['UgcAlert.java',['../UgcAlert_8java.html',1,'']]],
+  ['ugcalertid_2ejava_208',['UgcAlertId.java',['../UgcAlertId_8java.html',1,'']]],
+  ['ugcboundary_2ejava_209',['UgcBoundary.java',['../UgcBoundary_8java.html',1,'']]],
+  ['ugcboundaryid_2ejava_210',['UgcBoundaryId.java',['../UgcBoundaryId_8java.html',1,'']]],
+  ['ugczone_2ejava_211',['UgcZone.java',['../UgcZone_8java.html',1,'']]],
+  ['ugczonerepository_2ejava_212',['UgcZoneRepository.java',['../UgcZoneRepository_8java.html',1,'']]],
+  ['ugczoneresponse_2ejava_213',['UgcZoneResponse.java',['../UgcZoneResponse_8java.html',1,'']]],
+  ['ugczonescraper_2ejava_214',['UgcZoneScraper.java',['../UgcZoneScraper_8java.html',1,'']]],
+  ['ugczoneservice_2ejava_215',['UgcZoneService.java',['../UgcZoneService_8java.html',1,'']]],
+  ['ugczoneservicetest_2ejava_216',['UgcZoneServiceTest.java',['../UgcZoneServiceTest_8java.html',1,'']]],
+  ['userboundary_2ejava_217',['UserBoundary.java',['../UserBoundary_8java.html',1,'']]],
+  ['userboundarycontroller_2ejava_218',['UserBoundaryController.java',['../UserBoundaryController_8java.html',1,'']]],
+  ['userboundaryid_2ejava_219',['UserBoundaryId.java',['../UserBoundaryId_8java.html',1,'']]],
+  ['userboundaryrepository_2ejava_220',['UserBoundaryRepository.java',['../UserBoundaryRepository_8java.html',1,'']]],
+  ['userboundaryservice_2ejava_221',['UserBoundaryService.java',['../UserBoundaryService_8java.html',1,'']]],
+  ['userboundaryservicetest_2ejava_222',['UserBoundaryServiceTest.java',['../UserBoundaryServiceTest_8java.html',1,'']]]
+];

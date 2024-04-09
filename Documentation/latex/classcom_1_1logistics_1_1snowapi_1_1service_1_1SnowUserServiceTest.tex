@@ -1,0 +1,75 @@
+\hypertarget{classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserServiceTest}{}\doxysection{com.\+logistics.\+snowapi.\+service.\+Snow\+User\+Service\+Test Class Reference}
+\label{classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserServiceTest}\index{com.logistics.snowapi.service.SnowUserServiceTest@{com.logistics.snowapi.service.SnowUserServiceTest}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserServiceTest_acb6a470a4e0de19c507acc51f230d231}{test\+Create\+User}} ()
+\item 
+void \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserServiceTest_abd9ae1b4425e62bb0d429e29386acb69}{test\+Delete\+User}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 18 of file Snow\+User\+Service\+Test.\+java.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserServiceTest_acb6a470a4e0de19c507acc51f230d231}\label{classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserServiceTest_acb6a470a4e0de19c507acc51f230d231}} 
+\index{com.logistics.snowapi.service.SnowUserServiceTest@{com.logistics.snowapi.service.SnowUserServiceTest}!testCreateUser@{testCreateUser}}
+\index{testCreateUser@{testCreateUser}!com.logistics.snowapi.service.SnowUserServiceTest@{com.logistics.snowapi.service.SnowUserServiceTest}}
+\doxysubsubsection{\texorpdfstring{testCreateUser()}{testCreateUser()}}
+{\footnotesize\ttfamily void com.\+logistics.\+snowapi.\+service.\+Snow\+User\+Service\+Test.\+test\+Create\+User (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 27 of file Snow\+User\+Service\+Test.\+java.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{27                                  \{}
+\DoxyCodeLine{28         SnowUser newUser = \textcolor{keyword}{new} SnowUser();}
+\DoxyCodeLine{29         newUser.setId(1); \textcolor{comment}{// Assuming ID is set after saving}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31         when(userRepository.save(any(SnowUser.class))).thenReturn(newUser);}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33         SnowUser createdUser = userService.\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService_a36c24fbfe8635eaa5a6cb209e79d84a6}{createUser}}(\textcolor{keyword}{new} SnowUser());}
+\DoxyCodeLine{34         assertThat(createdUser.getId()).isEqualTo(1);}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36         verify(userRepository, times(1)).save(any(SnowUser.class));}
+\DoxyCodeLine{37     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserServiceTest_abd9ae1b4425e62bb0d429e29386acb69}\label{classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserServiceTest_abd9ae1b4425e62bb0d429e29386acb69}} 
+\index{com.logistics.snowapi.service.SnowUserServiceTest@{com.logistics.snowapi.service.SnowUserServiceTest}!testDeleteUser@{testDeleteUser}}
+\index{testDeleteUser@{testDeleteUser}!com.logistics.snowapi.service.SnowUserServiceTest@{com.logistics.snowapi.service.SnowUserServiceTest}}
+\doxysubsubsection{\texorpdfstring{testDeleteUser()}{testDeleteUser()}}
+{\footnotesize\ttfamily void com.\+logistics.\+snowapi.\+service.\+Snow\+User\+Service\+Test.\+test\+Delete\+User (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 40 of file Snow\+User\+Service\+Test.\+java.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{40                                  \{}
+\DoxyCodeLine{41         Integer userId = 1;}
+\DoxyCodeLine{42         SnowUser existingUser = \textcolor{keyword}{new} SnowUser();}
+\DoxyCodeLine{43         existingUser.setId(userId);}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45         when(userRepository.findById(userId)).thenReturn(Optional.of(existingUser));}
+\DoxyCodeLine{46         doNothing().when(userRepository).deleteById(userId);}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48         userService.\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService_a81c9647863afe20e734bf7ca09b304b3}{deleteUser}}(userId);}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50         verify(userRepository, times(1)).deleteById(userId);}
+\DoxyCodeLine{51     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/test/java/com/logistics/snowapi/service/\mbox{\hyperlink{SnowUserServiceTest_8java}{Snow\+User\+Service\+Test.\+java}}\end{DoxyCompactItemize}

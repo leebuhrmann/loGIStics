@@ -1,0 +1,116 @@
+\hypertarget{classcom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneScraper}{}\doxysection{com.\+logistics.\+snowapi.\+service.\+Ugc\+Zone\+Scraper Class Reference}
+\label{classcom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneScraper}\index{com.logistics.snowapi.service.UgcZoneScraper@{com.logistics.snowapi.service.UgcZoneScraper}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneScraper_ab87c2225f0c359e458f5fb8c73601dba}{Ugc\+Zone\+Scraper}} (Rest\+Template\+Builder rest\+Template\+Builder, \mbox{\hyperlink{interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1UgcZoneRepository}{Ugc\+Zone\+Repository}} ugc\+Zone\+Repository, \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneService}{Ugc\+Zone\+Service}} ugc\+Zone\+Service, Object\+Mapper object\+Mapper)
+\item 
+void \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneScraper_a74c9f6a586ee5db872034880aa31ecb7}{scrape}} (Array\+List$<$ String $>$ ugc\+Code\+Addresses)
+\begin{DoxyCompactList}\small\item\em Processes a list of URLs corresponding to UGC (Universal Geographic Code) Zones by checking if their associated data already exists within the database. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 18 of file Ugc\+Zone\+Scraper.\+java.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneScraper_ab87c2225f0c359e458f5fb8c73601dba}\label{classcom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneScraper_ab87c2225f0c359e458f5fb8c73601dba}} 
+\index{com.logistics.snowapi.service.UgcZoneScraper@{com.logistics.snowapi.service.UgcZoneScraper}!UgcZoneScraper@{UgcZoneScraper}}
+\index{UgcZoneScraper@{UgcZoneScraper}!com.logistics.snowapi.service.UgcZoneScraper@{com.logistics.snowapi.service.UgcZoneScraper}}
+\doxysubsubsection{\texorpdfstring{UgcZoneScraper()}{UgcZoneScraper()}}
+{\footnotesize\ttfamily com.\+logistics.\+snowapi.\+service.\+Ugc\+Zone\+Scraper.\+Ugc\+Zone\+Scraper (\begin{DoxyParamCaption}\item[{Rest\+Template\+Builder}]{rest\+Template\+Builder,  }\item[{\mbox{\hyperlink{interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1UgcZoneRepository}{Ugc\+Zone\+Repository}}}]{ugc\+Zone\+Repository,  }\item[{\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneService}{Ugc\+Zone\+Service}}}]{ugc\+Zone\+Service,  }\item[{Object\+Mapper}]{object\+Mapper }\end{DoxyParamCaption})}
+
+
+
+Definition at line 25 of file Ugc\+Zone\+Scraper.\+java.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{25                                                                                                                                                                   \{}
+\DoxyCodeLine{26         this.restTemplate = restTemplateBuilder.build();}
+\DoxyCodeLine{27         this.ugcZoneRepository = ugcZoneRepository;}
+\DoxyCodeLine{28         this.ugcZoneService = ugcZoneService;}
+\DoxyCodeLine{29         this.objectMapper = objectMapper;}
+\DoxyCodeLine{30     \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneScraper_a74c9f6a586ee5db872034880aa31ecb7}\label{classcom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneScraper_a74c9f6a586ee5db872034880aa31ecb7}} 
+\index{com.logistics.snowapi.service.UgcZoneScraper@{com.logistics.snowapi.service.UgcZoneScraper}!scrape@{scrape}}
+\index{scrape@{scrape}!com.logistics.snowapi.service.UgcZoneScraper@{com.logistics.snowapi.service.UgcZoneScraper}}
+\doxysubsubsection{\texorpdfstring{scrape()}{scrape()}}
+{\footnotesize\ttfamily void com.\+logistics.\+snowapi.\+service.\+Ugc\+Zone\+Scraper.\+scrape (\begin{DoxyParamCaption}\item[{Array\+List$<$ String $>$}]{ugc\+Code\+Addresses }\end{DoxyParamCaption})}
+
+
+
+Processes a list of URLs corresponding to UGC (Universal Geographic Code) Zones by checking if their associated data already exists within the database. 
+
+For each URL whose data is not already present, this method performs a GET request to retrieve geographic and zone information from the National Weather Service (NWS). The response is then parsed, transformed into a UGC Zone entity, and persisted in the database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ugc\+Code\+Addresses} & A
+\begin{DoxyCode}{1}
+\DoxyCodeLine{ArrayList<String> }
+
+\end{DoxyCode}
+ containing the URLs for UGC Zone data retrieval. Each URL is expected to end with a 6-\/character UGC code that uniquely identifies a geographic zone. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Rest\+Client\+Exception} & If there is an issue with the RESTful request, including connection problems or errors returned by the target server. \\
+\hline
+{\em IOException} & If there is an error parsing the response from the GET request into a
+\begin{DoxyCode}{1}
+\DoxyCodeLine{UgcZoneResponse }
+
+\end{DoxyCode}
+ object. \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 45 of file Ugc\+Zone\+Scraper.\+java.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{45                                                            \{}
+\DoxyCodeLine{46         \textcolor{keywordflow}{for} (String address : ugcCodeAddresses)\{}
+\DoxyCodeLine{47             String ugcCode = address.substring(address.length() -\/ 6);}
+\DoxyCodeLine{48             \textcolor{keywordflow}{if} (!ugcZoneRepository.\mbox{\hyperlink{interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1UgcZoneRepository_ab207e561a0f5a14d21d44cb31dd47459}{existsByUgcCode}}(ugcCode)) \{}
+\DoxyCodeLine{49                 \textcolor{comment}{// Performs a GET call on the UGCZone address.}}
+\DoxyCodeLine{50                 \textcolor{comment}{// Maps response to POJO}}
+\DoxyCodeLine{51                 \textcolor{comment}{// Creates UGCZone from POJO and stores in database}}
+\DoxyCodeLine{52                 \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{53                     ResponseEntity<String> response = restTemplate.getForEntity(address, String.class);}
+\DoxyCodeLine{54                     UgcZoneResponse ugcZoneResponse = objectMapper.readValue(response.getBody(), UgcZoneResponse.class);}
+\DoxyCodeLine{55                     UgcZone ugcZone = createUgcZoneFromUgcZoneResponse(ugcCode, address, ugcZoneResponse);}
+\DoxyCodeLine{56                     ugcZoneService.\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneService_a7bb25b8ecb71ef823d395fe0e9fb6875}{createUgcZone}}(ugcZone);}
+\DoxyCodeLine{57                 \}}
+\DoxyCodeLine{58                 \textcolor{keywordflow}{catch} (RestClientException e) \{}
+\DoxyCodeLine{59                     System.out.printf(\textcolor{stringliteral}{"{}Failed to reach address: \%s, UGC: \%s, Error: \%s"{}}, address, ugcCode, e.getMessage());}
+\DoxyCodeLine{60                     e.printStackTrace();}
+\DoxyCodeLine{61                 \}}
+\DoxyCodeLine{62                 \textcolor{keywordflow}{catch} (IOException e) \{}
+\DoxyCodeLine{63                     System.out.printf(\textcolor{stringliteral}{"{}Failed to parse response for address: \%s, UGC Code: \%s"{}}, address, ugcCode);}
+\DoxyCodeLine{64                     e.printStackTrace();}
+\DoxyCodeLine{65                 \}}
+\DoxyCodeLine{66             \}}
+\DoxyCodeLine{67             \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{68                 System.out.printf(\textcolor{stringliteral}{"{}UgcZone \%s already exists in database."{}}, ugcCode);}
+\DoxyCodeLine{69             \}}
+\DoxyCodeLine{70         \}}
+\DoxyCodeLine{71     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/logistics/snowapi/service/\mbox{\hyperlink{UgcZoneScraper_8java}{Ugc\+Zone\+Scraper.\+java}}\end{DoxyCompactItemize}

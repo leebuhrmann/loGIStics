@@ -1,0 +1,138 @@
+\hypertarget{classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService}{}\doxysection{com.\+logistics.\+snowapi.\+service.\+Snow\+User\+Service Class Reference}
+\label{classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService}\index{com.logistics.snowapi.service.SnowUserService@{com.logistics.snowapi.service.SnowUserService}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService_a339c2634e81bd187b067e9c82286ed21}{Snow\+User\+Service}} (\mbox{\hyperlink{interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1SnowUserRepository}{Snow\+User\+Repository}} user\+Repository)
+\item 
+List$<$ \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1SnowUser}{Snow\+User}} $>$ \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService_a7dee7f206b4f4353e06fb5952b7fc933}{find\+All\+Users}} ()
+\item 
+Optional$<$ \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1SnowUser}{Snow\+User}} $>$ \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService_aeece69366f28f39647b248a87bca0b04}{find\+User\+By\+Id}} (Integer id)
+\item 
+\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1SnowUser}{Snow\+User}} \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService_a36c24fbfe8635eaa5a6cb209e79d84a6}{create\+User}} (\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1SnowUser}{Snow\+User}} user)
+\item 
+\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1SnowUser}{Snow\+User}} \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService_abd673a1561c2e51a37f71c29b69d2c84}{update\+User}} (\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1SnowUser}{Snow\+User}} user)
+\item 
+void \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService_a81c9647863afe20e734bf7ca09b304b3}{delete\+User}} (Integer id)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 12 of file Snow\+User\+Service.\+java.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService_a339c2634e81bd187b067e9c82286ed21}\label{classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService_a339c2634e81bd187b067e9c82286ed21}} 
+\index{com.logistics.snowapi.service.SnowUserService@{com.logistics.snowapi.service.SnowUserService}!SnowUserService@{SnowUserService}}
+\index{SnowUserService@{SnowUserService}!com.logistics.snowapi.service.SnowUserService@{com.logistics.snowapi.service.SnowUserService}}
+\doxysubsubsection{\texorpdfstring{SnowUserService()}{SnowUserService()}}
+{\footnotesize\ttfamily com.\+logistics.\+snowapi.\+service.\+Snow\+User\+Service.\+Snow\+User\+Service (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1SnowUserRepository}{Snow\+User\+Repository}}}]{user\+Repository }\end{DoxyParamCaption})}
+
+
+
+Definition at line 17 of file Snow\+User\+Service.\+java.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{17                                                               \{}
+\DoxyCodeLine{18         this.userRepository = userRepository;}
+\DoxyCodeLine{19     \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService_a36c24fbfe8635eaa5a6cb209e79d84a6}\label{classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService_a36c24fbfe8635eaa5a6cb209e79d84a6}} 
+\index{com.logistics.snowapi.service.SnowUserService@{com.logistics.snowapi.service.SnowUserService}!createUser@{createUser}}
+\index{createUser@{createUser}!com.logistics.snowapi.service.SnowUserService@{com.logistics.snowapi.service.SnowUserService}}
+\doxysubsubsection{\texorpdfstring{createUser()}{createUser()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1SnowUser}{Snow\+User}} com.\+logistics.\+snowapi.\+service.\+Snow\+User\+Service.\+create\+User (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1SnowUser}{Snow\+User}}}]{user }\end{DoxyParamCaption})}
+
+
+
+Definition at line 29 of file Snow\+User\+Service.\+java.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{29                                               \{}
+\DoxyCodeLine{30         \textcolor{keywordflow}{return} userRepository.save(user);}
+\DoxyCodeLine{31     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService_a81c9647863afe20e734bf7ca09b304b3}\label{classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService_a81c9647863afe20e734bf7ca09b304b3}} 
+\index{com.logistics.snowapi.service.SnowUserService@{com.logistics.snowapi.service.SnowUserService}!deleteUser@{deleteUser}}
+\index{deleteUser@{deleteUser}!com.logistics.snowapi.service.SnowUserService@{com.logistics.snowapi.service.SnowUserService}}
+\doxysubsubsection{\texorpdfstring{deleteUser()}{deleteUser()}}
+{\footnotesize\ttfamily void com.\+logistics.\+snowapi.\+service.\+Snow\+User\+Service.\+delete\+User (\begin{DoxyParamCaption}\item[{Integer}]{id }\end{DoxyParamCaption})}
+
+
+
+Definition at line 38 of file Snow\+User\+Service.\+java.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{38                                        \{}
+\DoxyCodeLine{39         userRepository.deleteById(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{40     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService_a7dee7f206b4f4353e06fb5952b7fc933}\label{classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService_a7dee7f206b4f4353e06fb5952b7fc933}} 
+\index{com.logistics.snowapi.service.SnowUserService@{com.logistics.snowapi.service.SnowUserService}!findAllUsers@{findAllUsers}}
+\index{findAllUsers@{findAllUsers}!com.logistics.snowapi.service.SnowUserService@{com.logistics.snowapi.service.SnowUserService}}
+\doxysubsubsection{\texorpdfstring{findAllUsers()}{findAllUsers()}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1SnowUser}{Snow\+User}}$>$ com.\+logistics.\+snowapi.\+service.\+Snow\+User\+Service.\+find\+All\+Users (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 21 of file Snow\+User\+Service.\+java.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{21                                          \{}
+\DoxyCodeLine{22         \textcolor{keywordflow}{return} userRepository.findAll();}
+\DoxyCodeLine{23     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService_aeece69366f28f39647b248a87bca0b04}\label{classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService_aeece69366f28f39647b248a87bca0b04}} 
+\index{com.logistics.snowapi.service.SnowUserService@{com.logistics.snowapi.service.SnowUserService}!findUserById@{findUserById}}
+\index{findUserById@{findUserById}!com.logistics.snowapi.service.SnowUserService@{com.logistics.snowapi.service.SnowUserService}}
+\doxysubsubsection{\texorpdfstring{findUserById()}{findUserById()}}
+{\footnotesize\ttfamily Optional$<$\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1SnowUser}{Snow\+User}}$>$ com.\+logistics.\+snowapi.\+service.\+Snow\+User\+Service.\+find\+User\+By\+Id (\begin{DoxyParamCaption}\item[{Integer}]{id }\end{DoxyParamCaption})}
+
+
+
+Definition at line 25 of file Snow\+User\+Service.\+java.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{25                                                        \{}
+\DoxyCodeLine{26         \textcolor{keywordflow}{return} userRepository.findById(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{27     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService_abd673a1561c2e51a37f71c29b69d2c84}\label{classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService_abd673a1561c2e51a37f71c29b69d2c84}} 
+\index{com.logistics.snowapi.service.SnowUserService@{com.logistics.snowapi.service.SnowUserService}!updateUser@{updateUser}}
+\index{updateUser@{updateUser}!com.logistics.snowapi.service.SnowUserService@{com.logistics.snowapi.service.SnowUserService}}
+\doxysubsubsection{\texorpdfstring{updateUser()}{updateUser()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1SnowUser}{Snow\+User}} com.\+logistics.\+snowapi.\+service.\+Snow\+User\+Service.\+update\+User (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1logistics_1_1snowapi_1_1model_1_1SnowUser}{Snow\+User}}}]{user }\end{DoxyParamCaption})}
+
+
+
+Definition at line 33 of file Snow\+User\+Service.\+java.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{33                                               \{}
+\DoxyCodeLine{34         \textcolor{comment}{// Ensure the user exists, handle appropriately if not}}
+\DoxyCodeLine{35         \textcolor{keywordflow}{return} userRepository.save(user);}
+\DoxyCodeLine{36     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/logistics/snowapi/service/\mbox{\hyperlink{SnowUserService_8java}{Snow\+User\+Service.\+java}}\end{DoxyCompactItemize}
