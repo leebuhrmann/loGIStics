@@ -21,10 +21,7 @@ public class UgcZone {
     @Column(name = "ugc_code_address", length = 200)
     private String ugcCodeAddress;
 
-    @Column(name = "visibility")
-    private Integer visibility;
-
-    @Column(columnDefinition = "geometry(MultiPolygon,2908)")
+    @Column(columnDefinition = "geometry(MultiPolygon,3857)")
     private MultiPolygon theGeom;
 
     @ManyToMany(mappedBy = "ugcZones")

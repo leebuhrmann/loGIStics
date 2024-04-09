@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
+import org.locationtech.jts.geom.MultiPolygon;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -18,8 +19,8 @@ public class Boundary {
     @Column(name = "boundary_id", nullable = false)
     private Integer id;
 
-    @Column(name = "visibility")
-    private Integer visibility;
+    @Column(columnDefinition = "geometry(MultiPolygon,3857)")
+    private MultiPolygon theGeom;
 
     @ManyToMany
     @JoinTable(name = "ugc_boundary",
