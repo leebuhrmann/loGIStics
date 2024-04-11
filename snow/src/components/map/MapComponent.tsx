@@ -14,12 +14,14 @@ import Collection from "ol/Collection";
 
 interface MapComponentProps {
   onPolygonComplete: () => void;
+  onPolygonSelect: () => void;
   clearPolygon: boolean;
   onClearComplete: () => void;
 }
 
 const MapComponent: React.FC<MapComponentProps> = ({
   onPolygonComplete,
+  onPolygonSelect,
   clearPolygon,
   onClearComplete,
 }) => {
@@ -146,8 +148,17 @@ const MapComponent: React.FC<MapComponentProps> = ({
 
     resetInteractions(map);
 
-    const select = new Select({});
+    const select = new Select({
+      multi: false,
+    });
     map.addInteraction(select);
+
+    select.on("select", (event) => {
+      if (event.selected.length > 0) {
+        console.log("Boundary selected", event.selected[0]);
+        onPolygonSelect();
+      }
+    });
 
     modify.current = new Modify({
       features: select.getFeatures(),

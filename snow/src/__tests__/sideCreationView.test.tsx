@@ -8,13 +8,11 @@ import { TextEncoder, TextDecoder } from "util";
 
 Object.assign(global, { TextDecoder, TextEncoder });
 
-describe("Side creation view elements are rendered", () => {
-  beforeEach(() => {
-    user.setup();
-    render(<Home />);
-  });
-
   describe("Side creation view elements are rendered", () => {
+    beforeEach(() => {
+      user.setup();
+      render(<Home />);
+    });
     test("boundary title", () => {
       render(<SideCreationView onClose={() => {}} />);
       const boundaryInput = screen.getByPlaceholderText("Enter Boundary Name");
