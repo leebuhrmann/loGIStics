@@ -45,6 +45,8 @@ const SideEditView: React.FC<SideEditViewProps> = ({
         setBoundaryName={setBoundaryName}
         description={description}
         setDescription={setDescription}
+        boundaryPlaceholder="Current Name"
+        descriptionPlaceholder="Current Description"
       />
 
       <div id="sub_checkbox" className="flex items-center space-x-2">
