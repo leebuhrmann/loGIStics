@@ -4,6 +4,9 @@ import "@testing-library/jest-dom";
 jest.mock("../components/map/MapComponent");
 import user from "@testing-library/user-event";
 import SideCreationView from "@/components/side-menu/side-form-view/side-creation-view";
+import { TextEncoder, TextDecoder } from "util";
+
+Object.assign(global, { TextDecoder, TextEncoder });
 
   describe("Side creation view elements are rendered", () => {
     beforeEach(() => {
