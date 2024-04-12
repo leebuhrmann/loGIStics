@@ -1,10 +1,8 @@
 package com.logistics.snowapi.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.logistics.snowapi.geojsonresponse.FeatureProperties;
 import com.logistics.snowapi.geojsonresponse.GeoJsonResponse;
 import com.logistics.snowapi.geojsonresponse.Feature;
-import jakarta.annotation.PostConstruct;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -33,26 +31,31 @@ public class NWSDataService {
     private final RestTemplate restTemplate;
     private final ObjectMapper objectMapper;
     private final AlertService alertService;
+    private final UgcZoneScraper ugcZoneScraper;
     private final AlertRepository alertRepository;
     private final SimpMessagingTemplate messagingTemplate;
 
     // Constructor for RestTemplate injection
     @Autowired
-    public NWSDataService(RestTemplateBuilder restTemplateBuilder, ObjectMapper objectMapper, AlertService alertService,
-            AlertRepository alertRepository, SimpMessagingTemplate messagingTemplate) {
+    public NWSDataService(RestTemplateBuilder restTemplateBuilder, ObjectMapper objectMapper, AlertService alertService, UgcZoneScraper ugcZoneScraper, AlertRepository alertRepository, SimpMessagingTemplate messagingTemplate) {
         this.restTemplate = restTemplateBuilder.build();
         this.objectMapper = objectMapper;
         this.alertService = alertService;
+        this.ugcZoneScraper = ugcZoneScraper;
         this.alertRepository = alertRepository;
         this.messagingTemplate = messagingTemplate;
     }
 
     /**
-     * Performs a GET call on the NWS service and maps the response
-     * to a POJO.
+     * Scheduled task that periodically fetches weather data from the National Weather Service (NWS) API every 60 seconds.
+     * This method performs an HTTP GET request to the specified NWS API endpoint, retrieves weather alert data in GeoJSON format,
+     * and then maps this data to a {@link GeoJsonResponse} object. The mapped data is subsequently processed to extract
+     * individual alerts and their related information, which are then persisted in the database.
+     * <p>
+     * This method is annotated with {@code @Scheduled}, indicating that it is automatically run by the Spring framework at
+     * fixed intervals (every 60 seconds in this case), making it a self-contained scheduled task for weather data retrieval.
      */
-    @PostConstruct // ensures run on service initialization
-    @Scheduled(fixedRate = 60000)
+    @Scheduled(fixedRate = 60000) // runs every 60 seconds
     @CrossOrigin(origins = "/**")
     public void fetchWeatherData() {
         try {
@@ -61,55 +64,49 @@ public class NWSDataService {
             // Maps the response into a POJO containing all the alert data.
             GeoJsonResponse geoJsonResponse = objectMapper.readValue(response.getBody(), GeoJsonResponse.class);
             processGeoJsonResponse(geoJsonResponse);
-        } catch (RestClientException | IOException e) {
-            // Handle the error scenario
+        }
+        catch (RestClientException e) {
+            System.out.printf("Failed to reach address: %s, Error: %s\n", url, e.getMessage());
+            e.printStackTrace();
+        }
+        catch (IOException e) {
+            System.out.printf("Failed to parse response for address: %s\n", url);
             e.printStackTrace();
         }
     }
 
     /**
-     * Processes the alerts(features) from GeoJasonReponse.
-     * PUTs the new alerts into the Database using the AlertService and sends them
-     * through the WebSocket.
-     * 
-     * @param geoJsonResponse The {@link GeoJsonResponse} to be processed.
+     * Processes a given {@link GeoJsonResponse} object, which contains weather alert information in GeoJSON format,
+     * and updates the database accordingly. This method iterates over each feature (alert) in the GeoJSON response,
+     * performs necessary pre-processing, and then uses application services to persist the alerts and their related
+     * geographic zone information to the database.
+     * <p>
+     * If the GeoJSON response does not contain any features (alerts), it logs a message indicating that there are no current
+     * weather alerts.
+     *
+     * @param geoJsonResponse The {@link GeoJsonResponse} object containing weather alert data in GeoJSON format to be
+     *                        processed. This object includes a list of features, where each feature represents a specific
+     *                        weather alert with its associated data.
      */
     private void processGeoJsonResponse(GeoJsonResponse geoJsonResponse) {
         List<Feature> allFeatures = geoJsonResponse.getFeatures();
         if (!allFeatures.isEmpty()) {
             allFeatures.forEach(feature -> {
                 System.out.println("processing alert event: " + feature.getProperties().getEvent());
-                Alert alert = createAlertFromFeature(feature);
+                Alert alert = feature.getFeatureAsAlert();
 
                 // This line should be moved into the if statement below to only send new alerts
                 // through the frontend.
                 messagingTemplate.convertAndSend("/topic", feature);
 
                 if (alert.getNwsID() != null && !alertRepository.existsByNwsID(alert.getNwsID())) {
+                    ugcZoneScraper.scrape(feature.getProperties().getUgcCodeAddress());
                     alertService.createAlert(alert);
+                    // TODO add many-to-many entries (ugc-alert)
                 }
             });
         } else {
             System.out.println("No current weather alerts.");
         }
-    }
-
-    /**
-     * Converts a Feature object into an Alert object
-     * 
-     * @param feature The {@link Feature} to be converted to an {@link Alert}.
-     * @return
-     */
-    private Alert createAlertFromFeature(Feature feature) {
-        Alert alert = new Alert();
-        FeatureProperties properties = feature.getProperties();
-        alert.setEvent(properties.getEvent());
-        alert.setOnset(properties.getOnset());
-        alert.setExpires(properties.getExpires());
-        alert.setHeadline(properties.getHeadline());
-        alert.setDescription(properties.getDescription());
-        alert.setNwsID(feature.getId());
-
-        return alert;
     }
 }

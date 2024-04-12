@@ -32,7 +32,7 @@ public class Alert {
     @Column(name = "headline", length = 150)
     private String headline;
 
-    @Column(name = "description", length = 1000)
+    @Column(name = "description", length = 5000)
     private String description;
 
     @Column(name = "nws_id", length = 255)

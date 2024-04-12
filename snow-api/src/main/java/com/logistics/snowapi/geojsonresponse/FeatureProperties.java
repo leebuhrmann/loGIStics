@@ -29,12 +29,12 @@ public class FeatureProperties {
     @JsonProperty("description")
     private String description;
 
-    private ArrayList<String> UGC;
+    @JsonProperty("affectedZones")
+    private ArrayList<String> UgcCodeAddress;
 
-    @SuppressWarnings("unchecked")
-    @JsonProperty("geocode")
-    private void unpackUGC(Map<String,Object> geocode) {
-        this.UGC = (ArrayList<String>) geocode.get("UGC");
-    }
+//    @JsonProperty("geocode")
+//    private void unpackUGC(Map<String,Object> geocode) {
+//        this.UGC = (ArrayList<String>) geocode.get("UGC");
+//    }
 
 }

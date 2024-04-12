@@ -2,6 +2,7 @@ package com.logistics.snowapi.geojsonresponse;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.logistics.snowapi.model.Alert;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,8 +22,20 @@ public class Feature {
                             "\nheadline: %s" +
                             "\nonset: %s" +
                             "\nexpires: %s" +
-                            "\nUGC: %s" +
+                            "\naffected-zones: %s" +
                             "\ndescription: %s",
-                this.id, properties.getEvent(), properties.getHeadline(), properties.getOnset(), properties.getExpires(), properties.getUGC(), properties.getDescription());
+                this.id, properties.getEvent(), properties.getHeadline(), properties.getOnset(), properties.getExpires(), properties.getUgcCodeAddress(), properties.getDescription());
+    }
+
+    public Alert getFeatureAsAlert() {
+        Alert alert = new Alert();
+        alert.setEvent(properties.getEvent());
+        alert.setOnset(properties.getOnset());
+        alert.setExpires(properties.getExpires());
+        alert.setHeadline(properties.getHeadline());
+        alert.setDescription(properties.getDescription());
+        alert.setNwsID(this.id);
+
+        return alert;
     }
 }
