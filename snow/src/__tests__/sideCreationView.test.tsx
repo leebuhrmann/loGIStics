@@ -4,14 +4,15 @@ import "@testing-library/jest-dom";
 jest.mock("../components/map/MapComponent");
 import user from "@testing-library/user-event";
 import SideCreationView from "@/components/side-menu/side-form-view/side-creation-view";
+import { TextEncoder, TextDecoder } from "util";
 
-describe("Side creation view elements are rendered", () => {
-  beforeEach(() => {
-    user.setup();
-    render(<Home />);
-  });
+Object.assign(global, { TextDecoder, TextEncoder });
 
   describe("Side creation view elements are rendered", () => {
+    beforeEach(() => {
+      user.setup();
+      render(<Home />);
+    });
     test("boundary title", () => {
       render(<SideCreationView onClose={() => {}} />);
       const boundaryInput = screen.getByPlaceholderText("Enter Boundary Name");

@@ -1,21 +1,28 @@
 package com.logistics.snowapi.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.logistics.snowapi.geojsonresponse.FeatureProperties;
 import com.logistics.snowapi.geojsonresponse.GeoJsonResponse;
 import com.logistics.snowapi.geojsonresponse.Feature;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import com.logistics.snowapi.model.Alert;
+import com.logistics.snowapi.repository.AlertRepository;
 
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Service class for retrieving alert data from NWS and sending alerts through
+ * the WebSocket.
+ */
 @Service
 public class NWSDataService {
     @Value("${nwsalert.api.url}")
@@ -25,13 +32,18 @@ public class NWSDataService {
     private final ObjectMapper objectMapper;
     private final AlertService alertService;
     private final UgcZoneScraper ugcZoneScraper;
+    private final AlertRepository alertRepository;
+    private final SimpMessagingTemplate messagingTemplate;
 
     // Constructor for RestTemplate injection
-    public NWSDataService(RestTemplateBuilder restTemplateBuilder, ObjectMapper objectMapper, AlertService alertService, UgcZoneScraper ugcZoneScraper) {
+    @Autowired
+    public NWSDataService(RestTemplateBuilder restTemplateBuilder, ObjectMapper objectMapper, AlertService alertService, UgcZoneScraper ugcZoneScraper, AlertRepository alertRepository, SimpMessagingTemplate messagingTemplate) {
         this.restTemplate = restTemplateBuilder.build();
         this.objectMapper = objectMapper;
         this.alertService = alertService;
         this.ugcZoneScraper = ugcZoneScraper;
+        this.alertRepository = alertRepository;
+        this.messagingTemplate = messagingTemplate;
     }
 
     /**
@@ -44,6 +56,7 @@ public class NWSDataService {
      * fixed intervals (every 60 seconds in this case), making it a self-contained scheduled task for weather data retrieval.
      */
     @Scheduled(fixedRate = 60000) // runs every 60 seconds
+    @CrossOrigin(origins = "/**")
     public void fetchWeatherData() {
         try {
             // GET request from NWS api
@@ -80,15 +93,19 @@ public class NWSDataService {
         if (!allFeatures.isEmpty()) {
             allFeatures.forEach(feature -> {
                 System.out.println("processing alert event: " + feature.getProperties().getEvent());
-                // call zone scraper, which checks and adds ugc zones entries
-                ugcZoneScraper.scrape(feature.getProperties().getUgcCodeAddress());
-//                ugcZoneScraper.scrapeTest(feature.getProperties().getUgcCodeAddress().getFirst());
-                // add alert entries
-                alertService.createAlert(feature.getFeatureAsAlert());
-                // TODO add many-to-many entries (ugc-alert)
+                Alert alert = feature.getFeatureAsAlert();
+
+                // This line should be moved into the if statement below to only send new alerts
+                // through the frontend.
+                messagingTemplate.convertAndSend("/topic", feature);
+
+                if (alert.getNwsID() != null && !alertRepository.existsByNwsID(alert.getNwsID())) {
+                    ugcZoneScraper.scrape(feature.getProperties().getUgcCodeAddress());
+                    alertService.createAlert(alert);
+                    // TODO add many-to-many entries (ugc-alert)
+                }
             });
-        }
-        else {
+        } else {
             System.out.println("No current weather alerts.");
         }
     }

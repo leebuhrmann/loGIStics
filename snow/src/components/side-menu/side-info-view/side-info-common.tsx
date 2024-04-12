@@ -1,9 +1,16 @@
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
-import { MockAlertData, MockBoundaryData } from "@/mock-data/mock-data";
+import { MockBoundaryData } from "@/mock-data/mock-data";
+import { AlertMessage } from "@/services/AlertService";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 
 interface SideInfoCommonProps {
@@ -11,6 +18,17 @@ interface SideInfoCommonProps {
   subCheckValue: boolean;
   setSubCheckValue: any;
 }
+
+const options: Intl.DateTimeFormatOptions = {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+  hour: "2-digit",
+  minute: "2-digit",
+  second: "2-digit",
+  hour12: true,
+  timeZoneName: "short",
+};
 
 export default function SideInfoCommon({
   data,
@@ -45,7 +63,7 @@ export default function SideInfoCommon({
         </div>
         <ScrollArea className="h-5/6 w-full rounded-md border">
           {/* Loop through each item in data, output DataSelect */}
-          {data.map((item: MockAlertData | MockBoundaryData, index: number) => (
+          {data.map((item: AlertMessage | MockBoundaryData, index: number) => (
             <div key={`Alert-${data.title}-${index}`} className="p-2">
               <DataSelect data={item} index={index}></DataSelect>
             </div>
@@ -57,7 +75,7 @@ export default function SideInfoCommon({
 }
 
 interface DataSelectProps {
-  data: MockAlertData | MockBoundaryData;
+  data: AlertMessage | MockBoundaryData;
   index: number;
 }
 /**
@@ -67,23 +85,29 @@ interface DataSelectProps {
 function DataSelect({ data, index }: DataSelectProps) {
   if (!("sub" in data)) {
     // Alert Data
+    const issuedDate = new Date(data.onset);
+    const expiresDate = new Date(data.expires);
+
+    const issuedFormatted = new Intl.DateTimeFormat("en-US", options).format(
+      issuedDate
+    );
+    const expiresFormatted = new Intl.DateTimeFormat("en-US", options).format(
+      expiresDate
+    );
     return (
       <>
-        <h4>{data.title}</h4>
-        {/* Loop through the header list */}
-        {data.header.map((headerItem: string, headerIndex: number) => (
-          <p
-            key={`Alert-${data.header}-${headerIndex}`}
-            className="font-semibold"
-          >
-            {headerItem}
-          </p>
-        ))}
-        {/* Loop through the body list */}
-        {data.body.map((bodyItem: string, bodyIndex: number) => (
-          <p key={`Alert-${data.body}-${bodyIndex}`}>{bodyItem}</p>
-        ))}
-        <Separator />
+        <h4>{data.event}</h4>
+        <p className="font-semibold">Onset: {issuedFormatted}</p>
+        <p className="font-semibold">Expiring: {expiresFormatted}</p>
+
+        <Accordion type="single" collapsible className="w-full">
+          <AccordionItem value="item-1">
+            <AccordionTrigger className="text-sm text-left font-normal">
+              {data.headline}
+            </AccordionTrigger>
+            <AccordionContent>{data.description}</AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </>
     );
   } else {

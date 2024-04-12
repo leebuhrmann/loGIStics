@@ -11,20 +11,28 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import SideMenu from "@/components/side-menu/side-menu";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SideCreationView from "@/components/side-menu/side-form-view/side-creation-view";
 import SideInfoView from "@/components/side-menu/side-info-view/side-info-view";
+import WebSocketService, { AlertMessage } from "@/services/AlertService";
+import SideEditView from "@/components/side-menu/side-form-view/side-edit-view";
 
 export default function Home() {
   const [viewState, setViewState] = useState("info");
   const [clearPolygon, setClearPolygon] = useState(false);
+
   // State for global subscription filter
   const [subCheckValue, setSubCheckValue] = useState(true);
+
+  const [alerts, setAlerts] = useState<AlertMessage[]>([]);
 
   const toggleViewToInfo = () => {
     setViewState("info");
   };
 
+  const toggleViewToEdit = () => {
+    setViewState("edit");
+  };
   const handlePolygonComplete = () => {
     setViewState("create");
   };
@@ -37,6 +45,16 @@ export default function Home() {
   const handleClearComplete = () => {
     setClearPolygon(false);
   };
+
+  useEffect(() => {
+    const webSocketService = new WebSocketService((newAlert) => {
+      setAlerts((prevAlerts) => [newAlert, ...prevAlerts]);
+    });
+
+    return () => {
+      webSocketService.client.deactivate();
+    };
+  }, []);
 
   return (
     <main className="w-screen h-screen overflow-hidden flex flex-col">
@@ -60,10 +78,13 @@ export default function Home() {
                   onClose={toggleViewToInfo}
                   onClearPolygon={handleClearPolygon}
                 />
+              ) : viewState === "edit" ? (
+                <SideEditView onClose={toggleViewToInfo} />
               ) : (
                 <SideInfoView
                   subCheckValue={subCheckValue}
                   setSubCheckValue={setSubCheckValue}
+                  alerts={alerts}
                 />
               )}
             </SideMenu>
@@ -76,6 +97,7 @@ export default function Home() {
               onPolygonComplete={handlePolygonComplete}
               clearPolygon={clearPolygon}
               onClearComplete={handleClearComplete}
+              onPolygonSelect={toggleViewToEdit}
             />
           </div>
         </ResizablePanel>
