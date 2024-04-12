@@ -49,3 +49,13 @@ List all the prerequisites and how to install them.
 - Created mappers for basic CRUD operations of boundaries 
 - Began building out needed API calls 
 - Created scheduled API calls to NWS gathering weather alert data and store that data into the database
+
+### Milestone #3
+
+- Have implemented Geojson deserializer and are able to insert geospatial data into the database
+- We have not implemented Kafka as originally planned, and has been reclassified as a stretch goal
+- Can now receive weather alerts in real time and store UGC zone data
+- Have implemented WebSocket to facilitate real time alerts
+- When the user selects a boundary to edit, the side panel that corresponds to editing is visible
+- We do not have functionality to view and subscribe to boundaries
+- We do have have API calls implemented in the frontend
