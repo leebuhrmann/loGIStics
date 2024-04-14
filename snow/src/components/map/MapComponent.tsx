@@ -126,9 +126,12 @@ const MapComponent: React.FC<MapComponentProps> = ({
     startDrawing();
 
     // Remove the draw interaction once polygon has been created
-    draw.on("drawend", () => {
+    draw.on("drawend", (event) => {
       map.removeInteraction(draw);
-      stopDrawing();
+      stopDrawing()
+      // Outputs long lat, not lat long.
+      const polygonCoordinates = event.feature?.getGeometry()?.getCoordinates();
+      console.log("Polygon Coordinates", polygonCoordinates);
       onPolygonComplete();
     });
   };
@@ -192,6 +195,7 @@ const MapComponent: React.FC<MapComponentProps> = ({
     stopDrawing();
     stopModifying();
   }
+
 
   return (
     <>
