@@ -1,5 +1,6 @@
 package com.logistics.snowapi.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,6 +21,7 @@ public class SnowUser {
     private Integer id;
 
     @ManyToMany(mappedBy = "snowUsers")
+//    @JsonManagedReference
     private Set<Boundary> boundaries = new LinkedHashSet<>();
 
 }

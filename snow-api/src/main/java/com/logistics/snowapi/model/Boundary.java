@@ -1,5 +1,11 @@
 package com.logistics.snowapi.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.logistics.snowapi.MultiPolygonDeserializer;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,19 +26,30 @@ public class Boundary {
     private Integer id;
 
     @Column(columnDefinition = "geometry(MultiPolygon,3857)")
+    @JsonProperty("the_geom")
+    @JsonDeserialize(using = MultiPolygonDeserializer.class)
     private MultiPolygon theGeom;
+
+    @Column(name = "description", nullable = true, length = 500)
+    private String description;
+
+    @Column(name = "name", nullable = true, length = 255)
+    private String name;
 
     @ManyToMany
     @JoinTable(name = "ugc_boundary",
             joinColumns = @JoinColumn(name = "boundary_id"),
             inverseJoinColumns = @JoinColumn(name = "ugc_code"))
+//    @JsonManagedReference
     private Set<UgcZone> ugcZones = new LinkedHashSet<>();
 
     @ManyToMany
     @JoinTable(name = "user_boundary",
             joinColumns = @JoinColumn(name = "boundary_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
+//    @JsonBackReference
     private Set<SnowUser> snowUsers = new LinkedHashSet<>();
+
 
 /*
  TODO create field to map the 'the_geom' column
