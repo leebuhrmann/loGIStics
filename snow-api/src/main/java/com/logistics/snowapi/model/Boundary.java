@@ -5,7 +5,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.logistics.snowapi.MultiPolygonDeserializer;
+import com.logistics.snowapi.MultiPolygonSerializer;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,6 +30,7 @@ public class Boundary {
     @Column(columnDefinition = "geometry(MultiPolygon,3857)")
     @JsonProperty("the_geom")
     @JsonDeserialize(using = MultiPolygonDeserializer.class)
+    @JsonSerialize(using = MultiPolygonSerializer.class)
     private MultiPolygon theGeom;
 
     @Column(name = "description", nullable = true, length = 500)
