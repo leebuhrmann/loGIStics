@@ -3,7 +3,6 @@ package com.logistics.snowapi.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.ColumnDefault;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -21,5 +20,4 @@ public class SnowUser {
 
     @ManyToMany(mappedBy = "snowUsers")
     private Set<Boundary> boundaries = new LinkedHashSet<>();
-
 }

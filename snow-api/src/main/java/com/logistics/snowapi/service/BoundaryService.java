@@ -27,8 +27,14 @@ public class BoundaryService {
     }
 
     public Boundary createBoundary(Boundary boundary) {
-        return boundaryRepository.save(boundary);
+        try {
+            return boundaryRepository.save(boundary);
+        } catch (Exception e) {
+            System.out.println("Error saving boundary");
+            throw e;
+        }
     }
+
 
     public Boundary updateBoundary(Boundary boundary) {
         if (boundary.getId() != null && boundaryRepository.existsById(boundary.getId())) {
