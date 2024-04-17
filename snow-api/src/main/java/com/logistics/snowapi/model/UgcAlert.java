@@ -21,5 +21,4 @@ public class UgcAlert {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "alert_id", nullable = false)
     private Alert alert;
-
 }

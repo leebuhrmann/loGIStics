@@ -31,7 +31,7 @@ public class BoundaryService {
             return boundaryRepository.save(boundary);
         } catch (Exception e) {
             System.out.println("Error saving boundary");
-            throw e;  // Ensure the exception is properly handled or logged
+            throw e;
         }
     }
 

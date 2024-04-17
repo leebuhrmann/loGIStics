@@ -1,7 +1,5 @@
 package com.logistics.snowapi.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,7 +27,6 @@ public class UgcZone {
     @ManyToMany(mappedBy = "ugcZones")
     private Set<Alert> alerts = new LinkedHashSet<>();
     @ManyToMany(mappedBy = "ugcZones")
-//    @JsonBackReference
     private Set<Boundary> boundaries = new LinkedHashSet<>();
 
 /*

@@ -1,8 +1,6 @@
 package com.logistics.snowapi.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -11,7 +9,6 @@ import com.logistics.snowapi.MultiPolygonSerializer;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.ColumnDefault;
 import org.locationtech.jts.geom.MultiPolygon;
 
 import java.util.LinkedHashSet;
@@ -29,8 +26,8 @@ public class Boundary {
 
     @Column(columnDefinition = "geometry(MultiPolygon,3857)")
     @JsonProperty("the_geom")
-    @JsonDeserialize(using = MultiPolygonDeserializer.class)
-    @JsonSerialize(using = MultiPolygonSerializer.class)
+    @JsonDeserialize(using = MultiPolygonDeserializer.class) // deserialize the incoming GeoJson into a JTS MultiPolyong
+    @JsonSerialize(using = MultiPolygonSerializer.class) // reserialize the JTS MultiPolygon back into Json format to be persisted in the database
     private MultiPolygon theGeom;
 
     @Column(name = "description", nullable = true, length = 500)
@@ -43,14 +40,14 @@ public class Boundary {
     @JoinTable(name = "ugc_boundary",
             joinColumns = @JoinColumn(name = "boundary_id"),
             inverseJoinColumns = @JoinColumn(name = "ugc_code"))
-//    @JsonManagedReference
+    @JsonIgnore
     private Set<UgcZone> ugcZones = new LinkedHashSet<>();
 
     @ManyToMany
     @JoinTable(name = "user_boundary",
             joinColumns = @JoinColumn(name = "boundary_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
-//    @JsonBackReference
+    @JsonIgnore
     private Set<SnowUser> snowUsers = new LinkedHashSet<>();
 
 

@@ -15,12 +15,9 @@ public class MultiPolygonDeserializer extends JsonDeserializer<MultiPolygon> {
     private static final GeometryFactory geometryFactory = new GeometryFactory();
 
     @Override
-    public MultiPolygon deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
-        System.out.println("###################################################################################\nEntered Deserializer");
+    public MultiPolygon deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
         JsonNode node = jsonParser.getCodec().readTree(jsonParser);
         String type = node.get("type").asText();
-        JsonNode coordinates = node.get("coordinates");
-//        System.out.printf("Type: %s\nCoordinates: %s\n", type, coordinates);
 
         if (!"MultiPolygon".equals(type)) {
             throw new IOException("Type mismatch: Expected MultiPolygon type");
@@ -40,9 +37,7 @@ public class MultiPolygonDeserializer extends JsonDeserializer<MultiPolygon> {
         for (JsonNode polygonNode : coordinates) {
             polygons.add(parsePolygon(polygonNode));
         }
-        System.out.println("we got here");
         MultiPolygon multiPolygon = geometryFactory.createMultiPolygon(polygons.toArray(new Polygon[0]));
-//        System.out.println(multiPolygon);
         return multiPolygon;
     }
 
@@ -61,7 +56,7 @@ public class MultiPolygonDeserializer extends JsonDeserializer<MultiPolygon> {
         return geometryFactory.createPolygon(shell, holes);
     }
 
-    private LinearRing parseLinearRing(JsonNode ringNode) throws IOException {
+    private LinearRing parseLinearRing(JsonNode ringNode) {
         Coordinate[] coordinates = new Coordinate[ringNode.size()];
 
         for (int i = 0; i < ringNode.size(); i++) {
