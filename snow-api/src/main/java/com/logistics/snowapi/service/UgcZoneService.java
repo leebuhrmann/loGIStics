@@ -28,7 +28,9 @@ public class UgcZoneService {
     }
 
     public UgcZone createUgcZone(UgcZone ugcZone) {
-        return ugcZoneRepository.save(ugcZone);
+        UgcZone savedZone = ugcZoneRepository.save(ugcZone);
+        eventPublisher.publishEvent(new UgcZoneCreatedEvent(this, savedZone));
+        return savedZone;
     }
 
     public UgcZone updateUgcZone(UgcZone ugcZone) {
