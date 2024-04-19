@@ -130,8 +130,8 @@ const MapComponent: React.FC<MapComponentProps> = ({
       map.removeInteraction(draw);
       stopDrawing()
       // Outputs long lat, not lat long.
-      const polygonCoordinates = event.feature?.getGeometry()?.getCoordinates();
-      console.log("Polygon Coordinates", polygonCoordinates);
+      //const polygonCoordinates = event.feature?.getGeometry()?.getCoordinates();
+      //console.log("Polygon Coordinates", polygonCoordinates);
       onPolygonComplete();
     });
   };
