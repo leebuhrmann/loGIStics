@@ -137,6 +137,8 @@ const MapComponent: React.FC<MapComponentProps> = ({
        // ring.map((coord) => [coord[0], coord[1]])
       //);
 
+      //const polygonCoordinates = event.feature?.getGeometry()?.getCoordinates();
+      //console.log("Polygon Coordinates", polygonCoordinates);
       onPolygonComplete();
     });
   };

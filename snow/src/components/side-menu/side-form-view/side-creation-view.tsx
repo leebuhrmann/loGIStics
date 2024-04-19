@@ -62,6 +62,50 @@ const SideCreationView: React.FC<SideCreationViewProps> = ({
   };
 
   const handleSave = async() => {
+  
+  const postBoundaryData = async () => {
+    const boundaryData = {
+      name: "placeholder",
+      description: "placeholder",
+      the_geom: {
+        type: "MultiPolygon",
+        coordinates: [
+          [
+            [
+              [40.7168, -74.0060],
+              [34.0522, -118.2437],
+              [23.8781, -87.6298],
+              [30.7604, -95.3698],
+              [40.7128, -74.0060]
+            ]
+          ],
+        ],
+      },
+    };
+  
+    const response = await fetch('http://localhost:8081/api/boundaries', {
+      method: 'POST',
+      //mode: "no-cors",
+      headers: {
+        'Content-Type': 'application/json',
+        
+      },
+      body: JSON.stringify(boundaryData),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to save boundary data');
+    }
+  
+    if (response.ok) {
+      const responseData = await response.json();
+      console.log('Boundary created:', responseData);
+    } else {
+      console.error('Failed to create boundary:', response.status, response.statusText);
+    }
+  };
+
+  const handleSave = async() => {
     // Placeholder for save logic
     console.log(
       "Saving boundary with name:",
