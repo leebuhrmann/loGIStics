@@ -63,6 +63,7 @@ public class NWSDataService {
             ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
             // Maps the response into a POJO containing all the alert data.
             GeoJsonResponse geoJsonResponse = objectMapper.readValue(response.getBody(), GeoJsonResponse.class);
+
             processGeoJsonResponse(geoJsonResponse);
         }
         catch (RestClientException e) {
@@ -98,7 +99,6 @@ public class NWSDataService {
                 // This line should be moved into the if statement below to only send new alerts
                 // through the frontend.
                 messagingTemplate.convertAndSend("/topic", feature);
-
                 if (alert.getNwsID() != null && !alertRepository.existsByNwsID(alert.getNwsID())) {
                     ugcZoneScraper.scrape(feature.getProperties().getUgcCodeAddress());
                     alertService.createAlert(alert);
