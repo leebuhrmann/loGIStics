@@ -11,12 +11,12 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { MockBoundaryData } from "@/mock-data/mock-data";
 import { AlertMessage } from "@/services/AlertService";
+import { subCheckValueAtom } from "@/state/atoms";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
+import { useRecoilState } from "recoil";
 
 interface SideInfoCommonProps {
   data: any;
-  subCheckValue: boolean;
-  setSubCheckValue: any;
 }
 
 const options: Intl.DateTimeFormatOptions = {
@@ -30,15 +30,13 @@ const options: Intl.DateTimeFormatOptions = {
   timeZoneName: "short",
 };
 
-export default function SideInfoCommon({
-  data,
-  subCheckValue,
-  setSubCheckValue,
-}: SideInfoCommonProps) {
+export default function SideInfoCommon({ data }: SideInfoCommonProps) {
   // Function to handle checkbox changes
   const handleCheckboxChange = () => {
     setSubCheckValue((prevValue: boolean) => !prevValue);
   };
+  const [subCheckValue, setSubCheckValue] = useRecoilState(subCheckValueAtom);
+
   return (
     <div id="side-info-common" className="h-full">
       <div className="flex flex-col max-w-full gap-3 h-full">

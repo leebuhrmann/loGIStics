@@ -1,137 +1,119 @@
-import { render, screen, waitFor } from "@testing-library/react";
-import Home from "../app/page";
+import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import user from "@testing-library/user-event";
-import userEvent from "@testing-library/user-event";
 import SideCreationView from "@/components/side-menu/side-form-view/side-creation-view";
 import SideFormViewCommon from "@/components/side-menu/side-form-view/side-form-view-common";
 import { TextEncoder, TextDecoder } from "util";
 import React from "react";
-import SideInfoCommon from "@/components/side-menu/side-info-view/side-info-common";
 import SideInfoView from "@/components/side-menu/side-info-view/side-info-view";
+import { RecoilRoot } from "recoil";
+import {
+  boundaryDescriptionAtom,
+  boundaryNameAtom,
+  clearPolygonAtom,
+  viewStateAtom,
+} from "@/state/atoms";
+import { RecoilObserver } from "@/mock-data/RecoilObserver";
 
 Object.assign(global, { TextDecoder, TextEncoder });
 
 jest.mock("../components/map/MapComponent");
-
-describe("Functions", () => {
-  /* Not all functions are tested yet because the map component is crucial can cannot be mocked,
+/* Not all functions are tested yet because the map component is crucial can cannot be mocked,
     like the clear functions
 
     Also, need to figure out how to handle check boxes because Shadcn defines them as buttons, and I haven't
     found any resources
     */
-
-  const mockAlertData = [
-    {
-      event: "Test Alert 1",
-      onset: new Date(Date.now()).toISOString(),
-      expires: new Date(Date.now()).toISOString(),
-      headline: "Headline 1",
-      description: "Description 1",
-    },
-  ];
-
-  const mockBoundaryData = [
-    {
-      title: "Test Boundary 1",
-      sub: false,
-      header: ["Header 1", "Header 2"],
-      body: ["Body 1", "Body 2"],
-    },
-  ];
+describe("SideCreationView", () => {
+  let onViewChange: (value: any) => void,
+    onNameChange: (value: any) => void,
+    onDescriptionChange: (value: any) => void;
 
   beforeEach(() => {
+    onViewChange = jest.fn();
+    onNameChange = jest.fn();
+    onDescriptionChange = jest.fn();
+
     user.setup();
     jest.mock("../components/side-menu/side-info-view/side-info-view", () => {
-      return () => (
-        <SideInfoView
-          subCheckValue={true}
-          setSubCheckValue={() => {}}
-          alerts={mockAlertData}
-        ></SideInfoView>
-      );
+      return () => <SideInfoView />;
     });
-    render(<Home />);
+    render(
+      <RecoilRoot>
+        <RecoilObserver
+          node={viewStateAtom}
+          onChange={onViewChange}
+        ></RecoilObserver>
+        <RecoilObserver
+          node={boundaryNameAtom}
+          onChange={onNameChange}
+        ></RecoilObserver>
+        <RecoilObserver
+          node={boundaryDescriptionAtom}
+          onChange={onDescriptionChange}
+        ></RecoilObserver>
+        <SideCreationView />
+      </RecoilRoot>
+    );
   });
-  test("handlePolygonComplete", async () => {
-    const completePolygonBtn = screen.getByTestId("completePolygon");
-    await userEvent.click(completePolygonBtn);
-
-    expect(screen.getByText("Create New Boundary")).toBeInTheDocument();
-  });
-
-  // test("toggleViewToInfo", async () => {
-  //   render(<SideCreationView onClose={jest.fn()} />);
-
-  //   const closeBtn = screen.getByTestId("closeButton");
-  //   await userEvent.click(closeBtn);
-
-  //   await waitFor(() => {
-  //     const alertsContent = screen.getAllByText(/Onset/i);
-  //     expect(alertsContent.length).toBeGreaterThan(0);
-  //   });
-  // });
 
   test("handleSave", async () => {
-    const onCloseMock = jest.fn();
-    render(<SideCreationView onClose={onCloseMock} />);
+    const component = screen.getByTestId("side-creation-save-btn");
+    fireEvent.click(component);
+    expect(onViewChange).toHaveBeenCalledWith("info");
+    expect(onNameChange).toHaveBeenCalledWith("");
+    expect(onDescriptionChange).toHaveBeenCalledWith("");
+  });
+});
 
-    await userEvent.click(screen.getByRole("button", { name: /save/i }));
+describe("SideFormViewCommon", () => {
+  let onViewChange: (value: any) => void,
+    onClearState: (value: any) => void,
+    onNameChange: (value: any) => void,
+    onDescriptionChange: (value: any) => void;
 
-    expect(onCloseMock).toHaveBeenCalledTimes(1);
+  beforeEach(() => {
+    onViewChange = jest.fn();
+    onClearState = jest.fn();
+    onNameChange = jest.fn();
+    onDescriptionChange = jest.fn();
+
+    user.setup();
+    jest.mock("../components/side-menu/side-info-view/side-info-view", () => {
+      return () => <SideInfoView />;
+    });
+    render(
+      <RecoilRoot>
+        <RecoilObserver
+          node={viewStateAtom}
+          onChange={onViewChange}
+        ></RecoilObserver>
+        <RecoilObserver
+          node={clearPolygonAtom}
+          onChange={onClearState}
+        ></RecoilObserver>
+        <RecoilObserver
+          node={boundaryNameAtom}
+          onChange={onNameChange}
+        ></RecoilObserver>
+        <RecoilObserver
+          node={boundaryDescriptionAtom}
+          onChange={onDescriptionChange}
+        ></RecoilObserver>
+        <SideFormViewCommon
+          title=""
+          boundaryPlaceholder="Enter Boundary Name"
+          descriptionPlaceholder="Enter Description"
+        />{" "}
+      </RecoilRoot>
+    );
   });
 
-  describe("handleClose", () => {
-    test("calls onClearPolygon and then onClose when isCreationView true", async () => {
-      const onCloseMock = jest.fn();
-      const onClearPolygonMock = jest.fn();
+  test("calls onClearPolygon and then onClose when isCreationView true", async () => {
+    const component = screen.getByTestId("closeButton");
+    fireEvent.click(component);
 
-      render(
-        <SideFormViewCommon
-          onClose={onCloseMock}
-          onClearPolygon={onClearPolygonMock}
-          isCreationView={true}
-          title=""
-          boundaryName=""
-          setBoundaryName={() => {}}
-          description=""
-          setDescription={() => {}}
-          boundaryPlaceholder="Enter Boundary Name"
-          descriptionPlaceholder="Enter Description"
-        />
-      );
-
-      await userEvent.click(screen.getByTestId("closeButton"));
-
-      expect(onClearPolygonMock).toHaveBeenCalledTimes(1);
-      expect(onCloseMock).toHaveBeenCalledTimes(1);
-
-      const onClearPolygonCallOrder =
-        onClearPolygonMock.mock.invocationCallOrder[0];
-      const onCloseCallOrder = onCloseMock.mock.invocationCallOrder[0];
-      expect(onClearPolygonCallOrder).toBeLessThan(onCloseCallOrder);
-    });
-
-    test("only calls onClose when isCreationView false", async () => {
-      const onCloseMock = jest.fn();
-
-      render(
-        <SideFormViewCommon
-          onClose={onCloseMock}
-          title=""
-          boundaryName=""
-          setBoundaryName={() => {}}
-          description=""
-          setDescription={() => {}}
-          boundaryPlaceholder="Enter Boundary Name"
-          descriptionPlaceholder="Enter Description"
-        />
-      );
-
-      await userEvent.click(screen.getByTestId("closeButton"));
-
-      expect(onCloseMock).toHaveBeenCalledTimes(1);
-    });
+    expect(onViewChange).toHaveBeenCalledWith("info");
+    expect(onClearState).toHaveBeenCalledWith(false);
   });
 });
