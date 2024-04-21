@@ -11,7 +11,7 @@ export default function SideInfoView() {
 
   useEffect(() => {
     const webSocketService = new WebSocketService((newAlert) => {
-      setAlerts([newAlert, ...alerts]);
+      setAlerts((prevAlerts) => [newAlert, ...prevAlerts]);
     });
 
     return () => {
