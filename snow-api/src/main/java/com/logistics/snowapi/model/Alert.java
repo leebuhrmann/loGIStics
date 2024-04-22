@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.OffsetDateTime;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -15,7 +14,8 @@ import java.util.Set;
 @Table(name = "alert")
 public class Alert {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "alert_id_generator")
+    @SequenceGenerator(name = "alert_id_generator", sequenceName = "alert_alert_id_seq", allocationSize = 1)
     @Column(name = "alert_id", nullable = false)
     private Integer id;
 
@@ -42,8 +42,5 @@ public class Alert {
             joinColumns = @JoinColumn(name = "alert_id"),
             inverseJoinColumns = @JoinColumn(name = "ugc_code"))
     private Set<UgcZone> ugcZones = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "alert", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<UgcAlert> ugcAlerts = new HashSet<>();
 
 }
