@@ -1,20 +1,25 @@
 package com.logistics.snowapi.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.logistics.snowapi.geojsonresponse.GeoJsonResponse;
 import com.logistics.snowapi.geojsonresponse.Feature;
+import com.logistics.snowapi.geojsonresponse.GeoJsonResponse;
+import com.logistics.snowapi.model.Alert;
+import com.logistics.snowapi.model.UgcAlert;
+import com.logistics.snowapi.model.UgcAlertId;
+import com.logistics.snowapi.model.UgcZone;
+import com.logistics.snowapi.repository.AlertRepository;
+import com.logistics.snowapi.repository.UgcAlertRepository;
+import com.logistics.snowapi.repository.UgcZoneRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
-import com.logistics.snowapi.model.Alert;
-import com.logistics.snowapi.repository.AlertRepository;
 
 import java.io.IOException;
 import java.util.List;
@@ -31,19 +36,22 @@ public class NWSDataService {
     private final RestTemplate restTemplate;
     private final ObjectMapper objectMapper;
     private final AlertService alertService;
-    private final UgcZoneScraper ugcZoneScraper;
     private final AlertRepository alertRepository;
     private final SimpMessagingTemplate messagingTemplate;
+    private final UgcZoneRepository ugcZoneRepository;
+    private final UgcAlertRepository ugcAlertRepository;
+    private final UgcZoneScraper ugcZoneScraper;
 
-    // Constructor for RestTemplate injection
     @Autowired
-    public NWSDataService(RestTemplateBuilder restTemplateBuilder, ObjectMapper objectMapper, AlertService alertService, UgcZoneScraper ugcZoneScraper, AlertRepository alertRepository, SimpMessagingTemplate messagingTemplate) {
+    public NWSDataService(RestTemplateBuilder restTemplateBuilder, ObjectMapper objectMapper, AlertService alertService, UgcZoneScraper ugcZoneScraper, AlertRepository alertRepository, SimpMessagingTemplate messagingTemplate, UgcZoneRepository ugcZoneRepository, UgcAlertRepository ugcAlertRepository) {
         this.restTemplate = restTemplateBuilder.build();
         this.objectMapper = objectMapper;
         this.alertService = alertService;
         this.ugcZoneScraper = ugcZoneScraper;
         this.alertRepository = alertRepository;
         this.messagingTemplate = messagingTemplate;
+        this.ugcZoneRepository = ugcZoneRepository;
+        this.ugcAlertRepository = ugcAlertRepository;
     }
 
     /**
@@ -93,20 +101,47 @@ public class NWSDataService {
         List<Feature> allFeatures = geoJsonResponse.getFeatures();
         if (!allFeatures.isEmpty()) {
             allFeatures.forEach(feature -> {
-                System.out.println("processing alert event: " + feature.getProperties().getEvent());
-                Alert alert = feature.getFeatureAsAlert();
 
-                // This line should be moved into the if statement below to only send new alerts
-                // through the frontend.
-                messagingTemplate.convertAndSend("/topic", feature);
+                Alert alert = feature.getFeatureAsAlert();
                 if (alert.getNwsID() != null && !alertRepository.existsByNwsID(alert.getNwsID())) {
+                    alert = alertService.createAlert(alert);
                     ugcZoneScraper.scrape(feature.getProperties().getUgcCodeAddress());
-                    alertService.createAlert(alert);
-                    // TODO add many-to-many entries (ugc-alert)
+                    Alert finalAlert = alert;
+
+                    feature.getProperties().getUgcCodeAddress().forEach(url -> {
+                        // Extracts the UGC code from the URL
+                        String ugcCode = extractUgcCodeFromUrl(url);
+                        System.out.println("Extracted UGC Code: " + ugcCode);  // Debug output
+                        System.out.println("Processing alert event: " + feature.getProperties().getEvent());
+
+                        messagingTemplate.convertAndSend("/topic", feature); // TODO: needs logic to ensure that the alert belongs to a currently subscribed boundary
+
+                        UgcZone ugcZone = ugcZoneRepository.findByUgcCode(ugcCode).orElse(null);
+                        if (ugcZone != null && finalAlert != null) {
+                            UgcAlert ugcAlert = new UgcAlert();
+                            UgcAlertId ugcAlertId = new UgcAlertId(); // Instantiates the composite key
+
+                            ugcAlertId.setUgcCode(ugcZone.getUgcCode()); // Sets the UGC code
+                            ugcAlertId.setAlertId(finalAlert.getId()); // Sets the alert ID
+
+                            ugcAlert.setId(ugcAlertId); // Sets the composite ID in UgcAlert
+                            ugcAlert.setUgcCode(ugcZone); // Associates UGC Zone
+                            ugcAlert.setAlert(finalAlert); // Associates Alert
+
+                            ugcAlertRepository.save(ugcAlert); // Saves the UgcAlert entity
+                        } else {
+                            System.out.println("Failed to save UgcAlert: UGC Zone or alert is null");
+                        }
+                    });
                 }
             });
         } else {
             System.out.println("No current weather alerts.");
         }
+    }
+
+    private String extractUgcCodeFromUrl(String url) {
+        // Extracts the last segment from the URL as the UGC code
+        return url.substring(url.lastIndexOf('/') + 1);
     }
 }

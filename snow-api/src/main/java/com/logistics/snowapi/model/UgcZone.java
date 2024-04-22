@@ -3,11 +3,11 @@ package com.logistics.snowapi.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.locationtech.jts.geom.MultiPolygon;
 
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
-
-import org.locationtech.jts.geom.MultiPolygon;
 
 @Getter
 @Setter
@@ -29,10 +29,6 @@ public class UgcZone {
     @ManyToMany(mappedBy = "ugcZones")
     private Set<Boundary> boundaries = new LinkedHashSet<>();
 
-/*
- TODO [Reverse Engineering] create field to map the 'the_geom' column
- Available actions: Define target Java type | Uncomment as is | Remove column mapping
-    @Column(name = "the_geom", columnDefinition = "geometry")
-    private Object theGeom;
-*/
+    @OneToMany(mappedBy = "ugcCode", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<UgcAlert> ugcAlerts = new HashSet<>();
 }
