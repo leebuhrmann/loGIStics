@@ -31,5 +31,4 @@ public class UgcZone {
 
     @OneToMany(mappedBy = "ugcCode", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<UgcAlert> ugcAlerts = new HashSet<>();
-
 }

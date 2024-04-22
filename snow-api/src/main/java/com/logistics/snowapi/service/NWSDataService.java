@@ -101,38 +101,39 @@ public class NWSDataService {
         List<Feature> allFeatures = geoJsonResponse.getFeatures();
         if (!allFeatures.isEmpty()) {
             allFeatures.forEach(feature -> {
-                feature.getProperties().getUgcCodeAddress().forEach(url -> {
-                    // Extracts the UGC code from the URL
-                    String ugcCode = extractUgcCodeFromUrl(url);
-                    System.out.println("Extracted UGC Code: " + ugcCode);  // Debug output
-                    System.out.println("Processing alert event: " + feature.getProperties().getEvent());
-                    Alert alert = feature.getFeatureAsAlert();
-                    messagingTemplate.convertAndSend("/topic", feature); //this should be moved down I think
 
-                    if (alert.getNwsID() != null && !alertRepository.existsByNwsID(alert.getNwsID())) {
-                        ugcZoneScraper.scrape(feature.getProperties().getUgcCodeAddress());
+                Alert alert = feature.getFeatureAsAlert();
+                if (alert.getNwsID() != null && !alertRepository.existsByNwsID(alert.getNwsID())) {
+                    alert = alertService.createAlert(alert);
+                    ugcZoneScraper.scrape(feature.getProperties().getUgcCodeAddress());
+                    Alert finalAlert = alert;
 
-                        alert = alertService.createAlert(alert);
+                    feature.getProperties().getUgcCodeAddress().forEach(url -> {
+                        // Extracts the UGC code from the URL
+                        String ugcCode = extractUgcCodeFromUrl(url);
+                        System.out.println("Extracted UGC Code: " + ugcCode);  // Debug output
+                        System.out.println("Processing alert event: " + feature.getProperties().getEvent());
+
+                        messagingTemplate.convertAndSend("/topic", feature); // TODO: needs logic to ensure that the alert belongs to a currently subscribed boundary
 
                         UgcZone ugcZone = ugcZoneRepository.findByUgcCode(ugcCode).orElse(null);
-
-                        if (ugcZone != null && alert != null) {
+                        if (ugcZone != null && finalAlert != null) {
                             UgcAlert ugcAlert = new UgcAlert();
                             UgcAlertId ugcAlertId = new UgcAlertId(); // Instantiates the composite key
 
                             ugcAlertId.setUgcCode(ugcZone.getUgcCode()); // Sets the UGC code
-                            ugcAlertId.setAlertId(alert.getId()); // Sets the alert ID
+                            ugcAlertId.setAlertId(finalAlert.getId()); // Sets the alert ID
 
                             ugcAlert.setId(ugcAlertId); // Sets the composite ID in UgcAlert
                             ugcAlert.setUgcCode(ugcZone); // Associates UGC Zone
-                            ugcAlert.setAlert(alert); // Associates Alert
+                            ugcAlert.setAlert(finalAlert); // Associates Alert
 
                             ugcAlertRepository.save(ugcAlert); // Saves the UgcAlert entity
                         } else {
                             System.out.println("Failed to save UgcAlert: UGC Zone or alert is null");
                         }
-                    }
-                });
+                    });
+                }
             });
         } else {
             System.out.println("No current weather alerts.");
