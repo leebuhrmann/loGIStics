@@ -36,11 +36,11 @@ public class NWSDataService {
     private final RestTemplate restTemplate;
     private final ObjectMapper objectMapper;
     private final AlertService alertService;
-    private final UgcZoneScraper ugcZoneScraper;
     private final AlertRepository alertRepository;
     private final SimpMessagingTemplate messagingTemplate;
     private final UgcZoneRepository ugcZoneRepository;
     private final UgcAlertRepository ugcAlertRepository;
+    private final UgcZoneScraper ugcZoneScraper;
 
     @Autowired
     public NWSDataService(RestTemplateBuilder restTemplateBuilder, ObjectMapper objectMapper, AlertService alertService, UgcZoneScraper ugcZoneScraper, AlertRepository alertRepository, SimpMessagingTemplate messagingTemplate, UgcZoneRepository ugcZoneRepository, UgcAlertRepository ugcAlertRepository) {
@@ -107,10 +107,13 @@ public class NWSDataService {
                     System.out.println("Extracted UGC Code: " + ugcCode);  // Debug output
                     System.out.println("Processing alert event: " + feature.getProperties().getEvent());
                     Alert alert = feature.getFeatureAsAlert();
-                    messagingTemplate.convertAndSend("/topic", feature);
+                    messagingTemplate.convertAndSend("/topic", feature); //this should be moved down I think
 
                     if (alert.getNwsID() != null && !alertRepository.existsByNwsID(alert.getNwsID())) {
+                        ugcZoneScraper.scrape(feature.getProperties().getUgcCodeAddress());
+
                         alert = alertService.createAlert(alert);
+
                         UgcZone ugcZone = ugcZoneRepository.findByUgcCode(ugcCode).orElse(null);
 
                         if (ugcZone != null && alert != null) {
