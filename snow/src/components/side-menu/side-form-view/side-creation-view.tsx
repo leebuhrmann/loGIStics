@@ -5,19 +5,17 @@ import React, { useState } from "react";
 import SideFormViewCommon from "@/components/side-menu/side-form-view/side-form-view-common";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import {
+  boundaryDescriptionAtom,
+  boundaryNameAtom,
+  viewStateAtom,
+} from "@/state/atoms";
 
-interface SideCreationViewProps {
-  onClose: () => void;
-  onClearPolygon?: () => void;
-}
-
-const SideCreationView: React.FC<SideCreationViewProps> = ({
-  onClose,
-  onClearPolygon,
-}) => {
-  // This makes React in control of the components instead of the DOM
-  const [boundaryName, setBoundaryName] = useState("");
-  const [description, setDescription] = useState("");
+const SideCreationView = () => {
+  const setViewState = useSetRecoilState<string>(viewStateAtom);
+  const [boundaryName, setBoundaryName] = useRecoilState(boundaryNameAtom);
+  const [description, setDescription] = useRecoilState(boundaryDescriptionAtom);
 
   const handleSave = () => {
     // Placeholder for save logic
@@ -27,7 +25,7 @@ const SideCreationView: React.FC<SideCreationViewProps> = ({
       " and description:",
       description
     );
-    onClose();
+    setViewState("info");
     setBoundaryName("");
     setDescription("");
   };
@@ -35,14 +33,7 @@ const SideCreationView: React.FC<SideCreationViewProps> = ({
   return (
     <div id="side-creation-view" className="w-full flex flex-col gap-2">
       <SideFormViewCommon
-        onClose={onClose}
-        isCreationView={true}
-        onClearPolygon={onClearPolygon}
         title="Create New Boundary"
-        boundaryName={boundaryName}
-        setBoundaryName={setBoundaryName}
-        description={description}
-        setDescription={setDescription}
         boundaryPlaceholder="Enter Boundary Name"
         descriptionPlaceholder="Enter Description"
       />
@@ -56,7 +47,9 @@ const SideCreationView: React.FC<SideCreationViewProps> = ({
           Subscribe
         </label>
       </div>
-      <Button onClick={handleSave}>Save</Button>
+      <Button onClick={handleSave} data-testid="side-creation-save-btn">
+        Save
+      </Button>
     </div>
   );
 };

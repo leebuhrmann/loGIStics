@@ -1,11 +1,11 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Home from "../app/page";
 import "@testing-library/jest-dom";
-jest.mock("../components/map/MapComponent");
 import user from "@testing-library/user-event";
 import { TextEncoder, TextDecoder } from "util";
 
 Object.assign(global, { TextDecoder, TextEncoder });
+jest.mock("../components/map/MapComponent");
 
 describe("Main elements are rendered", () => {
   beforeEach(() => {

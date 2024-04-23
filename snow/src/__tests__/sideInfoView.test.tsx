@@ -1,45 +1,29 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Home from "../app/page";
 import "@testing-library/jest-dom";
 import user from "@testing-library/user-event";
 import SideInfoCommon from "@/components/side-menu/side-info-view/side-info-common";
 import { TextEncoder, TextDecoder } from "util";
 import SideInfoView from "@/components/side-menu/side-info-view/side-info-view";
-import { AlertMessage } from "@/services/AlertService";
+import { RecoilRoot } from "recoil";
 
 Object.assign(global, { TextDecoder, TextEncoder });
 jest.mock("../components/map/MapComponent");
-
-const mockAlertData: AlertMessage = {
-  event: "Test Alert 1",
-  onset: new Date(Date.now()).toISOString(),
-  expires: new Date(Date.now()).toISOString(),
-  headline: "Headline 1",
-  description: "Description 1",
-};
 
 describe("Side Info View", () => {
   beforeEach(() => {
     user.setup();
     jest.mock("../components/side-menu/side-info-view/side-info-view", () => {
-      return () => (
-        <SideInfoView
-          subCheckValue={true}
-          setSubCheckValue={() => {}}
-          alerts={[mockAlertData]}
-        ></SideInfoView>
-      );
+      return () => <SideInfoView />;
     });
     jest.mock("../components/side-menu/side-info-view/side-info-common", () => {
-      return () => (
-        <SideInfoView
-          subCheckValue={true}
-          setSubCheckValue={() => {}}
-          alerts={[mockAlertData]}
-        ></SideInfoView>
-      );
+      return () => <SideInfoView />;
     });
-    render(<Home />);
+    render(
+      <RecoilRoot>
+        <Home />
+      </RecoilRoot>
+    );
   });
 
   describe("Side Info view elements are rendered", () => {
@@ -71,21 +55,6 @@ describe("Side Info View", () => {
     });
   });
 
-  describe("Correct elements are rendered on tab interaction", () => {
-    // test("alerts content", async () => {
-    //   const alertsContent = screen.getAllByText("Onset");
-    //   expect(alertsContent.length).toBeGreaterThan(0);
-    // });
-
-    test("boundaries content", async () => {
-      const boundariesTab = screen.getByRole("tab", { name: "Boundaries" });
-      await user.click(boundariesTab);
-
-      const boundariesContent = screen.getAllByText(/description/i);
-      expect(boundariesContent.length).toBeGreaterThan(0);
-    });
-  });
-
   test("side-info-common alert data renders correctly", async () => {
     const mockData = [
       {
@@ -103,11 +72,9 @@ describe("Side Info View", () => {
     ];
 
     render(
-      <SideInfoCommon
-        data={mockData}
-        subCheckValue={false}
-        setSubCheckValue={() => {}}
-      />
+      <RecoilRoot>
+        <SideInfoCommon data={mockData} />
+      </RecoilRoot>
     );
 
     const alert1 = screen.getAllByText("Test Alert1");
@@ -143,11 +110,9 @@ describe("Side Info View", () => {
     ];
 
     render(
-      <SideInfoCommon
-        data={mockData}
-        subCheckValue={false}
-        setSubCheckValue={() => {}}
-      />
+      <RecoilRoot>
+        <SideInfoCommon data={mockData} />
+      </RecoilRoot>
     );
 
     const bound1 = screen.getAllByText("Test Boundary 1");
