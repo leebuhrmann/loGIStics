@@ -36,6 +36,9 @@ public class Boundary {
     @Column(name = "name", nullable = true, length = 255)
     private String name;
 
+    @Column(name = "subscribed", nullable = false)  // Add this line to include the subscribed field
+    private boolean subscribed;
+
     @ManyToMany
     @JoinTable(name = "ugc_boundary",
             joinColumns = @JoinColumn(name = "boundary_id"),

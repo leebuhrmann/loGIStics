@@ -56,6 +56,11 @@ public class BoundaryService {
         boundaryRepository.deleteById(id);
     }
 
+    public Boundary toggleBoundarySubscription(Integer id) {
+        Boundary boundary = boundaryRepository.findById(id).orElseThrow(() -> new RuntimeException("Boundary not found"));
+        boundary.setSubscribed(!boundary.isSubscribed());  // Toggle the subscribed status
+        return boundaryRepository.save(boundary);
+    }
     private void copyBoundaryDetails(Boundary managedBoundary, Boundary boundary) {
         managedBoundary.setTheGeom(boundary.getTheGeom());
         managedBoundary.setDescription(boundary.getDescription());

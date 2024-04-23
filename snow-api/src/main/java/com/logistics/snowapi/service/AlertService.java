@@ -2,6 +2,7 @@ package com.logistics.snowapi.service;
 
 import com.logistics.snowapi.model.Alert;
 import com.logistics.snowapi.repository.AlertRepository;
+import com.logistics.snowapi.repository.SubscribedBoundariesAlertRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +13,12 @@ import java.util.Optional;
 public class AlertService {
 
     private final AlertRepository alertRepository;
+    private final SubscribedBoundariesAlertRepository subscribedBoundariesAlertRepository;
 
     @Autowired
-    public AlertService(AlertRepository alertRepository) {
+    public AlertService(AlertRepository alertRepository, SubscribedBoundariesAlertRepository subscribedBoundariesAlertRepository) {
         this.alertRepository = alertRepository;
+        this.subscribedBoundariesAlertRepository = subscribedBoundariesAlertRepository;
     }
 
     public List<Alert> findAllAlerts() {
@@ -24,6 +27,10 @@ public class AlertService {
 
     public Optional<Alert> findAlertById(Integer id) {
         return alertRepository.findById(id);
+    }
+
+    public List<Alert> getAlertsForSubscribedBoundaries() {
+        return subscribedBoundariesAlertRepository.findAllAlertsBySubscribedBoundaries();
     }
 
     public Alert createAlert(Alert alert) {
