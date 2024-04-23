@@ -17,7 +17,7 @@ export default function SideInfoView() {
     return () => {
       webSocketService.client.deactivate();
     };
-  }, [alerts]);
+  }, []);
 
   return (
     <div id="side-info-view" className="w-full">
