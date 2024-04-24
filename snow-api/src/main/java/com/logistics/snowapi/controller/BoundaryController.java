@@ -1,5 +1,5 @@
 package com.logistics.snowapi.controller;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 import com.logistics.snowapi.model.Boundary;
 import com.logistics.snowapi.service.BoundaryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/boundaries")
 public class BoundaryController {

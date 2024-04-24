@@ -138,6 +138,7 @@ export default function MapComponent() {
       setViewState("create");
     });
   };
+   
 
   /**
    * Toggles modifying mode.
