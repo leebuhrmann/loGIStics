@@ -31,3 +31,8 @@ export const boundaryDescriptionAtom = atom({
   key: "boundaryDescriptionAtom",
   default: "",
 });
+
+export const polygonCoordinatesAtom = atom({
+  key: "polygonCoordinatesAtom",
+  default: [],
+})

@@ -5,26 +5,64 @@ import React, { useState } from "react";
 import SideFormViewCommon from "@/components/side-menu/side-form-view/side-form-view-common";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState, useRecoilValue } from "recoil";
 import {
   boundaryDescriptionAtom,
   boundaryNameAtom,
   viewStateAtom,
+  polygonCoordinatesAtom
 } from "@/state/atoms";
 
 const SideCreationView = () => {
   const setViewState = useSetRecoilState<string>(viewStateAtom);
   const [boundaryName, setBoundaryName] = useRecoilState(boundaryNameAtom);
   const [description, setDescription] = useRecoilState(boundaryDescriptionAtom);
+  const boundaryCoordinates = useRecoilValue(polygonCoordinatesAtom);
 
-  const handleSave = () => {
-    // Placeholder for save logic
+  const postBoundaryData = async () => {
+    const boundaryData = {
+      name: boundaryName,
+      description: description,
+      the_geom: {
+        type: "MultiPolygon",
+        coordinates: [
+          [
+            boundaryCoordinates
+          ]
+        ]
+      },
+    };
+
+    const response = await fetch('http://localhost:8081/api/boundaries', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+
+      },
+      body: JSON.stringify(boundaryData),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to save boundary data');
+    }
+
+    if (response.ok) {
+      const responseData = await response.json();
+      console.log('Boundary created:', responseData);
+
+    } else {
+      console.error('Failed to create boundary:', response.status, response.statusText);
+    }
+  };
+
+  const handleSave = async () => {
     console.log(
       "Saving boundary with name:",
       boundaryName,
       " and description:",
       description
     );
+    await postBoundaryData();
     setViewState("info");
     setBoundaryName("");
     setDescription("");

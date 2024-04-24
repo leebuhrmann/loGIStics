@@ -12,7 +12,8 @@ import { Pencil1Icon, PlusIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import Collection from "ol/Collection";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { clearPolygonAtom, viewStateAtom } from "@/state/atoms";
+import { clearPolygonAtom, viewStateAtom, polygonCoordinatesAtom } from "@/state/atoms";
+import { SimpleGeometry } from "ol/geom";
 
 export default function MapComponent() {
   const setViewState = useSetRecoilState(viewStateAtom);
@@ -23,7 +24,7 @@ export default function MapComponent() {
   const [source] = useState(new VectorSource());
   const [shouldClearPolygon, setShouldClearPolygon] = useState<boolean>(false);
   const modify = useRef<Modify>();
-
+  const setPolygonCoordinates = useSetRecoilState(polygonCoordinatesAtom);
   const [isDrawing, setIsDrawing] = useState(false);
   const [isModifying, setIsModifying] = useState(false);
 
@@ -122,9 +123,18 @@ export default function MapComponent() {
     draw.on("drawend", (event) => {
       map.removeInteraction(draw);
       stopDrawing();
-      // Outputs long lat, not lat long.
-      const polygonCoordinates = event.feature?.getGeometry()?.getCoordinates();
-      console.log("Polygon Coordinates", polygonCoordinates);
+      if (event.feature) {
+        const geometry = event.feature.getGeometry()
+        if (geometry instanceof SimpleGeometry) {
+          const coords = geometry.getCoordinates();
+          // Outputs long lat, not lat long.
+          if (coords) {
+            setPolygonCoordinates(coords[0]);
+
+          }
+        }
+
+      }
       setViewState("create");
     });
   };
