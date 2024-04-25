@@ -5,29 +5,45 @@ import React, { useState } from "react";
 import SideFormViewCommon from "@/components/side-menu/side-form-view/side-form-view-common";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState, useRecoilValue } from "recoil";
+import BoundaryService from "@/services/BoundaryService";
 import {
   boundaryDescriptionAtom,
   boundaryNameAtom,
   viewStateAtom,
+  polygonCoordinatesAtom,
 } from "@/state/atoms";
 
 const SideCreationView = () => {
   const setViewState = useSetRecoilState<string>(viewStateAtom);
   const [boundaryName, setBoundaryName] = useRecoilState(boundaryNameAtom);
   const [description, setDescription] = useRecoilState(boundaryDescriptionAtom);
+  const boundaryCoordinates = useRecoilValue(polygonCoordinatesAtom);
 
-  const handleSave = () => {
-    // Placeholder for save logic
-    console.log(
-      "Saving boundary with name:",
-      boundaryName,
-      " and description:",
-      description
-    );
-    setViewState("info");
-    setBoundaryName("");
-    setDescription("");
+
+
+  const handleSave = async () => {
+    const boundaryData = {
+      name: boundaryName,
+      description: description,
+      the_geom: {
+        type: "MultiPolygon",
+        coordinates: [
+          [
+            boundaryCoordinates
+          ]
+        ]
+      },
+    };
+
+    try {
+      await BoundaryService.postBoundary(boundaryData);
+      setViewState("info");
+      setBoundaryName("");
+      setDescription("");
+    } catch (error) {
+      console.error('Failed to save boundary data:', error);
+    }
   };
 
   return (
