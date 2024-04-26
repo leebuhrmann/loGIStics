@@ -13,17 +13,15 @@ This repository hosts the development for S.N.O.W. (Strategic Notification & Ope
 ## Getting Started
 
 To get a local copy up and running follow these simple steps.
-- As of right now, you must have access to the Virtual Machine hosting the Geoserver service
-- In the VM, start up the Geoserver using the `./startup.sh` configuration file
+- As of right now, you must have access to the Virtual Machine hosting the PostGIS database
 - Launch the `snow` application using `npm run dev`
 - In the snow-api application run the SnowApiApplication.java to launch the backend
 - Nagivate to localhost:3000 in a modern web browser
 
-
 ### Prerequisites
 
 List all the prerequisites and how to install them.
-- Access to the Virtual Machine hosting the Geoserver service
+- Access to the Virtual Machine hosting the PostGIS database
 - Install the latest npm inside your local repository of the `snow` application
 
 ## Release Notes
@@ -59,3 +57,11 @@ List all the prerequisites and how to install them.
 - When the user selects a boundary to edit, the side panel that corresponds to editing is visible
 - We do not have functionality to view and subscribe to boundaries
 - We do have have API calls implemented in the frontend
+
+### Milestone #4
+
+- Have implemented MultiPolygon Deserilializer and Serializer to allow BoundaryController endpoints to manipulate Geospatial data
+- Have implemented functionality that maintains accurate entries on the ugc_boundary table
+- Have implemented functionality that inserts entries into the ugc_alert table
+- Boundary name, description, and polygon coordinates can be posted to the database
+- Implemented Recoil state management
