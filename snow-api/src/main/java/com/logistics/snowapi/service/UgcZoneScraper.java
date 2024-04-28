@@ -56,16 +56,16 @@ public class UgcZoneScraper {
                     ugcZoneService.createUgcZone(ugcZone);
                 }
                 catch (RestClientException e) {
-                    System.out.printf("Failed to reach address: %s, UGC: %s, Error: %s", address, ugcCode, e.getMessage());
+                    System.out.printf("Failed to reach address: %s, UGC: %s, Error: %s\n", address, ugcCode, e.getMessage());
                     e.printStackTrace();
                 }
                 catch (IOException e) {
-                    System.out.printf("Failed to parse response for address: %s, UGC Code: %s", address, ugcCode);
+                    System.out.printf("Failed to parse response for address: %s, UGC Code: %s\n", address, ugcCode);
                     e.printStackTrace();
                 }
             }
             else {
-                System.out.printf("UgcZone %s already exists in database.", ugcCode);
+                System.out.printf("UgcZone %s already exists in database.\n", ugcCode);
             }
         }
     }
@@ -118,7 +118,6 @@ public class UgcZoneScraper {
         UgcZone ugcZone = new UgcZone();
         ugcZone.setUgcCode(ugcCode);
         ugcZone.setUgcCodeAddress(ugcCodeAddress);
-        // TODO: set the ugcZone geometry before being persisted in db
         if ("Polygon".equals(ugcZoneResponse.getType())) {
             ugcZone.setTheGeom(ugcZoneResponse.getGeometry());
         }
@@ -126,8 +125,8 @@ public class UgcZoneScraper {
             ugcZone.setTheGeom(ugcZoneResponse.getGeometry());
         }
         else {
-            System.out.println("Geometry type mismatch. Terminating process.");
-            System.exit(1);
+            System.out.printf("Geometry type mismatch for ugc_code: %s. Terminating process.\n", ugcCode);
+//            System.exit(1);
         }
         return ugcZone;
     }
