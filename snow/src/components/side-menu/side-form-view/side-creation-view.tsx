@@ -5,44 +5,51 @@ import React, { useState } from "react";
 import SideFormViewCommon from "@/components/side-menu/side-form-view/side-form-view-common";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import { useRecoilState, useSetRecoilState, useRecoilValue } from "recoil";
+import BoundaryService from "@/services/BoundaryService";
+import {
+  boundaryDescriptionAtom,
+  boundaryNameAtom,
+  viewStateAtom,
+  polygonCoordinatesAtom,
+} from "@/state/atoms";
 
-interface SideCreationViewProps {
-  onClose: () => void;
-  onClearPolygon?: () => void;
-}
+const SideCreationView = () => {
+  const setViewState = useSetRecoilState<string>(viewStateAtom);
+  const [boundaryName, setBoundaryName] = useRecoilState(boundaryNameAtom);
+  const [description, setDescription] = useRecoilState(boundaryDescriptionAtom);
+  const boundaryCoordinates = useRecoilValue(polygonCoordinatesAtom);
 
-const SideCreationView: React.FC<SideCreationViewProps> = ({
-  onClose,
-  onClearPolygon,
-}) => {
-  // This makes React in control of the components instead of the DOM
-  const [boundaryName, setBoundaryName] = useState("");
-  const [description, setDescription] = useState("");
 
-  const handleSave = () => {
-    // Placeholder for save logic
-    console.log(
-      "Saving boundary with name:",
-      boundaryName,
-      " and description:",
-      description
-    );
-    onClose();
-    setBoundaryName("");
-    setDescription("");
+
+  const handleSave = async () => {
+    const boundaryData = {
+      name: boundaryName,
+      description: description,
+      the_geom: {
+        type: "MultiPolygon",
+        coordinates: [
+          [
+            boundaryCoordinates
+          ]
+        ]
+      },
+    };
+
+    try {
+      await BoundaryService.postBoundary(boundaryData);
+      setViewState("info");
+      setBoundaryName("");
+      setDescription("");
+    } catch (error) {
+      console.error('Failed to save boundary data:', error);
+    }
   };
 
   return (
     <div id="side-creation-view" className="w-full flex flex-col gap-2">
       <SideFormViewCommon
-        onClose={onClose}
-        isCreationView={true}
-        onClearPolygon={onClearPolygon}
         title="Create New Boundary"
-        boundaryName={boundaryName}
-        setBoundaryName={setBoundaryName}
-        description={description}
-        setDescription={setDescription}
         boundaryPlaceholder="Enter Boundary Name"
         descriptionPlaceholder="Enter Description"
       />
@@ -56,7 +63,9 @@ const SideCreationView: React.FC<SideCreationViewProps> = ({
           Subscribe
         </label>
       </div>
-      <Button onClick={handleSave}>Save</Button>
+      <Button onClick={handleSave} data-testid="side-creation-save-btn">
+        Save
+      </Button>
     </div>
   );
 };

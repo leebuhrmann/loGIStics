@@ -3,39 +3,35 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Cross1Icon } from "@radix-ui/react-icons";
+import {
+  boundaryDescriptionAtom,
+  boundaryNameAtom,
+  clearPolygonAtom,
+  viewStateAtom,
+} from "@/state/atoms";
+import { useRecoilState, useSetRecoilState } from "recoil";
 
 interface SideFormViewCommonProps {
-  onClose: () => void;
   title: string;
-  boundaryName: string;
-  setBoundaryName: (name: string) => void;
-  description: string;
-  setDescription: (description: string) => void;
   boundaryPlaceholder?: string;
   descriptionPlaceholder?: string;
-  isCreationView?: boolean;
-  onClearPolygon?: () => void;
 }
 
 const SideFormViewCommon: React.FC<SideFormViewCommonProps> = ({
-  onClose,
   title,
-  boundaryName,
-  setBoundaryName,
-  description,
-  setDescription,
   boundaryPlaceholder,
   descriptionPlaceholder,
-  isCreationView = false,
-  onClearPolygon,
 }) => {
+  const [viewState, setViewState] = useRecoilState<string>(viewStateAtom);
+  const setClearState = useSetRecoilState(clearPolygonAtom);
+  const [boundaryName, setBoundaryName] = useRecoilState(boundaryNameAtom);
+  const [description, setDescription] = useRecoilState(boundaryDescriptionAtom);
+
   const handleClose = () => {
-    if (isCreationView && onClearPolygon) {
-      onClearPolygon();
-      onClose();
-    } else {
-      onClose();
+    if (viewState == "create") {
+      setClearState(true);
     }
+    setViewState("info" as string);
   };
 
   return (

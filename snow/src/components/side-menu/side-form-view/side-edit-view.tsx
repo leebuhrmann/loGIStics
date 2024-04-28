@@ -2,19 +2,17 @@ import React, { useState } from "react";
 import SideFormViewCommon from "@/components/side-menu/side-form-view/side-form-view-common";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import {
+  boundaryDescriptionAtom,
+  boundaryNameAtom,
+  viewStateAtom,
+} from "@/state/atoms";
+import { useRecoilState, useSetRecoilState } from "recoil";
 
-interface SideEditViewProps {
-  onClose: () => void;
-  onClearPolygon?: () => void;
-}
-
-const SideEditView: React.FC<SideEditViewProps> = ({
-  onClose,
-  onClearPolygon,
-}) => {
-  // This makes React in control of the components instead of the DOM
-  const [boundaryName, setBoundaryName] = useState("");
-  const [description, setDescription] = useState("");
+const SideEditView = () => {
+  const setViewState = useSetRecoilState(viewStateAtom);
+  const [boundaryName, setBoundaryName] = useRecoilState(boundaryNameAtom);
+  const [description, setDescription] = useRecoilState(boundaryDescriptionAtom);
 
   const handleSave = () => {
     // Placeholder for save logic
@@ -24,27 +22,20 @@ const SideEditView: React.FC<SideEditViewProps> = ({
       " and description:",
       description
     );
-    onClose();
     setBoundaryName("");
     setDescription("");
+    setViewState("info");
   };
 
   const handleDelete = () => {
     console.log("Deleting boundary");
-    onClose();
+    setViewState("info");
   };
 
   return (
     <div id="side-edit-view" className="w-full flex flex-col gap-2">
       <SideFormViewCommon
-        onClose={onClose}
-        isCreationView={false}
-        onClearPolygon={onClearPolygon}
         title="Edit Boundary"
-        boundaryName={boundaryName}
-        setBoundaryName={setBoundaryName}
-        description={description}
-        setDescription={setDescription}
         boundaryPlaceholder="Current Name"
         descriptionPlaceholder="Current Description"
       />

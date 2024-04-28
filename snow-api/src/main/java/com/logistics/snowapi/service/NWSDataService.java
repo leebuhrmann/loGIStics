@@ -102,8 +102,11 @@ public class NWSDataService {
         if (!allFeatures.isEmpty()) {
             allFeatures.forEach(feature -> {
 
+                
                 Alert alert = feature.getFeatureAsAlert();
                 if (alert.getNwsID() != null && !alertRepository.existsByNwsID(alert.getNwsID())) {
+                    messagingTemplate.convertAndSend("/topic", feature); // TODO: needs logic to ensure that the alert belongs to a currently subscribed boundary
+
                     alert = alertService.createAlert(alert);
                     ugcZoneScraper.scrape(feature.getProperties().getUgcCodeAddress());
                     Alert finalAlert = alert;
@@ -113,8 +116,6 @@ public class NWSDataService {
                         String ugcCode = extractUgcCodeFromUrl(url);
                         System.out.println("Extracted UGC Code: " + ugcCode);  // Debug output
                         System.out.println("Processing alert event: " + feature.getProperties().getEvent());
-
-                        messagingTemplate.convertAndSend("/topic", feature); // TODO: needs logic to ensure that the alert belongs to a currently subscribed boundary
 
                         UgcZone ugcZone = ugcZoneRepository.findByUgcCode(ugcCode).orElse(null);
                         if (ugcZone != null && finalAlert != null) {

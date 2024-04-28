@@ -11,26 +11,20 @@ import VectorLayer from "ol/layer/Vector";
 import { Pencil1Icon, PlusIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import Collection from "ol/Collection";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { clearPolygonAtom, viewStateAtom, polygonCoordinatesAtom } from "@/state/atoms";
+import { SimpleGeometry } from "ol/geom";
 
-interface MapComponentProps {
-  onPolygonComplete: () => void;
-  onPolygonSelect: () => void;
-  clearPolygon: boolean;
-  onClearComplete: () => void;
-}
+export default function MapComponent() {
+  const setViewState = useSetRecoilState(viewStateAtom);
+  const [clearPolygon, setClearPolygon] = useRecoilState(clearPolygonAtom);
 
-const MapComponent: React.FC<MapComponentProps> = ({
-  onPolygonComplete,
-  onPolygonSelect,
-  clearPolygon,
-  onClearComplete,
-}) => {
   const mapRef = useRef<HTMLDivElement | null>(null);
   const [map, setMap] = useState<Map>();
   const [source] = useState(new VectorSource());
   const [shouldClearPolygon, setShouldClearPolygon] = useState<boolean>(false);
   const modify = useRef<Modify>();
-
+  const setPolygonCoordinates = useSetRecoilState(polygonCoordinatesAtom);
   const [isDrawing, setIsDrawing] = useState(false);
   const [isModifying, setIsModifying] = useState(false);
 
@@ -98,11 +92,11 @@ const MapComponent: React.FC<MapComponentProps> = ({
     if (shouldClearPolygon && source) {
       source.clear();
       setShouldClearPolygon(false);
-      if (onClearComplete) {
-        onClearComplete();
+      if (clearPolygon) {
+        setClearPolygon(false);
       }
     }
-  }, [shouldClearPolygon, source, onClearComplete]);
+  }, [shouldClearPolygon, source, setClearPolygon]);
 
   const startPolygonDrawing = () => {
     if (!map) return;
@@ -128,11 +122,20 @@ const MapComponent: React.FC<MapComponentProps> = ({
     // Remove the draw interaction once polygon has been created
     draw.on("drawend", (event) => {
       map.removeInteraction(draw);
-      stopDrawing()
-      // Outputs long lat, not lat long.
-      const polygonCoordinates = event.feature?.getGeometry()?.getCoordinates();
-      console.log("Polygon Coordinates", polygonCoordinates);
-      onPolygonComplete();
+      stopDrawing();
+      if (event.feature) {
+        const geometry = event.feature.getGeometry()
+        if (geometry instanceof SimpleGeometry) {
+          const coords = geometry.getCoordinates();
+          // Outputs long lat, not lat long.
+          if (coords) {
+            setPolygonCoordinates(coords[0]);
+
+          }
+        }
+
+      }
+      setViewState("create");
     });
   };
 
@@ -159,7 +162,7 @@ const MapComponent: React.FC<MapComponentProps> = ({
     select.on("select", (event) => {
       if (event.selected.length > 0) {
         console.log("Boundary selected", event.selected[0]);
-        onPolygonSelect();
+        setViewState("edit");
       }
     });
 
@@ -196,7 +199,6 @@ const MapComponent: React.FC<MapComponentProps> = ({
     stopModifying();
   }
 
-
   return (
     <>
       <div ref={mapRef} style={{ width: "100%", height: "100%" }} />
@@ -218,5 +220,4 @@ const MapComponent: React.FC<MapComponentProps> = ({
       </Button>
     </>
   );
-};
-export default MapComponent;
+}
