@@ -5,8 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
-public interface SubscribedBoundariesAlertRepository extends JpaRepository<Alert, Integer> {
-    // Define custom query to fetch alerts for subscribed boundaries
+public interface SubscribedBoundaryAlertRepository extends JpaRepository<Alert, Integer> {
     @Query("SELECT a FROM Alert a " +
             "JOIN a.ugcZones uz " +
             "JOIN uz.boundaries b " +

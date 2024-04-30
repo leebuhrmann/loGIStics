@@ -31,15 +31,6 @@ public class AlertController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/subscribed-boundaries")
-    public ResponseEntity<List<Alert>> getAlertsForSubscribedBoundaries() {
-        List<Alert> alerts = alertService.getAlertsForSubscribedBoundaries();
-        if (alerts.isEmpty()) {
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.ok(alerts);
-    }
-
     @PostMapping
     public Alert createAlert(@RequestBody Alert alert) {
         return alertService.createAlert(alert);

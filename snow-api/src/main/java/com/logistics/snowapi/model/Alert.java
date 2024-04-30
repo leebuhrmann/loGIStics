@@ -1,5 +1,6 @@
 package com.logistics.snowapi.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -37,6 +38,7 @@ public class Alert {
     @Column(name = "nws_id", length = 255)
     private String nwsID;
 
+    @JsonManagedReference
     @ManyToMany
     @JoinTable(name = "ugc_alert",
             joinColumns = @JoinColumn(name = "alert_id"),

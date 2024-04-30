@@ -1,7 +1,7 @@
 package com.logistics.snowapi.service;
 
 import com.logistics.snowapi.model.Alert;
-import com.logistics.snowapi.repository.SubscribedBoundariesAlertRepository;
+import com.logistics.snowapi.repository.SubscribedBoundaryAlertRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -9,10 +9,10 @@ import java.util.List;
 @Service
 public class SubscribedBoundariesAlertService {
 
-    private final SubscribedBoundariesAlertRepository subscribedBoundariesAlertRepository;
+    private final SubscribedBoundaryAlertRepository subscribedBoundariesAlertRepository;
 
     @Autowired
-    public SubscribedBoundariesAlertService(SubscribedBoundariesAlertRepository subscribedBoundariesAlertRepository) {
+    public SubscribedBoundariesAlertService(SubscribedBoundaryAlertRepository subscribedBoundariesAlertRepository) {
         this.subscribedBoundariesAlertRepository = subscribedBoundariesAlertRepository;
     }
 
