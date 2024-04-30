@@ -1,6 +1,6 @@
 package com.logistics.snowapi.controller;
 
-import com.logistics.snowapi.model.Alert;
+import com.logistics.snowapi.model.AlertDTO;
 import com.logistics.snowapi.service.AlertService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,26 +20,30 @@ public class AlertController {
     }
 
     @GetMapping
-    public List<Alert> getAllAlerts() {
+    public List<AlertDTO> getAllAlerts() {
         return alertService.findAllAlerts();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Alert> getAlertById(@PathVariable Integer id) {
+    public ResponseEntity<AlertDTO> getAlertById(@PathVariable Integer id) {
         return alertService.findAlertById(id)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public Alert createAlert(@RequestBody Alert alert) {
-        return alertService.createAlert(alert);
+    public ResponseEntity<AlertDTO> createAlert(@RequestBody AlertDTO alertDTO) {
+        AlertDTO createdAlert = alertService.createAlertDTO(alertDTO);
+        if (createdAlert != null) {
+            return ResponseEntity.ok(createdAlert);
+        }
+        return ResponseEntity.badRequest().build();
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Alert> updateAlert(@PathVariable Integer id, @RequestBody Alert alert) {
-        alert.setId(id); // Ensure the ID is set to the one provided in the path
-        Alert updatedAlert = alertService.updateAlert(alert);
+    public ResponseEntity<AlertDTO> updateAlert(@PathVariable Integer id, @RequestBody AlertDTO alertDTO) {
+        alertDTO.setId(id); // Set the ID to ensure the correct alert is updated
+        AlertDTO updatedAlert = alertService.updateAlertDTO(alertDTO);
         if (updatedAlert != null) {
             return ResponseEntity.ok(updatedAlert);
         }
