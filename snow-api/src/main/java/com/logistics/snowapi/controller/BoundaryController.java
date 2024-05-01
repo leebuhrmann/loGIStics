@@ -46,6 +46,16 @@ public class BoundaryController {
         return ResponseEntity.notFound().build();
     }
 
+    @PutMapping("/toggle-subscription/{id}")
+    public ResponseEntity<Boundary> toggleBoundarySubscription(@PathVariable Integer id) {
+        try {
+            Boundary updatedBoundary = boundaryService.toggleBoundarySubscription(id);
+            return ResponseEntity.ok(updatedBoundary);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBoundary(@PathVariable Integer id) {
         if (boundaryService.findBoundaryById(id).isPresent()) {

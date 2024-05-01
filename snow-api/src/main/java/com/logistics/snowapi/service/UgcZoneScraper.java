@@ -127,7 +127,7 @@ public class UgcZoneScraper {
         }
         else {
             System.out.println("Geometry type mismatch. Terminating process.");
-            System.exit(1);
+//            System.exit(1);
         }
         return ugcZone;
     }

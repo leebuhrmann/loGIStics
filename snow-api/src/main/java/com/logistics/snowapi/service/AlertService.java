@@ -21,7 +21,6 @@ public class AlertService {
     public List<Alert> findAllAlerts() {
         return alertRepository.findAll();
     }
-
     public Optional<Alert> findAlertById(Integer id) {
         return alertRepository.findById(id);
     }
@@ -33,7 +32,6 @@ public class AlertService {
         }
         return null;
     }
-
     public Alert updateAlert(Alert alert) {
         // Make sure the alert exists before updating
         if (alert.getId() != null && alertRepository.existsById(alert.getId())) {
@@ -42,7 +40,6 @@ public class AlertService {
         // Handle the case where the alert doesn't exist (could throw an exception or return null)
         return null;
     }
-
     public void deleteAlert(Integer id) {
         alertRepository.deleteById(id);
     }
