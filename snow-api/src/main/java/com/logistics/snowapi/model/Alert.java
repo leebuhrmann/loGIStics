@@ -1,6 +1,7 @@
 package com.logistics.snowapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
@@ -41,6 +42,7 @@ public class Alert {
     @Column(name = "nws_id", length = 255)
     private String nwsID;
 
+    @JsonIgnore
     @JsonManagedReference
     @ManyToMany
     @JoinTable(name = "ugc_alert",
@@ -48,6 +50,7 @@ public class Alert {
             inverseJoinColumns = @JoinColumn(name = "ugc_code"))
     private Set<UgcZone> ugcZones = new LinkedHashSet<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "alert", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<UgcAlert> ugcAlerts = new HashSet<>();
 

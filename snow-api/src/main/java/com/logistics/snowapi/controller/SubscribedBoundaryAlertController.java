@@ -1,6 +1,6 @@
 package com.logistics.snowapi.controller;
 
-import com.logistics.snowapi.model.Alert;
+import com.logistics.snowapi.dto.AlertBoundaryDTO;
 import com.logistics.snowapi.service.SubscribedBoundaryAlertService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +21,8 @@ public class SubscribedBoundaryAlertController {
     }
 
     @GetMapping("/subscribed-boundaries")
-    public ResponseEntity<List<Alert>> getAlertsForSubscribedBoundaries() {
-        List<Alert> alerts = subscribedBoundaryAlertService.getAlertsForSubscribedBoundaries();
+    public ResponseEntity<List<AlertBoundaryDTO>> getAlertsWithBoundaries() {
+        List<AlertBoundaryDTO> alerts = subscribedBoundaryAlertService.getAlertsWithBoundaries();
         return ResponseEntity.ok(alerts);
     }
 }

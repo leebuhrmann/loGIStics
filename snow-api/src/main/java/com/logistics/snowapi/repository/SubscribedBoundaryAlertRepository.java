@@ -6,9 +6,9 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface SubscribedBoundaryAlertRepository extends JpaRepository<Alert, Integer> {
-    @Query("SELECT a FROM Alert a " +
+    @Query("SELECT DISTINCT a, b.id, b.name FROM Alert a " +
             "JOIN a.ugcZones uz " +
             "JOIN uz.boundaries b " +
             "WHERE b.subscribed = true")
-    List<Alert> findAllAlertsBySubscribedBoundaries();
+    List<Object[]> findAllAlertsBySubscribedBoundaries();
 }
