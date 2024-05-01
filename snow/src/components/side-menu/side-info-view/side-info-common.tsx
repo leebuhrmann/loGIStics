@@ -9,6 +9,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
+import { MockBoundaryData } from "@/mock-data/mock-data";
 import { AlertMessage } from "@/services/AlertService";
 import BoundaryService from "@/services/BoundaryService";
 import { boundaryDataAtom, subCheckValueAtom } from "@/state/atoms";
@@ -17,20 +18,13 @@ import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 
 interface SideInfoCommonProps {
+
   data: Array<AlertMessage | BoundaryData>;
 }
 
 interface BoundaryData {
-  description: string;
   name: string;
-}
-
-interface AlertMessage {
-  event: string;
-  onset: string;
-  expires: string;
   description: string;
-  headline: string;
 }
 
 function isAlertMessage(item: AlertMessage | BoundaryData): item is AlertMessage {
@@ -40,7 +34,6 @@ function isAlertMessage(item: AlertMessage | BoundaryData): item is AlertMessage
 function isBoundaryData(item: AlertMessage | BoundaryData): item is BoundaryData {
   return (item as BoundaryData).name !== undefined && (item as BoundaryData).description !== undefined;
 }
-
 
 const options: Intl.DateTimeFormatOptions = {
   year: "numeric",
@@ -149,13 +142,14 @@ function DataSelect({ data, index }: DataSelectProps) {
     // Boundary Data
     return (
       <>
-        <h4>{data.name}</h4>
-        <p>{data.description}</p>
-        <Separator />
-      </>
-    );
-  } else {
-    return <p>Unknown data type.</p>;
-  }
+      <h4>{data.name}</h4>
+      <p>{data.description}</p>
+      <Separator />
+    </>
+  );
+} else {
+  // Fallback or error handling for unknown data types
+  return <p>Unknown data type.</p>;
+}
 
 }
