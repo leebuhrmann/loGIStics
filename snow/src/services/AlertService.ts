@@ -1,6 +1,7 @@
 import { Client } from '@stomp/stompjs';
 
 export interface AlertMessage {
+  title: any;
   description: string;
   event: string;
   expires: string;

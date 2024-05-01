@@ -14,6 +14,7 @@ import Collection from "ol/Collection";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { clearPolygonAtom, viewStateAtom, polygonCoordinatesAtom } from "@/state/atoms";
 import { SimpleGeometry } from "ol/geom";
+import BoundaryService from "@/services/BoundaryService";
 
 export default function MapComponent() {
   const setViewState = useSetRecoilState(viewStateAtom);
@@ -43,6 +44,8 @@ export default function MapComponent() {
   const stopModifying = () => {
     setIsModifying(false);
   };
+
+
 
   useEffect(() => {
     // Ensure the mapRef.current is not null when initializing the map
@@ -221,3 +224,7 @@ export default function MapComponent() {
     </>
   );
 }
+function fetchBoundaries() {
+  throw new Error("Function not implemented.");
+}
+

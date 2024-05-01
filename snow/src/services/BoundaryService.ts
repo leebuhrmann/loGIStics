@@ -9,16 +9,27 @@ class BoundaryService {
           body: JSON.stringify(boundaryData),
         });
   
-        if (response.ok) {
-          const responseData = await response.json();
-          console.log('Boundary created:', responseData);
-          return responseData;
-        } else {
-          console.error('Failed to create boundary:', response.status, response.statusText);
-        }
+        if (!response.ok) {
+          throw new Error(`Failed to create boundary: ${response.status} ${response.statusText}`);
+        } 
+          return await response.json();
       } catch (error) {
         console.error('Error posting boundary:', error);
         throw error;
+      }
+    }
+
+    static async getAllBoundaries(){
+      try {
+        const response = await fetch('http://localhost:8081/api/boundaries')
+        if(!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        const boundaries = await response.json();
+        console.log('Boundaries fethced: ', boundaries);
+        return boundaries
+      } catch (error) {
+        console.error('From BoundaryService - Error fetching boundaries', error)
       }
     }
   }
