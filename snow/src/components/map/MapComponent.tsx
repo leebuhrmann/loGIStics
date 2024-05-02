@@ -12,7 +12,7 @@ import { Pencil1Icon, PlusIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import Collection from "ol/Collection";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { clearPolygonAtom, viewStateAtom, polygonCoordinatesAtom } from "@/state/atoms";
+import { clearPolygonAtom, viewStateAtom, polygonCoordinatesAtom, subCheckValueAtom } from "@/state/atoms";
 import { MultiPolygon, SimpleGeometry } from "ol/geom";
 import { useRecoilValue } from "recoil";
 import { boundaryDataAtom } from "@/state/atoms";
@@ -22,6 +22,7 @@ interface Boundary {
   id: number;
   description: string;
   name: string;
+  subscribed: boolean;
   the_geom: {
     type: string;
     coordinates: number[][][][];
@@ -30,6 +31,7 @@ interface Boundary {
 
 
 function MapComponent() {
+  const filterSubscriptions = useRecoilValue(subCheckValueAtom);
   const setViewState = useSetRecoilState(viewStateAtom);
   const [clearPolygon, setClearPolygon] = useRecoilState(clearPolygonAtom);
   const mapRef = useRef<HTMLDivElement | null>(null);
@@ -66,20 +68,13 @@ function MapComponent() {
         source: new OSM(),
       });
 
-      const wmsLayer = new TileLayer({
-        source: new TileWMS({
-          url: "http://0.0.0.0:8080/geoserver/wms?",
-          params: { LAYERS: "topp:states", TILED: true },
-          serverType: "geoserver",
-        }),
-      });
+  
 
       // Initialize the map with a non-null assertion for mapRef.current
       const map = new Map({
         target: mapRef.current!,
         layers: [
           baseLayer,
-          wmsLayer,
           new VectorLayer({
             source: source,
           }),
@@ -98,10 +93,14 @@ function MapComponent() {
   }, []);
 
   useEffect(() => {
-    console.log("Boundary data changed:", boundaryData);
+    console.log("Filter subscriptions state:", filterSubscriptions);
     if (map && boundaryData.length) {
       console.log("Loading boundaries...");
-      const features = boundaryData.map((boundary) => {
+      const filteredBoundaries = !filterSubscriptions ? 
+      boundaryData.filter(boundary => boundary.subscribed) : 
+      boundaryData;
+
+      const features = filteredBoundaries.map((boundary) => {
         const multiPolygon = new MultiPolygon(boundary.the_geom.coordinates);
         return new Feature({
           geometry: multiPolygon,
@@ -111,10 +110,8 @@ function MapComponent() {
       });
       source.clear();
       source.addFeatures(features);
-      map.getView().fit(source.getExtent(), { padding: [10, 10, 10, 10] });
-      console.log("Boundaries loaded and map view updated");
     }
-  }, [boundaryData, map]);
+  }, [boundaryData, map, filterSubscriptions]);
 
   useEffect(() => {
     if (clearPolygon && map) {
