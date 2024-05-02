@@ -12,13 +12,20 @@ import {
   boundaryNameAtom,
   viewStateAtom,
   polygonCoordinatesAtom,
+  createCheckboxAtom,
 } from "@/state/atoms";
 
 const SideCreationView = () => {
   const setViewState = useSetRecoilState<string>(viewStateAtom);
   const [boundaryName, setBoundaryName] = useRecoilState(boundaryNameAtom);
   const [description, setDescription] = useRecoilState(boundaryDescriptionAtom);
+  const [createCheckbox, setCreateCheckbox] = useRecoilState(createCheckboxAtom);
   const boundaryCoordinates = useRecoilValue(polygonCoordinatesAtom);
+
+  const handleCheckboxChange = (checked: boolean) => {
+    console.log("Checkbox checked:", checked)
+    setCreateCheckbox(checked);
+};
 
 
 
@@ -26,6 +33,7 @@ const SideCreationView = () => {
     const boundaryData = {
       name: boundaryName,
       description: description,
+      subscribed: createCheckbox,
       the_geom: {
         type: "MultiPolygon",
         coordinates: [
@@ -55,7 +63,11 @@ const SideCreationView = () => {
       />
 
       <div id="sub_checkbox" className="flex items-center space-x-2">
-        <Checkbox id="subs" />
+      <Checkbox
+    id="subsCheckbox"
+    checked={createCheckbox}
+    onCheckedChange={handleCheckboxChange}
+/>
         <label
           htmlFor="subs"
           className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"

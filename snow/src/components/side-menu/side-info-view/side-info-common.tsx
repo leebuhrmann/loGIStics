@@ -25,6 +25,7 @@ interface SideInfoCommonProps {
 interface BoundaryData {
   name: string;
   description: string;
+  subscribed: boolean;
 }
 
 function isAlertMessage(item: AlertMessage | BoundaryData): item is AlertMessage {
@@ -140,6 +141,15 @@ function DataSelect({ data, index }: DataSelectProps) {
     return (
       <>
         <h4>{data.name}</h4>
+        <div id="sub_checkbox" className="flex items-center space-x-2 py-1">
+          <Checkbox id="boundarySubs" defaultChecked={data.subscribed} />
+          <label
+            htmlFor="boundarySubs"
+            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          >
+            Subscribe
+          </label>
+        </div>
         <p>{data.description}</p>
         <Separator />
       </>

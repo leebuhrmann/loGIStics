@@ -42,3 +42,9 @@ export const boundaryDataAtom = atom({
   default: [],
 });
 
+export const createCheckboxAtom = atom({
+  key: 'createCheckboxAtom',
+  default: false,
+});
+
+
