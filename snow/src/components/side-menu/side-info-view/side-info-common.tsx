@@ -143,11 +143,12 @@ function DataSelect({ data, index }: DataSelectProps) {
       </>
     );
   } else if (isBoundaryData(data)) {
-
     const handleSubscriptionChange = async (newSubscribed: boolean) => {
+      /*
       setSubscribedBoundary(newSubscribed);
+      */
       console.log(`Subscription status for ${data.id} changed to: ${newSubscribed}`);
-
+      /*
       const updatedData = {
         id: data.id,
         name: data.name,
@@ -161,6 +162,7 @@ function DataSelect({ data, index }: DataSelectProps) {
       } catch (error) {
         console.error(`Failed to update subscription for ${data.name}:`, error);
       }
+      */
       
   };
 
