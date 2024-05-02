@@ -47,4 +47,8 @@ export const createCheckboxAtom = atom({
   default: false,
 });
 
+export const subscribedBoundaryAtom = atom({
+  key: 'subscribedBoundaryAtom',
+  default: false,
+});
 

@@ -12,7 +12,7 @@ import { Separator } from "@/components/ui/separator";
 import { MockBoundaryData } from "@/mock-data/mock-data";
 import { AlertMessage } from "@/services/AlertService";
 import BoundaryService from "@/services/BoundaryService";
-import { boundaryDataAtom, subCheckValueAtom } from "@/state/atoms";
+import { boundaryDataAtom, subCheckValueAtom, subscribedBoundaryAtom } from "@/state/atoms";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
@@ -26,6 +26,7 @@ interface BoundaryData {
   name: string;
   description: string;
   subscribed: boolean;
+  id: number;
 }
 
 function isAlertMessage(item: AlertMessage | BoundaryData): item is AlertMessage {
@@ -60,6 +61,9 @@ export default function SideInfoCommon({ data }: SideInfoCommonProps) {
   };
 
 
+  const filteredData = !subCheckValue ? data.filter(item => isBoundaryData(item) && item.subscribed) : data;
+
+
 
   return (
     <div id="side-info-common" className="h-full">
@@ -84,8 +88,7 @@ export default function SideInfoCommon({ data }: SideInfoCommonProps) {
           </label>
         </div>
         <ScrollArea className="h-5/6 w-full rounded-md border">
-          {/* Loop through each item in data, output DataSelect */}
-          {data.map((item: AlertMessage | BoundaryData, index: number) => {
+        {filteredData.map((item: AlertMessage | BoundaryData, index: number) => {
             const key = isAlertMessage(item) ? `Alert-${item.event}-${index}` : `Boundary-${item.name}-${index}`;
             return (
               <div key={key} className="p-2">
@@ -103,12 +106,15 @@ interface DataSelectProps {
   data: AlertMessage | BoundaryData;
   index: number;
 }
+
 /**
  * Specifies the styling for the data view of the Alert and Boundary info views
  * @returns html elements for either alert or boundary info view
  */
 function DataSelect({ data, index }: DataSelectProps) {
-  console.log("Data received in DataSelect:", data);
+  const [subscribedBoundary, setSubscribedBoundary] = useRecoilState(subscribedBoundaryAtom);
+
+
   if (isAlertMessage(data)) {
     // Alert Data
     const issuedDate = new Date(data.onset);
@@ -137,12 +143,33 @@ function DataSelect({ data, index }: DataSelectProps) {
       </>
     );
   } else if (isBoundaryData(data)) {
+
+    const handleSubscriptionChange = async (newSubscribed: boolean) => {
+      setSubscribedBoundary(newSubscribed);
+      console.log(`Subscription status for ${data.id} changed to: ${newSubscribed}`);
+
+      const updatedData = {
+        id: data.id,
+        name: data.name,
+        description: data.description,
+        subscribed: newSubscribed
+      };
+    
+      try {
+        await BoundaryService.updateBoundary(updatedData);
+        console.log(`Successfully updated subscription for ${data.name}.`);
+      } catch (error) {
+        console.error(`Failed to update subscription for ${data.name}:`, error);
+      }
+      
+  };
+
     // Boundary Data
     return (
       <>
-        <h4>{data.name}</h4>
+        <h4>Boundary: {data.name}</h4>
         <div id="sub_checkbox" className="flex items-center space-x-2 py-1">
-          <Checkbox id="boundarySubs" defaultChecked={data.subscribed} />
+          <Checkbox id="boundarySubs" defaultChecked={data.subscribed} onCheckedChange={handleSubscriptionChange}/>
           <label
             htmlFor="boundarySubs"
             className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -150,6 +177,7 @@ function DataSelect({ data, index }: DataSelectProps) {
             Subscribe
           </label>
         </div>
+        <p className="font-semibold">Description:</p>
         <p>{data.description}</p>
         <Separator />
       </>
