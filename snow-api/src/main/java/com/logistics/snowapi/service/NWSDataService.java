@@ -71,7 +71,7 @@ public class NWSDataService {
             ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
             // Maps the response into a POJO containing all the alert data.
             GeoJsonResponse geoJsonResponse = objectMapper.readValue(response.getBody(), GeoJsonResponse.class);
-//            processGeoJsonResponse(geoJsonResponse);
+            processGeoJsonResponse(geoJsonResponse);
         }
         catch (RestClientException e) {
             System.out.printf("Failed to reach address: %s, Error: %s\n", url, e.getMessage());
