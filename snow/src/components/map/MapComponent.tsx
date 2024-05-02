@@ -13,13 +13,25 @@ import { Button } from "@/components/ui/button";
 import Collection from "ol/Collection";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { clearPolygonAtom, viewStateAtom, polygonCoordinatesAtom } from "@/state/atoms";
-import { SimpleGeometry } from "ol/geom";
-import BoundaryService from "@/services/BoundaryService";
+import { MultiPolygon, SimpleGeometry } from "ol/geom";
+import { useRecoilValue } from "recoil";
+import { boundaryDataAtom } from "@/state/atoms";
+import Feature from "ol/Feature";
 
-export default function MapComponent() {
+interface Boundary {
+  id: number;
+  description: string;
+  name: string;
+  the_geom: {
+    type: string;
+    coordinates: number[][][][];
+  };
+}
+
+
+function MapComponent() {
   const setViewState = useSetRecoilState(viewStateAtom);
   const [clearPolygon, setClearPolygon] = useRecoilState(clearPolygonAtom);
-
   const mapRef = useRef<HTMLDivElement | null>(null);
   const [map, setMap] = useState<Map>();
   const [source] = useState(new VectorSource());
@@ -28,6 +40,8 @@ export default function MapComponent() {
   const setPolygonCoordinates = useSetRecoilState(polygonCoordinatesAtom);
   const [isDrawing, setIsDrawing] = useState(false);
   const [isModifying, setIsModifying] = useState(false);
+  const boundaryData: Boundary[] = useRecoilValue(boundaryDataAtom);
+  const vectorSource = useRef(new VectorSource());
 
   const startDrawing = () => {
     setIsDrawing(true);
@@ -44,8 +58,6 @@ export default function MapComponent() {
   const stopModifying = () => {
     setIsModifying(false);
   };
-
-
 
   useEffect(() => {
     // Ensure the mapRef.current is not null when initializing the map
@@ -86,10 +98,37 @@ export default function MapComponent() {
   }, []);
 
   useEffect(() => {
+    console.log("Boundary data changed:", boundaryData);
+    if (map && boundaryData.length) {
+      console.log("Loading boundaries...");
+      const features = boundaryData.map((boundary) => {
+        const multiPolygon = new MultiPolygon(boundary.the_geom.coordinates);
+        return new Feature({
+          geometry: multiPolygon,
+          name: boundary.name,
+          description: boundary.description
+        });
+      });
+      source.clear();
+      source.addFeatures(features);
+      map.getView().fit(source.getExtent(), { padding: [10, 10, 10, 10] });
+      console.log("Boundaries loaded and map view updated");
+    }
+  }, [boundaryData, map]);
+
+  useEffect(() => {
     if (clearPolygon && map) {
       setShouldClearPolygon(true);
     }
   }, [clearPolygon, map]);
+
+  useEffect(() => {
+    if (map && source) {
+      // Just for debugging, log out the layers to confirm they're present
+      console.log("Current map layers:", map.getLayers().getArray());
+      console.log("Vector source features:", source.getFeatures());
+    }
+  }, [map, source]);
 
   useEffect(() => {
     if (shouldClearPolygon && source) {
@@ -102,16 +141,22 @@ export default function MapComponent() {
   }, [shouldClearPolygon, source, setClearPolygon]);
 
   const startPolygonDrawing = () => {
-    if (!map) return;
-
+    console.log("Starting to draw polygon...");
+    if (!map) {
+      console.log("Map not available, cannot start drawing.");
+      return;
+    }
+    console.log("Deactivating any active modification.");
     modify.current?.setActive(false);
 
     if (isDrawing) {
+      console.log("Drawing already in progress - resetting interactions");
       resetInteractions(map);
       stopDrawing();
       return;
     }
 
+    console.log("Resetting interactions and initializing new drawing.");
     resetInteractions(map);
 
     // Create new polygon
@@ -119,11 +164,13 @@ export default function MapComponent() {
       source: source,
       type: "Polygon",
     });
+    console.log("Vector source used for drawing:", vectorSource.current);
     map.addInteraction(draw);
     startDrawing();
 
     // Remove the draw interaction once polygon has been created
     draw.on("drawend", (event) => {
+      console.log("Drawing ended - removing interaction");
       map.removeInteraction(draw);
       stopDrawing();
       if (event.feature) {
@@ -133,6 +180,7 @@ export default function MapComponent() {
           // Outputs long lat, not lat long.
           if (coords) {
             setPolygonCoordinates(coords[0]);
+            console.log("Polygon coordinates set:", coords[0]);
 
           }
         }
@@ -224,7 +272,6 @@ export default function MapComponent() {
     </>
   );
 }
-function fetchBoundaries() {
-  throw new Error("Function not implemented.");
-}
+
+export default React.memo(MapComponent);
 

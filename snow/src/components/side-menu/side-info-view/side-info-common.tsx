@@ -58,9 +58,6 @@ export default function SideInfoCommon({ data }: SideInfoCommonProps) {
     setSubCheckValue((prevValue: boolean) => !prevValue);
   };
 
-  useEffect(() => {
-    console.log("Initial data load:", data);
-  }, []);
 
 
   return (
@@ -88,13 +85,13 @@ export default function SideInfoCommon({ data }: SideInfoCommonProps) {
         <ScrollArea className="h-5/6 w-full rounded-md border">
           {/* Loop through each item in data, output DataSelect */}
           {data.map((item: AlertMessage | BoundaryData, index: number) => {
-  const key = isAlertMessage(item) ? `Alert-${item.event}-${index}` : `Boundary-${item.name}-${index}`;
-  return (
-    <div key={key} className="p-2">
-      <DataSelect data={item} index={index}></DataSelect>
-    </div>
-  );
-})}
+            const key = isAlertMessage(item) ? `Alert-${item.event}-${index}` : `Boundary-${item.name}-${index}`;
+            return (
+              <div key={key} className="p-2">
+                <DataSelect data={item} index={index}></DataSelect>
+              </div>
+            );
+          })}
         </ScrollArea>
       </div>
     </div>
@@ -142,14 +139,14 @@ function DataSelect({ data, index }: DataSelectProps) {
     // Boundary Data
     return (
       <>
-      <h4>{data.name}</h4>
-      <p>{data.description}</p>
-      <Separator />
-    </>
-  );
-} else {
-  // Fallback or error handling for unknown data types
-  return <p>Unknown data type.</p>;
-}
+        <h4>{data.name}</h4>
+        <p>{data.description}</p>
+        <Separator />
+      </>
+    );
+  } else {
+    // Fallback or error handling for unknown data types
+    return <p>Unknown data type.</p>;
+  }
 
 }

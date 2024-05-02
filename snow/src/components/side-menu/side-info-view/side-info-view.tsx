@@ -11,6 +11,7 @@ export default function SideInfoView() {
   const [boundaries, setBoundaries] = useRecoilState(boundaryDataAtom);
 
   useEffect(() => {
+    console.log('SideInfoView mounted or updated');
     const fetchBoundaries = async () => {
       try {
         const fetchedBoundaries = await BoundaryService.getAllBoundaries();
