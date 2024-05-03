@@ -98,14 +98,15 @@ public class NWSDataService {
      *                        This object includes a list of features, where each feature represents a specific
      *                        weather alert with its associated data.
      */
-    private void processGeoJsonResponse(GeoJsonResponse geoJsonResponse) {
+    public void processGeoJsonResponse(GeoJsonResponse geoJsonResponse) {
         List<Feature> allFeatures = geoJsonResponse.getFeatures();
+
         if (!allFeatures.isEmpty()) {
             allFeatures.forEach(feature -> { // loop through every feature(alert)
                 Alert alert = feature.getFeatureAsAlert();
+
                 if (alert.getNwsID() != null && !alertRepository.existsByNwsID(alert.getNwsID())) { // checks if an alert is valid and if it already persists in the database
                     messagingTemplate.convertAndSend("/topic", feature); // TODO: needs logic to ensure that the alert belongs to a currently subscribed boundary
-
                     alert = alertService.createAlert(alert); // persist alert entry in database
                     ugcZoneScraper.scrape(feature.getProperties().getUgcCodeAddress()); // call ugc_zone scraper to ensure ugc_zone persistence in database
                     Alert finalAlert = alert; // required because lambdas are silly
@@ -117,6 +118,7 @@ public class NWSDataService {
                         System.out.println("Processing alert event: " + feature.getProperties().getEvent()); // Debug output
 
                         UgcZone ugcZone = ugcZoneRepository.findByUgcCode(ugcCode).orElse(null);
+
                         if (ugcZone != null && finalAlert != null) { // check if the ugcZone and alert are not null
                             // Persist the ugc_alert entry in the database
                             UgcAlert ugcAlert = new UgcAlert();
@@ -131,6 +133,7 @@ public class NWSDataService {
                             // End persist ugc_alert
                         } else {
                             System.out.println("Failed to save UgcAlert: UGC Zone or alert is null");
+                            System.out.println("UgcZone: " + ugcZone + " FinalAlert: " + finalAlert);
                         }
                     });
                 }
