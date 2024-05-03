@@ -68,7 +68,7 @@ function MapComponent() {
         source: new OSM(),
       });
 
-  
+
 
       // Initialize the map with a non-null assertion for mapRef.current
       const map = new Map({
@@ -96,9 +96,9 @@ function MapComponent() {
     console.log("Filter subscriptions state:", filterSubscriptions);
     if (map && boundaryData.length) {
       console.log("Loading boundaries...");
-      const filteredBoundaries = !filterSubscriptions ? 
-      boundaryData.filter(boundary => boundary.subscribed) : 
-      boundaryData;
+      const filteredBoundaries = filterSubscriptions ?
+        boundaryData.filter(boundary => boundary.subscribed) :
+        boundaryData;
 
       const features = filteredBoundaries.map((boundary) => {
         const multiPolygon = new MultiPolygon(boundary.the_geom.coordinates);
@@ -121,9 +121,6 @@ function MapComponent() {
 
   useEffect(() => {
     if (map && source) {
-      // Just for debugging, log out the layers to confirm they're present
-      console.log("Current map layers:", map.getLayers().getArray());
-      console.log("Vector source features:", source.getFeatures());
     }
   }, [map, source]);
 

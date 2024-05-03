@@ -133,6 +133,11 @@ describe("Side Info View", () => {
     const data2 = screen.getAllByText("Data 2");
     expect(data1.length).toBeGreaterThan(0);
 
-    // Need to figure out how to test checkbox states. Shadcn defines their checkboxes as butttons.
+    const badgeElements = screen.getAllByText("Subscribed");
+    expect(badgeElements.length).toBe(1);
+
+    const noBadgeElement = screen.queryByText("Subscribed");
+    expect(noBadgeElement).toBeNull();
+
   });
 });

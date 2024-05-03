@@ -1,7 +1,3 @@
-// TODO: validation to make sure there is user input
-// TODO: something to let the user know they have saved, there are cool shadcn components for both of these
-
-import React, { useState } from "react";
 import SideFormViewCommon from "@/components/side-menu/side-form-view/side-form-view-common";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -25,7 +21,7 @@ const SideCreationView = () => {
   const handleCheckboxChange = (checked: boolean) => {
     console.log("Checkbox checked:", checked)
     setCreateCheckbox(checked);
-};
+  };
 
 
 
@@ -63,11 +59,11 @@ const SideCreationView = () => {
       />
 
       <div id="sub_checkbox" className="flex items-center space-x-2">
-      <Checkbox
-    id="subsCheckbox"
-    checked={createCheckbox}
-    onCheckedChange={handleCheckboxChange}
-/>
+        <Checkbox
+          id="subsCheckbox"
+          checked={createCheckbox}
+          onCheckedChange={handleCheckboxChange}
+        />
         <label
           htmlFor="subs"
           className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"

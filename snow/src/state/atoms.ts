@@ -19,7 +19,7 @@ export const alertsAtom = atom<AlertMessage[]>({
 
 export const subCheckValueAtom = atom({
   key: "subCheckValueAtom",
-  default: true,
+  default: false,
 });
 
 export const boundaryNameAtom = atom({

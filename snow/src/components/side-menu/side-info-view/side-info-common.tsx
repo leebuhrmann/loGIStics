@@ -4,17 +4,15 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
-import { MockBoundaryData } from "@/mock-data/mock-data";
 import { AlertMessage } from "@/services/AlertService";
-import BoundaryService from "@/services/BoundaryService";
-import { boundaryDataAtom, subCheckValueAtom, subscribedBoundaryAtom } from "@/state/atoms";
+import { subCheckValueAtom } from "@/state/atoms";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
-import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 
 interface SideInfoCommonProps {
@@ -50,7 +48,6 @@ const options: Intl.DateTimeFormatOptions = {
 
 export default function SideInfoCommon({ data }: SideInfoCommonProps) {
 
-  const [boundaryData, setBoundaryData] = useRecoilState(boundaryDataAtom)
   const [subCheckValue, setSubCheckValue] = useRecoilState(subCheckValueAtom);
 
 
@@ -61,7 +58,7 @@ export default function SideInfoCommon({ data }: SideInfoCommonProps) {
   };
 
 
-  const filteredData = !subCheckValue ? data.filter(item => isBoundaryData(item) && item.subscribed) : data;
+  const filteredData = subCheckValue ? data.filter(item => isBoundaryData(item) && item.subscribed) : data;
 
 
 
@@ -77,7 +74,7 @@ export default function SideInfoCommon({ data }: SideInfoCommonProps) {
         <div id="sub_checkbox" className="flex items-center space-x-2">
           <Checkbox
             id="filterSubs"
-            checked={!subCheckValue}
+            checked={subCheckValue}
             onCheckedChange={handleCheckboxChange}
           />
           <label
@@ -88,7 +85,7 @@ export default function SideInfoCommon({ data }: SideInfoCommonProps) {
           </label>
         </div>
         <ScrollArea className="h-5/6 w-full rounded-md border">
-        {filteredData.map((item: AlertMessage | BoundaryData, index: number) => {
+          {filteredData.map((item: AlertMessage | BoundaryData, index: number) => {
             const key = isAlertMessage(item) ? `Alert-${item.event}-${index}` : `Boundary-${item.name}-${index}`;
             return (
               <div key={key} className="p-2">
@@ -112,7 +109,6 @@ interface DataSelectProps {
  * @returns html elements for either alert or boundary info view
  */
 function DataSelect({ data, index }: DataSelectProps) {
-  const [subscribedBoundary, setSubscribedBoundary] = useRecoilState(subscribedBoundaryAtom);
 
 
   if (isAlertMessage(data)) {
@@ -143,41 +139,12 @@ function DataSelect({ data, index }: DataSelectProps) {
       </>
     );
   } else if (isBoundaryData(data)) {
-    const handleSubscriptionChange = async (newSubscribed: boolean) => {
-      /*
-      setSubscribedBoundary(newSubscribed);
-      */
-      console.log(`Subscription status for ${data.id} changed to: ${newSubscribed}`);
-      /*
-      const updatedData = {
-        id: data.id,
-        name: data.name,
-        description: data.description,
-        subscribed: newSubscribed
-      };
-    
-      try {
-        await BoundaryService.updateBoundary(updatedData);
-        console.log(`Successfully updated subscription for ${data.name}.`);
-      } catch (error) {
-        console.error(`Failed to update subscription for ${data.name}:`, error);
-      }
-      */
-      
-  };
-
     // Boundary Data
     return (
       <>
         <h4>Boundary: {data.name}</h4>
         <div id="sub_checkbox" className="flex items-center space-x-2 py-1">
-          <Checkbox id="boundarySubs" defaultChecked={data.subscribed} onCheckedChange={handleSubscriptionChange}/>
-          <label
-            htmlFor="boundarySubs"
-            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-          >
-            Subscribe
-          </label>
+          {data.subscribed ? <Badge variant="default">Subscribed</Badge> : null}
         </div>
         <p className="font-semibold">Description:</p>
         <p>{data.description}</p>
@@ -185,7 +152,6 @@ function DataSelect({ data, index }: DataSelectProps) {
       </>
     );
   } else {
-    // Fallback or error handling for unknown data types
     return <p>Unknown data type.</p>;
   }
 
