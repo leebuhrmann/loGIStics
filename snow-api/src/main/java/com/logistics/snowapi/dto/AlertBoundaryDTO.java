@@ -1,17 +1,22 @@
 package com.logistics.snowapi.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.logistics.snowapi.model.Alert;
 
 public class AlertBoundaryDTO {
     private Alert alert;
-    private Integer boundaryId;
-    private String boundaryName;
+    private List<Integer> boundaryIds;
+    private List<String> boundaryNames;
 
     // Constructor
     public AlertBoundaryDTO(Alert alert, Integer boundaryId, String boundaryName) {
         this.alert = alert;
-        this.boundaryId = boundaryId;
-        this.boundaryName = boundaryName;
+        this.boundaryIds = new ArrayList<>();
+        this.boundaryNames = new ArrayList<>();
+        this.boundaryIds.add(boundaryId);
+        this.boundaryNames.add(boundaryName);
     }
 
     // Getters and Setters
@@ -23,19 +28,16 @@ public class AlertBoundaryDTO {
         this.alert = alert;
     }
 
-    public Integer getBoundaryId() {
-        return boundaryId;
+    public List<Integer> getBoundaryIds() {
+        return boundaryIds;
     }
 
-    public void setBoundaryId(Integer boundaryId) {
-        this.boundaryId = boundaryId;
+    public List<String> getBoundaryNames() {
+        return boundaryNames;
     }
 
-    public String getBoundaryName() {
-        return boundaryName;
-    }
-
-    public void setBoundaryName(String boundaryName) {
-        this.boundaryName = boundaryName;
+    public void addBoundary(Integer boundaryId, String boundaryName) {
+        this.boundaryIds.add(boundaryId);
+        this.boundaryNames.add(boundaryName);
     }
 }

@@ -12,7 +12,11 @@ import { Pencil1Icon, PlusIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import Collection from "ol/Collection";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { clearPolygonAtom, viewStateAtom, polygonCoordinatesAtom } from "@/state/atoms";
+import {
+  clearPolygonAtom,
+  viewStateAtom,
+  polygonCoordinatesAtom,
+} from "@/state/atoms";
 import { SimpleGeometry } from "ol/geom";
 
 export default function MapComponent() {
@@ -51,20 +55,22 @@ export default function MapComponent() {
         source: new OSM(),
       });
 
-      const wmsLayer = new TileLayer({
-        source: new TileWMS({
-          url: "http://0.0.0.0:8080/geoserver/wms?",
-          params: { LAYERS: "topp:states", TILED: true },
-          serverType: "geoserver",
-        }),
-      });
+      // connection to GeoServer
+      // const wmsLayer = new TileLayer({
+      //   source: new TileWMS({
+      //     url: "http://0.0.0.0:8080/geoserver/wms?",
+      //     params: { LAYERS: "topp:states", TILED: true },
+      //     serverType: "geoserver",
+      //   }),
+      // });
 
       // Initialize the map with a non-null assertion for mapRef.current
       const map = new Map({
         target: mapRef.current!,
         layers: [
           baseLayer,
-          wmsLayer,
+          // GeoServer layer
+          // wmsLayer,
           new VectorLayer({
             source: source,
           }),
@@ -124,16 +130,14 @@ export default function MapComponent() {
       map.removeInteraction(draw);
       stopDrawing();
       if (event.feature) {
-        const geometry = event.feature.getGeometry()
+        const geometry = event.feature.getGeometry();
         if (geometry instanceof SimpleGeometry) {
           const coords = geometry.getCoordinates();
           // Outputs long lat, not lat long.
           if (coords) {
             setPolygonCoordinates(coords[0]);
-
           }
         }
-
       }
       setViewState("create");
     });

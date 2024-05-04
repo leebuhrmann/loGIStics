@@ -4,13 +4,17 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { MockBoundaryData } from "@/mock-data/mock-data";
-import { AlertMessage } from "@/services/AlertService";
+import {
+  AlertMessage,
+  SubscribedAlertMessage,
+} from "@/services/WebSocketService";
 import { subCheckValueAtom } from "@/state/atoms";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { useRecoilState } from "recoil";
@@ -73,7 +77,7 @@ export default function SideInfoCommon({ data }: SideInfoCommonProps) {
 }
 
 interface DataSelectProps {
-  data: AlertMessage | MockBoundaryData;
+  data: AlertMessage | SubscribedAlertMessage | MockBoundaryData;
   index: number;
 }
 /**
@@ -83,31 +87,66 @@ interface DataSelectProps {
 function DataSelect({ data, index }: DataSelectProps) {
   if (!("sub" in data)) {
     // Alert Data
-    const issuedDate = new Date(data.onset);
-    const expiresDate = new Date(data.expires);
+    if (!("boundaryIds" in data)) {
+      const issuedDate = new Date(data.onset);
+      const expiresDate = new Date(data.expires);
 
-    const issuedFormatted = new Intl.DateTimeFormat("en-US", options).format(
-      issuedDate
-    );
-    const expiresFormatted = new Intl.DateTimeFormat("en-US", options).format(
-      expiresDate
-    );
-    return (
-      <>
-        <h4>{data.event}</h4>
-        <p className="font-semibold">Onset: {issuedFormatted}</p>
-        <p className="font-semibold">Expiring: {expiresFormatted}</p>
+      const issuedFormatted = new Intl.DateTimeFormat("en-US", options).format(
+        issuedDate
+      );
+      const expiresFormatted = new Intl.DateTimeFormat("en-US", options).format(
+        expiresDate
+      );
+      // AlertMessage
+      return (
+        <>
+          <h4>{data.event}</h4>
+          <p className="font-semibold">Onset: {issuedFormatted}</p>
+          <p className="font-semibold">Expiring: {expiresFormatted}</p>
 
-        <Accordion type="single" collapsible className="w-full">
-          <AccordionItem value="item-1">
-            <AccordionTrigger className="text-sm text-left font-normal">
-              {data.headline}
-            </AccordionTrigger>
-            <AccordionContent>{data.description}</AccordionContent>
-          </AccordionItem>
-        </Accordion>
-      </>
-    );
+          <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="item-1">
+              <AccordionTrigger className="text-sm text-left font-normal">
+                {data.headline}
+              </AccordionTrigger>
+              <AccordionContent>{data.description}</AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </>
+      );
+    } else {
+      // SubscribedAlertMessage
+      const issuedDate = new Date(data.alert.onset);
+      const expiresDate = new Date(data.alert.expires);
+
+      const issuedFormatted = new Intl.DateTimeFormat("en-US", options).format(
+        issuedDate
+      );
+      const expiresFormatted = new Intl.DateTimeFormat("en-US", options).format(
+        expiresDate
+      );
+      return (
+        <>
+          <h4>{data.alert.event}</h4>
+          <p className="font-semibold">Onset: {issuedFormatted}</p>
+          <p className="font-semibold">Expiring: {expiresFormatted}</p>
+          <p>Boundaries: </p>
+          {data.boundaryNames.map((name, index) => (
+            <Badge className="mr-0.5" variant="default" key={index}>
+              {name}
+            </Badge>
+          ))}
+          <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="item-1">
+              <AccordionTrigger className="text-sm text-left font-normal">
+                {data.alert.headline}
+              </AccordionTrigger>
+              <AccordionContent>{data.alert.description}</AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </>
+      );
+    }
   } else {
     // Boundary Data
     return (
