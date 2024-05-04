@@ -85,7 +85,6 @@ class NWSDataServiceTest {
         int alertID = 1;
         String ugcCode = "Unit Test UGC code";
 
-
         FeatureProperties dummyProperty = new FeatureProperties();
         dummyProperty.setEvent(event);
         dummyProperty.setOnset(onset);
