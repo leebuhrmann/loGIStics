@@ -11,13 +11,13 @@ export default function SideInfoView() {
   const [boundaries, setBoundaries] = useRecoilState(boundaryDataAtom);
 
   useEffect(() => {
-    console.log('SideInfoView mounted or updated');
+    console.log("SideInfoView mounted or updated");
     const fetchBoundaries = async () => {
       try {
         const fetchedBoundaries = await BoundaryService.getAllBoundaries();
         setBoundaries(fetchedBoundaries);
       } catch (error) {
-        console.error('Failed to fetch boundary data:', error);
+        console.error("Failed to fetch boundary data:", error);
       }
     };
 

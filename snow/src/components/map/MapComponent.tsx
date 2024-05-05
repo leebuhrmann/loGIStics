@@ -12,7 +12,12 @@ import { Pencil1Icon, PlusIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import Collection from "ol/Collection";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { clearPolygonAtom, viewStateAtom, polygonCoordinatesAtom, subCheckValueAtom } from "@/state/atoms";
+import {
+  clearPolygonAtom,
+  viewStateAtom,
+  polygonCoordinatesAtom,
+  subCheckValueAtom,
+} from "@/state/atoms";
 import { MultiPolygon, SimpleGeometry } from "ol/geom";
 import { useRecoilValue } from "recoil";
 import { boundaryDataAtom } from "@/state/atoms";
@@ -28,7 +33,6 @@ interface Boundary {
     coordinates: number[][][][];
   };
 }
-
 
 function MapComponent() {
   const filterSubscriptions = useRecoilValue(subCheckValueAtom);
@@ -68,8 +72,6 @@ function MapComponent() {
         source: new OSM(),
       });
 
-
-
       // Initialize the map with a non-null assertion for mapRef.current
       const map = new Map({
         target: mapRef.current!,
@@ -93,19 +95,17 @@ function MapComponent() {
   }, []);
 
   useEffect(() => {
-    console.log("Filter subscriptions state:", filterSubscriptions);
     if (map && boundaryData.length) {
-      console.log("Loading boundaries...");
-      const filteredBoundaries = filterSubscriptions ?
-        boundaryData.filter(boundary => boundary.subscribed) :
-        boundaryData;
+      const filteredBoundaries = filterSubscriptions
+        ? boundaryData.filter((boundary) => boundary.subscribed)
+        : boundaryData;
 
       const features = filteredBoundaries.map((boundary) => {
         const multiPolygon = new MultiPolygon(boundary.the_geom.coordinates);
         return new Feature({
           geometry: multiPolygon,
           name: boundary.name,
-          description: boundary.description
+          description: boundary.description,
         });
       });
       source.clear();
@@ -135,22 +135,18 @@ function MapComponent() {
   }, [shouldClearPolygon, source, setClearPolygon]);
 
   const startPolygonDrawing = () => {
-    console.log("Starting to draw polygon...");
     if (!map) {
-      console.log("Map not available, cannot start drawing.");
       return;
     }
-    console.log("Deactivating any active modification.");
+
     modify.current?.setActive(false);
 
     if (isDrawing) {
-      console.log("Drawing already in progress - resetting interactions");
       resetInteractions(map);
       stopDrawing();
       return;
     }
 
-    console.log("Resetting interactions and initializing new drawing.");
     resetInteractions(map);
 
     // Create new polygon
@@ -158,27 +154,23 @@ function MapComponent() {
       source: source,
       type: "Polygon",
     });
-    console.log("Vector source used for drawing:", vectorSource.current);
+
     map.addInteraction(draw);
     startDrawing();
 
     // Remove the draw interaction once polygon has been created
     draw.on("drawend", (event) => {
-      console.log("Drawing ended - removing interaction");
       map.removeInteraction(draw);
       stopDrawing();
       if (event.feature) {
-        const geometry = event.feature.getGeometry()
+        const geometry = event.feature.getGeometry();
         if (geometry instanceof SimpleGeometry) {
           const coords = geometry.getCoordinates();
           // Outputs long lat, not lat long.
           if (coords) {
             setPolygonCoordinates(coords[0]);
-            console.log("Polygon coordinates set:", coords[0]);
-
           }
         }
-
       }
       setViewState("create");
     });
@@ -206,7 +198,6 @@ function MapComponent() {
 
     select.on("select", (event) => {
       if (event.selected.length > 0) {
-        console.log("Boundary selected", event.selected[0]);
         setViewState("edit");
       }
     });
@@ -266,6 +257,4 @@ function MapComponent() {
     </>
   );
 }
-
 export default React.memo(MapComponent);
-

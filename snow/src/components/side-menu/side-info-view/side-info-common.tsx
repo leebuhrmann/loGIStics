@@ -16,7 +16,6 @@ import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { useRecoilState } from "recoil";
 
 interface SideInfoCommonProps {
-
   data: Array<AlertMessage | BoundaryData>;
 }
 
@@ -27,12 +26,19 @@ interface BoundaryData {
   id: number;
 }
 
-function isAlertMessage(item: AlertMessage | BoundaryData): item is AlertMessage {
+function isAlertMessage(
+  item: AlertMessage | BoundaryData
+): item is AlertMessage {
   return (item as AlertMessage).onset !== undefined;
 }
 
-function isBoundaryData(item: AlertMessage | BoundaryData): item is BoundaryData {
-  return (item as BoundaryData).name !== undefined && (item as BoundaryData).description !== undefined;
+function isBoundaryData(
+  item: AlertMessage | BoundaryData
+): item is BoundaryData {
+  return (
+    (item as BoundaryData).name !== undefined &&
+    (item as BoundaryData).description !== undefined
+  );
 }
 
 const options: Intl.DateTimeFormatOptions = {
@@ -47,20 +53,16 @@ const options: Intl.DateTimeFormatOptions = {
 };
 
 export default function SideInfoCommon({ data }: SideInfoCommonProps) {
-
   const [subCheckValue, setSubCheckValue] = useRecoilState(subCheckValueAtom);
-
-
 
   // Function to handle checkbox changes
   const handleCheckboxChange = () => {
     setSubCheckValue((prevValue: boolean) => !prevValue);
   };
 
-
-  const filteredData = subCheckValue ? data.filter(item => isBoundaryData(item) && item.subscribed) : data;
-
-
+  const filteredData = subCheckValue
+    ? data.filter((item) => isBoundaryData(item) && item.subscribed)
+    : data;
 
   return (
     <div id="side-info-common" className="h-full">
@@ -85,14 +87,18 @@ export default function SideInfoCommon({ data }: SideInfoCommonProps) {
           </label>
         </div>
         <ScrollArea className="h-5/6 w-full rounded-md border">
-          {filteredData.map((item: AlertMessage | BoundaryData, index: number) => {
-            const key = isAlertMessage(item) ? `Alert-${item.event}-${index}` : `Boundary-${item.name}-${index}`;
-            return (
-              <div key={key} className="p-2">
-                <DataSelect data={item} index={index}></DataSelect>
-              </div>
-            );
-          })}
+          {filteredData.map(
+            (item: AlertMessage | BoundaryData, index: number) => {
+              const key = isAlertMessage(item)
+                ? `Alert-${item.event}-${index}`
+                : `Boundary-${item.name}-${index}`;
+              return (
+                <div key={key} className="p-2">
+                  <DataSelect data={item} index={index}></DataSelect>
+                </div>
+              );
+            }
+          )}
         </ScrollArea>
       </div>
     </div>
@@ -109,8 +115,6 @@ interface DataSelectProps {
  * @returns html elements for either alert or boundary info view
  */
 function DataSelect({ data, index }: DataSelectProps) {
-
-
   if (isAlertMessage(data)) {
     // Alert Data
     const issuedDate = new Date(data.onset);
@@ -154,5 +158,4 @@ function DataSelect({ data, index }: DataSelectProps) {
   } else {
     return <p>Unknown data type.</p>;
   }
-
 }

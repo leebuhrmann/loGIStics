@@ -15,15 +15,14 @@ const SideCreationView = () => {
   const setViewState = useSetRecoilState<string>(viewStateAtom);
   const [boundaryName, setBoundaryName] = useRecoilState(boundaryNameAtom);
   const [description, setDescription] = useRecoilState(boundaryDescriptionAtom);
-  const [createCheckbox, setCreateCheckbox] = useRecoilState(createCheckboxAtom);
+  const [createCheckbox, setCreateCheckbox] =
+    useRecoilState(createCheckboxAtom);
   const boundaryCoordinates = useRecoilValue(polygonCoordinatesAtom);
 
   const handleCheckboxChange = (checked: boolean) => {
-    console.log("Checkbox checked:", checked)
+    console.log("Checkbox checked:", checked);
     setCreateCheckbox(checked);
   };
-
-
 
   const handleSave = async () => {
     const boundaryData = {
@@ -32,11 +31,7 @@ const SideCreationView = () => {
       subscribed: createCheckbox,
       the_geom: {
         type: "MultiPolygon",
-        coordinates: [
-          [
-            boundaryCoordinates
-          ]
-        ]
+        coordinates: [[boundaryCoordinates]],
       },
     };
 
@@ -46,7 +41,7 @@ const SideCreationView = () => {
       setBoundaryName("");
       setDescription("");
     } catch (error) {
-      console.error('Failed to save boundary data:', error);
+      console.error("Failed to save boundary data:", error);
     }
   };
 
