@@ -23,7 +23,6 @@ interface BoundaryData {
   name: string;
   description: string;
   subscribed: boolean;
-  id: number;
 }
 
 function isAlertMessage(
@@ -114,7 +113,7 @@ interface DataSelectProps {
  * Specifies the styling for the data view of the Alert and Boundary info views
  * @returns html elements for either alert or boundary info view
  */
-function DataSelect({ data, index }: DataSelectProps) {
+function DataSelect({ data }: DataSelectProps) {
   if (isAlertMessage(data)) {
     // Alert Data
     const issuedDate = new Date(data.onset);
