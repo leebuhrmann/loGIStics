@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/node-fetch": "^2.6.11",
+    "jest-fetch-mock": "^3.0.3"
+  }
+}
