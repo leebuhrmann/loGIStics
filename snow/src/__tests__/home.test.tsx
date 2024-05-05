@@ -88,9 +88,9 @@ describe("Functions", () => {
 
       render(
         <SideFormViewCommon
-          title="Create New Boundary"
-          boundaryPlaceholder="Enter Boundary Name"
-          descriptionPlaceholder="Enter Description"
+        title="Create New Boundary"
+        boundaryPlaceholder="Enter Boundary Name"
+        descriptionPlaceholder="Enter Description"
         />
       );
 
@@ -171,7 +171,7 @@ describe("Side Info View", () => {
       <SideInfoCommon
         data={mockData}
         subCheckValue={false}
-        setSubCheckValue={() => { }}
+        setSubCheckValue={() => {}}
       />
     );
 
@@ -263,7 +263,7 @@ describe("Side Creation View", () => {
     });
 
     test("close button", () => {
-      render(<SideCreationView />);
+      render(<SideCreationView  />);
       const closeButton = screen.getByTestId("closeButton");
       expect(closeButton).toBeInTheDocument();
     });
