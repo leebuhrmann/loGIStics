@@ -19,7 +19,7 @@ export const alertsAtom = atom<AlertMessage[]>({
 
 export const subCheckValueAtom = atom({
   key: "subCheckValueAtom",
-  default: true,
+  default: false,
 });
 
 export const boundaryNameAtom = atom({
@@ -35,4 +35,20 @@ export const boundaryDescriptionAtom = atom({
 export const polygonCoordinatesAtom = atom({
   key: "polygonCoordinatesAtom",
   default: [],
-})
+});
+
+export const boundaryDataAtom = atom({
+  key: "boundaryDataAtom",
+  default: [],
+});
+
+export const createCheckboxAtom = atom({
+  key: 'createCheckboxAtom',
+  default: false,
+});
+
+export const subscribedBoundaryAtom = atom({
+  key: 'subscribedBoundaryAtom',
+  default: false,
+});
+

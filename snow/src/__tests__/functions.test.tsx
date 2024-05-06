@@ -18,12 +18,6 @@ import { RecoilObserver } from "@/mock-data/RecoilObserver";
 Object.assign(global, { TextDecoder, TextEncoder });
 
 jest.mock("../components/map/MapComponent");
-/* Not all functions are tested yet because the map component is crucial can cannot be mocked,
-    like the clear functions
-
-    Also, need to figure out how to handle check boxes because Shadcn defines them as buttons, and I haven't
-    found any resources
-    */
 describe("SideCreationView", () => {
   let onViewChange: (value: any) => void,
     onNameChange: (value: any) => void,

@@ -1,14 +1,26 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { mockBoundaries } from "@/mock-data/mock-data";
 import SideInfoCommon from "./side-info-common";
 import WebSocketService, { AlertMessage } from "@/services/AlertService";
-import { alertsAtom } from "@/state/atoms";
+import { alertsAtom, boundaryDataAtom } from "@/state/atoms";
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
+import BoundaryService from "@/services/BoundaryService";
 
 export default function SideInfoView() {
   const [alerts, setAlerts] = useRecoilState<AlertMessage[]>(alertsAtom);
+  const [boundaries, setBoundaries] = useRecoilState(boundaryDataAtom);
 
+  useEffect(() => {
+    const fetchBoundaries = async () => {
+      const fetchedBoundaries = await BoundaryService.getAllBoundaries();
+      setBoundaries(fetchedBoundaries);
+
+    };
+
+    fetchBoundaries();
+  }, []);
+
+  // WebSocket setup for alerts
   useEffect(() => {
     const webSocketService = new WebSocketService((newAlert) => {
       setAlerts((prevAlerts) => [newAlert, ...prevAlerts]);
@@ -18,7 +30,6 @@ export default function SideInfoView() {
       webSocketService.client.deactivate();
     };
   }, []);
-
   return (
     <div id="side-info-view" className="w-full">
       <Tabs id="tabs" defaultValue="alerts" className="w-full h-full">
@@ -34,7 +45,7 @@ export default function SideInfoView() {
           value="boundaries"
           className="h-full"
         >
-          <SideInfoCommon data={mockBoundaries}></SideInfoCommon>
+          <SideInfoCommon data={boundaries}></SideInfoCommon>
         </TabsContent>
       </Tabs>
     </div>

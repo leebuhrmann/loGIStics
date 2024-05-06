@@ -4,19 +4,40 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
-import { MockBoundaryData } from "@/mock-data/mock-data";
 import { AlertMessage } from "@/services/AlertService";
 import { subCheckValueAtom } from "@/state/atoms";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { useRecoilState } from "recoil";
 
 interface SideInfoCommonProps {
-  data: any;
+  data: Array<AlertMessage | BoundaryData>;
+}
+
+interface BoundaryData {
+  name: string;
+  description: string;
+  subscribed: boolean;
+}
+
+function isAlertMessage(
+  item: AlertMessage | BoundaryData
+): item is AlertMessage {
+  return (item as AlertMessage).onset !== undefined;
+}
+
+function isBoundaryData(
+  item: AlertMessage | BoundaryData
+): item is BoundaryData {
+  return (
+    (item as BoundaryData).name !== undefined &&
+    (item as BoundaryData).description !== undefined
+  );
 }
 
 const options: Intl.DateTimeFormatOptions = {
@@ -31,11 +52,16 @@ const options: Intl.DateTimeFormatOptions = {
 };
 
 export default function SideInfoCommon({ data }: SideInfoCommonProps) {
+  const [subCheckValue, setSubCheckValue] = useRecoilState(subCheckValueAtom);
+
   // Function to handle checkbox changes
   const handleCheckboxChange = () => {
     setSubCheckValue((prevValue: boolean) => !prevValue);
   };
-  const [subCheckValue, setSubCheckValue] = useRecoilState(subCheckValueAtom);
+
+  const filteredData = subCheckValue
+    ? data.filter((item) => isBoundaryData(item) && item.subscribed)
+    : data;
 
   return (
     <div id="side-info-common" className="h-full">
@@ -49,7 +75,7 @@ export default function SideInfoCommon({ data }: SideInfoCommonProps) {
         <div id="sub_checkbox" className="flex items-center space-x-2">
           <Checkbox
             id="filterSubs"
-            checked={!subCheckValue}
+            checked={subCheckValue}
             onCheckedChange={handleCheckboxChange}
           />
           <label
@@ -60,12 +86,18 @@ export default function SideInfoCommon({ data }: SideInfoCommonProps) {
           </label>
         </div>
         <ScrollArea className="h-5/6 w-full rounded-md border">
-          {/* Loop through each item in data, output DataSelect */}
-          {data.map((item: AlertMessage | MockBoundaryData, index: number) => (
-            <div key={`Alert-${data.title}-${index}`} className="p-2">
-              <DataSelect data={item} index={index}></DataSelect>
-            </div>
-          ))}
+          {filteredData.map(
+            (item: AlertMessage | BoundaryData, index: number) => {
+              const key = isAlertMessage(item)
+                ? `Alert-${item.event}-${index}`
+                : `Boundary-${item.name}-${index}`;
+              return (
+                <div key={key} className="p-2">
+                  <DataSelect data={item} index={index}></DataSelect>
+                </div>
+              );
+            }
+          )}
         </ScrollArea>
       </div>
     </div>
@@ -73,15 +105,16 @@ export default function SideInfoCommon({ data }: SideInfoCommonProps) {
 }
 
 interface DataSelectProps {
-  data: AlertMessage | MockBoundaryData;
+  data: AlertMessage | BoundaryData;
   index: number;
 }
+
 /**
  * Specifies the styling for the data view of the Alert and Boundary info views
  * @returns html elements for either alert or boundary info view
  */
-function DataSelect({ data, index }: DataSelectProps) {
-  if (!("sub" in data)) {
+function DataSelect({ data }: DataSelectProps) {
+  if (isAlertMessage(data)) {
     // Alert Data
     const issuedDate = new Date(data.onset);
     const expiresDate = new Date(data.expires);
@@ -108,35 +141,20 @@ function DataSelect({ data, index }: DataSelectProps) {
         </Accordion>
       </>
     );
-  } else {
+  } else if (isBoundaryData(data)) {
     // Boundary Data
     return (
       <>
-        <h4>{data.title}</h4>
+        <h4>Boundary: {data.name}</h4>
         <div id="sub_checkbox" className="flex items-center space-x-2 py-1">
-          <Checkbox id="boundarySubs" defaultChecked={data.sub} />
-          <label
-            htmlFor="boundarySubs"
-            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-          >
-            Subscribe
-          </label>
+          {data.subscribed ? <Badge variant="default">Subscribed</Badge> : null}
         </div>
-        {/* Loop through the header list */}
-        {data.header.map((headerItem: string, headerIndex: number) => (
-          <p
-            key={`Boundary-${data.header}-${headerIndex}`}
-            className="font-semibold"
-          >
-            {headerItem}
-          </p>
-        ))}
-        {/* Loop through the body list */}
-        {data.body.map((bodyItem: string, bodyIndex: number) => (
-          <p key={`Boundary-${data.body}-${bodyIndex}`}>{bodyItem}</p>
-        ))}
+        <p className="font-semibold">Description:</p>
+        <p>{data.description}</p>
         <Separator />
       </>
     );
+  } else {
+    return <p>Unknown data type.</p>;
   }
 }
