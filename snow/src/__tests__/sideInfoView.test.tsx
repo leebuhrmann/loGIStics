@@ -53,17 +53,17 @@ describe("Side Info View", () => {
     const mockData = [
       {
         event: "Test Alert1",
-        onset: "StartTime1",
-        expires: "ExpireTime1",
+        onset: "January 1, 1970",
+        expires: "January 2, 1970",
         headline: "Rain",
-        description: "Description 1"
+        description: "Description:"
       },
       {
         event: "Test Alert2",
-        onset: "StartTime2",
-        expires: "ExpireTime2",
+        onset: "January 3, 1970",
+        expires: "January 4, 1970",
         headline: "Snow",
-        description: "Description 2"
+        description: "Description:"
       },
     ];
 
@@ -73,20 +73,30 @@ describe("Side Info View", () => {
       </RecoilRoot>
     );
 
-    const alert1 = screen.getAllByText("Test Alert1");
-    expect(alert1.length).toBeGreaterThan(0);
+    const alert1 = screen.getByText("Test Alert1");
+    expect(alert1).toBeInTheDocument()
 
-    const time1 = screen.getAllByText("Time1");
-    expect(time1.length).toBeGreaterThan(0);
+    const onset1 = screen.getAllByText(/January 1, 1970/i);
+    expect(onset1.length).toBeGreaterThan(0);
 
-    const snowOccurrences = screen.getAllByText("Snow");
-    expect(snowOccurrences.length).toBeGreaterThanOrEqual(0);
+    const expires1 = screen.getAllByText(/January 2, 1970/i);
+    expect(expires1.length).toBeGreaterThan(0);
 
-    const alert2 = screen.getAllByText("Test Alert 2");
+    const headline1 = screen.getAllByText("Rain");
+    expect(headline1.length).toBeGreaterThanOrEqual(0);
+
+    const alert2 = screen.getAllByText("Test Alert2");
     expect(alert2.length).toBeGreaterThan(0);
 
-    const time2 = screen.getAllByText("Time2");
-    expect(time2.length).toBeGreaterThan(0);
+    const onset2 = screen.getAllByText(/January 3, 1970/i);
+    expect(onset2.length).toBeGreaterThan(0);
+
+    const expires2 = screen.getAllByText(/January 4, 1970/i);
+    expect(expires2.length).toBeGreaterThan(0);
+
+    const headline2 = screen.getAllByText("Snow");
+    expect(headline2.length).toBeGreaterThanOrEqual(0);
+
   });
 
   test("side-info-common boundary data renders correctly", async () => {
