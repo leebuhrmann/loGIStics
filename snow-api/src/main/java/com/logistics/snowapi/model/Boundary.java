@@ -14,6 +14,28 @@ import org.locationtech.jts.geom.MultiPolygon;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+/**
+ * Represents a geographic boundary within the system, which is stored as a multi-polygon geometry.
+ * This class includes serialization and deserialization functionalities to handle GeoJSON multi-polygon
+ * geometry using Jackson and JTS (Java Topology Suite).
+ * <p>
+ * The {@code Boundary} class is annotated as an entity with the {@code @Entity} annotation, meaning
+ * it is mapped to a database table named "boundary". Each boundary has an ID, a description, and a name,
+ * along with associated {@code UgcZone} and {@code SnowUser} through many-to-many relationships.
+ * <p>
+ * Attributes:
+ * <ul>
+ *   <li>{@code id} - The primary key of the boundary entity.</li>
+ *   <li>{@code theGeom} - The multi-polygon geometry of the boundary, handled by custom serializers
+ *       and deserializers to integrate with the JSON format.</li>
+ *   <li>{@code description} - An optional description of the boundary.</li>
+ *   <li>{@code name} - An optional name of the boundary.</li>
+ *   <li>{@code ugcZones} - A set of {@code UgcZone} entities associated with this boundary.</li>
+ *   <li>{@code snowUsers} - A set of {@code SnowUser} entities associated with this boundary.</li>
+ * </ul>
+ * The multi-polygon geometry is mapped to the database with specific spatial data definitions, ensuring
+ * compatibility with spatial databases.
+ */
 @Getter
 @Setter
 @Entity

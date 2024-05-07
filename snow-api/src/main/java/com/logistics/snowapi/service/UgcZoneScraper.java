@@ -14,6 +14,22 @@ import org.springframework.web.client.RestTemplate;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Service class for scraping geographic zone information related to UGC (Universal Geographic Code) zones.
+ * This class handles the retrieval of data from the National Weather Service (NWS) and other sources,
+ * parsing it, and persisting it in the database as {@link UgcZone} entities.
+ * <p>
+ * The class utilizes the {@link RestTemplate} to make HTTP requests, an {@link ObjectMapper} to parse the JSON
+ * responses, and relies on {@link UgcZoneRepository} and {@link UgcZoneService} to interact with the database.
+ * <p>
+ * Usage:
+ * This service is used to update the database with the latest UGC zone data from external sources. It checks for
+ * the existence of UGC zone data before making a request to ensure that only missing or outdated data is updated.
+ *
+ * @see UgcZone
+ * @see UgcZoneRepository
+ * @see UgcZoneService
+ */
 @Service
 public class UgcZoneScraper {
 
@@ -30,17 +46,15 @@ public class UgcZoneScraper {
     }
 
     /**
-     * Processes a list of URLs corresponding to UGC (Universal Geographic Code) Zones by checking if their associated data
+     * Processes a list of URLs corresponding to UGC Zones by checking if their associated data
      * already exists within the database. For each URL whose data is not already present, this method performs a GET request
-     * to retrieve geographic and zone information from the National Weather Service (NWS). The response is then parsed,
-     * transformed into a UGC Zone entity, and persisted in the database.
+     * to retrieve geographic and zone information. The response is then parsed into a {@link UgcZoneResponse}, transformed into
+     * a UGC Zone entity, and persisted in the database.
      * <p>
-     *
-     * @param ugcCodeAddresses A {@code ArrayList<String>} containing the URLs for UGC Zone data retrieval. Each URL is expected
-     *                         to end with a 6-character UGC code that uniquely identifies a geographic zone.
-     * @throws RestClientException If there is an issue with the RESTful request, including connection problems or errors returned
-     *                             by the target server.
-     * @throws IOException If there is an error parsing the response from the GET request into a {@code UgcZoneResponse} object.
+     * @param ugcCodeAddresses A list of URLs for UGC Zone data retrieval. Each URL is expected to end with a 6-character UGC code
+     *                         that uniquely identifies a geographic zone.
+     * @throws RestClientException If there are connectivity issues or errors returned by the server.
+     * @throws IOException If there are issues parsing the JSON response.
      */
     public void scrape(ArrayList<String> ugcCodeAddresses) {
         for (String address : ugcCodeAddresses){
@@ -70,49 +84,16 @@ public class UgcZoneScraper {
         }
     }
 
-//    public void scrapeTest(String address) {
-//        String ugcCode = address.substring(address.length() - 6);
-//        // Performs a GET call on the UGCZone address.
-//        // Maps response to POJO
-//        // Creates UGCZone from POJO and stores in database
-//        try {
-//            ResponseEntity<String> response = restTemplate.getForEntity(address, String.class);
-//            UgcZoneResponse ugcZoneResponse = objectMapper.readValue(response.getBody(), UgcZoneResponse.class);
-//            UgcZone ugcZone = createUgcZoneFromUgcZoneResponse(ugcCode, address, ugcZoneResponse);
-//            System.out.printf("UGC Zone: %s\n%s\n", address, ugcZone.getTheGeom().toString());
-//            ugcZoneService.createUgcZone(ugcZone);
-//        }
-//        catch (RestClientException e) {
-//            System.out.printf("Failed to reach address: %s, UGC: %s, Error: %s\n", address, ugcCode, e.getMessage());
-//            e.printStackTrace();
-//        }
-//        catch (IOException e) {
-//            System.out.printf("Failed to parse response for address: %s, UGC Code: %s\n", address, ugcCode);
-//            e.printStackTrace();
-//        }
-//    }
-
     /**
-     * Constructs a {@link UgcZone} entity from the provided UGC code, UGC code address, and a {@link UgcZoneResponse} object.
-     * This method initializes a new {@code UgcZone} instance, setting its UGC code and address from the provided parameters.
-     * It then attempts to set the geometry of the {@code UgcZone} based on the geometry type (e.g., Polygon, MultiPolygon) specified
-     * in the {@code UgcZoneResponse}.
+     * Constructs a {@link UgcZone} entity from the provided UGC code, UGC code address, and a {@link UgcZoneResponse}.
+     * This method initializes a new {@code UgcZone} instance, setting its UGC code and address from the provided parameters,
+     * and attempts to set the geometry based on the type specified in the {@code UgcZoneResponse}.
      * <p>
-     * The geometry from the {@code UgcZoneResponse} is assigned to the {@code UgcZone} based on its type. Currently, this method
-     * supports 'Polygon' and 'MultiPolygon' types. If the geometry type does not match these supported types, the method prints
-     * an error message and terminates the process.
-     * <p>
-     *
-     * @param ugcCode The UGC code as a {@code String}, extracted from the UGC code address, representing the unique identifier
-     *                for the geographic zone.
-     * @param ugcCodeAddress The full URL address used to retrieve the UGC Zone information, serving as a reference or source URL.
-     * @param ugcZoneResponse A {@link UgcZoneResponse} object containing the response from a UGC data request, which includes
-     *                        type and geometry information for a UGC zone.
-     * @return A fully constructed {@code UgcZone} entity ready to be persisted to the database, with UGC code, UGC code address,
-     *         and geometry set according to the response data.
-     * @throws IllegalStateException If the geometry type in {@code UgcZoneResponse} is neither 'Polygon' nor 'MultiPolygon',
-     *                               indicating an unsupported or unknown geometry type that prevents the successful creation
-     *                               of a {@code UgcZone} entity. This exception will terminate the process.
+     * @param ugcCode The UGC code, extracted from the UGC code address, representing the unique identifier for the geographic zone.
+     * @param ugcCodeAddress The full URL used to retrieve the UGC Zone information.
+     * @param ugcZoneResponse A {@link UgcZoneResponse} object containing the response from a UGC data request.
+     * @return A fully constructed {@code UgcZone} entity ready for persistence.
+     * @throws IllegalStateException If the geometry type is neither 'Polygon' nor 'MultiPolygon', indicating an unsupported type.
      */
     private UgcZone createUgcZoneFromUgcZoneResponse(String ugcCode, String ugcCodeAddress, UgcZoneResponse ugcZoneResponse ) {
         UgcZone ugcZone = new UgcZone();

@@ -90,7 +90,11 @@ public class NWSDataService {
      * and checks the database for its existence based on the alert's unique identifier. If the alert is new,
      * it is sent in real-time over a WebSocket channel, persisted in the database, and related geographic zone data
      * is scraped and also persisted.
-     *
+     * <p>
+     * Additionally, this method handles the persistence of relationships between alerts and geographic zones in the
+     * {@code ugc_alert} many-to-many table. For each new alert, it associates the alert with its corresponding geographic
+     * zones (UGC Zones) and persists these associations in the database.
+     * <p>
      * If no features (alerts) are present in the GeoJSON response, a log message is generated to indicate the absence
      * of current weather alerts.
      *
@@ -98,6 +102,7 @@ public class NWSDataService {
      *                        This object includes a list of features, where each feature represents a specific
      *                        weather alert with its associated data.
      */
+
     public void processGeoJsonResponse(GeoJsonResponse geoJsonResponse) {
         List<Feature> allFeatures = geoJsonResponse.getFeatures();
 

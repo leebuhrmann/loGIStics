@@ -10,6 +10,28 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Custom deserializer for converting JSON data representing a multi-polygon into a {@link MultiPolygon} object.
+ * This deserializer handles the JSON structure specific to multi-polygon geometries, ensuring that they
+ * are correctly parsed into JTS's {@link MultiPolygon} format.
+ * <p>
+ * The JSON data must contain a "type" field with the value "MultiPolygon" and a "coordinates" field that
+ * lists the sets of coordinate arrays for each polygon. Each polygon must define an outer boundary and
+ * can optionally define one or more inner boundaries (holes).
+ * <p>
+ * Usage:
+ * This deserializer is typically used in conjunction with Jackson annotations to directly map JSON data
+ * onto {@link MultiPolygon} fields in model classes.
+ *
+ * Example:
+ * <pre>{@code
+ * @JsonDeserialize(using = MultiPolygonDeserializer.class)
+ * private MultiPolygon theGeom;
+ * }</pre>
+ *
+ * @see MultiPolygon
+ * @see GeometryFactory
+ */
 public class MultiPolygonDeserializer extends JsonDeserializer<MultiPolygon> {
 
     private static final GeometryFactory geometryFactory = new GeometryFactory();
@@ -26,6 +48,15 @@ public class MultiPolygonDeserializer extends JsonDeserializer<MultiPolygon> {
         return parseMultiPolygon(node);
     }
 
+    /**
+     * Parses the JSON node containing the multi-polygon geometry data.
+     * This method first validates the presence of a "type" field that matches "MultiPolygon".
+     * It then iterates over the "coordinates" field to construct each polygon before combining them into a multi-polygon.
+     *
+     * @param node The JSON node containing the multi-polygon data.
+     * @return A {@link MultiPolygon} representing the geometry described by the input JSON.
+     * @throws IOException if the input JSON is malformed or does not represent a valid multi-polygon.
+     */
     private MultiPolygon parseMultiPolygon(JsonNode node) throws IOException {
         List<Polygon> polygons = new ArrayList<>();
         JsonNode coordinates = node.get("coordinates");
