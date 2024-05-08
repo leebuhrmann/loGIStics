@@ -10,13 +10,17 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
-import { AlertMessage } from "@/services/AlertService";
+import { MockBoundaryData } from "@/mock-data/mock-data";
+import {
+  AlertMessage,
+  SubscribedAlertMessage,
+} from "@/services/WebSocketService";
 import { subCheckValueAtom } from "@/state/atoms";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { useRecoilState } from "recoil";
 
 interface SideInfoCommonProps {
-  data: Array<AlertMessage | BoundaryData>;
+  data: Array<AlertMessage | SubscribedAlertMessage | BoundaryData>;
 }
 
 interface BoundaryData {
@@ -26,13 +30,19 @@ interface BoundaryData {
 }
 
 function isAlertMessage(
-  item: AlertMessage | BoundaryData
+  item: AlertMessage | SubscribedAlertMessage | BoundaryData
 ): item is AlertMessage {
   return (item as AlertMessage).onset !== undefined;
 }
 
+function isSubAlertMessage(
+  item: AlertMessage | SubscribedAlertMessage | BoundaryData
+): item is SubscribedAlertMessage {
+  return (item as SubscribedAlertMessage).alert !== undefined;
+}
+
 function isBoundaryData(
-  item: AlertMessage | BoundaryData
+  item: AlertMessage | SubscribedAlertMessage | BoundaryData
 ): item is BoundaryData {
   return (
     (item as BoundaryData).name !== undefined &&
@@ -59,9 +69,10 @@ export default function SideInfoCommon({ data }: SideInfoCommonProps) {
     setSubCheckValue((prevValue: boolean) => !prevValue);
   };
 
-  const filteredData = subCheckValue
-    ? data.filter((item) => isBoundaryData(item) && item.subscribed)
-    : data;
+  const filteredData =
+    subCheckValue && isBoundaryData(data[0])
+      ? data.filter((item) => isBoundaryData(item) && item.subscribed)
+      : data;
 
   return (
     <div id="side-info-common" className="h-full">
@@ -87,10 +98,13 @@ export default function SideInfoCommon({ data }: SideInfoCommonProps) {
         </div>
         <ScrollArea className="h-5/6 w-full rounded-md border">
           {filteredData.map(
-            (item: AlertMessage | BoundaryData, index: number) => {
+            (
+              item: AlertMessage | SubscribedAlertMessage | BoundaryData,
+              index: number
+            ) => {
               const key = isAlertMessage(item)
                 ? `Alert-${item.event}-${index}`
-                : `Boundary-${item.name}-${index}`;
+                : `Boundary-${index}`;
               return (
                 <div key={key} className="p-2">
                   <DataSelect data={item} index={index}></DataSelect>
@@ -105,7 +119,7 @@ export default function SideInfoCommon({ data }: SideInfoCommonProps) {
 }
 
 interface DataSelectProps {
-  data: AlertMessage | BoundaryData;
+  data: AlertMessage | SubscribedAlertMessage | BoundaryData;
   index: number;
 }
 
@@ -114,8 +128,10 @@ interface DataSelectProps {
  * @returns html elements for either alert or boundary info view
  */
 function DataSelect({ data }: DataSelectProps) {
+  // if (isAlertMessage(data)) {
+  // Alert Data
   if (isAlertMessage(data)) {
-    // Alert Data
+    // console.log("ALERT");
     const issuedDate = new Date(data.onset);
     const expiresDate = new Date(data.expires);
 
@@ -125,6 +141,7 @@ function DataSelect({ data }: DataSelectProps) {
     const expiresFormatted = new Intl.DateTimeFormat("en-US", options).format(
       expiresDate
     );
+    // AlertMessage
     return (
       <>
         <h4>{data.event}</h4>
@@ -137,6 +154,38 @@ function DataSelect({ data }: DataSelectProps) {
               {data.headline}
             </AccordionTrigger>
             <AccordionContent>{data.description}</AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      </>
+    );
+  } else if (isSubAlertMessage(data)) {
+    // SubscribedAlertMessage
+    const issuedDate = new Date(data.alert.onset);
+    const expiresDate = new Date(data.alert.expires);
+
+    const issuedFormatted = new Intl.DateTimeFormat("en-US", options).format(
+      issuedDate
+    );
+    const expiresFormatted = new Intl.DateTimeFormat("en-US", options).format(
+      expiresDate
+    );
+    return (
+      <>
+        <h4>{data.alert.event}</h4>
+        <p className="font-semibold">Onset: {issuedFormatted}</p>
+        <p className="font-semibold">Expiring: {expiresFormatted}</p>
+        <p>Boundaries: </p>
+        {data.boundaryNames.map((name, index) => (
+          <Badge className="mr-0.5" variant="default" key={index}>
+            {name}
+          </Badge>
+        ))}
+        <Accordion type="single" collapsible className="w-full">
+          <AccordionItem value="item-1">
+            <AccordionTrigger className="text-sm text-left font-normal">
+              {data.alert.headline}
+            </AccordionTrigger>
+            <AccordionContent>{data.alert.description}</AccordionContent>
           </AccordionItem>
         </Accordion>
       </>

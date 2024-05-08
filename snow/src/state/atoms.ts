@@ -1,4 +1,7 @@
-import { AlertMessage } from "@/services/AlertService";
+import {
+  AlertMessage,
+  SubscribedAlertMessage,
+} from "@/services/WebSocketService";
 import { atom } from "recoil";
 
 // Define Recoil atoms
@@ -37,18 +40,17 @@ export const polygonCoordinatesAtom = atom({
   default: [],
 });
 
+export const subscribedAlertsAtom = atom<SubscribedAlertMessage[]>({
+  key: "subscribedAlertsAtom",
+  default: [],
+});
+
 export const boundaryDataAtom = atom({
   key: "boundaryDataAtom",
   default: [],
 });
 
 export const createCheckboxAtom = atom({
-  key: 'createCheckboxAtom',
+  key: "createCheckboxAtom",
   default: false,
 });
-
-export const subscribedBoundaryAtom = atom({
-  key: 'subscribedBoundaryAtom',
-  default: false,
-});
-
