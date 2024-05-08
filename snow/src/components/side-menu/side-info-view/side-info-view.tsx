@@ -1,23 +1,29 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { mockBoundaries } from "@/mock-data/mock-data";
 import SideInfoCommon from "./side-info-common";
-import WebSocketService, { AlertMessage } from "@/services/WebSocketService";
+import WebSocketService, {
+  AlertMessage,
+  SubscribedAlertMessage,
+} from "@/services/WebSocketService";
 import {
   alertsAtom,
   subCheckValueAtom,
   subscribedAlertsAtom,
+  boundaryDataAtom,
 } from "@/state/atoms";
 import { useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import AlertService from "@/services/AlertService";
+import BoundaryService from "@/services/BoundaryService";
 
 export default function SideInfoView() {
   const [alerts, setAlerts] = useRecoilState<AlertMessage[]>(alertsAtom);
   const [subAlerts, setSubAlerts] =
-    useRecoilState<AlertMessage[]>(subscribedAlertsAtom);
+    useRecoilState<SubscribedAlertMessage[]>(subscribedAlertsAtom);
   const subCheckValue = useRecoilValue(subCheckValueAtom);
+  const [boundaries, setBoundaries] = useRecoilState(boundaryDataAtom);
 
   useEffect(() => {
+    console.log("MOUNT");
     async function fetchAllAlerts() {
       try {
         const alertsData = await AlertService.getAllAlerts();
@@ -38,9 +44,16 @@ export default function SideInfoView() {
       }
     }
 
+    const fetchBoundaries = async () => {
+      const fetchedBoundaries = await BoundaryService.getAllBoundaries();
+      setBoundaries(fetchedBoundaries);
+    };
+
     fetchAllAlerts();
     fetchSubAlerts();
+    fetchBoundaries();
 
+    // WebSocket setup for alerts
     const webSocketService = new WebSocketService((newAlert) => {
       setAlerts((prevAlerts) => [newAlert, ...prevAlerts]);
     });
@@ -59,7 +72,7 @@ export default function SideInfoView() {
         </TabsList>
         <TabsContent id="tabsAlertContent" value="alerts" className="h-full">
           <SideInfoCommon
-            data={!subCheckValue ? subAlerts : alerts}
+            data={subCheckValue ? subAlerts : alerts}
           ></SideInfoCommon>
         </TabsContent>
         <TabsContent
@@ -67,7 +80,7 @@ export default function SideInfoView() {
           value="boundaries"
           className="h-full"
         >
-          <SideInfoCommon data={mockBoundaries}></SideInfoCommon>
+          <SideInfoCommon data={boundaries}></SideInfoCommon>
         </TabsContent>
       </Tabs>
     </div>
