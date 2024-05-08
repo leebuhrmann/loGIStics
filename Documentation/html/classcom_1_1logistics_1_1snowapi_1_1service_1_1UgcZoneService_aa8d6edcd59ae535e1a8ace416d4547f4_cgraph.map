@@ -1,4 +1,4 @@
 <map id="com.logistics.snowapi.service.UgcZoneService.updateUgcZone" name="com.logistics.snowapi.service.UgcZoneService.updateUgcZone">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,240,47"/>
-<area shape="rect" id="node2" href="$interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1UgcZoneRepository.html#ab207e561a0f5a14d21d44cb31dd47459" title=" " alt="" coords="288,5,555,47"/>
+<area shape="rect" id="node1" title="Updates an existing UGC zone in the database." alt="" coords="5,5,240,47"/>
+<area shape="rect" id="node2" href="$interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1UgcZoneRepository.html#ab207e561a0f5a14d21d44cb31dd47459" title="Checks if a UGC Zone with the specified UGC code exists in the database." alt="" coords="288,5,555,47"/>
 </map>

@@ -72,12 +72,15 @@ $(function() {
 <div class="title">com.logistics.snowapi.model.UgcAlertId Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Embeddable class representing the composite key for the <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlert.html">UgcAlert</a> entity.  
+ <a href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlertId.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for com.logistics.snowapi.model.UgcAlertId:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlertId__inherit__graph.png" border="0" usemap="#acom_8logistics_8snowapi_8model_8UgcAlertId_inherit__map" alt="Inheritance graph"/></div>
 <map name="acom_8logistics_8snowapi_8model_8UgcAlertId_inherit__map" id="acom_8logistics_8snowapi_8model_8UgcAlertId_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,80,220,121"/>
+<area shape="rect" title="Embeddable class representing the composite key for the UgcAlert entity." alt="" coords="5,80,220,121"/>
 <area shape="rect" title=" " alt="" coords="35,5,190,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -86,7 +89,7 @@ Collaboration diagram for com.logistics.snowapi.model.UgcAlertId:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlertId__coll__graph.png" border="0" usemap="#acom_8logistics_8snowapi_8model_8UgcAlertId_coll__map" alt="Collaboration graph"/></div>
 <map name="acom_8logistics_8snowapi_8model_8UgcAlertId_coll__map" id="acom_8logistics_8snowapi_8model_8UgcAlertId_coll__map">
-<area shape="rect" title=" " alt="" coords="5,80,220,121"/>
+<area shape="rect" title="Embeddable class representing the composite key for the UgcAlert entity." alt="" coords="5,80,220,121"/>
 <area shape="rect" title=" " alt="" coords="35,5,190,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -99,8 +102,26 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1fd880fed70e4a8edbc539807c9040e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="UgcAlertId_8java_source.html#l00014">14</a> of file <a class="el" href="UgcAlertId_8java_source.html">UgcAlertId.java</a>.</p>
+<div class="textblock"><p>Embeddable class representing the composite key for the <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlert.html">UgcAlert</a> entity. </p>
+<p>This class defines the fields that make up the primary key for the <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlert.html" title="Entity class for representing an association between an alert and a UGC (Universal Geographic Code) z...">UgcAlert</a> table, including a UGC code and an alert ID. It implements <a class="el" href="">java.io.Serializable</a> to ensure that instances of this class can be serialized by JPA and other Java technologies. </p>
+<p>The fields: </p><ul>
+<li>
+<div class="fragment"><div class="line">ugcCode </div>
+</div><!-- fragment --> - Represents the UGC (Universal Geographic Code), a unique identifier for a geographic zone. </li>
+<li>
+<div class="fragment"><div class="line">alertId </div>
+</div><!-- fragment --> - Represents the identifier for an <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert.html">Alert</a>, linking the alert to a specific UGC zone. </li>
+</ul>
+<p>This class includes custom implementations of</p><div class="fragment"><div class="line"><a class="code" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlertId.html#af3340f1a44ac69c93a02613fc7fe54da">equals</a> </div>
+<div class="ttc" id="aclasscom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlertId_html_af3340f1a44ac69c93a02613fc7fe54da"><div class="ttname"><a href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlertId.html#af3340f1a44ac69c93a02613fc7fe54da">com.logistics.snowapi.model.UgcAlertId.equals</a></div><div class="ttdeci">boolean equals(Object o)</div><div class="ttdef"><b>Definition:</b> <a href="UgcAlertId_8java_source.html#l00042">UgcAlertId.java:42</a></div></div>
+</div><!-- fragment --><p> and</p><div class="fragment"><div class="line"><a class="code" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlertId.html#a1fd880fed70e4a8edbc539807c9040e3">hashCode</a> </div>
+<div class="ttc" id="aclasscom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlertId_html_a1fd880fed70e4a8edbc539807c9040e3"><div class="ttname"><a href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlertId.html#a1fd880fed70e4a8edbc539807c9040e3">com.logistics.snowapi.model.UgcAlertId.hashCode</a></div><div class="ttdeci">int hashCode()</div><div class="ttdef"><b>Definition:</b> <a href="UgcAlertId_8java_source.html#l00051">UgcAlertId.java:51</a></div></div>
+</div><!-- fragment --><p> methods, which are essential for correctly handling composite keys in JPA. These implementations leverage Hibernate's <a class="el" href="">Hibernate#getClass(Object)</a> method to ensure that proxy objects are correctly compared, preventing issues with lazy loading.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlert.html" title="Entity class for representing an association between an alert and a UGC (Universal Geographic Code) z...">UgcAlert</a> </dd>
+<dd>
+Hibernate </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="UgcAlertId_8java_source.html#l00033">33</a> of file <a class="el" href="UgcAlertId_8java_source.html">UgcAlertId.java</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="af3340f1a44ac69c93a02613fc7fe54da"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af3340f1a44ac69c93a02613fc7fe54da">&#9670;&nbsp;</a></span>equals()</h2>
@@ -118,14 +139,14 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="UgcAlertId_8java_source.html#l00023">23</a> of file <a class="el" href="UgcAlertId_8java_source.html">UgcAlertId.java</a>.</p>
-<div class="fragment"><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                                    {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordflow">if</span> (<span class="keyword">this</span> == o) <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordflow">if</span> (o == <span class="keyword">null</span> || Hibernate.getClass(<span class="keyword">this</span>) != Hibernate.getClass(o)) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        UgcAlertId entity = (UgcAlertId) o;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordflow">return</span> Objects.equals(this.ugcCode, entity.ugcCode) &amp;&amp;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                Objects.equals(this.alertId, entity.alertId);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="UgcAlertId_8java_source.html#l00042">42</a> of file <a class="el" href="UgcAlertId_8java_source.html">UgcAlertId.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                    {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">if</span> (<span class="keyword">this</span> == o) <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">if</span> (o == <span class="keyword">null</span> || Hibernate.getClass(<span class="keyword">this</span>) != Hibernate.getClass(o)) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        UgcAlertId entity = (UgcAlertId) o;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordflow">return</span> Objects.equals(this.ugcCode, entity.ugcCode) &amp;&amp;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                Objects.equals(this.alertId, entity.alertId);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -152,10 +173,10 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="UgcAlertId_8java_source.html#l00032">32</a> of file <a class="el" href="UgcAlertId_8java_source.html">UgcAlertId.java</a>.</p>
-<div class="fragment"><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                          {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordflow">return</span> Objects.hash(ugcCode, alertId);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="UgcAlertId_8java_source.html#l00051">51</a> of file <a class="el" href="UgcAlertId_8java_source.html">UgcAlertId.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                          {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordflow">return</span> Objects.hash(ugcCode, alertId);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>

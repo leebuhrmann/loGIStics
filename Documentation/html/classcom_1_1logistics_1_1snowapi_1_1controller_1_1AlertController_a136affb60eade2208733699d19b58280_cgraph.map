@@ -1,4 +1,4 @@
 <map id="com.logistics.snowapi.controller.AlertController.updateAlert" name="com.logistics.snowapi.controller.AlertController.updateAlert">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,240,47"/>
-<area shape="rect" id="node2" href="$classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#abda27fb0f53ab71d61909ff4e37c45e4" title=" " alt="" coords="288,5,509,47"/>
+<area shape="rect" id="node1" title="Endpoint to update an existing alert." alt="" coords="5,5,240,47"/>
+<area shape="rect" id="node2" href="$classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#abda27fb0f53ab71d61909ff4e37c45e4" title="Updates an existing alert in the database." alt="" coords="288,5,509,47"/>
 </map>

@@ -71,9 +71,43 @@ $(function() {
 <div class="title">com.logistics.snowapi.model.UgcZone Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Entity class representing a UGC (Universal Geographic Code) zone within the system.  
+ <a href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcZone.html#details">More...</a></p>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="UgcZone_8java_source.html#l00016">16</a> of file <a class="el" href="UgcZone_8java_source.html">UgcZone.java</a>.</p>
+<div class="textblock"><p>Entity class representing a UGC (Universal Geographic Code) zone within the system. </p>
+<p>This class is linked to the 'ugc_zone' table in the database and includes several properties that define the characteristics of a geographic zone, such as its UGC code, the URL address for the UGC code, and its geometric representation. </p>
+<p>The <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcZone.html">UgcZone</a> entity manages relationships with <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert.html">Alert</a> and <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Boundary.html">Boundary</a> entities, indicating which alerts and boundaries are associated with this UGC zone. This is achieved through many-to-many relationships, facilitating the association of multiple zones with multiple alerts and boundaries. Additionally, the entity has a one-to-many relationship with <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlert.html">UgcAlert</a>, representing specific alert details related to this UGC zone. </p>
+<p>Attributes: </p><ul>
+<li>
+<div class="fragment"><div class="line">ugcCode </div>
+</div><!-- fragment --> - The unique identifier for the UGC zone, used as the primary key. </li>
+<li>
+<div class="fragment"><div class="line">ugcCodeAddress </div>
+</div><!-- fragment --> - The URL address providing more information about the UGC zone. </li>
+<li>
+<div class="fragment"><div class="line">theGeom </div>
+</div><!-- fragment --> - The geometric representation of the UGC zone, stored as a <a class="el" href="">MultiPolygon</a>. </li>
+<li>
+<div class="fragment"><div class="line">alerts </div>
+</div><!-- fragment --> - A set of <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert.html">Alert</a> entities associated with this UGC zone. </li>
+<li>
+<div class="fragment"><div class="line">boundaries </div>
+</div><!-- fragment --> - A set of <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Boundary.html">Boundary</a> entities associated with this UGC zone. </li>
+<li>
+<div class="fragment"><div class="line">ugcAlerts </div>
+</div><!-- fragment --> - A set of <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlert.html">UgcAlert</a> entities that provide additional details about alerts related to this UGC zone. </li>
+</ul>
+<p>Usage: Instances of this class are used to manage geographic zone data within the application, supporting functionalities such as alert distribution based on geographic zones, geographic data management, and region-specific access controls.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert.html" title="Entity class representing an alert as defined in the National Weather Service (NWS).">Alert</a> </dd>
+<dd>
+<a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Boundary.html" title="Represents a geographic boundary within the system, which is stored as a multi-polygon geometry.">Boundary</a> </dd>
+<dd>
+<a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlert.html" title="Entity class for representing an association between an alert and a UGC (Universal Geographic Code) z...">UgcAlert</a> </dd>
+<dd>
+MultiPolygon </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="UgcZone_8java_source.html#l00047">47</a> of file <a class="el" href="UgcZone_8java_source.html">UgcZone.java</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/main/java/com/logistics/snowapi/model/<a class="el" href="UgcZone_8java_source.html">UgcZone.java</a></li>
 </ul>

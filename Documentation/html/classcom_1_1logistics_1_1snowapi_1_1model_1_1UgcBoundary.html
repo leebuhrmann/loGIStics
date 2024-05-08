@@ -71,9 +71,33 @@ $(function() {
 <div class="title">com.logistics.snowapi.model.UgcBoundary Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Entity class representing an association between a UGC (Universal Geographic Code) zone and a geographic boundary.  
+ <a href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcBoundary.html#details">More...</a></p>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="UgcBoundary_8java_source.html#l00011">11</a> of file <a class="el" href="UgcBoundary_8java_source.html">UgcBoundary.java</a>.</p>
+<div class="textblock"><p>Entity class representing an association between a UGC (Universal Geographic Code) zone and a geographic boundary. </p>
+<p>This class is mapped to the 'ugc_boundary' table in the database. Each instance of this class represents a relationship between a specific UGC zone and a boundary, utilizing a composite key for identification. </p>
+<p>The <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcBoundary.html">UgcBoundary</a> entity uses an embedded composite key represented by <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcBoundaryId.html">UgcBoundaryId</a>, which includes identifiers for both the UGC zone and the boundary. This structure facilitates efficient management of relationships between geographic zones and boundaries, supporting complex queries and integrity constraints within the database. </p>
+<p>Relationships: </p><ul>
+<li>
+<div class="fragment"><div class="line">ugcCode </div>
+</div><!-- fragment --> - Many-to-one relationship with the <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcZone.html">UgcZone</a> entity. Each<div class="fragment"><div class="line">UgcBoundary </div>
+</div><!-- fragment --> is linked to one <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcZone.html">UgcZone</a>, represented by the<div class="fragment"><div class="line">ugc_code </div>
+</div><!-- fragment --> foreign key in the database. </li>
+<li>
+<div class="fragment"><div class="line">boundary </div>
+</div><!-- fragment --> - Many-to-one relationship with the <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Boundary.html">Boundary</a> entity. Each<div class="fragment"><div class="line">UgcBoundary </div>
+</div><!-- fragment --> is linked to one <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Boundary.html">Boundary</a>, represented by the<div class="fragment"><div class="line">boundary_id </div>
+</div><!-- fragment --> foreign key in the database. </li>
+</ul>
+<p>Usage: Instances of this class are used within the application to maintain and query the relationships between UGC zones and geographic boundaries. This helps in managing geographic data distribution, access control, and regional analysis based on UGC classifications and boundary delineations.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcBoundaryId.html" title="Embeddable class representing the composite key for the UgcBoundary entity.">UgcBoundaryId</a> </dd>
+<dd>
+<a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcZone.html" title="Entity class representing a UGC (Universal Geographic Code) zone within the system.">UgcZone</a> </dd>
+<dd>
+<a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Boundary.html" title="Represents a geographic boundary within the system, which is stored as a multi-polygon geometry.">Boundary</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="UgcBoundary_8java_source.html#l00037">37</a> of file <a class="el" href="UgcBoundary_8java_source.html">UgcBoundary.java</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/main/java/com/logistics/snowapi/model/<a class="el" href="UgcBoundary_8java_source.html">UgcBoundary.java</a></li>
 </ul>

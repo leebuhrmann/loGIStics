@@ -72,6 +72,9 @@ $(function() {
 <div class="title">com.logistics.snowapi.geojsonresponse.Feature Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Represents a GeoJSON feature object, specifically designed to handle the parsing of alert data from external sources such as the National Weather Service (NWS).  
+ <a href="classcom_1_1logistics_1_1snowapi_1_1geojsonresponse_1_1Feature.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -81,8 +84,29 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac36078cf69298329fcfb76181a5e51e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="Feature_8java_source.html#l00012">12</a> of file <a class="el" href="Feature_8java_source.html">Feature.java</a>.</p>
+<div class="textblock"><p>Represents a GeoJSON feature object, specifically designed to handle the parsing of alert data from external sources such as the National Weather Service (NWS). </p>
+<p>This class facilitates the extraction of alert-related data encapsulated within a GeoJSON structure. </p>
+<p>This class is annotated with <a class="el" href="">JsonIgnoreProperties</a> to ignore any unknown JSON properties, ensuring compatibility and resilience against changes in the JSON data structure from external APIs. </p>
+<p>Attributes: </p><ul>
+<li>
+<div class="fragment"><div class="line"><span class="keywordtype">id</span> </div>
+</div><!-- fragment --> - The unique identifier of the alert, typically provided by the external data source. </li>
+<li>
+<div class="fragment"><div class="line">properties </div>
+</div><!-- fragment --> - An instance of <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1geojsonresponse_1_1FeatureProperties.html">FeatureProperties</a>, which holds detailed information about the alert. </li>
+</ul>
+<p>Methods: </p><ul>
+<li>
+<a class="el" href="classcom_1_1logistics_1_1snowapi_1_1geojsonresponse_1_1Feature.html#a85da7c66e658bf29f02b6b12065b1430">toString()</a> - Provides a string representation of the feature, useful for logging and debugging. </li>
+<li>
+<a class="el" href="classcom_1_1logistics_1_1snowapi_1_1geojsonresponse_1_1Feature.html#ac36078cf69298329fcfb76181a5e51e6">getFeatureAsAlert()</a> - Converts the feature into an <a class="el" href="">Alert</a> entity, mapping relevant properties to the corresponding fields. </li>
+</ul>
+<p>Usage: Instances of this class are typically created during the deserialization process of GeoJSON data. After creation, they can be transformed into <a class="el" href="">Alert</a> entities for further processing, storage, or display within the application.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1geojsonresponse_1_1FeatureProperties.html">FeatureProperties</a> </dd>
+<dd>
+Alert </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="Feature_8java_source.html#l00039">39</a> of file <a class="el" href="Feature_8java_source.html">Feature.java</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ac36078cf69298329fcfb76181a5e51e6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac36078cf69298329fcfb76181a5e51e6">&#9670;&nbsp;</a></span>getFeatureAsAlert()</h2>
@@ -99,18 +123,18 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Feature_8java_source.html#l00030">30</a> of file <a class="el" href="Feature_8java_source.html">Feature.java</a>.</p>
-<div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                                     {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        Alert alert = <span class="keyword">new</span> Alert();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        alert.setEvent(properties.getEvent());</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        alert.setOnset(properties.getOnset());</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        alert.setExpires(properties.getExpires());</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        alert.setHeadline(properties.getHeadline());</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        alert.setDescription(properties.getDescription());</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        alert.setNwsID(this.<span class="keywordtype">id</span>);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">return</span> alert;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="Feature_8java_source.html#l00057">57</a> of file <a class="el" href="Feature_8java_source.html">Feature.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                                     {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        Alert alert = <span class="keyword">new</span> Alert();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        alert.setEvent(properties.getEvent());</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        alert.setOnset(properties.getOnset());</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        alert.setExpires(properties.getExpires());</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        alert.setHeadline(properties.getHeadline());</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        alert.setDescription(properties.getDescription());</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        alert.setNwsID(this.<span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">return</span> alert;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -129,17 +153,17 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Feature_8java_source.html#l00019">19</a> of file <a class="el" href="Feature_8java_source.html">Feature.java</a>.</p>
-<div class="fragment"><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                             {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordflow">return</span> String.format(<span class="stringliteral">&quot;id: %s&quot;</span> +</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                            <span class="stringliteral">&quot;\nevent: %s&quot;</span> +</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                            <span class="stringliteral">&quot;\nheadline: %s&quot;</span> +</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                            <span class="stringliteral">&quot;\nonset: %s&quot;</span> +</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                            <span class="stringliteral">&quot;\nexpires: %s&quot;</span> +</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                            <span class="stringliteral">&quot;\naffected-zones: %s&quot;</span> +</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                            <span class="stringliteral">&quot;\ndescription: %s&quot;</span>,</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                this.<span class="keywordtype">id</span>, properties.getEvent(), properties.getHeadline(), properties.getOnset(), properties.getExpires(), properties.getUgcCodeAddress(), properties.getDescription());</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="Feature_8java_source.html#l00046">46</a> of file <a class="el" href="Feature_8java_source.html">Feature.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                             {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">return</span> String.format(<span class="stringliteral">&quot;id: %s&quot;</span> +</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                            <span class="stringliteral">&quot;\nevent: %s&quot;</span> +</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                            <span class="stringliteral">&quot;\nheadline: %s&quot;</span> +</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                            <span class="stringliteral">&quot;\nonset: %s&quot;</span> +</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                            <span class="stringliteral">&quot;\nexpires: %s&quot;</span> +</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                            <span class="stringliteral">&quot;\naffected-zones: %s&quot;</span> +</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                            <span class="stringliteral">&quot;\ndescription: %s&quot;</span>,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                this.<span class="keywordtype">id</span>, properties.getEvent(), properties.getHeadline(), properties.getOnset(), properties.getExpires(), properties.getUgcCodeAddress(), properties.getDescription());</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>

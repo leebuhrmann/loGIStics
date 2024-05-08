@@ -1,4 +1,4 @@
 <map id="com.logistics.snowapi.service.AlertService.createAlert" name="com.logistics.snowapi.service.AlertService.createAlert">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,227,47"/>
-<area shape="rect" id="node2" href="$interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1AlertRepository.html#aeccca87a5a8c6931736cb38aa2f383fd" title=" " alt="" coords="275,5,513,47"/>
+<area shape="rect" id="node1" title="Creates a new alert in the database, ensuring it does not already exist based on its NWS ID." alt="" coords="5,5,227,47"/>
+<area shape="rect" id="node2" href="$interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1AlertRepository.html#aeccca87a5a8c6931736cb38aa2f383fd" title="Checks if an alert with the specified NWS ID exists in the database." alt="" coords="275,5,513,47"/>
 </map>

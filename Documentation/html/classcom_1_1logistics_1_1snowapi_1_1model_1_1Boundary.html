@@ -71,9 +71,42 @@ $(function() {
 <div class="title">com.logistics.snowapi.model.Boundary Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Represents a geographic boundary within the system, which is stored as a multi-polygon geometry.  
+ <a href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Boundary.html#details">More...</a></p>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="Boundary_8java_source.html#l00015">15</a> of file <a class="el" href="Boundary_8java_source.html">Boundary.java</a>.</p>
+<div class="textblock"><p>Represents a geographic boundary within the system, which is stored as a multi-polygon geometry. </p>
+<p>This class includes serialization and deserialization functionalities to handle GeoJSON multi-polygon geometry using Jackson and JTS (Java Topology Suite). </p>
+<p>The</p><div class="fragment"><div class="line">Boundary </div>
+</div><!-- fragment --><p> class is annotated as an entity with the</p><div class="fragment"><div class="line">@Entity </div>
+</div><!-- fragment --><p> annotation, meaning it is mapped to a database table named "boundary". Each boundary has an ID, a description, and a name, along with associated</p><div class="fragment"><div class="line">UgcZone </div>
+</div><!-- fragment --><p> and</p><div class="fragment"><div class="line">SnowUser </div>
+</div><!-- fragment --><p> through many-to-many relationships. </p>
+<p>Attributes: </p><ul>
+<li>
+<div class="fragment"><div class="line"><span class="keywordtype">id</span> </div>
+</div><!-- fragment --> - The primary key of the boundary entity. </li>
+<li>
+<div class="fragment"><div class="line">theGeom </div>
+</div><!-- fragment --> - The multi-polygon geometry of the boundary, handled by custom serializers and deserializers to integrate with the JSON format. </li>
+<li>
+<div class="fragment"><div class="line">description </div>
+</div><!-- fragment --> - An optional description of the boundary. </li>
+<li>
+<div class="fragment"><div class="line">name </div>
+</div><!-- fragment --> - An optional name of the boundary. </li>
+<li>
+<div class="fragment"><div class="line">ugcZones </div>
+</div><!-- fragment --> - A set of<div class="fragment"><div class="line">UgcZone </div>
+</div><!-- fragment --> entities associated with this boundary. </li>
+<li>
+<div class="fragment"><div class="line">snowUsers </div>
+</div><!-- fragment --> - A set of<div class="fragment"><div class="line">SnowUser </div>
+</div><!-- fragment --> entities associated with this boundary. </li>
+</ul>
+<p>The multi-polygon geometry is mapped to the database with specific spatial data definitions, ensuring compatibility with spatial databases. </p>
+
+<p class="definition">Definition at line <a class="el" href="Boundary_8java_source.html#l00043">43</a> of file <a class="el" href="Boundary_8java_source.html">Boundary.java</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/main/java/com/logistics/snowapi/model/<a class="el" href="Boundary_8java_source.html">Boundary.java</a></li>
 </ul>

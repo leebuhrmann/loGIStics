@@ -1,23 +1,4 @@
 var searchData=
 [
-  ['save_78',['save',['../classcom_1_1logistics_1_1snowapi_1_1service_1_1UserBoundaryService.html#aacee2e4083aa9e8994d45051aa768682',1,'com::logistics::snowapi::service::UserBoundaryService']]],
-  ['sayhello_79',['sayHello',['../classcom_1_1logistics_1_1snowapi_1_1controller_1_1helloWorld.html#ade1b08cdce4d01f1b14d35a2232a80e5',1,'com::logistics::snowapi::controller::helloWorld']]],
-  ['scrape_80',['scrape',['../classcom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneScraper.html#a74c9f6a586ee5db872034880aa31ecb7',1,'com::logistics::snowapi::service::UgcZoneScraper']]],
-  ['servletinitializer_81',['ServletInitializer',['../classcom_1_1logistics_1_1snowapi_1_1ServletInitializer.html',1,'com::logistics::snowapi']]],
-  ['servletinitializer_2ejava_82',['ServletInitializer.java',['../ServletInitializer_8java.html',1,'']]],
-  ['snowapiapplication_83',['SnowApiApplication',['../classcom_1_1logistics_1_1snowapi_1_1SnowApiApplication.html',1,'com::logistics::snowapi']]],
-  ['snowapiapplication_2ejava_84',['SnowApiApplication.java',['../SnowApiApplication_8java.html',1,'']]],
-  ['snowapiapplicationtests_2ejava_85',['SnowApiApplicationTests.java',['../SnowApiApplicationTests_8java.html',1,'']]],
-  ['snowuser_86',['SnowUser',['../classcom_1_1logistics_1_1snowapi_1_1model_1_1SnowUser.html',1,'com::logistics::snowapi::model']]],
-  ['snowuser_2ejava_87',['SnowUser.java',['../SnowUser_8java.html',1,'']]],
-  ['snowusercontroller_88',['SnowUserController',['../classcom_1_1logistics_1_1snowapi_1_1controller_1_1SnowUserController.html',1,'com.logistics.snowapi.controller.SnowUserController'],['../classcom_1_1logistics_1_1snowapi_1_1controller_1_1SnowUserController.html#af724d28ef08a189add1111146b3c34af',1,'com.logistics.snowapi.controller.SnowUserController.SnowUserController()']]],
-  ['snowusercontroller_2ejava_89',['SnowUserController.java',['../SnowUserController_8java.html',1,'']]],
-  ['snowuserrepository_90',['SnowUserRepository',['../interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1SnowUserRepository.html',1,'com::logistics::snowapi::repository']]],
-  ['snowuserrepository_2ejava_91',['SnowUserRepository.java',['../SnowUserRepository_8java.html',1,'']]],
-  ['snowuserservice_92',['SnowUserService',['../classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService.html',1,'com.logistics.snowapi.service.SnowUserService'],['../classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService.html#a339c2634e81bd187b067e9c82286ed21',1,'com.logistics.snowapi.service.SnowUserService.SnowUserService()']]],
-  ['snowuserservice_2ejava_93',['SnowUserService.java',['../SnowUserService_8java.html',1,'']]],
-  ['snowuserservicetest_94',['SnowUserServiceTest',['../classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserServiceTest.html',1,'com::logistics::snowapi::service']]],
-  ['snowuserservicetest_2ejava_95',['SnowUserServiceTest.java',['../SnowUserServiceTest_8java.html',1,'']]],
-  ['spatialrefsy_96',['SpatialRefSy',['../classcom_1_1logistics_1_1snowapi_1_1model_1_1SpatialRefSy.html',1,'com::logistics::snowapi::model']]],
-  ['spatialrefsy_2ejava_97',['SpatialRefSy.java',['../SpatialRefSy_8java.html',1,'']]]
+  ['registerstompendpoints_87',['registerStompEndpoints',['../classcom_1_1logistics_1_1snowapi_1_1config_1_1WebSocketConfig.html#a179cfe33c52bbc391f02199fac2e30df',1,'com::logistics::snowapi::config::WebSocketConfig']]]
 ];

@@ -1,0 +1,4 @@
+<map id="com.logistics.snowapi.service.NWSDataService.processGeoJsonResponse" name="com.logistics.snowapi.service.NWSDataService.processGeoJsonResponse">
+<area shape="rect" id="node1" title="Processes a given GeoJsonResponse object containing weather alert information in GeoJSON format." alt="" coords="5,5,308,47"/>
+<area shape="rect" id="node2" href="$interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1AlertRepository.html#aeccca87a5a8c6931736cb38aa2f383fd" title="Checks if an alert with the specified NWS ID exists in the database." alt="" coords="356,5,595,47"/>
+</map>

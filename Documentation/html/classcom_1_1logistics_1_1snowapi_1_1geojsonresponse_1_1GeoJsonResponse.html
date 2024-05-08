@@ -71,9 +71,22 @@ $(function() {
 <div class="title">com.logistics.snowapi.geojsonresponse.GeoJsonResponse Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class representing the response structure for GeoJSON data, particularly used for handling data that includes geographic features related to alerts or other geographic information.  
+ <a href="classcom_1_1logistics_1_1snowapi_1_1geojsonresponse_1_1GeoJsonResponse.html#details">More...</a></p>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="GeoJsonResponse_8java_source.html#l00012">12</a> of file <a class="el" href="GeoJsonResponse_8java_source.html">GeoJsonResponse.java</a>.</p>
+<div class="textblock"><p>Class representing the response structure for GeoJSON data, particularly used for handling data that includes geographic features related to alerts or other geographic information. </p>
+<p>This class captures the array of features as defined in standard GeoJSON format. </p>
+<p>Attributes: </p><ul>
+<li>
+<div class="fragment"><div class="line">features </div>
+</div><!-- fragment --> - A list of <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1geojsonresponse_1_1Feature.html">Feature</a> objects, each representing a distinct geographic feature along with its properties and geometry, as detailed in the received GeoJSON data. </li>
+</ul>
+<p>Usage: Instances of this class are primarily used for JSON deserialization when GeoJSON data is received from external sources, such as web APIs providing weather alerts or geographic mapping data. The class facilitates the extraction and processing of the 'features' part of the GeoJSON, making it accessible for further processing within the application, such as converting them into domain-specific entities or performing geographic data analysis. </p>
+<p>This class is annotated with <a class="el" href="">JsonIgnoreProperties</a> to ensure that it can handle variations in GeoJSON structures gracefully by ignoring unknown properties, thus enhancing compatibility and robustness when interfacing with various external data sources.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1geojsonresponse_1_1Feature.html" title="Represents a GeoJSON feature object, specifically designed to handle the parsing of alert data from e...">Feature</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="GeoJsonResponse_8java_source.html#l00035">35</a> of file <a class="el" href="GeoJsonResponse_8java_source.html">GeoJsonResponse.java</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/main/java/com/logistics/snowapi/geojsonresponse/<a class="el" href="GeoJsonResponse_8java_source.html">GeoJsonResponse.java</a></li>
 </ul>

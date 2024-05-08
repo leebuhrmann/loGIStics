@@ -1,4 +1,4 @@
 <map id="com.logistics.snowapi.controller.BoundaryController.updateBoundary" name="com.logistics.snowapi.controller.BoundaryController.updateBoundary">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,264,47"/>
-<area shape="rect" id="node2" href="$classcom_1_1logistics_1_1snowapi_1_1service_1_1BoundaryService.html#afdc51e00c294bdb1b399ce82231b0aa5" title=" " alt="" coords="312,5,555,47"/>
+<area shape="rect" id="node1" title="Endpoint to update an existing boundary." alt="" coords="5,5,264,47"/>
+<area shape="rect" id="node2" href="$classcom_1_1logistics_1_1snowapi_1_1service_1_1BoundaryService.html#afdc51e00c294bdb1b399ce82231b0aa5" title="Updates an existing boundary in the database." alt="" coords="312,5,555,47"/>
 </map>

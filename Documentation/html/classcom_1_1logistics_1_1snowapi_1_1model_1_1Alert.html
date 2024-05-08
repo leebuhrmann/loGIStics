@@ -71,9 +71,48 @@ $(function() {
 <div class="title">com.logistics.snowapi.model.Alert Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Entity class representing an alert as defined in the National Weather Service (NWS).  
+ <a href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert.html#details">More...</a></p>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="Alert_8java_source.html#l00016">16</a> of file <a class="el" href="Alert_8java_source.html">Alert.java</a>.</p>
+<div class="textblock"><p>Entity class representing an alert as defined in the National Weather Service (NWS). </p>
+<p>This class is linked to the 'alert' table in the database and includes various fields that describe the alert's properties, such as its event type, onset and expiration times, headline, and detailed description. </p>
+<p>This class also manages relationships with <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcZone.html">UgcZone</a> entities, indicating the geographic zones affected by the alert. The relationship is modeled as a many-to-many association, managed through the 'ugc_alert' join table. Additionally, it holds a one-to-many relationship with <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlert.html">UgcAlert</a>, which tracks specific UGC zone alert details. </p>
+<p>Attributes: </p><ul>
+<li>
+<div class="fragment"><div class="line"><span class="keywordtype">id</span> </div>
+</div><!-- fragment --> - The primary key of the alert. </li>
+<li>
+<div class="fragment"><div class="line"><span class="keyword">event</span> </div>
+</div><!-- fragment --> - The type or name of the event triggering the alert. </li>
+<li>
+<div class="fragment"><div class="line">onset </div>
+</div><!-- fragment --> - The datetime when the alert becomes effective. </li>
+<li>
+<div class="fragment"><div class="line">expires </div>
+</div><!-- fragment --> - The datetime when the alert is no longer effective. </li>
+<li>
+<div class="fragment"><div class="line">headline </div>
+</div><!-- fragment --> - A brief headline summarizing the alert. </li>
+<li>
+<div class="fragment"><div class="line">description </div>
+</div><!-- fragment --> - A detailed description of the alert. </li>
+<li>
+<div class="fragment"><div class="line">nwsID </div>
+</div><!-- fragment --> - A unique identifier assigned by the National Weather Service. </li>
+<li>
+<div class="fragment"><div class="line">ugcZones </div>
+</div><!-- fragment --> - A set of <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcZone.html">UgcZone</a> entities affected by this alert. </li>
+<li>
+<div class="fragment"><div class="line">ugcAlerts </div>
+</div><!-- fragment --> - A set of <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlert.html">UgcAlert</a> entities that provide additional details related to the alert and its associated UGC zones. </li>
+</ul>
+<p>Usage: Instances of this class are used to persist and retrieve alert data from the database, serve data in response to API requests, and manage alert-related operations within the application.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcZone.html" title="Entity class representing a UGC (Universal Geographic Code) zone within the system.">UgcZone</a> </dd>
+<dd>
+<a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlert.html" title="Entity class for representing an association between an alert and a UGC (Universal Geographic Code) z...">UgcAlert</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="Alert_8java_source.html#l00047">47</a> of file <a class="el" href="Alert_8java_source.html">Alert.java</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/main/java/com/logistics/snowapi/model/<a class="el" href="Alert_8java_source.html">Alert.java</a></li>
 </ul>
