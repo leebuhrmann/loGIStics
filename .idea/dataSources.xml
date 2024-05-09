@@ -15,9 +15,11 @@
       </jdbc-additional-properties>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="snow65@localhost" uuid="2e6923a3-d7d6-4b06-8105-4b29f688e62e">
+    <data-source source="LOCAL" name="snow_65@localhost" uuid="08989bae-b8be-44cc-bf92-4025c461d1ab">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/snow-api/src/main/resources/application.properties</remarks>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/snow_65</jdbc-url>
       <jdbc-additional-properties>

@@ -72,12 +72,15 @@ $(function() {
 <div class="title">com.logistics.snowapi.config.WebConfig Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Configuration class to customize web-related aspects of the Spring Boot application.  
+ <a href="classcom_1_1logistics_1_1snowapi_1_1config_1_1WebConfig.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for com.logistics.snowapi.config.WebConfig:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcom_1_1logistics_1_1snowapi_1_1config_1_1WebConfig__inherit__graph.png" border="0" usemap="#acom_8logistics_8snowapi_8config_8WebConfig_inherit__map" alt="Inheritance graph"/></div>
 <map name="acom_8logistics_8snowapi_8config_8WebConfig_inherit__map" id="acom_8logistics_8snowapi_8config_8WebConfig_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,80,219,121"/>
+<area shape="rect" title="Configuration class to customize web&#45;related aspects of the Spring Boot application." alt="" coords="5,80,219,121"/>
 <area shape="rect" title=" " alt="" coords="40,5,184,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -86,7 +89,7 @@ Collaboration diagram for com.logistics.snowapi.config.WebConfig:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcom_1_1logistics_1_1snowapi_1_1config_1_1WebConfig__coll__graph.png" border="0" usemap="#acom_8logistics_8snowapi_8config_8WebConfig_coll__map" alt="Collaboration graph"/></div>
 <map name="acom_8logistics_8snowapi_8config_8WebConfig_coll__map" id="acom_8logistics_8snowapi_8config_8WebConfig_coll__map">
-<area shape="rect" title=" " alt="" coords="5,80,219,121"/>
+<area shape="rect" title="Configuration class to customize web&#45;related aspects of the Spring Boot application." alt="" coords="5,80,219,121"/>
 <area shape="rect" title=" " alt="" coords="40,5,184,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -94,11 +97,22 @@ Collaboration diagram for com.logistics.snowapi.config.WebConfig:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a8bcccd38a55340524d76d4624acc2333"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1config_1_1WebConfig.html#a8bcccd38a55340524d76d4624acc2333">addCorsMappings</a> (CorsRegistry registry)</td></tr>
+<tr class="memdesc:a8bcccd38a55340524d76d4624acc2333"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the CORS mappings for the application.  <a href="classcom_1_1logistics_1_1snowapi_1_1config_1_1WebConfig.html#a8bcccd38a55340524d76d4624acc2333">More...</a><br /></td></tr>
 <tr class="separator:a8bcccd38a55340524d76d4624acc2333"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="WebConfig_8java_source.html#l00009">9</a> of file <a class="el" href="WebConfig_8java_source.html">WebConfig.java</a>.</p>
+<div class="textblock"><p>Configuration class to customize web-related aspects of the Spring Boot application. </p>
+<p>This class implements <a class="el" href="">WebMvcConfigurer</a> and provides configuration for CORS to allow cross-origin requests from web clients. </p>
+<p>The CORS settings are essential for frontend applications hosted on different origins to interact with the backend services without encountering the same-origin policy restrictions imposed by browsers. </p>
+<p>Methods: </p><ul>
+<li>
+<a class="el" href="classcom_1_1logistics_1_1snowapi_1_1config_1_1WebConfig.html#a8bcccd38a55340524d76d4624acc2333">addCorsMappings(CorsRegistry)</a> - Configures global CORS settings. </li>
+</ul>
+<dl class="section see"><dt>See also</dt><dd>WebMvcConfigurer </dd>
+<dd>
+CorsRegistry </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="WebConfig_8java_source.html#l00025">25</a> of file <a class="el" href="WebConfig_8java_source.html">WebConfig.java</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a8bcccd38a55340524d76d4624acc2333"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8bcccd38a55340524d76d4624acc2333">&#9670;&nbsp;</a></span>addCorsMappings()</h2>
@@ -116,13 +130,23 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="WebConfig_8java_source.html#l00013">13</a> of file <a class="el" href="WebConfig_8java_source.html">WebConfig.java</a>.</p>
-<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                                                       {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        registry.addMapping(<span class="stringliteral">&quot;/**&quot;</span>)</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                .allowedOrigins(<span class="stringliteral">&quot;http://localhost:3000&quot;</span>)</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                .allowedMethods(<span class="stringliteral">&quot;GET&quot;</span>, <span class="stringliteral">&quot;POST&quot;</span>, <span class="stringliteral">&quot;PUT&quot;</span>, <span class="stringliteral">&quot;DELETE&quot;</span>, <span class="stringliteral">&quot;OPTION&quot;</span>)</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                .allowedHeaders(<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    }</div>
+<p>Configures the CORS mappings for the application. </p>
+<p>This method sets up the allowed origins, HTTP methods, and headers that the server will accept from cross-origin requests. </p>
+<p>Example usage includes allowing HTTP methods such as GET, POST, PUT, DELETE, and OPTIONS from a specific frontend origin.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">registry</td><td>the <a class="el" href="">CorsRegistry</a> to configure CORS settings. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="WebConfig_8java_source.html#l00036">36</a> of file <a class="el" href="WebConfig_8java_source.html">WebConfig.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                                                       {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        registry.addMapping(<span class="stringliteral">&quot;/**&quot;</span>)</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                .allowedOrigins(<span class="stringliteral">&quot;http://localhost:3000&quot;</span>)</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                .allowedMethods(<span class="stringliteral">&quot;GET&quot;</span>, <span class="stringliteral">&quot;POST&quot;</span>, <span class="stringliteral">&quot;PUT&quot;</span>, <span class="stringliteral">&quot;DELETE&quot;</span>, <span class="stringliteral">&quot;OPTIONS&quot;</span>)</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                .allowedHeaders(<span class="stringliteral">&quot;*&quot;</span>);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>

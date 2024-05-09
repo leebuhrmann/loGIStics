@@ -72,18 +72,30 @@ $(function() {
 <div class="title">com.logistics.snowapi.service.UgcZoneScraper Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Service class for scraping geographic zone information related to UGC (Universal Geographic Code) zones.  
+ <a href="classcom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneScraper.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ab87c2225f0c359e458f5fb8c73601dba"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneScraper.html#ab87c2225f0c359e458f5fb8c73601dba">UgcZoneScraper</a> (RestTemplateBuilder restTemplateBuilder, <a class="el" href="interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1UgcZoneRepository.html">UgcZoneRepository</a> ugcZoneRepository, <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneService.html">UgcZoneService</a> ugcZoneService, ObjectMapper objectMapper)</td></tr>
 <tr class="separator:ab87c2225f0c359e458f5fb8c73601dba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74c9f6a586ee5db872034880aa31ecb7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneScraper.html#a74c9f6a586ee5db872034880aa31ecb7">scrape</a> (ArrayList&lt; String &gt; ugcCodeAddresses)</td></tr>
-<tr class="memdesc:a74c9f6a586ee5db872034880aa31ecb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes a list of URLs corresponding to UGC (Universal Geographic Code) Zones by checking if their associated data already exists within the database.  <a href="classcom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneScraper.html#a74c9f6a586ee5db872034880aa31ecb7">More...</a><br /></td></tr>
+<tr class="memdesc:a74c9f6a586ee5db872034880aa31ecb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes a list of URLs corresponding to UGC Zones by checking if their associated data already exists within the database.  <a href="classcom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneScraper.html#a74c9f6a586ee5db872034880aa31ecb7">More...</a><br /></td></tr>
 <tr class="separator:a74c9f6a586ee5db872034880aa31ecb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="UgcZoneScraper_8java_source.html#l00018">18</a> of file <a class="el" href="UgcZoneScraper_8java_source.html">UgcZoneScraper.java</a>.</p>
+<div class="textblock"><p>Service class for scraping geographic zone information related to UGC (Universal Geographic Code) zones. </p>
+<p>This class handles the retrieval of data from the National Weather Service (NWS) and other sources, parsing it, and persisting it in the database as <a class="el" href="">UgcZone</a> entities. </p>
+<p>The class utilizes the <a class="el" href="">RestTemplate</a> to make HTTP requests, an <a class="el" href="">ObjectMapper</a> to parse the JSON responses, and relies on <a class="el" href="">UgcZoneRepository</a> and <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneService.html">UgcZoneService</a> to interact with the database. </p>
+<p>Usage: This service is used to update the database with the latest UGC zone data from external sources. It checks for the existence of UGC zone data before making a request to ensure that only missing or outdated data is updated.</p>
+<dl class="section see"><dt>See also</dt><dd>UgcZone </dd>
+<dd>
+UgcZoneRepository </dd>
+<dd>
+<a class="el" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneService.html" title="Service class that encapsulates the business logic for managing UGC (Universal Geographic Code) zones...">UgcZoneService</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="UgcZoneScraper_8java_source.html#l00034">34</a> of file <a class="el" href="UgcZoneScraper_8java_source.html">UgcZoneScraper.java</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab87c2225f0c359e458f5fb8c73601dba"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab87c2225f0c359e458f5fb8c73601dba">&#9670;&nbsp;</a></span>UgcZoneScraper()</h2>
@@ -123,13 +135,13 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="UgcZoneScraper_8java_source.html#l00025">25</a> of file <a class="el" href="UgcZoneScraper_8java_source.html">UgcZoneScraper.java</a>.</p>
-<div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                                                                                                                                                                  {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        this.restTemplate = restTemplateBuilder.build();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        this.ugcZoneRepository = ugcZoneRepository;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        this.ugcZoneService = ugcZoneService;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        this.objectMapper = objectMapper;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="UgcZoneScraper_8java_source.html#l00041">41</a> of file <a class="el" href="UgcZoneScraper_8java_source.html">UgcZoneScraper.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                                                                                                                                                                  {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        this.restTemplate = restTemplateBuilder.build();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        this.ugcZoneRepository = ugcZoneRepository;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        this.ugcZoneService = ugcZoneService;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        this.objectMapper = objectMapper;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -150,62 +162,60 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Processes a list of URLs corresponding to UGC (Universal Geographic Code) Zones by checking if their associated data already exists within the database. </p>
-<p>For each URL whose data is not already present, this method performs a GET request to retrieve geographic and zone information from the National Weather Service (NWS). The response is then parsed, transformed into a UGC Zone entity, and persisted in the database. </p>
+<p>Processes a list of URLs corresponding to UGC Zones by checking if their associated data already exists within the database. </p>
+<p>For each URL whose data is not already present, this method performs a GET request to retrieve geographic and zone information. The response is then parsed into a <a class="el" href="">UgcZoneResponse</a>, transformed into a UGC Zone entity, and persisted in the database. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ugcCodeAddresses</td><td>A<div class="fragment"><div class="line">ArrayList&lt;String&gt; </div>
-</div><!-- fragment --> containing the URLs for UGC Zone data retrieval. Each URL is expected to end with a 6-character UGC code that uniquely identifies a geographic zone. </td></tr>
+    <tr><td class="paramname">ugcCodeAddresses</td><td>A list of URLs for UGC Zone data retrieval. Each URL is expected to end with a 6-character UGC code that uniquely identifies a geographic zone. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">RestClientException</td><td>If there is an issue with the RESTful request, including connection problems or errors returned by the target server. </td></tr>
-    <tr><td class="paramname">IOException</td><td>If there is an error parsing the response from the GET request into a<div class="fragment"><div class="line">UgcZoneResponse </div>
-</div><!-- fragment --> object. </td></tr>
+    <tr><td class="paramname">RestClientException</td><td>If there are connectivity issues or errors returned by the server. </td></tr>
+    <tr><td class="paramname">IOException</td><td>If there are issues parsing the JSON response. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="UgcZoneScraper_8java_source.html#l00045">45</a> of file <a class="el" href="UgcZoneScraper_8java_source.html">UgcZoneScraper.java</a>.</p>
-<div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                                                           {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordflow">for</span> (String address : ugcCodeAddresses){</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            String ugcCode = address.substring(address.length() - 6);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordflow">if</span> (!ugcZoneRepository.<a class="code" href="interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1UgcZoneRepository.html#ab207e561a0f5a14d21d44cb31dd47459">existsByUgcCode</a>(ugcCode)) {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                <span class="comment">// Performs a GET call on the UGCZone address.</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                <span class="comment">// Maps response to POJO</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                <span class="comment">// Creates UGCZone from POJO and stores in database</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                    ResponseEntity&lt;String&gt; response = restTemplate.getForEntity(address, String.class);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                    UgcZoneResponse ugcZoneResponse = objectMapper.readValue(response.getBody(), UgcZoneResponse.class);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                    UgcZone ugcZone = createUgcZoneFromUgcZoneResponse(ugcCode, address, ugcZoneResponse);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                    ugcZoneService.<a class="code" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneService.html#a7bb25b8ecb71ef823d395fe0e9fb6875">createUgcZone</a>(ugcZone);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                <span class="keywordflow">catch</span> (RestClientException e) {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                    System.out.printf(<span class="stringliteral">&quot;Failed to reach address: %s, UGC: %s, Error: %s&quot;</span>, address, ugcCode, e.getMessage());</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                    e.printStackTrace();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                }</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                <span class="keywordflow">catch</span> (IOException e) {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                    System.out.printf(<span class="stringliteral">&quot;Failed to parse response for address: %s, UGC Code: %s&quot;</span>, address, ugcCode);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                    e.printStackTrace();</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                System.out.printf(<span class="stringliteral">&quot;UgcZone %s already exists in database.&quot;</span>, ugcCode);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        }</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div>
-<div class="ttc" id="aclasscom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneService_html_a7bb25b8ecb71ef823d395fe0e9fb6875"><div class="ttname"><a href="classcom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneService.html#a7bb25b8ecb71ef823d395fe0e9fb6875">com.logistics.snowapi.service.UgcZoneService.createUgcZone</a></div><div class="ttdeci">UgcZone createUgcZone(UgcZone ugcZone)</div><div class="ttdef"><b>Definition:</b> <a href="UgcZoneService_8java_source.html#l00030">UgcZoneService.java:30</a></div></div>
-<div class="ttc" id="ainterfacecom_1_1logistics_1_1snowapi_1_1repository_1_1UgcZoneRepository_html_ab207e561a0f5a14d21d44cb31dd47459"><div class="ttname"><a href="interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1UgcZoneRepository.html#ab207e561a0f5a14d21d44cb31dd47459">com.logistics.snowapi.repository.UgcZoneRepository.existsByUgcCode</a></div><div class="ttdeci">boolean existsByUgcCode(String ugcCode)</div></div>
+<p class="definition">Definition at line <a class="el" href="UgcZoneScraper_8java_source.html#l00059">59</a> of file <a class="el" href="UgcZoneScraper_8java_source.html">UgcZoneScraper.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                                                           {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">for</span> (String address : ugcCodeAddresses){</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            String ugcCode = address.substring(address.length() - 6);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keywordflow">if</span> (!ugcZoneRepository.<a class="code" href="interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1UgcZoneRepository.html#ab207e561a0f5a14d21d44cb31dd47459">existsByUgcCode</a>(ugcCode)) {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                <span class="comment">// Performs a GET call on the UGCZone address.</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                <span class="comment">// Maps response to POJO</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                <span class="comment">// Creates UGCZone from POJO and stores in database</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                    ResponseEntity&lt;String&gt; response = restTemplate.getForEntity(address, String.class);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                    UgcZoneResponse ugcZoneResponse = objectMapper.readValue(response.getBody(), UgcZoneResponse.class);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                    UgcZone ugcZone = createUgcZoneFromUgcZoneResponse(ugcCode, address, ugcZoneResponse);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                    ugcZoneService.<a class="code" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneService.html#a7bb25b8ecb71ef823d395fe0e9fb6875">createUgcZone</a>(ugcZone);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                <span class="keywordflow">catch</span> (RestClientException e) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                    System.out.printf(<span class="stringliteral">&quot;Failed to reach address: %s, UGC: %s, Error: %s\n&quot;</span>, address, ugcCode, e.getMessage());</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                    e.printStackTrace();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                <span class="keywordflow">catch</span> (IOException e) {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                    System.out.printf(<span class="stringliteral">&quot;Failed to parse response for address: %s, UGC Code: %s\n&quot;</span>, address, ugcCode);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                    e.printStackTrace();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                System.out.printf(<span class="stringliteral">&quot;UgcZone %s already exists in database.\n&quot;</span>, ugcCode);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
+<div class="ttc" id="aclasscom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneService_html_a7bb25b8ecb71ef823d395fe0e9fb6875"><div class="ttname"><a href="classcom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneService.html#a7bb25b8ecb71ef823d395fe0e9fb6875">com.logistics.snowapi.service.UgcZoneService.createUgcZone</a></div><div class="ttdeci">UgcZone createUgcZone(UgcZone ugcZone)</div><div class="ttdoc">Creates a new UGC zone in the database.</div><div class="ttdef"><b>Definition:</b> <a href="UgcZoneService_8java_source.html#l00061">UgcZoneService.java:61</a></div></div>
+<div class="ttc" id="ainterfacecom_1_1logistics_1_1snowapi_1_1repository_1_1UgcZoneRepository_html_ab207e561a0f5a14d21d44cb31dd47459"><div class="ttname"><a href="interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1UgcZoneRepository.html#ab207e561a0f5a14d21d44cb31dd47459">com.logistics.snowapi.repository.UgcZoneRepository.existsByUgcCode</a></div><div class="ttdeci">boolean existsByUgcCode(String ugcCode)</div><div class="ttdoc">Checks if a UGC Zone with the specified UGC code exists in the database.</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneScraper_a74c9f6a586ee5db872034880aa31ecb7_cgraph.png" border="0" usemap="#aclasscom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneScraper_a74c9f6a586ee5db872034880aa31ecb7_cgraph" alt=""/></div>
 <map name="aclasscom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneScraper_a74c9f6a586ee5db872034880aa31ecb7_cgraph" id="aclasscom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneScraper_a74c9f6a586ee5db872034880aa31ecb7_cgraph">
-<area shape="rect" title="Processes a list of URLs corresponding to UGC (Universal Geographic Code) Zones by checking if their ..." alt="" coords="5,39,227,80"/>
-<area shape="rect" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneService.html#a7bb25b8ecb71ef823d395fe0e9fb6875" title=" " alt="" coords="293,5,523,47"/>
-<area shape="rect" href="interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1UgcZoneRepository.html#ab207e561a0f5a14d21d44cb31dd47459" title=" " alt="" coords="275,71,541,112"/>
+<area shape="rect" title="Processes a list of URLs corresponding to UGC Zones by checking if their associated data already exis..." alt="" coords="5,39,227,80"/>
+<area shape="rect" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneService.html#a7bb25b8ecb71ef823d395fe0e9fb6875" title="Creates a new UGC zone in the database." alt="" coords="293,5,523,47"/>
+<area shape="rect" href="interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1UgcZoneRepository.html#ab207e561a0f5a14d21d44cb31dd47459" title="Checks if a UGC Zone with the specified UGC code exists in the database." alt="" coords="275,71,541,112"/>
 </map>
 </div>
 

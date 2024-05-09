@@ -1,4 +1,4 @@
 <map id="com.logistics.snowapi.model.UserBoundaryId" name="com.logistics.snowapi.model.UserBoundaryId">
-<area shape="rect" id="node1" title=" " alt="" coords="5,80,220,121"/>
+<area shape="rect" id="node1" title="Embeddable class representing the composite key for the UserBoundary entity." alt="" coords="5,80,220,121"/>
 <area shape="rect" id="node2" title=" " alt="" coords="39,5,186,32"/>
 </map>

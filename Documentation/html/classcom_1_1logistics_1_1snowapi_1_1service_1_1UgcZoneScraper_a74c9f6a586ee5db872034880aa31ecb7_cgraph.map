@@ -1,5 +1,5 @@
 <map id="com.logistics.snowapi.service.UgcZoneScraper.scrape" name="com.logistics.snowapi.service.UgcZoneScraper.scrape">
-<area shape="rect" id="node1" title="Processes a list of URLs corresponding to UGC (Universal Geographic Code) Zones by checking if their ..." alt="" coords="5,39,227,80"/>
-<area shape="rect" id="node2" href="$classcom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneService.html#a7bb25b8ecb71ef823d395fe0e9fb6875" title=" " alt="" coords="293,5,523,47"/>
-<area shape="rect" id="node3" href="$interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1UgcZoneRepository.html#ab207e561a0f5a14d21d44cb31dd47459" title=" " alt="" coords="275,71,541,112"/>
+<area shape="rect" id="node1" title="Processes a list of URLs corresponding to UGC Zones by checking if their associated data already exis..." alt="" coords="5,39,227,80"/>
+<area shape="rect" id="node2" href="$classcom_1_1logistics_1_1snowapi_1_1service_1_1UgcZoneService.html#a7bb25b8ecb71ef823d395fe0e9fb6875" title="Creates a new UGC zone in the database." alt="" coords="293,5,523,47"/>
+<area shape="rect" id="node3" href="$interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1UgcZoneRepository.html#ab207e561a0f5a14d21d44cb31dd47459" title="Checks if a UGC Zone with the specified UGC code exists in the database." alt="" coords="275,71,541,112"/>
 </map>

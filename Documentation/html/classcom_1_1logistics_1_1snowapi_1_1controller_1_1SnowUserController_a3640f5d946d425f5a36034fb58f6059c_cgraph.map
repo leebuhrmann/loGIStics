@@ -1,5 +1,5 @@
 <map id="com.logistics.snowapi.controller.SnowUserController.updateUser" name="com.logistics.snowapi.controller.SnowUserController.updateUser">
-<area shape="rect" id="node1" title=" " alt="" coords="5,39,240,80"/>
-<area shape="rect" id="node2" href="$classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService.html#aeece69366f28f39647b248a87bca0b04" title=" " alt="" coords="288,5,511,47"/>
-<area shape="rect" id="node3" href="$classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService.html#abd673a1561c2e51a37f71c29b69d2c84" title=" " alt="" coords="289,71,510,112"/>
+<area shape="rect" id="node1" title="Endpoint to update an existing user." alt="" coords="5,39,240,80"/>
+<area shape="rect" id="node2" href="$classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService.html#aeece69366f28f39647b248a87bca0b04" title="Retrieves a user by their ID." alt="" coords="288,5,511,47"/>
+<area shape="rect" id="node3" href="$classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService.html#abd673a1561c2e51a37f71c29b69d2c84" title="Updates an existing user in the database." alt="" coords="289,71,510,112"/>
 </map>

@@ -72,25 +72,40 @@ $(function() {
 <div class="title">com.logistics.snowapi.service.AlertService Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Service class that encapsulates the business logic for managing alerts.  
+ <a href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a54d2ab1be503831ee63e44d168030ea8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#a54d2ab1be503831ee63e44d168030ea8">AlertService</a> (<a class="el" href="interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1AlertRepository.html">AlertRepository</a> alertRepository)</td></tr>
 <tr class="separator:a54d2ab1be503831ee63e44d168030ea8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b372f8b5b4b1e0babdafa6954d8f0fd"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert.html">Alert</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#a5b372f8b5b4b1e0babdafa6954d8f0fd">findAllAlerts</a> ()</td></tr>
+<tr class="memdesc:a5b372f8b5b4b1e0babdafa6954d8f0fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves all alerts stored in the database.  <a href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#a5b372f8b5b4b1e0babdafa6954d8f0fd">More...</a><br /></td></tr>
 <tr class="separator:a5b372f8b5b4b1e0babdafa6954d8f0fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af61a1a56023de986b5d9504f2e39bfa7"><td class="memItemLeft" align="right" valign="top">Optional&lt; <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert.html">Alert</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#af61a1a56023de986b5d9504f2e39bfa7">findAlertById</a> (Integer id)</td></tr>
+<tr class="memdesc:af61a1a56023de986b5d9504f2e39bfa7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves an alert by its ID.  <a href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#af61a1a56023de986b5d9504f2e39bfa7">More...</a><br /></td></tr>
 <tr class="separator:af61a1a56023de986b5d9504f2e39bfa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87fb0db71ea0cc9d970d02553d181e97"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert.html">Alert</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#a87fb0db71ea0cc9d970d02553d181e97">createAlert</a> (<a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert.html">Alert</a> alert)</td></tr>
+<tr class="memdesc:a87fb0db71ea0cc9d970d02553d181e97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new alert in the database, ensuring it does not already exist based on its NWS ID.  <a href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#a87fb0db71ea0cc9d970d02553d181e97">More...</a><br /></td></tr>
 <tr class="separator:a87fb0db71ea0cc9d970d02553d181e97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abda27fb0f53ab71d61909ff4e37c45e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert.html">Alert</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#abda27fb0f53ab71d61909ff4e37c45e4">updateAlert</a> (<a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert.html">Alert</a> alert)</td></tr>
+<tr class="memdesc:abda27fb0f53ab71d61909ff4e37c45e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates an existing alert in the database.  <a href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#abda27fb0f53ab71d61909ff4e37c45e4">More...</a><br /></td></tr>
 <tr class="separator:abda27fb0f53ab71d61909ff4e37c45e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af81072f39ad2a22d7ac9d9020d9688d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#af81072f39ad2a22d7ac9d9020d9688d6">deleteAlert</a> (Integer id)</td></tr>
+<tr class="memdesc:af81072f39ad2a22d7ac9d9020d9688d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes an alert from the database by its ID.  <a href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#af81072f39ad2a22d7ac9d9020d9688d6">More...</a><br /></td></tr>
 <tr class="separator:af81072f39ad2a22d7ac9d9020d9688d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="AlertService_8java_source.html#l00012">12</a> of file <a class="el" href="AlertService_8java_source.html">AlertService.java</a>.</p>
+<div class="textblock"><p>Service class that encapsulates the business logic for managing alerts. </p>
+<p>This class provides methods to find, create, update, and delete <a class="el" href="">Alert</a> entities, using the <a class="el" href="">AlertRepository</a> for database interactions. </p>
+<p>Methods in this class handle standard CRUD operations and ensure that the business rules for processing alerts, such as uniqueness checks and existence validations, are enforced. </p>
+<p>Usage: This service should be used whenever <a class="el" href="">Alert</a> entities need to be manipulated or queried. The methods provided ensure that alerts are handled consistently and in accordance with the defined business rules.</p>
+<dl class="section see"><dt>See also</dt><dd>Alert </dd>
+<dd>
+AlertRepository </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="AlertService_8java_source.html#l00028">28</a> of file <a class="el" href="AlertService_8java_source.html">AlertService.java</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a54d2ab1be503831ee63e44d168030ea8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a54d2ab1be503831ee63e44d168030ea8">&#9670;&nbsp;</a></span>AlertService()</h2>
@@ -108,10 +123,10 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AlertService_8java_source.html#l00017">17</a> of file <a class="el" href="AlertService_8java_source.html">AlertService.java</a>.</p>
-<div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                                                         {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        this.alertRepository = alertRepository;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="AlertService_8java_source.html#l00033">33</a> of file <a class="el" href="AlertService_8java_source.html">AlertService.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                                                         {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        this.alertRepository = alertRepository;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -132,22 +147,31 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AlertService_8java_source.html#l00029">29</a> of file <a class="el" href="AlertService_8java_source.html">AlertService.java</a>.</p>
-<div class="fragment"><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                                          {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="comment">// Make sure the alert doesn&#39;t exist before creating</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordflow">if</span> (alert.getNwsID() != <span class="keyword">null</span> &amp;&amp; !alertRepository.<a class="code" href="interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1AlertRepository.html#aeccca87a5a8c6931736cb38aa2f383fd">existsByNwsID</a>(alert.getNwsID())) {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <span class="keywordflow">return</span> alertRepository.save(alert);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        }</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
-<div class="ttc" id="ainterfacecom_1_1logistics_1_1snowapi_1_1repository_1_1AlertRepository_html_aeccca87a5a8c6931736cb38aa2f383fd"><div class="ttname"><a href="interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1AlertRepository.html#aeccca87a5a8c6931736cb38aa2f383fd">com.logistics.snowapi.repository.AlertRepository.existsByNwsID</a></div><div class="ttdeci">boolean existsByNwsID(String nwsID)</div></div>
+<p>Creates a new alert in the database, ensuring it does not already exist based on its NWS ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">alert</td><td>the <a class="el" href="">Alert</a> entity to create </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the created alert if successful, null otherwise </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="AlertService_8java_source.html#l00062">62</a> of file <a class="el" href="AlertService_8java_source.html">AlertService.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                                          {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="comment">// Make sure the alert doesn&#39;t exist before creating</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">if</span> (alert.getNwsID() != <span class="keyword">null</span> &amp;&amp; !alertRepository.<a class="code" href="interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1AlertRepository.html#aeccca87a5a8c6931736cb38aa2f383fd">existsByNwsID</a>(alert.getNwsID())) {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordflow">return</span> alertRepository.save(alert);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
+<div class="ttc" id="ainterfacecom_1_1logistics_1_1snowapi_1_1repository_1_1AlertRepository_html_aeccca87a5a8c6931736cb38aa2f383fd"><div class="ttname"><a href="interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1AlertRepository.html#aeccca87a5a8c6931736cb38aa2f383fd">com.logistics.snowapi.repository.AlertRepository.existsByNwsID</a></div><div class="ttdeci">boolean existsByNwsID(String nwsID)</div><div class="ttdoc">Checks if an alert with the specified NWS ID exists in the database.</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService_a87fb0db71ea0cc9d970d02553d181e97_cgraph.png" border="0" usemap="#aclasscom_1_1logistics_1_1snowapi_1_1service_1_1AlertService_a87fb0db71ea0cc9d970d02553d181e97_cgraph" alt=""/></div>
 <map name="aclasscom_1_1logistics_1_1snowapi_1_1service_1_1AlertService_a87fb0db71ea0cc9d970d02553d181e97_cgraph" id="aclasscom_1_1logistics_1_1snowapi_1_1service_1_1AlertService_a87fb0db71ea0cc9d970d02553d181e97_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,227,47"/>
-<area shape="rect" href="interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1AlertRepository.html#aeccca87a5a8c6931736cb38aa2f383fd" title=" " alt="" coords="275,5,513,47"/>
+<area shape="rect" title="Creates a new alert in the database, ensuring it does not already exist based on its NWS ID." alt="" coords="5,5,227,47"/>
+<area shape="rect" href="interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1AlertRepository.html#aeccca87a5a8c6931736cb38aa2f383fd" title="Checks if an alert with the specified NWS ID exists in the database." alt="" coords="275,5,513,47"/>
 </map>
 </div>
 
@@ -169,10 +193,18 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AlertService_8java_source.html#l00046">46</a> of file <a class="el" href="AlertService_8java_source.html">AlertService.java</a>.</p>
-<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                                        {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        alertRepository.deleteById(<span class="keywordtype">id</span>);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
+<p>Deletes an alert from the database by its ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>the ID of the alert to delete </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="AlertService_8java_source.html#l00090">90</a> of file <a class="el" href="AlertService_8java_source.html">AlertService.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                                        {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        alertRepository.deleteById(<span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -192,10 +224,19 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AlertService_8java_source.html#l00025">25</a> of file <a class="el" href="AlertService_8java_source.html">AlertService.java</a>.</p>
-<div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                                                     {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordflow">return</span> alertRepository.findById(<span class="keywordtype">id</span>);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    }</div>
+<p>Retrieves an alert by its ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>the ID of the alert to retrieve </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>an <a class="el" href="">Optional</a> containing the found alert or empty if no alert is found </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="AlertService_8java_source.html#l00052">52</a> of file <a class="el" href="AlertService_8java_source.html">AlertService.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                                                     {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">return</span> alertRepository.findById(<span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -214,10 +255,13 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AlertService_8java_source.html#l00021">21</a> of file <a class="el" href="AlertService_8java_source.html">AlertService.java</a>.</p>
-<div class="fragment"><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                                       {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordflow">return</span> alertRepository.findAll();</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    }</div>
+<p>Retrieves all alerts stored in the database. </p>
+<dl class="section return"><dt>Returns</dt><dd>a list of <a class="el" href="">Alert</a> entities </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="AlertService_8java_source.html#l00042">42</a> of file <a class="el" href="AlertService_8java_source.html">AlertService.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                       {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">return</span> alertRepository.findAll();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -237,15 +281,24 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AlertService_8java_source.html#l00037">37</a> of file <a class="el" href="AlertService_8java_source.html">AlertService.java</a>.</p>
-<div class="fragment"><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                                          {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="comment">// Make sure the alert exists before updating</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">if</span> (alert.getId() != <span class="keyword">null</span> &amp;&amp; alertRepository.existsById(alert.getId())) {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordflow">return</span> alertRepository.save(alert);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="comment">// Handle the case where the alert doesn&#39;t exist (could throw an exception or return null)</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
+<p>Updates an existing alert in the database. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">alert</td><td>the <a class="el" href="">Alert</a> entity to update </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the updated alert if successful, null otherwise </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="AlertService_8java_source.html#l00076">76</a> of file <a class="el" href="AlertService_8java_source.html">AlertService.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                                          {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="comment">// Make sure the alert exists before updating</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordflow">if</span> (alert.getId() != <span class="keyword">null</span> &amp;&amp; alertRepository.existsById(alert.getId())) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="keywordflow">return</span> alertRepository.save(alert);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="comment">// Handle the case where the alert doesn&#39;t exist (could throw an exception or return null)</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -23,6 +23,7 @@
     "@types/sockjs-client": "^1.5.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "jest-fetch-mock": "^3.0.3",
     "lucide-react": "^0.334.0",
     "next": "14.1.0",
     "ol": "^8.2.0",

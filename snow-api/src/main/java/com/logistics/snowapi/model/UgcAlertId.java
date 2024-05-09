@@ -8,6 +8,25 @@ import org.hibernate.Hibernate;
 
 import java.util.Objects;
 
+/**
+ * Embeddable class representing the composite key for the {@link UgcAlert} entity.
+ * This class defines the fields that make up the primary key for the UgcAlert table, including
+ * a UGC code and an alert ID. It implements {@link java.io.Serializable} to ensure that instances
+ * of this class can be serialized by JPA and other Java technologies.
+ * <p>
+ * The fields:
+ * <ul>
+ *     <li>{@code ugcCode} - Represents the UGC (Universal Geographic Code), a unique identifier for a geographic zone.</li>
+ *     <li>{@code alertId} - Represents the identifier for an {@link Alert}, linking the alert to a specific UGC zone.</li>
+ * </ul>
+ * <p>
+ * This class includes custom implementations of {@code equals} and {@code hashCode} methods, which are essential for
+ * correctly handling composite keys in JPA. These implementations leverage Hibernate's {@link Hibernate#getClass(Object)}
+ * method to ensure that proxy objects are correctly compared, preventing issues with lazy loading.
+ *
+ * @see UgcAlert
+ * @see Hibernate
+ */
 @Getter
 @Setter
 @Embeddable

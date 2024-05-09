@@ -72,12 +72,15 @@ $(function() {
 <div class="title">com.logistics.snowapi.repository.AlertRepository Interface Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Repository interface for <a class="el" href="">Alert</a> entities, extending the <a class="el" href="">JpaRepository</a>.  
+ <a href="interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1AlertRepository.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for com.logistics.snowapi.repository.AlertRepository:</div>
 <div class="dyncontent">
 <div class="center"><img src="interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1AlertRepository__inherit__graph.png" border="0" usemap="#acom_8logistics_8snowapi_8repository_8AlertRepository_inherit__map" alt="Inheritance graph"/></div>
 <map name="acom_8logistics_8snowapi_8repository_8AlertRepository_inherit__map" id="acom_8logistics_8snowapi_8repository_8AlertRepository_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,95,244,136"/>
+<area shape="rect" title="Repository interface for Alert entities, extending the JpaRepository." alt="" coords="5,95,244,136"/>
 <area shape="rect" title=" " alt="" coords="43,5,206,47"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -86,7 +89,7 @@ Collaboration diagram for com.logistics.snowapi.repository.AlertRepository:</div
 <div class="dyncontent">
 <div class="center"><img src="interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1AlertRepository__coll__graph.png" border="0" usemap="#acom_8logistics_8snowapi_8repository_8AlertRepository_coll__map" alt="Collaboration graph"/></div>
 <map name="acom_8logistics_8snowapi_8repository_8AlertRepository_coll__map" id="acom_8logistics_8snowapi_8repository_8AlertRepository_coll__map">
-<area shape="rect" title=" " alt="" coords="5,95,244,136"/>
+<area shape="rect" title="Repository interface for Alert entities, extending the JpaRepository." alt="" coords="5,95,244,136"/>
 <area shape="rect" title=" " alt="" coords="43,5,206,47"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -94,11 +97,17 @@ Collaboration diagram for com.logistics.snowapi.repository.AlertRepository:</div
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aeccca87a5a8c6931736cb38aa2f383fd"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1AlertRepository.html#aeccca87a5a8c6931736cb38aa2f383fd">existsByNwsID</a> (String nwsID)</td></tr>
+<tr class="memdesc:aeccca87a5a8c6931736cb38aa2f383fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if an alert with the specified NWS ID exists in the database.  <a href="interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1AlertRepository.html#aeccca87a5a8c6931736cb38aa2f383fd">More...</a><br /></td></tr>
 <tr class="separator:aeccca87a5a8c6931736cb38aa2f383fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="AlertRepository_8java_source.html#l00006">6</a> of file <a class="el" href="AlertRepository_8java_source.html">AlertRepository.java</a>.</p>
+<div class="textblock"><p>Repository interface for <a class="el" href="">Alert</a> entities, extending the <a class="el" href="">JpaRepository</a>. </p>
+<p>This interface is used to facilitate database operations on alert entities such as creating, reading, updating, and deleting alerts. </p>
+<p>In addition to the standard CRUD operations provided by JpaRepository, this interface includes custom behavior to check the existence of an alert based on its NWS ID. </p>
+<p>Usage: This repository should be used whenever interactions with the Alert table are required. It provides a method to quickly verify the existence of an alert by its NWS ID, which is useful in operations where duplication checks are necessary.</p>
+<dl class="section see"><dt>See also</dt><dd>Alert </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="AlertRepository_8java_source.html#l00021">21</a> of file <a class="el" href="AlertRepository_8java_source.html">AlertRepository.java</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="aeccca87a5a8c6931736cb38aa2f383fd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aeccca87a5a8c6931736cb38aa2f383fd">&#9670;&nbsp;</a></span>existsByNwsID()</h2>
@@ -115,6 +124,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Checks if an alert with the specified NWS ID exists in the database. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nwsID</td><td>the NWS ID of the alert to check </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if an alert with the given NWS ID exists, false otherwise </dd></dl>
 
 </div>
 </div>

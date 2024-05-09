@@ -6,7 +6,7 @@ var searchData=
   ['boundarycontroller_2ejava_13',['BoundaryController.java',['../BoundaryController_8java.html',1,'']]],
   ['boundaryrepository_14',['BoundaryRepository',['../interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1BoundaryRepository.html',1,'com::logistics::snowapi::repository']]],
   ['boundaryrepository_2ejava_15',['BoundaryRepository.java',['../BoundaryRepository_8java.html',1,'']]],
-  ['boundaryservice_16',['BoundaryService',['../classcom_1_1logistics_1_1snowapi_1_1service_1_1BoundaryService.html#ad79f37ad42d87ec6cef1574097e2311d',1,'com.logistics.snowapi.service.BoundaryService.BoundaryService()'],['../classcom_1_1logistics_1_1snowapi_1_1service_1_1BoundaryService.html',1,'com.logistics.snowapi.service.BoundaryService']]],
+  ['boundaryservice_16',['BoundaryService',['../classcom_1_1logistics_1_1snowapi_1_1service_1_1BoundaryService.html#a412b592174c638051063c4a5eb255e1d',1,'com.logistics.snowapi.service.BoundaryService.BoundaryService()'],['../classcom_1_1logistics_1_1snowapi_1_1service_1_1BoundaryService.html',1,'com.logistics.snowapi.service.BoundaryService']]],
   ['boundaryservice_2ejava_17',['BoundaryService.java',['../BoundaryService_8java.html',1,'']]],
   ['boundaryservicetest_2ejava_18',['BoundaryServiceTest.java',['../BoundaryServiceTest_8java.html',1,'']]]
 ];

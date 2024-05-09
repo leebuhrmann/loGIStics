@@ -72,25 +72,49 @@ $(function() {
 <div class="title">com.logistics.snowapi.controller.AlertController Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>REST controller for managing <a class="el" href="">Alert</a> entities.  
+ <a href="classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0c3158584b467ff0e9cf13f43e2f9243"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController.html#a0c3158584b467ff0e9cf13f43e2f9243">AlertController</a> (<a class="el" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html">AlertService</a> alertService)</td></tr>
 <tr class="separator:a0c3158584b467ff0e9cf13f43e2f9243"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add9eb5459ca5b6a03827f3fbd1bd8387"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert.html">Alert</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController.html#add9eb5459ca5b6a03827f3fbd1bd8387">getAllAlerts</a> ()</td></tr>
+<tr class="memdesc:add9eb5459ca5b6a03827f3fbd1bd8387"><td class="mdescLeft">&#160;</td><td class="mdescRight">Endpoint to retrieve all alerts.  <a href="classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController.html#add9eb5459ca5b6a03827f3fbd1bd8387">More...</a><br /></td></tr>
 <tr class="separator:add9eb5459ca5b6a03827f3fbd1bd8387"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa847f13b0796375616f24370c6d8ec57"><td class="memItemLeft" align="right" valign="top">ResponseEntity&lt; <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert.html">Alert</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController.html#aa847f13b0796375616f24370c6d8ec57">getAlertById</a> (@PathVariable Integer id)</td></tr>
+<tr class="memdesc:aa847f13b0796375616f24370c6d8ec57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Endpoint to retrieve a single alert by its ID.  <a href="classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController.html#aa847f13b0796375616f24370c6d8ec57">More...</a><br /></td></tr>
 <tr class="separator:aa847f13b0796375616f24370c6d8ec57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7aed2a5cdf9920154f5b266296c93593"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert.html">Alert</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController.html#a7aed2a5cdf9920154f5b266296c93593">createAlert</a> (@RequestBody <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert.html">Alert</a> alert)</td></tr>
+<tr class="memdesc:a7aed2a5cdf9920154f5b266296c93593"><td class="mdescLeft">&#160;</td><td class="mdescRight">Endpoint to create a new alert.  <a href="classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController.html#a7aed2a5cdf9920154f5b266296c93593">More...</a><br /></td></tr>
 <tr class="separator:a7aed2a5cdf9920154f5b266296c93593"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a136affb60eade2208733699d19b58280"><td class="memItemLeft" align="right" valign="top">ResponseEntity&lt; <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert.html">Alert</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController.html#a136affb60eade2208733699d19b58280">updateAlert</a> (@PathVariable Integer id, @RequestBody <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert.html">Alert</a> alert)</td></tr>
+<tr class="memdesc:a136affb60eade2208733699d19b58280"><td class="mdescLeft">&#160;</td><td class="mdescRight">Endpoint to update an existing alert.  <a href="classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController.html#a136affb60eade2208733699d19b58280">More...</a><br /></td></tr>
 <tr class="separator:a136affb60eade2208733699d19b58280"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae857bb9877ef4747e5189cb33038c5d5"><td class="memItemLeft" align="right" valign="top">ResponseEntity&lt; Void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController.html#ae857bb9877ef4747e5189cb33038c5d5">deleteAlert</a> (@PathVariable Integer id)</td></tr>
+<tr class="memdesc:ae857bb9877ef4747e5189cb33038c5d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Endpoint to delete an alert by its ID.  <a href="classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController.html#ae857bb9877ef4747e5189cb33038c5d5">More...</a><br /></td></tr>
 <tr class="separator:ae857bb9877ef4747e5189cb33038c5d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="AlertController_8java_source.html#l00013">13</a> of file <a class="el" href="AlertController_8java_source.html">AlertController.java</a>.</p>
+<div class="textblock"><p>REST controller for managing <a class="el" href="">Alert</a> entities. </p>
+<p>This controller provides endpoints for various CRUD operations related to alerts, making it possible to retrieve, create, update, and delete alerts through HTTP requests. </p>
+<p>The controller is mapped to the base URL '/api/alerts', from which all its endpoints are derived. </p>
+<p>Methods: </p><ul>
+<li>
+<a class="el" href="classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController.html#add9eb5459ca5b6a03827f3fbd1bd8387">getAllAlerts()</a> - Retrieves a list of all alerts. </li>
+<li>
+<a class="el" href="">getAlertById(Integer)</a> - Retrieves a specific alert by its ID. </li>
+<li>
+<a class="el" href="">createAlert(Alert)</a> - Creates a new alert. </li>
+<li>
+<a class="el" href="">updateAlert(Integer, Alert)</a> - Updates an existing alert identified by ID. </li>
+<li>
+<a class="el" href="">deleteAlert(Integer)</a> - Deletes an alert by its ID. </li>
+</ul>
+<dl class="section see"><dt>See also</dt><dd>AlertService </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="AlertController_8java_source.html#l00031">31</a> of file <a class="el" href="AlertController_8java_source.html">AlertController.java</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a0c3158584b467ff0e9cf13f43e2f9243"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0c3158584b467ff0e9cf13f43e2f9243">&#9670;&nbsp;</a></span>AlertController()</h2>
@@ -108,10 +132,10 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AlertController_8java_source.html#l00018">18</a> of file <a class="el" href="AlertController_8java_source.html">AlertController.java</a>.</p>
-<div class="fragment"><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                                                      {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        this.alertService = alertService;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="AlertController_8java_source.html#l00036">36</a> of file <a class="el" href="AlertController_8java_source.html">AlertController.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                                                      {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        this.alertService = alertService;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -132,19 +156,28 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AlertController_8java_source.html#l00035">35</a> of file <a class="el" href="AlertController_8java_source.html">AlertController.java</a>.</p>
-<div class="fragment"><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                                                       {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordflow">return</span> alertService.<a class="code" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#a87fb0db71ea0cc9d970d02553d181e97">createAlert</a>(alert);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
-<div class="ttc" id="aclasscom_1_1logistics_1_1snowapi_1_1service_1_1AlertService_html_a87fb0db71ea0cc9d970d02553d181e97"><div class="ttname"><a href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#a87fb0db71ea0cc9d970d02553d181e97">com.logistics.snowapi.service.AlertService.createAlert</a></div><div class="ttdeci">Alert createAlert(Alert alert)</div><div class="ttdef"><b>Definition:</b> <a href="AlertService_8java_source.html#l00029">AlertService.java:29</a></div></div>
+<p>Endpoint to create a new alert. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">alert</td><td>the <a class="el" href="">Alert</a> to create. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the created alert. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="AlertController_8java_source.html#l00070">70</a> of file <a class="el" href="AlertController_8java_source.html">AlertController.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                                                       {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">return</span> alertService.<a class="code" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#a87fb0db71ea0cc9d970d02553d181e97">createAlert</a>(alert);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
+<div class="ttc" id="aclasscom_1_1logistics_1_1snowapi_1_1service_1_1AlertService_html_a87fb0db71ea0cc9d970d02553d181e97"><div class="ttname"><a href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#a87fb0db71ea0cc9d970d02553d181e97">com.logistics.snowapi.service.AlertService.createAlert</a></div><div class="ttdeci">Alert createAlert(Alert alert)</div><div class="ttdoc">Creates a new alert in the database, ensuring it does not already exist based on its NWS ID.</div><div class="ttdef"><b>Definition:</b> <a href="AlertService_8java_source.html#l00062">AlertService.java:62</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_a7aed2a5cdf9920154f5b266296c93593_cgraph.png" border="0" usemap="#aclasscom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_a7aed2a5cdf9920154f5b266296c93593_cgraph" alt=""/></div>
 <map name="aclasscom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_a7aed2a5cdf9920154f5b266296c93593_cgraph" id="aclasscom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_a7aed2a5cdf9920154f5b266296c93593_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,240,47"/>
-<area shape="rect" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#a87fb0db71ea0cc9d970d02553d181e97" title=" " alt="" coords="288,5,509,47"/>
-<area shape="rect" href="interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1AlertRepository.html#aeccca87a5a8c6931736cb38aa2f383fd" title=" " alt="" coords="557,5,796,47"/>
+<area shape="rect" title="Endpoint to create a new alert." alt="" coords="5,5,240,47"/>
+<area shape="rect" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#a87fb0db71ea0cc9d970d02553d181e97" title="Creates a new alert in the database, ensuring it does not already exist based on its NWS ID." alt="" coords="288,5,509,47"/>
+<area shape="rect" href="interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1AlertRepository.html#aeccca87a5a8c6931736cb38aa2f383fd" title="Checks if an alert with the specified NWS ID exists in the database." alt="" coords="557,5,796,47"/>
 </map>
 </div>
 
@@ -166,24 +199,33 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AlertController_8java_source.html#l00050">50</a> of file <a class="el" href="AlertController_8java_source.html">AlertController.java</a>.</p>
-<div class="fragment"><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                                                                      {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">if</span> (alertService.<a class="code" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#af61a1a56023de986b5d9504f2e39bfa7">findAlertById</a>(<span class="keywordtype">id</span>).isPresent()) {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            alertService.<a class="code" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#af81072f39ad2a22d7ac9d9020d9688d6">deleteAlert</a>(<span class="keywordtype">id</span>);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordflow">return</span> ResponseEntity.ok().build();</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">return</span> ResponseEntity.notFound().build();</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
-<div class="ttc" id="aclasscom_1_1logistics_1_1snowapi_1_1service_1_1AlertService_html_af61a1a56023de986b5d9504f2e39bfa7"><div class="ttname"><a href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#af61a1a56023de986b5d9504f2e39bfa7">com.logistics.snowapi.service.AlertService.findAlertById</a></div><div class="ttdeci">Optional&lt; Alert &gt; findAlertById(Integer id)</div><div class="ttdef"><b>Definition:</b> <a href="AlertService_8java_source.html#l00025">AlertService.java:25</a></div></div>
-<div class="ttc" id="aclasscom_1_1logistics_1_1snowapi_1_1service_1_1AlertService_html_af81072f39ad2a22d7ac9d9020d9688d6"><div class="ttname"><a href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#af81072f39ad2a22d7ac9d9020d9688d6">com.logistics.snowapi.service.AlertService.deleteAlert</a></div><div class="ttdeci">void deleteAlert(Integer id)</div><div class="ttdef"><b>Definition:</b> <a href="AlertService_8java_source.html#l00046">AlertService.java:46</a></div></div>
+<p>Endpoint to delete an alert by its ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>the ID of the alert to delete. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a <a class="el" href="">ResponseEntity</a> indicating success (200 OK) or failure (404 Not Found) based on whether the alert was found. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="AlertController_8java_source.html#l00098">98</a> of file <a class="el" href="AlertController_8java_source.html">AlertController.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                                                                      {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordflow">if</span> (alertService.<a class="code" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#af61a1a56023de986b5d9504f2e39bfa7">findAlertById</a>(<span class="keywordtype">id</span>).isPresent()) {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            alertService.<a class="code" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#af81072f39ad2a22d7ac9d9020d9688d6">deleteAlert</a>(<span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="keywordflow">return</span> ResponseEntity.ok().build();</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordflow">return</span> ResponseEntity.notFound().build();</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    }</div>
+<div class="ttc" id="aclasscom_1_1logistics_1_1snowapi_1_1service_1_1AlertService_html_af61a1a56023de986b5d9504f2e39bfa7"><div class="ttname"><a href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#af61a1a56023de986b5d9504f2e39bfa7">com.logistics.snowapi.service.AlertService.findAlertById</a></div><div class="ttdeci">Optional&lt; Alert &gt; findAlertById(Integer id)</div><div class="ttdoc">Retrieves an alert by its ID.</div><div class="ttdef"><b>Definition:</b> <a href="AlertService_8java_source.html#l00052">AlertService.java:52</a></div></div>
+<div class="ttc" id="aclasscom_1_1logistics_1_1snowapi_1_1service_1_1AlertService_html_af81072f39ad2a22d7ac9d9020d9688d6"><div class="ttname"><a href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#af81072f39ad2a22d7ac9d9020d9688d6">com.logistics.snowapi.service.AlertService.deleteAlert</a></div><div class="ttdeci">void deleteAlert(Integer id)</div><div class="ttdoc">Deletes an alert from the database by its ID.</div><div class="ttdef"><b>Definition:</b> <a href="AlertService_8java_source.html#l00090">AlertService.java:90</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_ae857bb9877ef4747e5189cb33038c5d5_cgraph.png" border="0" usemap="#aclasscom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_ae857bb9877ef4747e5189cb33038c5d5_cgraph" alt=""/></div>
 <map name="aclasscom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_ae857bb9877ef4747e5189cb33038c5d5_cgraph" id="aclasscom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_ae857bb9877ef4747e5189cb33038c5d5_cgraph">
-<area shape="rect" title=" " alt="" coords="5,39,240,80"/>
-<area shape="rect" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#af81072f39ad2a22d7ac9d9020d9688d6" title=" " alt="" coords="288,5,509,47"/>
-<area shape="rect" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#af61a1a56023de986b5d9504f2e39bfa7" title=" " alt="" coords="288,71,509,112"/>
+<area shape="rect" title="Endpoint to delete an alert by its ID." alt="" coords="5,39,240,80"/>
+<area shape="rect" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#af81072f39ad2a22d7ac9d9020d9688d6" title="Deletes an alert from the database by its ID." alt="" coords="288,5,509,47"/>
+<area shape="rect" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#af61a1a56023de986b5d9504f2e39bfa7" title="Retrieves an alert by its ID." alt="" coords="288,71,509,112"/>
 </map>
 </div>
 
@@ -205,19 +247,28 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AlertController_8java_source.html#l00028">28</a> of file <a class="el" href="AlertController_8java_source.html">AlertController.java</a>.</p>
-<div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                                                                        {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordflow">return</span> alertService.<a class="code" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#af61a1a56023de986b5d9504f2e39bfa7">findAlertById</a>(<span class="keywordtype">id</span>)</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                .map(ResponseEntity::ok)</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                .orElseGet(() -&gt; ResponseEntity.notFound().build());</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    }</div>
+<p>Endpoint to retrieve a single alert by its ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>the ID of the alert to retrieve. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a <a class="el" href="">ResponseEntity</a> containing the found alert, or a Not Found response if no alert is found. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="AlertController_8java_source.html#l00057">57</a> of file <a class="el" href="AlertController_8java_source.html">AlertController.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                                                                        {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">return</span> alertService.<a class="code" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#af61a1a56023de986b5d9504f2e39bfa7">findAlertById</a>(<span class="keywordtype">id</span>)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                .map(ResponseEntity::ok)</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                .orElseGet(() -&gt; ResponseEntity.notFound().build());</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_aa847f13b0796375616f24370c6d8ec57_cgraph.png" border="0" usemap="#aclasscom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_aa847f13b0796375616f24370c6d8ec57_cgraph" alt=""/></div>
 <map name="aclasscom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_aa847f13b0796375616f24370c6d8ec57_cgraph" id="aclasscom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_aa847f13b0796375616f24370c6d8ec57_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,240,47"/>
-<area shape="rect" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#af61a1a56023de986b5d9504f2e39bfa7" title=" " alt="" coords="288,5,509,47"/>
+<area shape="rect" title="Endpoint to retrieve a single alert by its ID." alt="" coords="5,5,240,47"/>
+<area shape="rect" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#af61a1a56023de986b5d9504f2e39bfa7" title="Retrieves an alert by its ID." alt="" coords="288,5,509,47"/>
 </map>
 </div>
 
@@ -238,18 +289,21 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AlertController_8java_source.html#l00023">23</a> of file <a class="el" href="AlertController_8java_source.html">AlertController.java</a>.</p>
-<div class="fragment"><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                                      {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordflow">return</span> alertService.<a class="code" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#a5b372f8b5b4b1e0babdafa6954d8f0fd">findAllAlerts</a>();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    }</div>
-<div class="ttc" id="aclasscom_1_1logistics_1_1snowapi_1_1service_1_1AlertService_html_a5b372f8b5b4b1e0babdafa6954d8f0fd"><div class="ttname"><a href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#a5b372f8b5b4b1e0babdafa6954d8f0fd">com.logistics.snowapi.service.AlertService.findAllAlerts</a></div><div class="ttdeci">List&lt; Alert &gt; findAllAlerts()</div><div class="ttdef"><b>Definition:</b> <a href="AlertService_8java_source.html#l00021">AlertService.java:21</a></div></div>
+<p>Endpoint to retrieve all alerts. </p>
+<dl class="section return"><dt>Returns</dt><dd>a list of all <a class="el" href="">Alert</a> entities. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="AlertController_8java_source.html#l00046">46</a> of file <a class="el" href="AlertController_8java_source.html">AlertController.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                                      {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">return</span> alertService.<a class="code" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#a5b372f8b5b4b1e0babdafa6954d8f0fd">findAllAlerts</a>();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
+<div class="ttc" id="aclasscom_1_1logistics_1_1snowapi_1_1service_1_1AlertService_html_a5b372f8b5b4b1e0babdafa6954d8f0fd"><div class="ttname"><a href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#a5b372f8b5b4b1e0babdafa6954d8f0fd">com.logistics.snowapi.service.AlertService.findAllAlerts</a></div><div class="ttdeci">List&lt; Alert &gt; findAllAlerts()</div><div class="ttdoc">Retrieves all alerts stored in the database.</div><div class="ttdef"><b>Definition:</b> <a href="AlertService_8java_source.html#l00042">AlertService.java:42</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_add9eb5459ca5b6a03827f3fbd1bd8387_cgraph.png" border="0" usemap="#aclasscom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_add9eb5459ca5b6a03827f3fbd1bd8387_cgraph" alt=""/></div>
 <map name="aclasscom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_add9eb5459ca5b6a03827f3fbd1bd8387_cgraph" id="aclasscom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_add9eb5459ca5b6a03827f3fbd1bd8387_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,240,47"/>
-<area shape="rect" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#a5b372f8b5b4b1e0babdafa6954d8f0fd" title=" " alt="" coords="288,5,509,47"/>
+<area shape="rect" title="Endpoint to retrieve all alerts." alt="" coords="5,5,240,47"/>
+<area shape="rect" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#a5b372f8b5b4b1e0babdafa6954d8f0fd" title="Retrieves all alerts stored in the database." alt="" coords="288,5,509,47"/>
 </map>
 </div>
 
@@ -281,23 +335,33 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AlertController_8java_source.html#l00040">40</a> of file <a class="el" href="AlertController_8java_source.html">AlertController.java</a>.</p>
-<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                                                                                                 {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        alert.setId(<span class="keywordtype">id</span>); <span class="comment">// Ensure the ID is set to the one provided in the path</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        Alert updatedAlert = alertService.<a class="code" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#abda27fb0f53ab71d61909ff4e37c45e4">updateAlert</a>(alert);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">if</span> (updatedAlert != <span class="keyword">null</span>) {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">return</span> ResponseEntity.ok(updatedAlert);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        }</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordflow">return</span> ResponseEntity.notFound().build();</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    }</div>
-<div class="ttc" id="aclasscom_1_1logistics_1_1snowapi_1_1service_1_1AlertService_html_abda27fb0f53ab71d61909ff4e37c45e4"><div class="ttname"><a href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#abda27fb0f53ab71d61909ff4e37c45e4">com.logistics.snowapi.service.AlertService.updateAlert</a></div><div class="ttdeci">Alert updateAlert(Alert alert)</div><div class="ttdef"><b>Definition:</b> <a href="AlertService_8java_source.html#l00037">AlertService.java:37</a></div></div>
+<p>Endpoint to update an existing alert. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>the ID of the alert to update. </td></tr>
+    <tr><td class="paramname">alert</td><td>the <a class="el" href="">Alert</a> details to update. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a <a class="el" href="">ResponseEntity</a> with the updated alert, or a Not Found response if the alert could not be updated. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="AlertController_8java_source.html#l00082">82</a> of file <a class="el" href="AlertController_8java_source.html">AlertController.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                                                                                                 {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        alert.setId(<span class="keywordtype">id</span>); <span class="comment">// Ensure the ID is set to the one provided in the path</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        Alert updatedAlert = alertService.<a class="code" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#abda27fb0f53ab71d61909ff4e37c45e4">updateAlert</a>(alert);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">if</span> (updatedAlert != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keywordflow">return</span> ResponseEntity.ok(updatedAlert);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">return</span> ResponseEntity.notFound().build();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div>
+<div class="ttc" id="aclasscom_1_1logistics_1_1snowapi_1_1service_1_1AlertService_html_abda27fb0f53ab71d61909ff4e37c45e4"><div class="ttname"><a href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#abda27fb0f53ab71d61909ff4e37c45e4">com.logistics.snowapi.service.AlertService.updateAlert</a></div><div class="ttdeci">Alert updateAlert(Alert alert)</div><div class="ttdoc">Updates an existing alert in the database.</div><div class="ttdef"><b>Definition:</b> <a href="AlertService_8java_source.html#l00076">AlertService.java:76</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_a136affb60eade2208733699d19b58280_cgraph.png" border="0" usemap="#aclasscom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_a136affb60eade2208733699d19b58280_cgraph" alt=""/></div>
 <map name="aclasscom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_a136affb60eade2208733699d19b58280_cgraph" id="aclasscom_1_1logistics_1_1snowapi_1_1controller_1_1AlertController_a136affb60eade2208733699d19b58280_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,240,47"/>
-<area shape="rect" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#abda27fb0f53ab71d61909ff4e37c45e4" title=" " alt="" coords="288,5,509,47"/>
+<area shape="rect" title="Endpoint to update an existing alert." alt="" coords="5,5,240,47"/>
+<area shape="rect" href="classcom_1_1logistics_1_1snowapi_1_1service_1_1AlertService.html#abda27fb0f53ab71d61909ff4e37c45e4" title="Updates an existing alert in the database." alt="" coords="288,5,509,47"/>
 </map>
 </div>
 

@@ -1,4 +1,4 @@
 <map id="com.logistics.snowapi.controller.SnowUserController.getAllUsers" name="com.logistics.snowapi.controller.SnowUserController.getAllUsers">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,240,47"/>
-<area shape="rect" id="node2" href="$classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService.html#a7dee7f206b4f4353e06fb5952b7fc933" title=" " alt="" coords="288,5,509,47"/>
+<area shape="rect" id="node1" title="Endpoint to retrieve all users." alt="" coords="5,5,240,47"/>
+<area shape="rect" id="node2" href="$classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService.html#a7dee7f206b4f4353e06fb5952b7fc933" title="Retrieves all user entities stored in the database." alt="" coords="288,5,509,47"/>
 </map>

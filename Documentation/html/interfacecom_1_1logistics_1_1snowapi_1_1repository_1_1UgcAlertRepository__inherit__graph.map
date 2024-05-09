@@ -1,0 +1,4 @@
+<map id="com.logistics.snowapi.repository.UgcAlertRepository" name="com.logistics.snowapi.repository.UgcAlertRepository">
+<area shape="rect" id="node1" title="Repository interface for UgcAlert entities, extending JpaRepository." alt="" coords="5,95,244,136"/>
+<area shape="rect" id="node2" title=" " alt="" coords="31,5,218,47"/>
+</map>

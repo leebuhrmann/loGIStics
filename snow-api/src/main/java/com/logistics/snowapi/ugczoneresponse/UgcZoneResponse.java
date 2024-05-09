@@ -13,6 +13,31 @@ import java.util.List;
 
 import org.locationtech.jts.geom.*;
 
+/**
+ * Represents the response structure for geographic zone data, particularly UGC (Universal Geographic Code) zones.
+ * This class is capable of parsing JSON representations of either polygon or multi-polygon geometries and converting
+ * them into JTS (Java Topology Suite) {@link MultiPolygon} objects.
+ * <p>
+ * The {@code UgcZoneResponse} class uses a custom deserializer method annotated with {@link JsonProperty} to process
+ * the 'geometry' field in the incoming JSON. This method handles the conversion of nested JSON coordinate arrays into
+ * JTS geometry objects, supporting both 'Polygon' and 'MultiPolygon' types.
+ * <p>
+ * Attributes:
+ * <ul>
+ *   <li>{@code type} - The type of geometry ('Polygon' or 'MultiPolygon').</li>
+ *   <li>{@code geometry} - The JTS {@link MultiPolygon} object representing the geographic shape of the UGC zone.</li>
+ *   <li>{@code geometryFactory} - A {@link GeometryFactory} instance for creating JTS geometry objects.</li>
+ * </ul>
+ * <p>
+ * Usage:
+ * This class is typically used to deserialize JSON data from external geographic data services that provide
+ * UGC zone information. The custom deserializer ensures that both simple polygons and more complex multi-polygon
+ * structures are accurately represented as JTS geometry objects, facilitating further geographic operations
+ * within the application.
+ *
+ * @see MultiPolygon
+ * @see GeometryFactory
+ */
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)

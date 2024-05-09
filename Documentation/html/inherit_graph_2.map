@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classcom_1_1logistics_1_1snowapi_1_1controller_1_1BoundaryController.html" title=" " alt="" coords="5,5,240,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,13,265,39"/>
+<area shape="rect" id="node2" href="$classcom_1_1logistics_1_1snowapi_1_1config_1_1WebSocketConfig.html" title="Configuration class for WebSocket and message brokering in the Spring Boot application." alt="" coords="313,5,527,47"/>
 </map>

@@ -71,7 +71,6 @@ public class NWSDataService {
             ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
             // Maps the response into a POJO containing all the alert data.
             GeoJsonResponse geoJsonResponse = objectMapper.readValue(response.getBody(), GeoJsonResponse.class);
-
             processGeoJsonResponse(geoJsonResponse);
         }
         catch (RestClientException e) {
@@ -85,53 +84,60 @@ public class NWSDataService {
     }
 
     /**
-     * Processes a given {@link GeoJsonResponse} object, which contains weather alert information in GeoJSON format,
-     * and updates the database accordingly. This method iterates over each feature (alert) in the GeoJSON response,
-     * performs necessary pre-processing, and then uses application services to persist the alerts and their related
-     * geographic zone information to the database.
+     * Processes a given {@link GeoJsonResponse} object containing weather alert information in GeoJSON format.
+     * This method updates the database with new alerts and their associated geographic zone information.
+     * It iterates over each feature (alert) in the GeoJSON response, converts each feature into an alert object,
+     * and checks the database for its existence based on the alert's unique identifier. If the alert is new,
+     * it is sent in real-time over a WebSocket channel, persisted in the database, and related geographic zone data
+     * is scraped and also persisted.
      * <p>
-     * If the GeoJSON response does not contain any features (alerts), it logs a message indicating that there are no current
-     * weather alerts.
+     * Additionally, this method handles the persistence of relationships between alerts and geographic zones in the
+     * {@code ugc_alert} many-to-many table. For each new alert, it associates the alert with its corresponding geographic
+     * zones (UGC Zones) and persists these associations in the database.
+     * <p>
+     * If no features (alerts) are present in the GeoJSON response, a log message is generated to indicate the absence
+     * of current weather alerts.
      *
-     * @param geoJsonResponse The {@link GeoJsonResponse} object containing weather alert data in GeoJSON format to be
-     *                        processed. This object includes a list of features, where each feature represents a specific
+     * @param geoJsonResponse The {@link GeoJsonResponse} object containing weather alert data in GeoJSON format.
+     *                        This object includes a list of features, where each feature represents a specific
      *                        weather alert with its associated data.
      */
-    private void processGeoJsonResponse(GeoJsonResponse geoJsonResponse) {
+    public void processGeoJsonResponse(GeoJsonResponse geoJsonResponse) {
         List<Feature> allFeatures = geoJsonResponse.getFeatures();
+
         if (!allFeatures.isEmpty()) {
-            allFeatures.forEach(feature -> {
-
-                
+            allFeatures.forEach(feature -> { // loop through every feature(alert)
                 Alert alert = feature.getFeatureAsAlert();
-                if (alert.getNwsID() != null && !alertRepository.existsByNwsID(alert.getNwsID())) {
+
+                if (alert.getNwsID() != null && !alertRepository.existsByNwsID(alert.getNwsID())) { // checks if an alert is valid and if it already persists in the database
                     messagingTemplate.convertAndSend("/topic", feature); // TODO: needs logic to ensure that the alert belongs to a currently subscribed boundary
+                    alert = alertService.createAlert(alert); // persist alert entry in database
+                    ugcZoneScraper.scrape(feature.getProperties().getUgcCodeAddress()); // call ugc_zone scraper to ensure ugc_zone persistence in database
+                    Alert finalAlert = alert; // required because lambdas are silly
 
-                    alert = alertService.createAlert(alert);
-                    ugcZoneScraper.scrape(feature.getProperties().getUgcCodeAddress());
-                    Alert finalAlert = alert;
+                    feature.getProperties().getUgcCodeAddress().forEach(url -> { // loop through every ugc_zone related to this alert
+                        String ugcCode = url.substring(url.lastIndexOf('/') + 1); // Extracts the last segment from the URL as the UGC code
 
-                    feature.getProperties().getUgcCodeAddress().forEach(url -> {
-                        // Extracts the UGC code from the URL
-                        String ugcCode = extractUgcCodeFromUrl(url);
                         System.out.println("Extracted UGC Code: " + ugcCode);  // Debug output
-                        System.out.println("Processing alert event: " + feature.getProperties().getEvent());
+                        System.out.println("Processing alert event: " + feature.getProperties().getEvent()); // Debug output
 
                         UgcZone ugcZone = ugcZoneRepository.findByUgcCode(ugcCode).orElse(null);
-                        if (ugcZone != null && finalAlert != null) {
+
+                        if (ugcZone != null && finalAlert != null) { // check if the ugcZone and alert are not null
+                            // Persist the ugc_alert entry in the database
                             UgcAlert ugcAlert = new UgcAlert();
-                            UgcAlertId ugcAlertId = new UgcAlertId(); // Instantiates the composite key
+                            UgcAlertId ugcAlertId = new UgcAlertId();
+                            ugcAlertId.setUgcCode(ugcZone.getUgcCode());
+                            ugcAlertId.setAlertId(finalAlert.getId());
+                            ugcAlert.setId(ugcAlertId);
+                            ugcAlert.setUgcCode(ugcZone);
+                            ugcAlert.setAlert(finalAlert);
 
-                            ugcAlertId.setUgcCode(ugcZone.getUgcCode()); // Sets the UGC code
-                            ugcAlertId.setAlertId(finalAlert.getId()); // Sets the alert ID
-
-                            ugcAlert.setId(ugcAlertId); // Sets the composite ID in UgcAlert
-                            ugcAlert.setUgcCode(ugcZone); // Associates UGC Zone
-                            ugcAlert.setAlert(finalAlert); // Associates Alert
-
-                            ugcAlertRepository.save(ugcAlert); // Saves the UgcAlert entity
+                            ugcAlertRepository.save(ugcAlert);
+                            // End persist ugc_alert
                         } else {
                             System.out.println("Failed to save UgcAlert: UGC Zone or alert is null");
+                            System.out.println("UgcZone: " + ugcZone + " FinalAlert: " + finalAlert);
                         }
                     });
                 }
@@ -139,10 +145,5 @@ public class NWSDataService {
         } else {
             System.out.println("No current weather alerts.");
         }
-    }
-
-    private String extractUgcCodeFromUrl(String url) {
-        // Extracts the last segment from the URL as the UGC code
-        return url.substring(url.lastIndexOf('/') + 1);
     }
 }

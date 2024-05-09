@@ -66,15 +66,192 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlert-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">com.logistics.snowapi.model.UgcAlert Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Entity class for representing an association between an alert and a UGC (Universal Geographic Code) zone.  
+ <a href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlert.html#details">More...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ade7d310bf253b60aa8512a63acf06881"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlertId.html">UgcAlertId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlert.html#ade7d310bf253b60aa8512a63acf06881">getId</a> ()</td></tr>
+<tr class="separator:ade7d310bf253b60aa8512a63acf06881"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7466e4deae7208643e09d6c66a1a28e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlert.html#a7466e4deae7208643e09d6c66a1a28e3">setId</a> (<a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlertId.html">UgcAlertId</a> id)</td></tr>
+<tr class="separator:a7466e4deae7208643e09d6c66a1a28e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90b9b707b4abe43e90c07e81913aa04e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert.html">Alert</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlert.html#a90b9b707b4abe43e90c07e81913aa04e">getAlert</a> ()</td></tr>
+<tr class="separator:a90b9b707b4abe43e90c07e81913aa04e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e9e51da6c595c9226e37a31fe1a180a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlert.html#a4e9e51da6c595c9226e37a31fe1a180a">setAlert</a> (<a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert.html">Alert</a> alert)</td></tr>
+<tr class="separator:a4e9e51da6c595c9226e37a31fe1a180a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47bb7b00484052dde87adb4e4a3f196e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcZone.html">UgcZone</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlert.html#a47bb7b00484052dde87adb4e4a3f196e">getUgcCode</a> ()</td></tr>
+<tr class="separator:a47bb7b00484052dde87adb4e4a3f196e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a684d1466e2a7e5ae2c47811d5d7d22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlert.html#a4a684d1466e2a7e5ae2c47811d5d7d22">setUgcCode</a> (<a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcZone.html">UgcZone</a> ugcCode)</td></tr>
+<tr class="separator:a4a684d1466e2a7e5ae2c47811d5d7d22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="UgcAlert_8java_source.html#l00011">11</a> of file <a class="el" href="UgcAlert_8java_source.html">UgcAlert.java</a>.</p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+<div class="textblock"><p>Entity class for representing an association between an alert and a UGC (Universal Geographic Code) zone. </p>
+<p>This class is mapped to the 'ugc_alert' table in the database. Each instance of this class links an alert to a specific geographic zone using a composite key. </p>
+<p>The <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlert.html">UgcAlert</a> entity uses an embedded composite key represented by <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlertId.html">UgcAlertId</a>, which includes identifiers for both the alert and the UGC zone. This design facilitates the management of many-to-many relationships between <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert.html">Alert</a> and <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcZone.html">UgcZone</a> entities, ensuring data integrity and enabling efficient querying. </p>
+<p>Relationships: </p><ul>
+<li>
+<div class="fragment"><div class="line">alert </div>
+</div><!-- fragment --> - Many-to-one relationship with the <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert.html">Alert</a> entity. Each<div class="fragment"><div class="line">UgcAlert </div>
+</div><!-- fragment --> is linked to one <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert.html">Alert</a>, represented by the<div class="fragment"><div class="line">alert_id </div>
+</div><!-- fragment --> foreign key in the database. </li>
+<li>
+<div class="fragment"><div class="line">ugcCode </div>
+</div><!-- fragment --> - Many-to-one relationship with the <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcZone.html">UgcZone</a> entity. Each<div class="fragment"><div class="line">UgcAlert </div>
+</div><!-- fragment --> is linked to one <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcZone.html">UgcZone</a>, represented by the<div class="fragment"><div class="line">ugc_code </div>
+</div><!-- fragment --> foreign key in the database. </li>
+</ul>
+<p>Usage: Instances of this class are used within the application to track which alerts are associated with which geographic zones, supporting functionalities such as alert dissemination based on geographic relevance.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlertId.html" title="Embeddable class representing the composite key for the UgcAlert entity.">UgcAlertId</a> </dd>
+<dd>
+<a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert.html" title="Entity class representing an alert as defined in the National Weather Service (NWS).">Alert</a> </dd>
+<dd>
+<a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcZone.html" title="Entity class representing a UGC (Universal Geographic Code) zone within the system.">UgcZone</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="UgcAlert_8java_source.html#l00033">33</a> of file <a class="el" href="UgcAlert_8java_source.html">UgcAlert.java</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a90b9b707b4abe43e90c07e81913aa04e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90b9b707b4abe43e90c07e81913aa04e">&#9670;&nbsp;</a></span>getAlert()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert.html">Alert</a> com.logistics.snowapi.model.UgcAlert.getAlert </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="UgcAlert_8java_source.html#l00055">55</a> of file <a class="el" href="UgcAlert_8java_source.html">UgcAlert.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                            {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">return</span> alert;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ade7d310bf253b60aa8512a63acf06881"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade7d310bf253b60aa8512a63acf06881">&#9670;&nbsp;</a></span>getId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlertId.html">UgcAlertId</a> com.logistics.snowapi.model.UgcAlert.getId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="UgcAlert_8java_source.html#l00047">47</a> of file <a class="el" href="UgcAlert_8java_source.html">UgcAlert.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                              {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">return</span> id;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a47bb7b00484052dde87adb4e4a3f196e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47bb7b00484052dde87adb4e4a3f196e">&#9670;&nbsp;</a></span>getUgcCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcZone.html">UgcZone</a> com.logistics.snowapi.model.UgcAlert.getUgcCode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="UgcAlert_8java_source.html#l00063">63</a> of file <a class="el" href="UgcAlert_8java_source.html">UgcAlert.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                                {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">return</span> ugcCode;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a4e9e51da6c595c9226e37a31fe1a180a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e9e51da6c595c9226e37a31fe1a180a">&#9670;&nbsp;</a></span>setAlert()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.logistics.snowapi.model.UgcAlert.setAlert </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Alert.html">Alert</a>&#160;</td>
+          <td class="paramname"><em>alert</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="UgcAlert_8java_source.html#l00059">59</a> of file <a class="el" href="UgcAlert_8java_source.html">UgcAlert.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                                      {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        this.alert = alert;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a7466e4deae7208643e09d6c66a1a28e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7466e4deae7208643e09d6c66a1a28e3">&#9670;&nbsp;</a></span>setId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.logistics.snowapi.model.UgcAlert.setId </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcAlertId.html">UgcAlertId</a>&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="UgcAlert_8java_source.html#l00051">51</a> of file <a class="el" href="UgcAlert_8java_source.html">UgcAlert.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                     {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        this.<span class="keywordtype">id</span> = id;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a4a684d1466e2a7e5ae2c47811d5d7d22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a684d1466e2a7e5ae2c47811d5d7d22">&#9670;&nbsp;</a></span>setUgcCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.logistics.snowapi.model.UgcAlert.setUgcCode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UgcZone.html">UgcZone</a>&#160;</td>
+          <td class="paramname"><em>ugcCode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="UgcAlert_8java_source.html#l00067">67</a> of file <a class="el" href="UgcAlert_8java_source.html">UgcAlert.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                                            {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        this.ugcCode = ugcCode;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/main/java/com/logistics/snowapi/model/<a class="el" href="UgcAlert_8java_source.html">UgcAlert.java</a></li>
 </ul>
 </div><!-- contents -->

@@ -1,5 +1,5 @@
 <map id="com.logistics.snowapi.controller.UserBoundaryController.delete" name="com.logistics.snowapi.controller.UserBoundaryController.delete">
-<area shape="rect" id="node1" title=" " alt="" coords="5,39,240,80"/>
-<area shape="rect" id="node2" href="$classcom_1_1logistics_1_1snowapi_1_1service_1_1UserBoundaryService.html#aa516cc5fb8d3806eb148653ac8d35816" title=" " alt="" coords="288,5,509,47"/>
-<area shape="rect" id="node3" href="$classcom_1_1logistics_1_1snowapi_1_1service_1_1UserBoundaryService.html#abbe6d8ae2216e1f94e405f3a804cc6c8" title=" " alt="" coords="288,71,509,112"/>
+<area shape="rect" id="node1" title="Endpoint to delete a user&#45;boundary association by its composite ID." alt="" coords="5,39,240,80"/>
+<area shape="rect" id="node2" href="$classcom_1_1logistics_1_1snowapi_1_1service_1_1UserBoundaryService.html#aa516cc5fb8d3806eb148653ac8d35816" title="Deletes a user&#45;boundary association from the database by its composite ID." alt="" coords="288,5,509,47"/>
+<area shape="rect" id="node3" href="$classcom_1_1logistics_1_1snowapi_1_1service_1_1UserBoundaryService.html#abbe6d8ae2216e1f94e405f3a804cc6c8" title="Retrieves a user&#45;boundary association by its composite ID." alt="" coords="288,71,509,112"/>
 </map>

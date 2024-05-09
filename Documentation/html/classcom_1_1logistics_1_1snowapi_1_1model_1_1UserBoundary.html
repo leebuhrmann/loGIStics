@@ -71,9 +71,33 @@ $(function() {
 <div class="title">com.logistics.snowapi.model.UserBoundary Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Entity class representing the association between a user and a geographic boundary.  
+ <a href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UserBoundary.html#details">More...</a></p>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="UserBoundary_8java_source.html#l00011">11</a> of file <a class="el" href="UserBoundary_8java_source.html">UserBoundary.java</a>.</p>
+<div class="textblock"><p>Entity class representing the association between a user and a geographic boundary. </p>
+<p>This class is linked to the 'user_boundary' table in the database and includes an embedded composite key represented by <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UserBoundaryId.html">UserBoundaryId</a>. Each instance of this class establishes a relationship between a specific user and a geographic boundary, indicating the boundaries that a user is associated with. </p>
+<p>The <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UserBoundary.html">UserBoundary</a> entity uses the embedded composite key for identification and facilitates efficient management of relationships between <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1SnowUser.html">SnowUser</a> and <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Boundary.html">Boundary</a> entities through many-to-one relationships. This structure supports complex queries and integrity constraints within the database, ensuring that relationships are properly maintained. </p>
+<p>Relationships: </p><ul>
+<li>
+<div class="fragment"><div class="line">user </div>
+</div><!-- fragment --> - Many-to-one relationship with the <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1SnowUser.html">SnowUser</a> entity. Each<div class="fragment"><div class="line">UserBoundary </div>
+</div><!-- fragment --> is linked to one <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1SnowUser.html">SnowUser</a>, represented by the<div class="fragment"><div class="line">user_id </div>
+</div><!-- fragment --> foreign key in the database. </li>
+<li>
+<div class="fragment"><div class="line">boundary </div>
+</div><!-- fragment --> - Many-to-one relationship with the <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Boundary.html">Boundary</a> entity. Each<div class="fragment"><div class="line">UserBoundary </div>
+</div><!-- fragment --> is linked to one <a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Boundary.html">Boundary</a>, represented by the<div class="fragment"><div class="line">boundary_id </div>
+</div><!-- fragment --> foreign key in the database. </li>
+</ul>
+<p>Usage: Instances of this class are used within the application to manage and query the relationships between users and geographic boundaries, supporting functionalities such as personalized geographic data access and user-specific geographic permissions.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1UserBoundaryId.html" title="Embeddable class representing the composite key for the UserBoundary entity.">UserBoundaryId</a> </dd>
+<dd>
+<a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1SnowUser.html" title="Entity class representing a user within the system.">SnowUser</a> </dd>
+<dd>
+<a class="el" href="classcom_1_1logistics_1_1snowapi_1_1model_1_1Boundary.html" title="Represents a geographic boundary within the system, which is stored as a multi-polygon geometry.">Boundary</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="UserBoundary_8java_source.html#l00039">39</a> of file <a class="el" href="UserBoundary_8java_source.html">UserBoundary.java</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/main/java/com/logistics/snowapi/model/<a class="el" href="UserBoundary_8java_source.html">UserBoundary.java</a></li>
 </ul>

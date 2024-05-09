@@ -1,3 +1,9 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classcom_1_1logistics_1_1snowapi_1_1service_1_1SnowUserService.html" title=" " alt="" coords="5,5,227,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,177,117,203"/>
+<area shape="rect" id="node2" href="$interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1AlertRepository.html" title="Repository interface for Alert entities, extending the JpaRepository." alt="" coords="165,5,404,47"/>
+<area shape="rect" id="node3" href="$interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1BoundaryRepository.html" title="Repository interface for Boundary entities, extending JpaRepository." alt="" coords="165,71,404,112"/>
+<area shape="rect" id="node4" href="$interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1SnowUserRepository.html" title="Repository interface for SnowUser entities, extending JpaRepository." alt="" coords="165,136,404,177"/>
+<area shape="rect" id="node5" href="$interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1UgcAlertRepository.html" title="Repository interface for UgcAlert entities, extending JpaRepository." alt="" coords="165,201,404,243"/>
+<area shape="rect" id="node6" href="$interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1UgcZoneRepository.html" title="Repository interface for UgcZone entities, extending JpaRepository." alt="" coords="165,267,404,308"/>
+<area shape="rect" id="node7" href="$interfacecom_1_1logistics_1_1snowapi_1_1repository_1_1UserBoundaryRepository.html" title="Repository interface for UserBoundary entities, extending JpaRepository." alt="" coords="165,332,404,373"/>
 </map>
