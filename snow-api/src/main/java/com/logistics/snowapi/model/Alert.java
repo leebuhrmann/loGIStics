@@ -1,5 +1,9 @@
 package com.logistics.snowapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -44,6 +48,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "alert")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Alert {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -68,12 +73,15 @@ public class Alert {
     @Column(name = "nws_id", length = 255)
     private String nwsID;
 
+    @JsonIgnore
+    @JsonManagedReference
     @ManyToMany
     @JoinTable(name = "ugc_alert",
             joinColumns = @JoinColumn(name = "alert_id"),
             inverseJoinColumns = @JoinColumn(name = "ugc_code"))
     private Set<UgcZone> ugcZones = new LinkedHashSet<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "alert", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<UgcAlert> ugcAlerts = new HashSet<>();
 

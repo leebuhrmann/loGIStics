@@ -1,5 +1,7 @@
 package com.logistics.snowapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 
 /**
@@ -30,6 +32,7 @@ import jakarta.persistence.*;
  */
 @Entity
 @Table(name = "ugc_alert")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "ugcCode")
 public class UgcAlert {
     @EmbeddedId
     private UgcAlertId id;

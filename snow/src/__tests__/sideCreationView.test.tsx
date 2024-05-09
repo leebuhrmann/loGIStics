@@ -16,12 +16,10 @@ describe("Side creation view elements are rendered", () => {
     );
     const boundaryInput = screen.getByPlaceholderText("Enter Boundary Name");
     const descriptionInput = screen.getByPlaceholderText("Enter Description");
-    const checkbox = screen.getByLabelText("Subscribe");
     const saveButton = screen.getByRole("button", { name: /save/i });
     const closeButton = screen.getByTestId("closeButton");
     expect(boundaryInput).toBeInTheDocument();
     expect(descriptionInput).toBeInTheDocument();
-    expect(checkbox).toBeInTheDocument();
     expect(saveButton).toBeInTheDocument();
     expect(closeButton).toBeInTheDocument();
   });

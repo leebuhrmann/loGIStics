@@ -1,7 +1,3 @@
-// TODO: validation to make sure there is user input
-// TODO: something to let the user know they have saved, there are cool shadcn components for both of these
-
-import React, { useState } from "react";
 import SideFormViewCommon from "@/components/side-menu/side-form-view/side-form-view-common";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -12,27 +8,30 @@ import {
   boundaryNameAtom,
   viewStateAtom,
   polygonCoordinatesAtom,
+  createCheckboxAtom,
 } from "@/state/atoms";
 
 const SideCreationView = () => {
   const setViewState = useSetRecoilState<string>(viewStateAtom);
   const [boundaryName, setBoundaryName] = useRecoilState(boundaryNameAtom);
   const [description, setDescription] = useRecoilState(boundaryDescriptionAtom);
+  const [createCheckbox, setCreateCheckbox] =
+    useRecoilState(createCheckboxAtom);
   const boundaryCoordinates = useRecoilValue(polygonCoordinatesAtom);
 
-
+  const handleCheckboxChange = (checked: boolean) => {
+    console.log("Checkbox checked:", checked);
+    setCreateCheckbox(checked);
+  };
 
   const handleSave = async () => {
     const boundaryData = {
       name: boundaryName,
       description: description,
+      subscribed: createCheckbox,
       the_geom: {
         type: "MultiPolygon",
-        coordinates: [
-          [
-            boundaryCoordinates
-          ]
-        ]
+        coordinates: [[boundaryCoordinates]],
       },
     };
 
@@ -42,7 +41,7 @@ const SideCreationView = () => {
       setBoundaryName("");
       setDescription("");
     } catch (error) {
-      console.error('Failed to save boundary data:', error);
+      console.error("Failed to save boundary data:", error);
     }
   };
 
@@ -55,7 +54,11 @@ const SideCreationView = () => {
       />
 
       <div id="sub_checkbox" className="flex items-center space-x-2">
-        <Checkbox id="subs" />
+        <Checkbox
+          id="subsCheckbox"
+          checked={createCheckbox}
+          onCheckedChange={handleCheckboxChange}
+        />
         <label
           htmlFor="subs"
           className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"

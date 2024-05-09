@@ -3,7 +3,6 @@ import "ol/ol.css";
 import Map from "ol/Map";
 import View from "ol/View";
 import TileLayer from "ol/layer/Tile";
-import TileWMS from "ol/source/TileWMS.js";
 import OSM from "ol/source/OSM";
 import { Modify, Select, Snap, Draw, Interaction } from "ol/interaction.js";
 import VectorSource from "ol/source/Vector";
@@ -12,13 +11,32 @@ import { Pencil1Icon, PlusIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import Collection from "ol/Collection";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { clearPolygonAtom, viewStateAtom, polygonCoordinatesAtom } from "@/state/atoms";
-import { SimpleGeometry } from "ol/geom";
+import {
+  clearPolygonAtom,
+  viewStateAtom,
+  polygonCoordinatesAtom,
+  subCheckValueAtom,
+} from "@/state/atoms";
+import { MultiPolygon, SimpleGeometry } from "ol/geom";
+import { useRecoilValue } from "recoil";
+import { boundaryDataAtom } from "@/state/atoms";
+import Feature from "ol/Feature";
 
-export default function MapComponent() {
+interface Boundary {
+  id: number;
+  description: string;
+  name: string;
+  subscribed: boolean;
+  the_geom: {
+    type: string;
+    coordinates: number[][][][];
+  };
+}
+
+function MapComponent() {
+  const filterSubscriptions = useRecoilValue(subCheckValueAtom);
   const setViewState = useSetRecoilState(viewStateAtom);
   const [clearPolygon, setClearPolygon] = useRecoilState(clearPolygonAtom);
-
   const mapRef = useRef<HTMLDivElement | null>(null);
   const [map, setMap] = useState<Map>();
   const [source] = useState(new VectorSource());
@@ -27,6 +45,8 @@ export default function MapComponent() {
   const setPolygonCoordinates = useSetRecoilState(polygonCoordinatesAtom);
   const [isDrawing, setIsDrawing] = useState(false);
   const [isModifying, setIsModifying] = useState(false);
+  const boundaryData: Boundary[] = useRecoilValue(boundaryDataAtom);
+  const vectorSource = useRef(new VectorSource());
 
   const startDrawing = () => {
     setIsDrawing(true);
@@ -51,20 +71,11 @@ export default function MapComponent() {
         source: new OSM(),
       });
 
-      const wmsLayer = new TileLayer({
-        source: new TileWMS({
-          url: "http://0.0.0.0:8080/geoserver/wms?",
-          params: { LAYERS: "topp:states", TILED: true },
-          serverType: "geoserver",
-        }),
-      });
-
       // Initialize the map with a non-null assertion for mapRef.current
       const map = new Map({
         target: mapRef.current!,
         layers: [
           baseLayer,
-          wmsLayer,
           new VectorLayer({
             source: source,
           }),
@@ -83,10 +94,34 @@ export default function MapComponent() {
   }, []);
 
   useEffect(() => {
+    if (map && boundaryData.length) {
+      const filteredBoundaries = filterSubscriptions
+        ? boundaryData.filter((boundary) => boundary.subscribed)
+        : boundaryData;
+
+      const features = filteredBoundaries.map((boundary) => {
+        const multiPolygon = new MultiPolygon(boundary.the_geom.coordinates);
+        return new Feature({
+          geometry: multiPolygon,
+          name: boundary.name,
+          description: boundary.description,
+        });
+      });
+      source.clear();
+      source.addFeatures(features);
+    }
+  }, [boundaryData, map, filterSubscriptions]);
+
+  useEffect(() => {
     if (clearPolygon && map) {
       setShouldClearPolygon(true);
     }
   }, [clearPolygon, map]);
+
+  useEffect(() => {
+    if (map && source) {
+    }
+  }, [map, source]);
 
   useEffect(() => {
     if (shouldClearPolygon && source) {
@@ -99,7 +134,9 @@ export default function MapComponent() {
   }, [shouldClearPolygon, source, setClearPolygon]);
 
   const startPolygonDrawing = () => {
-    if (!map) return;
+    if (!map) {
+      return;
+    }
 
     modify.current?.setActive(false);
 
@@ -116,6 +153,7 @@ export default function MapComponent() {
       source: source,
       type: "Polygon",
     });
+
     map.addInteraction(draw);
     startDrawing();
 
@@ -124,16 +162,14 @@ export default function MapComponent() {
       map.removeInteraction(draw);
       stopDrawing();
       if (event.feature) {
-        const geometry = event.feature.getGeometry()
+        const geometry = event.feature.getGeometry();
         if (geometry instanceof SimpleGeometry) {
           const coords = geometry.getCoordinates();
           // Outputs long lat, not lat long.
           if (coords) {
             setPolygonCoordinates(coords[0]);
-
           }
         }
-
       }
       setViewState("create");
     });
@@ -161,7 +197,6 @@ export default function MapComponent() {
 
     select.on("select", (event) => {
       if (event.selected.length > 0) {
-        console.log("Boundary selected", event.selected[0]);
         setViewState("edit");
       }
     });
@@ -221,3 +256,4 @@ export default function MapComponent() {
     </>
   );
 }
+export default React.memo(MapComponent);

@@ -105,6 +105,11 @@ public class BoundaryService {
         boundaryRepository.deleteById(id);
     }
 
+    public Boundary toggleBoundarySubscription(Integer id) {
+        Boundary boundary = boundaryRepository.findById(id).orElseThrow(() -> new RuntimeException("Boundary not found"));
+        boundary.setSubscribed(!boundary.isSubscribed());  // Toggle the subscribed status
+        return boundaryRepository.save(boundary);
+    }
     /**
      * Helper method to copy details from the source {@link Boundary} object to the destination managed
      * {@link Boundary} object. This method is used during the update process to ensure that all relevant

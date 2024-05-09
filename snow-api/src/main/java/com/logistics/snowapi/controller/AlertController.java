@@ -5,7 +5,6 @@ import com.logistics.snowapi.service.AlertService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 /**
@@ -29,7 +28,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/alerts")
 public class AlertController {
-
     private final AlertService alertService;
 
     @Autowired
