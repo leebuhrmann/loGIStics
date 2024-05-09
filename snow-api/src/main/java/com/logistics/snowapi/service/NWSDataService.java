@@ -102,7 +102,6 @@ public class NWSDataService {
      *                        This object includes a list of features, where each feature represents a specific
      *                        weather alert with its associated data.
      */
-
     public void processGeoJsonResponse(GeoJsonResponse geoJsonResponse) {
         List<Feature> allFeatures = geoJsonResponse.getFeatures();
 

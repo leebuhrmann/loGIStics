@@ -142,28 +142,5 @@ class NWSDataServiceTest {
         verify(ugcZoneScraper, times(1)).scrape(dummyUgcCodeAddresses);
         verify(ugcAlertRepository, times(1)).save(any());
     }
-
-//    @Test
-//    void FetchWeatherDataSuccessTest() throws JsonProcessingException {
-//        // Prepare a mock ResponseEntity with a dummy JSON string as the body
-//        String dummyJsonResponse = "{\"features\":[]}";
-//        ResponseEntity<String> mockResponse = new ResponseEntity<>(dummyJsonResponse, HttpStatus.OK);
-//
-//        // Configure the mock to return this ResponseEntity when the getForEntity method is called
-//        when(restTemplate.getForEntity(any(), eq(String.class))).thenReturn(mockResponse);
-//
-//        // Optionally mock the objectMapper to return a GeoJsonResponse if your method processes the JSON
-//        GeoJsonResponse geoJsonResponse = new GeoJsonResponse();  // Assuming default constructor or setup method
-//        when(objectMapper.readValue(dummyJsonResponse, GeoJsonResponse.class)).thenReturn(geoJsonResponse);
-//
-//        // Call the method under test
-//        nwsDataService.fetchWeatherData();
-//
-//        // Verify that the restTemplate was called correctly
-//        verify(restTemplate).getForEntity(anyString(), eq(String.class));
-//        // Additional verifications can include checking that the GeoJsonResponse was processed if necessary
-//    }
-
-    // Additional tests...
 }
 
