@@ -43,7 +43,7 @@ List all the prerequisites and how to install them.
 - We are currently adjusting the way in which we will send boundary details from the frontend to the backend, no implementation yet
 - Added stylizing to the headers
 - Established a Java Spring Boot environment
-- Created the relational database. We are currently revising our database model.
+- Created the relational database. We are currently revising our database model
 - Created mappers for basic CRUD operations of boundaries 
 - Began building out needed API calls 
 - Created scheduled API calls to NWS gathering weather alert data and store that data into the database
@@ -65,3 +65,11 @@ List all the prerequisites and how to install them.
 - Have implemented functionality that inserts entries into the ugc_alert table
 - Boundary name, description, and polygon coordinates can be posted to the database
 - Implemented Recoil state management
+
+### Milestone #5
+- Project in minimal viable state
+- Have implemented alerts-by-subscribed-boundary query and endpoint
+- Have created tests for NWSDataService.java
+- Have created Javadoc comments and Documentation
+- The alerts panel shows alerts associated with a subscribed boundary, as well as alerts not associated with a subscribed boundary. The user can use the "subscribed" checkbox to change the view to show all alerts, or only alerts associated with a subscribed boundary
+- The boundaries panel populates with boundary data the user has saved and the map renders saved polygons. The user can use the "subscribed" checkbox to change the view to show all boundaries, or only subscribed boundaries. This view will also change the polygons that are visible on the map
