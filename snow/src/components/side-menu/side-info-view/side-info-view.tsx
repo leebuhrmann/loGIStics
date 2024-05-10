@@ -23,7 +23,6 @@ export default function SideInfoView() {
   const [boundaries, setBoundaries] = useRecoilState(boundaryDataAtom);
 
   useEffect(() => {
-    console.log("MOUNT");
     async function fetchAllAlerts() {
       try {
         const alertsData = await AlertService.getAllAlerts();

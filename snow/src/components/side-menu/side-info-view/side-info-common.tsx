@@ -10,7 +10,6 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
-import { MockBoundaryData } from "@/mock-data/mock-data";
 import {
   AlertMessage,
   SubscribedAlertMessage,
@@ -32,18 +31,27 @@ interface BoundaryData {
 function isAlertMessage(
   item: AlertMessage | SubscribedAlertMessage | BoundaryData
 ): item is AlertMessage {
+  if (item === undefined) {
+    return false;
+  }
   return (item as AlertMessage).onset !== undefined;
 }
 
 function isSubAlertMessage(
   item: AlertMessage | SubscribedAlertMessage | BoundaryData
 ): item is SubscribedAlertMessage {
+  if (item === undefined) {
+    return false;
+  }
   return (item as SubscribedAlertMessage).alert !== undefined;
 }
 
 function isBoundaryData(
   item: AlertMessage | SubscribedAlertMessage | BoundaryData
 ): item is BoundaryData {
+  if (item === undefined) {
+    return false;
+  }
   return (
     (item as BoundaryData).name !== undefined &&
     (item as BoundaryData).description !== undefined
@@ -128,82 +136,80 @@ interface DataSelectProps {
  * @returns html elements for either alert or boundary info view
  */
 function DataSelect({ data }: DataSelectProps) {
-  // if (isAlertMessage(data)) {
   // Alert Data
-  if (isAlertMessage(data)) {
-    // console.log("ALERT");
-    const issuedDate = new Date(data.onset);
-    const expiresDate = new Date(data.expires);
+    if (isAlertMessage(data)) {
+      const issuedDate = new Date(data.onset);
+      const expiresDate = new Date(data.expires);
 
-    const issuedFormatted = new Intl.DateTimeFormat("en-US", options).format(
-      issuedDate
-    );
-    const expiresFormatted = new Intl.DateTimeFormat("en-US", options).format(
-      expiresDate
-    );
-    // AlertMessage
-    return (
-      <>
-        <h4>{data.event}</h4>
-        <p className="font-semibold">Onset: {issuedFormatted}</p>
-        <p className="font-semibold">Expiring: {expiresFormatted}</p>
+      const issuedFormatted = new Intl.DateTimeFormat("en-US", options).format(
+        issuedDate
+      );
+      const expiresFormatted = new Intl.DateTimeFormat("en-US", options).format(
+        expiresDate
+      );
+      // AlertMessage
+      return (
+        <>
+          <h4>{data.event}</h4>
+          <p className="font-semibold">Onset: {issuedFormatted}</p>
+          <p className="font-semibold">Expiring: {expiresFormatted}</p>
 
-        <Accordion type="single" collapsible className="w-full">
-          <AccordionItem value="item-1">
-            <AccordionTrigger className="text-sm text-left font-normal">
-              {data.headline}
-            </AccordionTrigger>
-            <AccordionContent>{data.description}</AccordionContent>
-          </AccordionItem>
-        </Accordion>
-      </>
-    );
-  } else if (isSubAlertMessage(data)) {
-    // SubscribedAlertMessage
-    const issuedDate = new Date(data.alert.onset);
-    const expiresDate = new Date(data.alert.expires);
+          <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="item-1">
+              <AccordionTrigger className="text-sm text-left font-normal">
+                {data.headline}
+              </AccordionTrigger>
+              <AccordionContent>{data.description}</AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </>
+      );
+    } else if (isSubAlertMessage(data)) {
+      // SubscribedAlertMessage
+      const issuedDate = new Date(data.alert.onset);
+      const expiresDate = new Date(data.alert.expires);
 
-    const issuedFormatted = new Intl.DateTimeFormat("en-US", options).format(
-      issuedDate
-    );
-    const expiresFormatted = new Intl.DateTimeFormat("en-US", options).format(
-      expiresDate
-    );
-    return (
-      <>
-        <h4>{data.alert.event}</h4>
-        <p className="font-semibold">Onset: {issuedFormatted}</p>
-        <p className="font-semibold">Expiring: {expiresFormatted}</p>
-        <p>Boundaries: </p>
-        {data.boundaryNames.map((name, index) => (
-          <Badge className="mr-0.5" variant="default" key={index}>
-            {name}
-          </Badge>
-        ))}
-        <Accordion type="single" collapsible className="w-full">
-          <AccordionItem value="item-1">
-            <AccordionTrigger className="text-sm text-left font-normal">
-              {data.alert.headline}
-            </AccordionTrigger>
-            <AccordionContent>{data.alert.description}</AccordionContent>
-          </AccordionItem>
-        </Accordion>
-      </>
-    );
-  } else if (isBoundaryData(data)) {
-    // Boundary Data
-    return (
-      <>
-        <h4>Boundary: {data.name}</h4>
-        <div id="sub_checkbox" className="flex items-center space-x-2 py-1">
-          {data.subscribed ? <Badge variant="default">Subscribed</Badge> : null}
-        </div>
-        <p className="font-semibold">Description:</p>
-        <p>{data.description}</p>
-        <Separator />
-      </>
-    );
-  } else {
-    return <p>Unknown data type.</p>;
-  }
+      const issuedFormatted = new Intl.DateTimeFormat("en-US", options).format(
+        issuedDate
+      );
+      const expiresFormatted = new Intl.DateTimeFormat("en-US", options).format(
+        expiresDate
+      );
+      return (
+        <>
+          <h4>{data.alert.event}</h4>
+          <p className="font-semibold">Onset: {issuedFormatted}</p>
+          <p className="font-semibold">Expiring: {expiresFormatted}</p>
+          <p>Boundaries: </p>
+          {data.boundaryNames.map((name, index) => (
+            <Badge className="mr-0.5" variant="default" key={index}>
+              {name}
+            </Badge>
+          ))}
+          <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="item-1">
+              <AccordionTrigger className="text-sm text-left font-normal">
+                {data.alert.headline}
+              </AccordionTrigger>
+              <AccordionContent>{data.alert.description}</AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </>
+      );
+    } else if (isBoundaryData(data)) {
+      // Boundary Data
+      return (
+        <>
+          <h4>Boundary: {data.name}</h4>
+          <div id="sub_checkbox" className="flex items-center space-x-2 py-1">
+            {data.subscribed ? <Badge variant="default">Subscribed</Badge> : null}
+          </div>
+          <p className="font-semibold">Description:</p>
+          <p>{data.description}</p>
+          <Separator />
+        </>
+      );
+    } else {
+      return <p>Unknown data type.</p>;
+    }
 }
