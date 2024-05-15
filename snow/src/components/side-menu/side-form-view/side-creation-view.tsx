@@ -21,21 +21,21 @@ const SideCreationView = (): JSX.Element => {
   const [description, setDescription] = useRecoilState(boundaryDescriptionAtom);
   const [createCheckbox, setCreateCheckbox] = useRecoilState(createCheckboxAtom);
   const boundaryCoordinates = useRecoilValue(polygonCoordinatesAtom);
-/**
-   * Handles the change event for the checkbox.
-   * @public
-   * @param {boolean} checked - The new checked state of the checkbox.
-   */
+  /**
+     * Handles the change event for the checkbox.
+     * @public
+     * @param {boolean} checked - The new checked state of the checkbox.
+     */
   const handleCheckboxChange = (checked: boolean): void => {
     console.log("Checkbox checked:", checked);
     setCreateCheckbox(checked);
   };
 
-   /**
-   * Handles the save action, posting boundary data to the server.
-   * @public
-   * @returns {Promise<void>}
-   */
+  /**
+  * Handles the save action, posting boundary data to the server.
+  * @public
+  * @returns {Promise<void>}
+  */
   const handleSave = async (): Promise<void> => {
     const boundaryData = {
       name: boundaryName,
