@@ -1,5 +1,6 @@
 import { Client } from "@stomp/stompjs";
 
+/** Interface representing an alert message. */
 export interface AlertMessage {
   description: string;
   boundary?: [];
@@ -9,6 +10,7 @@ export interface AlertMessage {
   onset: string;
 }
 
+/** Interface representing a subscribed alert message. */
 export interface SubscribedAlertMessage {
   alert: AlertMessage;
   boundaryIds: [];
@@ -18,12 +20,16 @@ export interface SubscribedAlertMessage {
 type AlertCallback = (alert: AlertMessage) => void;
 
 /**
- * Handles the connection to the websocket.
+ * Service to handle the connection to the websocket.
  */
 class WebSocketService {
   public client: Client;
   private alertCallback: AlertCallback | null = null;
 
+  /**
+   * Creates a WebSocketService
+   * @param alertCallback - A callback function to be called when an alert is received.
+   */
   constructor(alertCallback: AlertCallback) {
     this.alertCallback = alertCallback;
 
@@ -46,7 +52,6 @@ class WebSocketService {
 
   /**
    * Called every time there is a successful connection
-   *
    * @param frame The frame object representing the connection details.
    */
   onConnect = (frame: any) => {
@@ -55,8 +60,7 @@ class WebSocketService {
 
   /**
    * Called when an alert message is received. Adds alert to state.
-   *
-   * @param alertMessage The alert body being recieved
+   * @param alertMessage The alert body being received
    */
   onAlertRecieved = (alertMessage: { body: string }) => {
     if (alertMessage.body) {
@@ -78,7 +82,6 @@ class WebSocketService {
 
   /**
    * Called when there is an error in the STOMP connection.
-   *
    * @param error The STOMP error
    */
   onStompError = (error: any) => {
@@ -87,7 +90,6 @@ class WebSocketService {
 
   /**
    * Called when there is an error in the WebSocket connection.
-   *
    * @param event The WebSocket error
    */
   onWebSocketError = (event: any) => {

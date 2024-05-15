@@ -1,4 +1,13 @@
+/**
+ * Service for fetching and posting boundary data.
+ */
 class BoundaryService {
+  
+  /**
+   * Posts a newly created boundary to the backend.
+   * @param boundaryData - The data of the boundary to be created.
+   * @returns The status of the request.
+   */
   static async postBoundary(boundaryData: any) {
     try {
       const response = await fetch("http://localhost:8081/api/boundaries", {
@@ -21,6 +30,10 @@ class BoundaryService {
     }
   }
 
+  /**
+   * Retrieves all boundaries from the backend.
+   * @returns A list of all of the boundaries.
+   */
   static async getAllBoundaries() {
     try {
       const response = await fetch("http://localhost:8081/api/boundaries");
@@ -34,6 +47,11 @@ class BoundaryService {
     }
   }
 
+  /**
+   * Updates a boundary.
+   * @param boundaryData - The data of the boundary to be updated. 
+   * @returns The status of the request.
+   */
   static async updateBoundary(boundaryData: { id: any }) {
     const response = await fetch(
       `http://localhost:8081/api/boundaries/${boundaryData.id}`,

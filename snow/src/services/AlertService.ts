@@ -1,4 +1,12 @@
+/**
+ * Service for fetching alert data from the backend.
+ */
 class AlertService {
+
+  /**
+   * Gets all alerts from the backend.
+   * @returns A list containing all alerts.
+   */
   static async getAllAlerts() {
     try {
       const response = await fetch("http://localhost:8081/api/alerts");
@@ -13,6 +21,10 @@ class AlertService {
     }
   }
 
+  /**
+   * Gets all alerts that fall within subscribed boundaries from the backend.
+   * @returns A list containing all alerts that fall within subscribed boundaries.
+   */
   static async getSubAlerts() {
     try {
       const response = await fetch(

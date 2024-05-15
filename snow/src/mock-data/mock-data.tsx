@@ -1,9 +1,11 @@
+/** Interface for mock alert data */
 export interface MockAlertData {
   title: string;
   header: string[];
   body: string[];
 }
 
+/** Interface for mock boundary data */
 export interface MockBoundaryData {
   title: string;
   sub: boolean;
@@ -11,6 +13,7 @@ export interface MockBoundaryData {
   body: string[];
 }
 
+/** Mock data for alert messages. */
 export const mockAlerts: MockAlertData[] = [
   {
     title: "Event: Winter Weather Advisory",
@@ -48,6 +51,7 @@ export const mockAlerts: MockAlertData[] = [
   },
 ];
 
+/** Mock data for boundary data. */
 export const mockBoundaries: MockBoundaryData[] = [
   {
     title: "Boundary: Boundary 1",
