@@ -13,6 +13,35 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<style>
+  .doc-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff !important;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 10px;
+  }
+
+  .doc-button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .doc-button:visited,
+  .doc-button:active {
+    color: #fff !important;
+  }
+
+  .doc-section {
+    margin-top: 30px;
+  }
+</style>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -65,6 +94,33 @@ $(function() {
 <div class="title">Strategic Notification &amp; Operational Weather-watch (SNOW) Documentation</div>  </div>
 </div><!--header-->
 <div class="contents">
+  <h2>About The Project</h2>
+  <p>This repository hosts the development for S.N.O.W. (Strategic Notification & Operational Weatherwatch), a comprehensive GIS microservice designed to deliver critical weather data alerts for US cities. The project is developed as part of CSCI 4970 (CS Capstone).</p>
+  <h2>Built With</h2>
+  <ul>
+      <li>Frontend: React.js</li>
+      <li>GIS Microservice: Java Backend with SpringBoot, managed with Gradle</li>
+      <li>Database: PostGIS</li>
+  </ul>
+  <h2>Getting Started</h2>
+  <p>To get a local copy up and running follow these simple steps.</p>
+  <ul>
+      <li>As of right now, you must have access to the Virtual Machine hosting the PostGIS database</li>
+      <li>Launch the snow application using <code>npm run dev</code></li>
+      <li>In the snow-api application run the <code>SnowApiApplication.java</code> to launch the backend</li>
+      <li>Navigate to <code>localhost:3000</code> in a modern web browser</li>
+  </ul>
+  <h2>Prerequisites</h2>
+  <p>List all the prerequisites and how to install them.</p>
+  <ul>
+      <li>Access to the Virtual Machine hosting the PostGIS database</li>
+      <li>Install the latest npm inside your local repository of the snow application</li>
+  </ul>
+  <div class="doc-section">
+    <h2>Documentation</h2>
+    <p>If you want to look at the frontend documentation please click the button below:</p>
+    <a href="../snow/docs/index.html" class="doc-button">Frontend Documentation</a>
+  </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
