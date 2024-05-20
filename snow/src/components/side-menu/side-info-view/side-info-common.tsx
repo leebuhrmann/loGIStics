@@ -18,16 +18,23 @@ import { subCheckValueAtom } from "@/state/atoms";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { useRecoilState } from "recoil";
 
+/** Interface specifying the props for the SideInfoCommon component. */
 interface SideInfoCommonProps {
   data: Array<AlertMessage | SubscribedAlertMessage | BoundaryData>;
 }
 
+/** Interface specifying the datatype of the boundary data. */
 interface BoundaryData {
   name: string;
   description: string;
   subscribed: boolean;
 }
 
+/**
+ * Checks if an item is an {@link AlertMessage}.
+ * @param item - The item to check.
+ * @returns True if the item is an {@link AlertMessage}, or false otherwise.
+ */
 function isAlertMessage(
   item: AlertMessage | SubscribedAlertMessage | BoundaryData
 ): item is AlertMessage {
@@ -37,6 +44,11 @@ function isAlertMessage(
   return (item as AlertMessage).onset !== undefined;
 }
 
+/**
+ * Checks if an item is a {@link SubscribedAlertMessage}.
+ * @param item - The item to check.
+ * @returns True if the item is a {@link SubscribedAlertMessage}, or false otherwise.
+ */
 function isSubAlertMessage(
   item: AlertMessage | SubscribedAlertMessage | BoundaryData
 ): item is SubscribedAlertMessage {
@@ -46,6 +58,11 @@ function isSubAlertMessage(
   return (item as SubscribedAlertMessage).alert !== undefined;
 }
 
+/**
+ * Checks if an item is a {@link BoundaryData}.
+ * @param item - The item to check.
+ * @returns True if the item is a {@link BoundaryData}, or false otherwise.
+ */
 function isBoundaryData(
   item: AlertMessage | SubscribedAlertMessage | BoundaryData
 ): item is BoundaryData {
@@ -58,6 +75,7 @@ function isBoundaryData(
   );
 }
 
+/** Options for specifying the format of the date values. */
 const options: Intl.DateTimeFormatOptions = {
   year: "numeric",
   month: "long",
@@ -69,14 +87,20 @@ const options: Intl.DateTimeFormatOptions = {
   timeZoneName: "short",
 };
 
+/**
+ * Component that displays the common elements within the side panel.
+ * @param data - An {@link Array} of data to be displayed in the component.
+ * @returns html elements for either alert or boundary info view.
+ */
 export default function SideInfoCommon({ data }: SideInfoCommonProps) {
   const [subCheckValue, setSubCheckValue] = useRecoilState(subCheckValueAtom);
 
-  // Function to handle checkbox changes
+  /** Function to handle checkbox changes */
   const handleCheckboxChange = () => {
     setSubCheckValue((prevValue: boolean) => !prevValue);
   };
 
+  /** Filters data based on the subscription status */
   const filteredData =
     subCheckValue && isBoundaryData(data[0])
       ? data.filter((item) => isBoundaryData(item) && item.subscribed)
@@ -126,14 +150,15 @@ export default function SideInfoCommon({ data }: SideInfoCommonProps) {
   );
 }
 
+/** Interface specifying the props for the DataSelect component. */
 interface DataSelectProps {
   data: AlertMessage | SubscribedAlertMessage | BoundaryData;
   index: number;
 }
 
 /**
- * Specifies the styling for the data view of the Alert and Boundary info views
- * @returns html elements for either alert or boundary info view
+ * Specifies the styling for the data view of the Alert and Boundary info views.
+ * @returns html elements for either alert or boundary info view.
  */
 function DataSelect({ data }: DataSelectProps) {
   // Alert Data

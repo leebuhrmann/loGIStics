@@ -9,11 +9,18 @@ import {
 } from "@/state/atoms";
 import { useRecoilState, useSetRecoilState } from "recoil";
 
-const SideEditView = () => {
+/**
+ * SideEditView component for editing an existing boundary.
+ * @returns {JSX.Element} The SideEditView component.
+ */
+const SideEditView = (): JSX.Element => {
   const setViewState = useSetRecoilState(viewStateAtom);
   const [boundaryName, setBoundaryName] = useRecoilState(boundaryNameAtom);
   const [description, setDescription] = useRecoilState(boundaryDescriptionAtom);
 
+  /**
+   * Handles the save action.
+   */
   const handleSave = () => {
     // Placeholder for save logic
     console.log(
@@ -27,6 +34,9 @@ const SideEditView = () => {
     setViewState("info");
   };
 
+  /**
+   * Handles the delete action.
+   */
   const handleDelete = () => {
     console.log("Deleting boundary");
     setViewState("info");

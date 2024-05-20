@@ -11,20 +11,32 @@ import {
   createCheckboxAtom,
 } from "@/state/atoms";
 
-const SideCreationView = () => {
+/**
+ * SideCreationView component for creating a new boundary.
+ * @returns {JSX.Element} The SideCreationView component.
+ */
+const SideCreationView = (): JSX.Element => {
   const setViewState = useSetRecoilState<string>(viewStateAtom);
   const [boundaryName, setBoundaryName] = useRecoilState(boundaryNameAtom);
   const [description, setDescription] = useRecoilState(boundaryDescriptionAtom);
-  const [createCheckbox, setCreateCheckbox] =
-    useRecoilState(createCheckboxAtom);
+  const [createCheckbox, setCreateCheckbox] = useRecoilState(createCheckboxAtom);
   const boundaryCoordinates = useRecoilValue(polygonCoordinatesAtom);
-
-  const handleCheckboxChange = (checked: boolean) => {
+  /**
+     * Handles the change event for the checkbox.
+     * @public
+     * @param {boolean} checked - The new checked state of the checkbox.
+     */
+  const handleCheckboxChange = (checked: boolean): void => {
     console.log("Checkbox checked:", checked);
     setCreateCheckbox(checked);
   };
 
-  const handleSave = async () => {
+  /**
+  * Handles the save action, posting boundary data to the server.
+  * @public
+  * @returns {Promise<void>}
+  */
+  const handleSave = async (): Promise<void> => {
     const boundaryData = {
       name: boundaryName,
       description: description,

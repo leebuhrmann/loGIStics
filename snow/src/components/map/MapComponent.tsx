@@ -22,6 +22,9 @@ import { useRecoilValue } from "recoil";
 import { boundaryDataAtom } from "@/state/atoms";
 import Feature from "ol/Feature";
 
+/**
+ * Interface for Boundary data.
+ */
 interface Boundary {
   id: number;
   description: string;
@@ -33,7 +36,11 @@ interface Boundary {
   };
 }
 
-function MapComponent() {
+/**
+ * MapComponent that uses OpenLayers.
+ * @returns {JSX.Element} The MapComponent.
+ */
+function MapComponent(): JSX.Element {
   const filterSubscriptions = useRecoilValue(subCheckValueAtom);
   const setViewState = useSetRecoilState(viewStateAtom);
   const [clearPolygon, setClearPolygon] = useRecoilState(clearPolygonAtom);
@@ -48,18 +55,30 @@ function MapComponent() {
   const boundaryData: Boundary[] = useRecoilValue(boundaryDataAtom);
   const vectorSource = useRef(new VectorSource());
 
+  /**
+    * Starts the drawing mode.
+    */
   const startDrawing = () => {
     setIsDrawing(true);
   };
 
+  /**
+  * Stops the drawing mode.
+  */
   const stopDrawing = () => {
     setIsDrawing(false);
   };
 
+  /**
+   * Starts the modifying mode.
+   */
   const startModifying = () => {
     setIsModifying(true);
   };
 
+  /**
+    * Stops the modifying mode.
+    */
   const stopModifying = () => {
     setIsModifying(false);
   };
@@ -133,6 +152,9 @@ function MapComponent() {
     }
   }, [shouldClearPolygon, source, setClearPolygon]);
 
+  /**
+   * Toggles the drawing mode for creating a new polygon.
+   */
   const startPolygonDrawing = () => {
     if (!map) {
       return;

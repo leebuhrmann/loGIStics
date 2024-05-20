@@ -13,6 +13,12 @@ import {
 import SideMenu from "@/components/side-menu/side-menu";
 import { RecoilRoot } from "recoil";
 
+/**
+ * The Home Component sets up the application with a navigation bar for the user account, and panels that contain the map and side menu.
+ * 
+ * @returns {JSX.Element} The Home component.
+ */
+
 export default function Home() {
   return (
     <RecoilRoot>

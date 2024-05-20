@@ -15,6 +15,10 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import AlertService from "@/services/AlertService";
 import BoundaryService from "@/services/BoundaryService";
 
+/**
+ * Component that displays the common elements within SideInfoView.
+ * @returns html elements for the SideInfoView
+ */
 export default function SideInfoView() {
   const [alerts, setAlerts] = useRecoilState<AlertMessage[]>(alertsAtom);
   const [subAlerts, setSubAlerts] =
@@ -23,6 +27,7 @@ export default function SideInfoView() {
   const [boundaries, setBoundaries] = useRecoilState(boundaryDataAtom);
 
   useEffect(() => {
+    /** Fetches all alerts from the alert service and updates the alerts state */
     async function fetchAllAlerts() {
       try {
         const alertsData = await AlertService.getAllAlerts();
@@ -33,6 +38,7 @@ export default function SideInfoView() {
       }
     }
 
+    /** Fetches all of the subscribed alerts from the alerts services and updates the subAlerts state */
     async function fetchSubAlerts() {
       try {
         const subAlertsData = await AlertService.getSubAlerts();
@@ -43,6 +49,7 @@ export default function SideInfoView() {
       }
     }
 
+    /** Fetches all of the boundaries from the boundary service and updates the boundary state. */
     const fetchBoundaries = async () => {
       const fetchedBoundaries = await BoundaryService.getAllBoundaries();
       setBoundaries(fetchedBoundaries);
@@ -52,11 +59,12 @@ export default function SideInfoView() {
     fetchSubAlerts();
     fetchBoundaries();
 
-    // WebSocket setup for alerts
+    /**Sets up the WebSocket to retrieve alerts and update the alerts state. */
     const webSocketService = new WebSocketService((newAlert) => {
       setAlerts((prevAlerts) => [newAlert, ...prevAlerts]);
     });
 
+    /** Clean-up function to deactivate the WebSocket. */
     return () => {
       webSocketService.client.deactivate();
     };

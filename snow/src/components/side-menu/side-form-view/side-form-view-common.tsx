@@ -11,12 +11,20 @@ import {
 } from "@/state/atoms";
 import { useRecoilState, useSetRecoilState } from "recoil";
 
+/**
+ * Props for the SideFormViewCommon component.
+ */
 interface SideFormViewCommonProps {
   title: string;
   boundaryPlaceholder?: string;
   descriptionPlaceholder?: string;
 }
 
+/**
+ * SideFormViewCommon component provides a common layout for boundary creation and editing forms.
+ * @param {SideFormViewCommonProps} props - The props for the component.
+ * @returns {JSX.Element} The SideFormViewCommon component.
+ */
 const SideFormViewCommon: React.FC<SideFormViewCommonProps> = ({
   title,
   boundaryPlaceholder,
@@ -27,6 +35,9 @@ const SideFormViewCommon: React.FC<SideFormViewCommonProps> = ({
   const [boundaryName, setBoundaryName] = useRecoilState(boundaryNameAtom);
   const [description, setDescription] = useRecoilState(boundaryDescriptionAtom);
 
+  /**
+  * Handles the close action, resetting state to info.
+  */
   const handleClose = () => {
     if (viewState == "create") {
       setClearState(true);
